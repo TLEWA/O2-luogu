@@ -1,0 +1,1879 @@
+/* ==UserStyle==
+@name         氧洛谷
+@namespace    github.com/openstyles/stylus
+@version      2.0.0.1
+@description  正式发布版
+@author       TLEWA
+@license      GPL v3
+@preprocessor stylus
+
+@var	checkbox DarkMode "深色模式" 0
+@var	checkbox Custom-Scrollbar "更好的滚动条" 1
+@var	checkbox Custom-Inputbox "更一致的输入框圆角样式" 1
+@var	checkbox Custom-Card "更一致的卡片圆角样式" 1
+@var	checkbox Better-font "实验性代码块字体渲染" 0
+@var	checkbox Better-test-case "更好的评测详情色块" 1
+@var	checkbox Better-test-case-2 "实验性评测详情色块渲染" 1
+@var	checkbox Better-highcharts "应用自定义主页题目通过条颜色系统" 1
+@var	checkbox Better-Sidebar "更好的侧栏样式" 1
+@var	checkbox Better-Progressframe	"更好的题库通过条" 1
+@var	checkbox Better-test-case "更好的评测详情色块" 1
+@var	checkbox Homepage-L2-Card-border "洛谷首页二级卡片边框去除" 0
+@var	checkbox Homepage-Profile-Picture-hide "洛谷首页头像边框去除" 1
+@var	checkbox Benben-border-del "犇犇边框去除" 1
+@var	checkbox Benben-hide "犇犇'<-'样式去除" 1
+@var	checkbox Privateletter-hide "私信'<-'样式去除" 1
+@var	checkbox InLine-code-block-border-del "行内代码块边框去除" 0
+@var	checkbox Code-block-border-del "代码块边框去除" 0
+@var	checkbox Better-userpage "'系统维护，该内容暂不可见。'修复" 1
+@var	checkbox Better-problem-toolip "更好的题库通过条信息样式" 1
+@var	checkbox Better-big-button "更好的巨型按钮排版" 1
+@var	checkbox Better-discuss-button "更好的讨论区板块选择" 1
+@var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
+
+@var	text CustomBackground "自定义背景" "None"
+
+@var	text Card-L1-radius "一级卡片圆角大小" "Default"
+@var	text Card-L2-radius "二级卡片圆角大小" "Default"
+@var	text Card-float-radius "悬浮卡片圆角大小" "Default"
+@var	text Inputbox-radius "输入框圆角大小" "Default"
+@var	text Benben-radius "犇犇圆角大小" "Default"
+@var	text InLine-code-block-radius "行内代码块圆角大小" "Default"
+@var	text Code-block-radius "行内代码块圆角大小" "Default"
+
+@var	text Background-color "全局背景色" "Default"
+@var	text Card-bg-color-L1 "一级卡片背景色" "Default"
+@var	text Card-bg-color-L2 "二级卡片背景色" "Default"
+
+@var	text Header-bg-color "页首背景色" "Default"
+@var	text Footer-bg-color "页尾背景色" "Default"
+
+@var	text Card-bg-color-float "悬浮卡片背景色" "Default"
+@var	text Card-hover-color-float "部分悬浮卡片选中背景色" "Default"
+@var	text Text-color "正文文字色" "Default"
+@var	text State-color "提示文字色" "Default"
+@var	text Introduce-color "介绍文字色" "Default"
+@var	text Operate-color "操作文字色" "Default"
+@var	text Operate-hover-color "部分操作文字选中色" "Default"
+@var	text Operate-hover-ani "部分操作文字选中动画效果" "Default"
+@var	text Topic-text-color "题目限定条件文字选中色" "Default"
+@var	text Badge-text-color "用户 badge 文字色" "Default"
+@var	text ColorfulLabel-text-color "彩色标签卡片文字色" "Default"
+@var	text GrayLabel-text-color "灰度标签卡片文字色" "Default"
+@var	text GrayLabel-border-color "灰度标签边框色" "Default"
+@var	text GrayLabel-bg-color "灰度标签背景色" "Default"
+@var	text Badge-border-radius "用户 badge 圆角样式" "Default"
+@var	text Label-border-radius "标签卡片圆角样式" "Default"
+@var	text A-color "超链接颜色" "Default"
+@var	text A-hover-color "超链接选中色" "Default"
+@var	text Scrollbar-track-color "滚动槽颜色" "Default"
+@var	text Scrollbar-thumb-color "滚动条颜色" "Default"
+@var	text Scrollbar-hover-color "滚动条选中色" "Default"
+@var	text Navbar-bg-color "菜单栏背景色" "Default"
+@var	text Input-bg-color "输入框背景色" "Default"
+@var	text Input-focus-bg-color "输入框选中背景色" "Default"
+@var	text Input-border-color "输入框边框色" "Default"
+@var	text Input-focus-border-color "输入框选中边框色" "Default"
+@var	text Input-text-color "输入框文字色" "Default"
+@var	text Input-placeholder-color "输入框提示文字色" "Default"
+@var	text Sidebar-bg-color "侧栏背景色" "Default"
+@var	text Sidebar-icon-color "侧栏主体图标色" "Default"
+@var	text Sidebar-btn-color "侧栏'应用'按钮色" "Default"
+@var	text Sidebar-luogu-bg-color "侧栏洛谷图标背景色" "Default"
+@var	text Sidebar-luogu-icon-color "侧栏洛谷图标色" "Default"
+@var	text Post-heading-color "普通标题文字色" "Default"
+@var	text Main-post-heading-color "主标题文字色" "Default"
+@var	text Benben-hd-color "犇犇上半颜色" "Default"
+@var	text Benben-bd-color "犇犇下半颜色" "Default"
+@var	text Discuss-hd-color "讨论区评论上半颜色" "Default"
+@var	text Discuss-bd-color "讨论区评论下半颜色" "Default"
+@var	text Divider-color "分割线颜色" "Default"
+
+@var	text InLine-code-block-bg-color "行内代码块背景色" "Default"
+@var	text Code-block-bg-color "代码块背景色" "Default"
+@var	text InLine-code-block-border-color "行内代码块边框色" "Default"
+@var	text Code-block-border-color "代码块边框色" "Default"
+
+@var	text Code-block-text-color "代码块文字色" "Default"
+@var	text Code-block-quote-color "代码块注释色" "Default"
+@var	text Code-block-meta-color "代码块 meta 色" "Default"
+@var	text Code-block-meta-string-color "代码块 meta-string 色" "Default"
+@var	text Code-block-string-color "代码块字符串色" "Default"
+@var	text Code-block-keyword-color "代码块关键字色" "Default"
+@var	text Code-block-title-color "代码块函数名颜色" "Default"
+@var	text Code-block-number-color "代码块数字颜色" "Default"
+@var	text Code-block-params-color "代码块函数后括号颜色" "Default"
+
+@var	text InLine-code-block-border "行内代码块边框样式" "Default"
+@var	text Code-block-border "代码块边框样式" "Default"
+
+@var	text L2-Card-border "二级卡片默认边框色" "Default"
+
+@var	text Homepage-L2-Card-green "洛谷首页二级卡片绿色" "Default"
+@var	text Homepage-L2-Card-green-border "洛谷首页二级卡片绿色边框" "Default"
+@var	text Homepage-L2-Card-red "洛谷首页二级卡片红色" "Default"
+@var	text Homepage-L2-Card-red-border "洛谷首页二级卡片红色边框" "Default"
+@var	text Homepage-L2-Card-blue-border "洛谷首页蓝色边框" "Default"
+
+@var	text Homepage-a-green "洛谷首页超链接绿色" "Default"
+@var	text Homepage-a-red "洛谷首页超链接红色" "Default"
+
+@var	text Directory-a-color "洛谷左上目录超链接颜色" "Default"
+@var	text Other-icon-color "杂项图标颜色" "Default"
+@var	text Card-icon-color "右上悬浮卡图标颜色" "Default"
+
+@var	text Luogu-discuss-color-1 "洛谷讨论区'全部板块'颜色" "Default"
+@var	text Luogu-discuss-color-2 "洛谷讨论区'站务版'颜色" "Default"
+@var	text Luogu-discuss-color-3 "洛谷讨论区'题目总版'颜色" "Default"
+@var	text Luogu-discuss-color-4 "洛谷讨论区'学术版'颜色" "Default"
+@var	text Luogu-discuss-color-5 "洛谷讨论区'灌水区'颜色" "Default"
+@var	text Luogu-discuss-color-6 "洛谷讨论区'工单反馈版'颜色" "Default"
+
+@var	text Topic-type-Label-not-select "题目类型标签-未选择色" "Default"
+@var	text Topic-type-Label-algorithm "题目类型标签-题目算法色" "Default"
+@var	text Topic-type-Label-source "题目类型标签-题目来源色" "Default"
+@var	text Topic-type-Label-time "题目类型标签-题目时间色" "Default"
+@var	text Topic-type-Label-area "题目类型标签-题目区域色" "Default"
+@var	text Topic-type-Label-special "题目类型标签-特殊题目色" "Default"
+
+@var	text Topic-difficulty-Label-1 "题目难度标签-暂无评定色" "Default"
+@var	text Topic-difficulty-Label-2 "题目难度标签-入门色" "Default"
+@var	text Topic-difficulty-Label-3 "题目难度标签-普及-色" "Default"
+@var	text Topic-difficulty-Label-4 "题目难度标签-普及/提高−色" "Default"
+@var	text Topic-difficulty-Label-5 "题目难度标签-普及+/提高色" "Default"
+@var	text Topic-difficulty-Label-6 "题目难度标签-提高+/省选−色" "Default"
+@var	text Topic-difficulty-Label-7 "题目难度标签-省选/NOI−色" "Default"
+@var	text Topic-difficulty-Label-8 "题目难度标签-NOI/NOI+/CTSC色" "Default"
+
+@var	text Article-bg-color "专栏背景色" "Default"
+@var	text Article-text-bg-color "专栏文章框背景色" "Default"
+@var	text Article-sidebar-bg-color "专栏侧栏背景色" "Default"
+@var	text Article-icon-color "专栏文章底部图标色" "Default"
+
+@var	text Test-case-margin-right "评测详情色块横向间隔" "Default"
+@var	text Test-case-margin-bottom "评测详情色块竖向间隔" "Default"
+@var	text Test-case-margin-top "评测详情色块顶部距离" "Default"
+@var	text Test-case-size "评测详情色块边长" "Default"
+@var	text Test-case-ani "评测详情色块动画效果" "Default"
+@var	text Test-case-shadow "评测详情色块阴影效果" "Default"
+@var	text Test-case-border-radius "评测详情色块圆角大小" "Default"
+@var	text Test-case-translate "评测详情色块 hover 悬浮高度" "Default"
+@var	text Test-case-hover-shadow "评测详情色块 hover 阴影效果" "Default"
+@var	text Test-case-message-ani "评测详情信息框动画效果" "Default"
+@var	text Test-case-message-shadow "评测详情信息框阴影效果" "Default"
+@var	text Test-case-message-color "评测详情信息框文字颜色" "Default"
+@var	text Test-case-background "评测详情信息框背景色" "Default"
+@var	text Test-case-color-AC "评测详情背景色-AC" "Default"
+@var	text Test-case-color-WA "评测详情背景色-WA" "Default"
+@var	text Test-case-color-RE "评测详情背景色-RE" "Default"
+@var	text Test-case-color-TLE "评测详情背景色-TLE" "Default"
+@var	text Test-case-color-MLE "评测详情背景色-MLE(实验性，功能受限)" "Default"
+@var	text Test-case-color-OLE "评测详情背景色-OLE(实验性，功能受限)" "Default"
+@var	text Test-case-color-UKE "评测详情背景色-UKE" "Default"
+@var	text Test-case-text-color "评测详情文字色" "Default"
+
+@var	text Privateletter-bg-color "私信信息背景色" "Default"
+@var	text Privateitem-hover-bg-color "私信选择框 hover 背景色" "Default"
+@var	text Privateitem-hover-ani "私信选择框 hover 动画效果" "Default"
+
+@var	text Benben-tab-bg-color "犇犇 Tab 条背景色" "Default"
+@var	text Benben-tab-hover-color "犇犇 Tab 条 hover 背景色" "Default"
+@var	text Benben-tab-text-color "犇犇 Tab 条文字色" "Default"
+@var	text Benben-tab-focus-bg-color "犇犇 Tab 条 focus 背景色" "Default"
+@var	text Benben-tab-focus-text-color "犇犇 Tab 条 focus 文字色" "Default"
+@var	text Benben-tab-height "犇犇 Tab 条高度" "Default"
+
+@var	text Spinner-dark-color "加载圈颜色" "Default"
+
+@var	text article-icon-1-color "专栏区'收藏'图标点击颜色" "Default"
+@var	text article-icon-2-color "专栏区'点赞'图标点击颜色" "Default"
+@var	text article-icon-3-color "专栏区'不喜欢'图标点击颜色" "Default"
+@var	text article-icon-4-color "专栏区'编辑'图标点击颜色" "Default"
+
+@var	text Sidebar-popup-padding "侧栏'应用'框 padding" "Default"
+@var	text Sidebar-popup-ani "侧栏'应用'框出现动画效果" "Default"
+
+@var	text Float-card-hover-ani "部分悬浮框 hover 动画效果" "Default"
+
+@var	text Markdown-button-hover-bg-color "Markdown 按钮 hover 背景色" "Default"
+@var	text Markdown-button-hover-border "Markdown 按钮 hover border 样式" "Default"
+@var	text Markdown-button-hover-text-color "Markdown 按钮 hover 文字色" "Default"
+
+@var	text Highcharts-bg-color "主页题目通过情况栏折线图背景色" "Default"
+@var	text Highcharts-line-color "主页题目通过情况栏折线图线色" "Default"
+@var	text Highcharts-point-color "主页题目通过情况栏折线图点色" "Default"
+@var	text Highcharts-hover-point-color "主页题目通过情况栏折线图 hover 点色" "Default"
+@var	text Highcharts-hover-point-border-color "主页题目通过情况栏折线图 hover 点边框色" "Default"
+@var	text Highcharts-hover-bigpoint-color "主页题目通过情况栏折线图 hover 氛围环色" "Default"
+@var	text Highcharts-hover-bigpoint-op "主页题目通过情况栏折线图 hover 氛围环透明度"  "Default"
+@var	text Highcharts-strip-color "主页题目通过情况栏折线图竖条色" "Default"
+@var	text Highcharts-strip-border-color "主页题目通过情况栏折线图竖条边框色" "Default"
+@var	text Highcharts-strip-hover-color "主页题目通过情况栏折线图竖条 hover 色" "Default"
+@var	text Highcharts-text-color "主页题目通过情况栏折线图文本色" "Default"
+@var	text Highcharts-text-bg-color "主页题目通过情况栏折线图文本框背景色" "Default"
+@var	text Highcharts-text-border-color "主页题目通过情况栏折线图文本框边框色" "Default"
+@var	text Highcharts-text-point-color-1 "主页题目通过情况栏折线图文本框 '累积通过数' 点色" "Default"
+@var	text Highcharts-text-point-color-2 "主页题目通过情况栏折线图文本框 '当月通过数' 点色" "Default"
+
+@var	text Userpage-text-color "个人主页简介文字色" "Default"
+
+@var	text Progressframe-color "题库通过条颜色" "Default"
+@var	text Progressframe-bg-color "题库通过条背景色" "Default"
+
+@var	text Big-button-bg-color "巨型按钮背景色" "Default"
+@var	text Big-button-border "巨型按钮 border 样式" "Default"
+@var	text Big-button-border-hover "巨型按钮 border hover 样式" "Default"
+
+@var	text Small-button-bg-color "翻页按钮背景色" "Default"
+@var	text Small-button-select-bg-color "翻页按钮 select 背景色" "Default"
+@var	text Small-button-border "翻页按钮 border 样式" "Default"
+@var	text Small-button-border-hover "翻页按钮 border hover 样式" "Default"
+@var	text Small-button-text-select-color "翻页按钮文字 select 样式" "Default"
+
+@var	text Footer-text-color "页尾文字色" "Default"
+@var	text Footer-text-hover-color "页尾超链接 hover 色" "Default"
+@var	text Footer-bigtext-color "页尾 '在洛谷，享受 Coding 的欢乐' 色" "Default"
+@var	text Footer-img-color "页尾洛谷图标色" "Default"
+
+@var	text Card-L1-shadow "一级卡片阴影效果" "Default"
+@var	text Card-L1-hover-shadow "一级卡片 hover 阴影效果" "Default"
+@var	text Card-L1-hover-transition "一级卡片 hover 阴影动画效果" "Default"
+
+@var	text Benben-shadow "犇犇阴影效果" "Default"
+@var	text Benben-hover-shadow "犇犇 hover 阴影效果" "Default"
+@var	text Benben-hover-ani "犇犇 hover 阴影动画效果" "Default"
+
+@var	text Discuss-button-ani "讨论区板块选择动画" "Default"
+
+@var	text Article-rside-width "文章区右侧边栏宽度" "Default"
+
+@var	text Combowrapper-text-color "普通下拉框文字颜色" "Default"
+
+@var	text Button-bg-color-blue "洛谷蓝色按钮背景色" "Default"
+@var	text Button-bg-color-black "洛谷黑色按钮背景色" "Default"
+@var	text Button-bg-color-red "洛谷红色按钮背景色" "Default"
+@var	text Button-bg-color-special-red "洛谷镂空红按钮背景色" "Default"
+@var	text Button-bg-color-special-blue "洛谷镂空蓝按钮背景色" "Default"
+
+@var	text Button-hover-bg-color-blue "洛谷蓝色按钮背景 hover 色" "Default"
+@var	text Button-hover-bg-color-black "洛谷黑色按钮背景 hover 色" "Default"
+@var	text Button-hover-bg-color-red "洛谷红色按钮背景 hover 色" "Default"
+@var	text Button-hover-bg-color-special-red "洛谷镂空红按钮背景 hover 色" "Default"
+@var	text Button-hover-bg-color-special-blue "洛谷镂空蓝按钮背景 hover 色" "Default"
+
+@var	text Button-border-color-black "洛谷黑色按钮边框色" "Default"
+@var	text Button-border-color-special-red "洛谷镂空红按钮边框色" "Default"
+@var	text Button-border-color-special-blue "洛谷镂空蓝按钮边框色" "Default"
+
+@var	text Button-border-size-blue "洛谷蓝色按钮边框大小" "Default"
+@var	text Button-border-size-black "洛谷黑色按钮边框大小" "Default"
+@var	text Button-border-size-red "洛谷红色按钮边框大小" "Default"
+@var	text Button-border-size-special-red "洛谷镂空红按钮边框大小" "Default"
+@var	text Button-border-size-special-blue "洛谷镂空蓝按钮边框大小" "Default"
+
+@var	text Button-radius "中型按钮圆角样式" "Default"
+@var	text Small-button-radius "小型按钮圆角样式" "Default"
+
+@var	text Button-padding-width "中型按钮横向 padding" "Default"
+@var	text Button-padding-height "中型按钮纵向 padding" "Default"
+@var	text Small-button-padding-width "小型按钮横向 padding" "Default"
+@var	text Small-button-padding-height "小型按钮纵向 padding" "Default"
+
+@var	text Button-hover-ani "按钮 hover 动画" "Default"
+
+@var	text Expand-shadow "展开按钮阴影样式" "Default"
+@var	text Expand-radius "展开按钮阴影圆角样式" "Default"
+
+@var	text Article-sidebar-card-hover "新前端侧栏卡片 hover 色" "Default"
+
+@var	text Markdown-gutter-color "Markdown 编辑器行数显示背景色" "Default"
+@var	text Markdown-gutter-active-color "Markdown 编辑器行数显示选中背景色" "Default"
+@var	text Markdown-bg-color "Markdown 编辑器背景色" "Default"
+
+@var	text Homepage-L2-Card-blue-text-color "洛谷首页二级卡片蓝色文字" "Default"
+
+@var	text Text-selection-color "文字框选色" "Default"
+
+@var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
+@var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
+@var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
+@var	checkbox bug-fix4 "[bug-fix] 翻页按钮宽度计算错误" 1
+@var	checkbox bug-fix5 "[bug-fix] 私信 '加载更多' 文字位置异常" 1
+
+==/UserStyle== */
+
+/*
+代码来源 & 致谢：
+
+本样式的极少部分基于 氩洛谷 Re: 2024 的代码修改而来，同时颜色系统与此样式有少数重合。
+本样式的相当一部分 bug-fix 由作者自己编写，整合的样式 氩洛谷-改 移植而来，同时部分美化样式和其有重合，这部分样式的其中一部分可能最初从 氩洛谷 的样式修改而来。
+本样式的少部分功能由 Smart-Luogu 移植而来，并已向作者取得在 GPL 开源许可下分发，修改其代码的许可。
+
+在高度原创性的基础上，我的样式借鉴了这些成熟样式的部分代码，感谢以上作者为洛谷美化做出的巨大贡献！
+本样式仍处于早期版本，功能上欠缺良多。
+*/
+
+/*
+开发待办事项：
+
+题库选择条，算法来源 hover
+近期比赛 bug 修复
+hover 配色，hover 动画
+选择框 hover 色
+评论样式
+初等动画效果
+隐藏广告
+exlg 兼容
+bugfix 移植
+广告阴影化
+
+阴影化 v2
+实现页首页尾自定义v2
+主页通过栏（无法实现）
+Tab 选中也可以 hover（不建议）
+私信框自定义背景
+确定键长按
+*/
+
+// 常量
+	Default = "Default"
+	None = "None"
+	False = "False"
+
+	// 选择器
+		Main_Inputbox = "input[type=text],input[type=password],textarea#feed-content,.input-wrap,.combo-wrapper>.text,.CodeMirror-code pre.CodeMirror-line,textarea,.mp-dialog-input>input,select,.refined-input.text" // 主流样式的输入框
+		Card_L1 = ".lg-article, .lg-article-sub, .lg-article-nctrl, .card, .float-bottom,.l-card" // 一级卡片
+		Card_L2 = ".am-panel,.inner-card,.discuss-container .discuss" // 二级卡片
+		Card_float = "#app > nav.lfe-body .popup,.user-nav .center,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog" // 悬浮卡片
+		Hover_card_float = "#app > nav.lfe-body .popup a,.dropdown-operations li,.dropdown li,.candidates li,.am-modal-footer"
+		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header" // 标题文字
+		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5" // 正文文字
+		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name" // 陈述文字
+		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions" // 介绍文字
+		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.stat>.field,.difficulty-tags,.difficulty-tags>.row,div[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
+		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.close path,.cs-close-container" // 杂项图标
+		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 操作文字
+		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 可选中操作文字
+		Hover-A = ".action>a,.center>footer>a,.am-panel-primary .am-panel-title a" // 选中超链接
+		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default" // 强制超链接
+		ColorfulLabel = ".difficulty a.color-default[colorscheme='default']>span,.box>span.lfe-caption,span.lfe-caption.tag,a.tag.color-none>span,.difficulty-tags>.row>span.lfe-caption,.difficulty>span.lfe-caption,a.status-link>span.lfe-caption,.lfe-caption.tag>span,.author-margin>.lfe-caption,.team-authority,.inner-card span.lfe-caption[style*='color:'],.status>.lfe-caption" // 标签
+		GrayLabel = '.card.info-card.center.padding-default .tags>span.tag[style*="rgb(232"]:not(.selected),.inner-card>.row>div>span.lfe-caption,.card.log.padding-default li span.lfe-caption' // 灰度标签
+		Topic-type-Label = ".tags-wrap.multiline>a>span,.card.info-card.center.padding-default .tag-select-area .tags>span.tag,.block-item.tag" // 题目类型标签
+		Topic-difficulty-Label = ".difficulty span.lfe-caption,.difficulty-tags span.lfe-caption,.block-item.tag" // 题目难度标签
+		InLine-code-block = "[class*='marked'] code,.am-comment-bd p>code" // 行内代码块
+		Code-block = "pre:not([mp-editor-container],.CodeMirror-line)" // 代码块
+		Discuss = ".row-wrap > .card.comment.padding-default, .log,.article-comment .l-card.reply-item" // 讨论区评论
+		Badge = ".am-badge,.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span" // 用户 Tag
+		Button = ".lfe-form-sz-middle,.am-btn,.lform-size-middle,.lform-sz-middle,#go.submit" // 中型按钮
+		Small-Button = ".lfe-form-sz-small,.lform-sz-small,.lform-size-small,.copy-btn,.copy-btn.lfe-form-sz-middle" // 小型按钮
+
+// 全局工具函数
+
+	// 使用全局背景
+	use_mainly_background(background-val = Background) 
+		background: background-val !important
+		background-repeat no-repeat !important
+		background-size cover !important
+		background-position center !important
+		background-attachment fixed !important
+	
+	use_new_bar() // 我们洛谷的新前端，太美丽
+		// 专栏顶栏样式修改
+		body>div>div.top-bar
+			background: Navbar-bg-color !important
+		body>div>nav.lside,body>div>div.rside
+			background: Article-sidebar-bg-color !important
+			& ul>li:hover
+				background: Article-sidebar-card-hover !important
+	
+	get_depend_list(args) // TODO：此处支持可能不够完备，如有更完善实现可能更改
+		for arg in args
+			if arg!=None
+				return arg
+		return false
+
+	use_depend_list(prop,args,is_important=0) // 使用依赖列表进行变量赋值，最终顺序使用第一个可用参数，如果最终第一顺位元素值为 false，则不进行赋值
+		depend = get_depend_list(args)
+		if depend!=False
+			if is_important
+				{prop}: depend !important
+			else
+				{prop}: depend
+	
+	set_default_value(key,value) // 实现一个设置默认值的功能
+		if key==Default || !(key is defined)
+			return value
+		else 
+			return key
+	
+	use_img_bg_color(Color)
+		transform:translateX(-10000px) !important
+		filter: drop-shadow(10000px 0px 0px Color) !important
+
+	// TODO：v2.0
+	use_button_style(Padding-width,Padding-height)
+		line-height: 1.5 !important // 统一新老前端标准
+		transition: background Button-hover-ani \, border-color Button-hover-ani !important
+		// 蓝色按钮
+		&.am-btn-primary,&[style*="background-color: rgb(52\, 152\, 219);"],&[style*="background-color: rgba(52\, 152\, 219\, 0.9);"],&.solid,&#go.submit
+			border: Button-border-size-blue solid Button-bg-color-blue !important
+			background: Button-bg-color-blue !important
+			&:hover
+				border: Button-border-size-blue solid Button-hover-bg-color-blue !important
+				background: Button-hover-bg-color-blue !important
+			padding: (Padding-height - Button-border-size-blue) (Padding-width - Button-border-size-blue)
+		&.am-btn-danger,&.lcolor-var-red-3.solid,&[style*="background-color: rgb(231\, 76\, 60);"]
+			border: Button-border-size-red solid Button-bg-color-red !important
+			background: Button-bg-color-red !important
+			&:hover
+				border: Button-border-size-blue solid Button-hover-bg-color-red !important
+				background: Button-hover-bg-color-red !important
+			padding: (Padding-height - Button-border-size-red) (Padding-width - Button-border-size-red)
+		&[style*="background-color: rgba(0\, 0\, 0\, 0.5);"]
+			border: Button-border-size-black solid Button-border-color-black !important
+			background: Button-bg-color-black !important
+			&:hover
+				background: Button-hover-bg-color-black !important
+				opacity: 1 !important
+			padding: (Padding-height - Button-border-size-black) (Padding-width - Button-border-size-black)
+		&[style*="background-color: rgba(52\, 152\, 219\, 0);"],&[style*="background-color: rgba(52\, 152\, 219\, 0.1);"] // TODO：改掉这沟槽的东西
+			border: Button-border-size-special-blue solid Button-border-color-special-blue !important
+			background: Button-bg-color-special-blue !important
+			&:hover
+				background: Button-hover-bg-color-special-blue !important
+			padding: (Padding-height - Button-border-size-special-blue) (Padding-width - Button-border-size-special-blue)
+		&[style*="background-color: rgba(231\, 76\, 60\, 0);"],&[style*="background-color: rgba(231\, 76\, 60\, 0.1);"]
+			border: Button-border-size-special-red solid Button-border-color-special-red !important
+			background: Button-bg-color-special-red !important
+			&:hover
+				background: Button-hover-bg-color-special-red !important
+			padding: (Padding-height - Button-border-size-special-red) (Padding-width - Button-border-size-special-red)
+		padding: (Padding-height - 1px) (Padding-width - 1px)
+	
+
+// 全局变量定义
+	// 默认值定义
+
+	Card-L1-radius = set_default_value(Card-L1-radius,4px)
+	Card-L2-radius = set_default_value(Card-L2-radius,4px)
+	Card-float-radius = set_default_value(Card-L2-radius,5px) 
+	Inputbox-radius = set_default_value(Inputbox-radius,4px)
+	Benben-radius = set_default_value(Inputbox-radius,get_depend_list(Card-L2-radius, 4px))
+	InLine-code-block-radius = set_default_value(InLine-code-block-radius,3px)
+	Code-block-radius = set_default_value(Code-block-radius,5px)
+
+	if InLine-code-block-border-del 
+		InLine-code-block-border = set_default_value(InLine-code-block-border,none)
+	else
+		InLine-code-block-border = set_default_value(InLine-code-block-border,1px solid)
+
+	if Code-block-border-del
+		Code-block-border = set_default_value(Code-block-border,none)
+	else
+		Code-block-border = set_default_value(Code-block-border,1px solid)
+
+	// 一些原则上的东西：颜色不由优化样式的个性配置影响
+	// 使用默认配置时，可能会有一些细节上没有体现在配置中的小优化
+	// 全局颜色定义
+
+	Luogu-discuss-color-2 = set_default_value(Luogu-discuss-color-2,#14558f)
+	Luogu-discuss-color-3 = set_default_value(Luogu-discuss-color-3,#f39c11)
+	Luogu-discuss-color-4 = set_default_value(Luogu-discuss-color-4,#9d3dcf)
+	Luogu-discuss-color-5 = set_default_value(Luogu-discuss-color-5,#52c41a)
+	Luogu-discuss-color-6 = set_default_value(Luogu-discuss-color-6,#2949b4)
+
+	if CustomBackground!=None
+		Header-bg-color = set_default_value(Header-bg-color,none)
+		Footer-bg-color = set_default_value(Footer-bg-color,none)
+	
+	if Better-article-card=="auto"
+		if CustomBackground!=None
+			Better-article-card = "on"
+		else
+			Better-article-card = "off"
+	
+	if Better-article-card=="on"
+		Card_L1 += ",.main-container.lside-bar>main.lcolor-bg-grey-1"
+		Card_L2 += ",.article-comment.columba-content-wrap.wrapper>.l-card"
+
+	if DarkMode
+		Background-color = set_default_value(Background-color,#141725)                            // 全局背景色
+		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#252d38)                            // 一级卡片背景色
+		Card-bg-color-L2 = set_default_value(Card-bg-color-L2,#2f3741)                            // 二级卡片背景色
+		Header-bg-color = set_default_value(Header-bg-color,linear-gradient(90deg,#282828,#1a1a1a))// 页首背景色
+		Footer-bg-color = set_default_value(Footer-bg-color,#1a1a1a)                              // 页尾背景色
+		Card-bg-color-float = set_default_value(Card-bg-color-float,#242C38)                      // 悬浮卡片背景色
+		Card-hover-color-float = set_default_value(Card-hover-color-float,#3e4752)                // 悬浮卡片选中背景色
+		Text-color = set_default_value(Text-color,#c4c6c9)                                        // 正文文字色
+		State-color = set_default_value(State-color,rgba(255,255,255,0.45))                       // 陈述文字色
+		Introduce-color = set_default_value(Introduce-color,#c4c6c9)                              // 介绍文字色
+		Operate-color = set_default_value(Operate-color,#999999)                                  // 操作文字色
+		Operate-hover-color = set_default_value(Operate-hover-color,#dcdcdc)                      // 部分操作选中色
+		Topic-text-color = set_default_value(Topic-text-color,#fff)                               // 题目限定条件文字选中色
+		ColorfulLabel-text-color = set_default_value(ColorfulLabel-text-color,#fff)               // 标签卡片文字色
+		GrayLabel-text-color = set_default_value(GrayLabel-text-color,#fff)
+		GrayLabel-border-color = set_default_value(GrayLabel-border-color,#a7a9ad)
+		GrayLabel-bg-color = set_default_value(GrayLabel-bg-color,#3f3f3f)
+		A-color = set_default_value(A-color,#5e72e4)                                              // 超链接颜色
+		A-hover-color = set_default_value(A-hover-color,#0056b3)                                  // 超链接选中色
+		Scrollbar-track-color = set_default_value(Scrollbar-track-color,#161926)    // 滚动槽颜色
+		Scrollbar-thumb-color = set_default_value(Scrollbar-thumb-color,#57626f) // 滚动条颜色
+		Scrollbar-hover-color = set_default_value(Scrollbar-hover-color,#5e72e4)                  // 滚动条选中色
+		Navbar-bg-color = set_default_value(Navbar-bg-color,#1f3144)                              // 菜单栏背景色
+		Input-bg-color = set_default_value(Input-bg-color,#2f3741)                                // 输入框背景色
+		Input-focus-bg-color = set_default_value(Input-focus-bg-color,Input-bg-color)             // 输入框选中背景色
+		Input-border-color = set_default_value(Input-border-color,#a7a9ad)                        // 输入框边框色
+		Input-focus-border-color = set_default_value(Input-focus-border-color,#3498db)            // 输入框选中边框色
+		Input-text-color = set_default_value(Input-text-color,#dcdcdc)                            // 输入框文字色
+		Input-placeholder-color = set_default_value(Input-placeholder-color,#c4c6c9)              // 输入框提示文字色
+		Sidebar-bg-color = set_default_value(Sidebar-bg-color,#162430)                            // 侧栏背景色
+		Sidebar-icon-color = set_default_value(Sidebar-icon-color,#dddddd)                        // 侧栏主体图标色
+		Sidebar-btn-color = set_default_value(Sidebar-btn-color,#dddddd)                          // 侧栏'应用'按钮色
+		Sidebar-luogu-bg-color = set_default_value(Sidebar-luogu-bg-color,#4682b4)                // 侧栏洛谷图标背景色
+		Sidebar-luogu-icon-color = set_default_value(Sidebar-luogu-icon-color,#fffaf0)            // 侧栏洛谷图标色
+		L2-Card-border = set_default_value(L2-Card-border,#435266)                                // 二级卡片默认边框色
+		Homepage-L2-Card-green-border = set_default_value(Homepage-L2-Card-green-border,rgba(42,97,42,.7))
+		Homepage-L2-Card-red-border = set_default_value(Homepage-L2-Card-red-border,rgba(125,27,24,0.5))
+		Homepage-L2-Card-blue-border = set_default_value(Homepage-L2-Card-blue-border,rgba(70, 130, 180,.7))
+		Post-heading-color = set_default_value(Post-heading-color,#c4c6c9)                        // 标题文字色
+		Benben-hd-color = set_default_value(Benben-hd-color,get_depend_list(Card-bg-color-L2))
+		Benben-bd-color = set_default_value(Benben-bd-color,get_depend_list(Card-bg-color-L1))
+		Discuss-hd-color = set_default_value(Benben-hd-color,get_depend_list(Card-bg-color-L2))
+		Discuss-bd-color = set_default_value(Benben-bd-color,get_depend_list(Card-bg-color-L1))
+		Homepage-a-green = set_default_value(Homepage-a-green,#5eb95e)                            // 主页超链接绿色
+		Homepage-a-red = set_default_value(Homepage-a-red,#dd514c)                                // 主页超链接红色
+		Divider-color = set_default_value(Divider-color,#435266)                                  // 分割线颜色
+		Directory-a-color = set_default_value(Directory-a-color,rgba(255,255,255,.75))            // 洛谷左上目录超链接颜色
+		Other-icon-color = set_default_value(Other-icon-color,#c4c6c9)                            // 杂项图标颜色
+		Card-icon-color = set_default_value(Card-icon-color,#333)                                 // 右上悬浮卡图标颜色
+		Luogu-discuss-color-1 = set_default_value(Luogu-discuss-color-1,#fff)                     // 洛谷讨论区图标色
+		Main-post-heading-color = set_default_value(Main-post-heading-color,#fff)                 // 主标题文字色
+		Topic-type-Label-not-select = set_default_value(Topic-type-Label-not-select,#3f3f3f)      // 题目类型标签-未选择色
+		InLine-code-block-bg-color = set_default_value(InLine-code-block-bg-color,#3e4752)        // 行内代码块背景色
+		Code-block-bg-color = set_default_value(Code-block-bg-color,#0d1117)                      // 代码块背景色
+		InLine-code-block-border-color = set_default_value(InLine-code-block-border-color,#3e4752)// 行内代码块边框色
+		Code-block-border-color = set_default_value(Code-block-border-color,#0d1117)              // 代码块边框色
+		Code-block-text-color = set_default_value(Code-block-text-color,#b6b8c2)                  // 代码块文字色
+		Code-block-quote-color = set_default_value(Code-block-quote-color,#5c6370)                // 代码块注释色
+		Code-block-meta-color = set_default_value(Code-block-meta-color,#f06090)                  // 代码块 meta 色
+		Code-block-meta-string-color = set_default_value(Code-block-meta-string-color,#2fb170)    // 代码块 meta-string 色
+		Code-block-string-color = set_default_value(Code-block-string-color,#2fb170)              // 代码块字符串色
+		Code-block-keyword-color = set_default_value(Code-block-keyword-color,#6791e0)            // 代码块关键字色
+		Code-block-title-color = set_default_value(Code-block-title-color,#c973d9)                // 代码块函数名颜色
+		Code-block-number-color = set_default_value(Code-block-number-color,#e6695b)              // 代码块数字颜色
+		Code-block-params-color = set_default_value(Code-block-params-color,#da70d6)              // 代码块函数后括号颜色
+
+		Article-bg-color = set_default_value(Article-bg-color,#1e2334)                            // 专栏背景色
+		Article-text-bg-color = set_default_value(Article-text-bg-color,#252d38)                  // 专栏文章框背景色
+		Article-sidebar-bg-color = set_default_value(Article-sidebar-bg-color,#1f3144)            // 专栏侧栏背景色
+		Article-icon-color = set_default_value(Article-icon-color,#c4c6c9)                        // 专栏文章底部图标色
+
+		Privateletter-bg-color = set_default_value(Privateletter-bg-color,#12161c)                // 私信信息背景色
+
+		Topic-difficulty-Label-8 = set_default_value(Topic-difficulty-Label-8,#000)               // 黑题特殊处理
+
+		Benben-tab-bg-color = set_default_value(Benben-tab-bg-color,#252d38)
+		Benben-tab-hover-color = set_default_value(Benben-tab-hover-color,#2f3741)
+		Benben-tab-text-color = set_default_value(Benben-tab-text-color,#5e72e4)
+		Benben-tab-focus-bg-color = set_default_value(Benben-tab-focus-bg-color,#0056b3)
+		Benben-tab-focus-text-color = set_default_value(Benben-tab-focus-text-color, #fff)
+
+		Spinner-dark-color = set_default_value(Spinner-dark-color,#fff)
+
+		Markdown-button-hover-bg-color = set_default_value(Markdown-button-hover-bg-color,#2f3741)
+		Markdown-button-hover-border = set_default_value(Markdown-button-hover-border,1px solid #2f3741)
+		Markdown-button-hover-text-color = set_default_value(Markdown-button-hover-text-color,#0056b3)
+
+		Highcharts-bg-color = set_default_value(Highcharts-bg-color,#5e72e426)
+		Highcharts-line-color = set_default_value(Highcharts-line-color,#871F78)
+		Highcharts-point-color = set_default_value(Highcharts-point-color,#5e72e4)
+		Highcharts-hover-point-color = set_default_value(Highcharts-hover-point-color,#0056b3)
+		Highcharts-hover-point-border-color = set_default_value(Highcharts-hover-point-border-color,#fff)
+		Highcharts-hover-bigpoint-color = set_default_value(Highcharts-hover-bigpoint-color,#7cb5ec)
+		Highcharts-strip-color = set_default_value(Highcharts-strip-color,rgba(61,89,171,0.55))
+		Highcharts-strip-border-color = set_default_value(Highcharts-strip-border-color,#d49ee6ad)
+		Highcharts-strip-hover-color  = set_default_value(Highcharts-strip-hover-color ,rgba(61,89,171,0.75))
+		Highcharts-text-color  = set_default_value(Highcharts-text-color,#c4c6c9)
+		Highcharts-text-bg-color = set_default_value(Highcharts-text-bg-color,rgba(18,22,28,0.75))
+		Highcharts-text-border-color  = set_default_value(Highcharts-text-border-color,#8e44ad)
+		Highcharts-text-point-color-1 = set_default_value(Highcharts-text-point-color-1,#7cb5ec)
+		Highcharts-text-point-color-2 = set_default_value(Highcharts-text-point-color-2,#c4c6c9)
+
+		Progressframe-color = set_default_value(Progressframe-color,#5e72e4)
+		Progressframe-bg-color = set_default_value(Progressframe-bg-color,#141725)
+
+		Big-button-bg-color = set_default_value(Big-button-bg-color,#2f3741)
+		Big-button-border = set_default_value(Big-button-border,1px solid #435266)
+		Big-button-border-hover = set_default_value(Big-button-border-hover,1px solid #0056b3)
+
+		Small-button-bg-color = set_default_value(Small-button-bg-color,#2f3741)
+		Small-button-select-bg-color = set_default_value(Small-button-select-bg-color,#5e72e4)
+		Small-button-border = set_default_value(Small-button-border,1px solid #435266)
+		Small-button-border-hover = set_default_value(Small-button-border-hover,1px solid #0056b3)
+		Small-button-text-select-color = set_default_value(Small-button-text-select-color,#fff)
+
+		Footer-bigtext-color = set_default_value(Footer-bigtext-color,#fffaf0)
+		Footer-img-color = set_default_value(Footer-img-color,#fffaf0)
+
+		Card-L1-shadow = set_default_value(Card-L1-shadow,none)
+		Card-L1-hover-shadow = set_default_value(Card-L1-hover-shadow,none)
+
+		Benben-shadow = set_default_value(Benben-shadow,none)
+		Benben-hover-shadow = set_default_value(Benben-hover-shadow,none)
+		Benben-hover-ani = set_default_value(Benben-hover-ani,none)
+
+		Privateitem-hover-bg-color = set_default_value(Privateitem-hover-bg-color,#3e4752)
+		
+		Combowrapper-text-color = set_default_value(Combowrapper-text-color,#dcdcdc)
+
+		Expand-shadow = set_default_value(Expand-shadow,linear-gradient(rgba(255,255,255,0), rgba(128,128,128,0.5)))
+
+		Article-sidebar-card-hover = set_default_value(Article-sidebar-card-hover,#3e4752)
+
+		Markdown-gutter-color = set_default_value(Markdown-gutter-color,#242c38)
+		Markdown-gutter-active-color = set_default_value(Markdown-gutter-active-color,#3e4752)
+		Markdown-bg-color = set_default_value(Markdown-bg-color,#2f3741)
+
+		Text-selection-color = set_default_value(Text-selection-color,#474c63)
+	else
+		Background-color = set_default_value(Background-color,#efefef)
+		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
+		Card-bg-color-L2 = set_default_value(Card-bg-color-L2,#fff)
+		Header-bg-color = set_default_value(Header-bg-color,linear-gradient(90deg, rgb(35, 37, 38), rgb(65, 67, 69)))
+		Footer-bg-color = set_default_value(Footer-bg-color,linear-gradient(150deg,#708090 15%,#2F4F4F 70%,#000000 94%))
+		Card-bg-color-float = set_default_value(Card-bg-color-float,#fff)
+		Card-hover-color-float = set_default_value(Card-hover-color-float,#e5e5e5)
+		Text-color = set_default_value(Text-color,rgba(0,0,0,.75))
+		State-color = set_default_value(State-color,rgba(0, 0, 0, 0.45))
+		Introduce-color = set_default_value(Introduce-color,rgba(0, 0, 0, .75))
+		Operate-color = set_default_value(Operate-color,#999999)
+		Operate-hover-color = set_default_value(Operate-hover-color,#3f3f3f)
+		Topic-text-color = set_default_value(Topic-text-color,#fff)
+		ColorfulLabel-text-color = set_default_value(ColorfulLabel-text-color,#fff)
+		GrayLabel-text-color = set_default_value(GrayLabel-text-color,#3a3a3a)
+		GrayLabel-border-color = set_default_value(GrayLabel-border-color,#bebebe)
+		GrayLabel-bg-color = set_default_value(GrayLabel-bg-color,#e8e8e8)
+		A-color = set_default_value(A-color,#3498db)
+		A-hover-color = set_default_value(A-hover-color,#095f8a)
+		Scrollbar-track-color = set_default_value(Scrollbar-track-color,rgba(0, 0, 0, 0.05))
+		Scrollbar-thumb-color = set_default_value(Scrollbar-thumb-color,rgba(0, 0, 0, 0.2))
+		Scrollbar-hover-color = set_default_value(Scrollbar-hover-color,#808080)
+		Navbar-bg-color = set_default_value(Navbar-bg-color,#fff)
+		Input-bg-color = set_default_value(Input-bg-color,#fff)
+		Input-focus-bg-color = set_default_value(Input-focus-bg-color,Input-bg-color)
+		Input-border-color = set_default_value(Input-border-color,#bfbfbf)
+		Input-focus-border-color = set_default_value(Input-focus-border-color,#409eff)
+		Input-text-color = set_default_value(Input-text-color,#000)
+		Input-placeholder-color = set_default_value(Input-placeholder-color,rgba(0,0,0,.5))
+		Sidebar-bg-color = set_default_value(Sidebar-bg-color,#34495E)
+		Sidebar-icon-color = set_default_value(Sidebar-icon-color,#dddddd)
+		Sidebar-btn-color = set_default_value(Sidebar-btn-color,#dddddd)
+		Sidebar-luogu-bg-color = set_default_value(Sidebar-luogu-bg-color,#3498db)
+		Sidebar-luogu-icon-color = set_default_value(Sidebar-luogu-icon-color,#fff)
+		L2-Card-border = set_default_value(L2-Card-border,#e8e8e8)
+		Post-heading-color = set_default_value(Post-heading-color,rgba(0,0,0,.75))
+		Benben-hd-color = set_default_value(Benben-hd-color,#f8f8f8)
+		Benben-bd-color = set_default_value(Benben-bd-color,#fff)
+		Discuss-hd-color = set_default_value(Benben-hd-color,#f8f8f8)
+		Discuss-bd-color = set_default_value(Benben-bd-color,#fff)
+		Homepage-a-green = set_default_value(Homepage-a-green,#5eb95e)
+		Homepage-a-red = set_default_value(Homepage-a-red,#dd514c)
+		Divider-color = set_default_value(Divider-color,#e8e8e8)
+		Directory-a-color = set_default_value(Directory-a-color,rgba(255,255,255,.75))
+		Other-icon-color = set_default_value(Other-icon-color,#333333)
+		Card-icon-color = set_default_value(Card-icon-color,#333)
+		Luogu-discuss-color-1 = set_default_value(Luogu-discuss-color-1,#272727)
+		Main-post-heading-color = set_default_value(Main-post-heading-color,#fff)
+		Topic-type-Label-not-select = set_default_value(Topic-type-Label-not-select,#e8e8e8)
+		InLine-code-block-bg-color = set_default_value(InLine-code-block-bg-color,#f8f8f8)
+		Code-block-bg-color = set_default_value(Code-block-bg-color,#f8f8f8)
+		InLine-code-block-border-color = set_default_value(InLine-code-block-border-color,#e8e8e8)
+		Code-block-border-color = set_default_value(Code-block-border-color,#eeeeee)
+		Code-block-text-color = set_default_value(Code-block-text-color,#36464e)
+		Code-block-quote-color = set_default_value(Code-block-quote-color,#707070)
+		Code-block-meta-color = set_default_value(Code-block-meta-color,#f06090)
+		Code-block-meta-string-color = set_default_value(Code-block-meta-string-color,#2fb170)
+		Code-block-string-color = set_default_value(Code-block-string-color,#2fb170)
+		Code-block-keyword-color = set_default_value(Code-block-keyword-color,#6791e0)
+		Code-block-title-color = set_default_value(Code-block-title-color,#c973d9)
+		Code-block-number-color = set_default_value(Code-block-number-color,#e6695b)
+		Code-block-params-color = set_default_value(Code-block-params-color,#da70d6)
+
+		Article-bg-color = set_default_value(Article-bg-color,#fafafa)
+		Article-text-bg-color = set_default_value(Article-text-bg-color,#ffffff)
+		Article-sidebar-bg-color = set_default_value(Article-sidebar-bg-color,#fff)
+		Article-icon-color = set_default_value(Article-icon-color,#333)
+
+		Privateletter-bg-color = set_default_value(Privateletter-bg-color,#e8e8e8)
+
+		Benben-tab-bg-color = set_default_value(Benben-tab-bg-color,#fff)
+		Benben-tab-hover-color = set_default_value(Benben-tab-hover-color,#eee)
+		Benben-tab-text-color = set_default_value(Benben-tab-text-color,#5e72e4)
+		Benben-tab-focus-bg-color = set_default_value(Benben-tab-focus-bg-color,#48D1CC)
+		Benben-tab-focus-text-color = set_default_value(Benben-tab-focus-text-color, #fff)
+
+		Spinner-dark-color = set_default_value(Spinner-dark-color,#333)
+
+		Markdown-button-hover-bg-color = set_default_value(Markdown-button-hover-bg-color,#fff)
+		Markdown-button-hover-border = set_default_value(Markdown-button-hover-border,1px solid #fff)
+		Markdown-button-hover-text-color = set_default_value(Markdown-button-hover-text-color,#095f8a)
+
+		Highcharts-bg-color = set_default_value(Highcharts-bg-color,#5e72e426)
+		//Highcharts-line-color = set_default_value(Highcharts-line-color,)
+		Highcharts-point-color = set_default_value(Highcharts-point-color,#87CEEB)
+		Highcharts-strip-color = set_default_value(Highcharts-strip-color,rgba(61,89,171,0.55))
+		Highcharts-strip-border-color = set_default_value(Highcharts-strip-border-color,#d49ee6ad)
+		Highcharts-strip-hover-color  = set_default_value(Highcharts-strip-hover-color ,rgba(61,89,171,0.65))
+
+		Progressframe-color = set_default_value(Progressframe-color,#3498db)
+		Progressframe-bg-color = set_default_value(Progressframe-bg-color,#e8e8e8)
+
+		Big-button-bg-color = set_default_value(Big-button-bg-color,#fafafa)
+		Big-button-border = set_default_value(Big-button-border,1px solid #e8e8e8)
+		Big-button-border-hover = set_default_value(Big-button-border-hover,1px solid #89d1f5)
+
+		Small-button-bg-color = set_default_value(Small-button-bg-color,#fff)
+		Small-button-select-bg-color = set_default_value(Small-button-select-bg-color,#3498db)
+		Small-button-border = set_default_value(Small-button-border,1px solid #bfbfbf)
+		Small-button-border-hover = set_default_value(Small-button-border-hover,1px solid #3498db)
+		Small-button-text-select-color = set_default_value(Small-button-text-select-color,#fff)
+
+		Footer-bigtext-color = set_default_value(Footer-bigtext-color,#fff)
+		Footer-img-color = set_default_value(Footer-img-color,#fff)
+
+		Card-L1-shadow = set_default_value(Card-L1-shadow,0 5px 15px rgba(50,50,93,.1)\,0 5px 8px rgba(0,0,0,.07))
+		Card-L1-hover-shadow = set_default_value(Card-L1-hover-shadow,0 10px 30px rgba(50,50,93,.1)\,0 5px 15px rgba(0,0,0,.07))
+
+		article-icon-3-color = set_default_value(article-icon-3-color,#fa0000)
+
+		Benben-shadow = set_default_value(Benben-shadow,0 3px 5px rgba(50,50,93,.1), 0 2px 3px rgba(0,0,0,.08))
+		Benben-hover-shadow = set_default_value(Benben-hover-shadow,0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08))
+		Benben-hover-ani = set_default_value(Benben-hover-ani,.15s ease)
+
+		Privateitem-hover-bg-color = set_default_value(Privateitem-hover-bg-color,#e8e8e8)
+
+		Combowrapper-text-color = set_default_value(Combowrapper-text-color,rgba(0, 0, 0, 0.75))
+
+		Expand-shadow = set_default_value(Expand-shadow,linear-gradient(rgba(255, 255, 255, 0), #fff))
+
+		Article-sidebar-card-hover = set_default_value(Article-sidebar-card-hover,#f2f2f2)
+
+		Markdown-gutter-color = set_default_value(Markdown-gutter-color,#f7f7f7)
+		Markdown-gutter-active-color = set_default_value(Markdown-gutter-active-color,#e2f2ff)
+		Markdown-bg-color = set_default_value(Markdown-bg-color,#fff)
+
+		Text-selection-color = set_default_value(Text-selection-color,#afeeee)
+
+	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
+	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
+	Topic-type-Label-time = set_default_value(Topic-type-Label-time,#3498db)
+	Topic-type-Label-area = set_default_value(Topic-type-Label-area,#52c41a)
+	Topic-type-Label-special = set_default_value(Topic-type-Label-special,#f39c11)
+
+	Homepage-L2-Card-green = set_default_value(Homepage-L2-Card-green,rgba(94,185,94,.15))
+	Homepage-L2-Card-green-border = set_default_value(Homepage-L2-Card-green-border,darken(Homepage-L2-Card-green,30%))
+	Homepage-L2-Card-red = set_default_value(Homepage-L2-Card-red,rgba(221,81,76,.15))
+	Homepage-L2-Card-red-border = set_default_value(Homepage-L2-Card-red-border,darken(Homepage-L2-Card-red,30%))
+	Homepage-L2-Card-blue-border = set_default_value(Homepage-L2-Card-blue-border,rgba(135,206,235,.7))
+
+	Topic-difficulty-Label-1 = set_default_value(Topic-difficulty-Label-1,#bfbfbf)
+	Topic-difficulty-Label-2 = set_default_value(Topic-difficulty-Label-2,#fe4c61)
+	Topic-difficulty-Label-3 = set_default_value(Topic-difficulty-Label-3,#f39c11)
+	Topic-difficulty-Label-4 = set_default_value(Topic-difficulty-Label-4,#ffc116)
+	Topic-difficulty-Label-5 = set_default_value(Topic-difficulty-Label-5,#52c41a)
+	Topic-difficulty-Label-6 = set_default_value(Topic-difficulty-Label-6,#3498db)
+	Topic-difficulty-Label-7 = set_default_value(Topic-difficulty-Label-7,#9d3dcf)
+	Topic-difficulty-Label-8 = set_default_value(Topic-difficulty-Label-8,#0e1d69)
+
+	Test-case-margin-right = set_default_value(Test-case-margin-right,10px)
+	Test-case-margin-bottom = set_default_value(Test-case-margin-bottom,12px)
+	Test-case-margin-top = set_default_value(Test-case-margin-top,25px)
+	Test-case-size = set_default_value(Test-case-size,96px)
+	Test-case-ani = set_default_value(Test-case-ani,all .2s ease)
+	Test-case-shadow = set_default_value(Test-case-shadow,0 4px 6px rgba(50,50,93,.11) \, 0 1px 3px rgba(0,0,0,.08))
+	Test-case-border-radius = set_default_value(Test-case-border-radius,3px)
+	Test-case-translate = set_default_value(Test-case-translate,3px)
+	Test-case-hover-shadow = set_default_value(Test-case-hover-shadow,0 10px 30px rgba(50, 50, 93, 0.1)\,0 5px 15px rgba(0, 0, 0, 0.07))
+	Test-case-message-ani = set_default_value(Test-case-message-ani,all .45s ease)
+	Test-case-message-shadow = set_default_value(Test-case-message-shadow,0 4px 6px rgba(50,50,93,.11)\, 0 1px 3px rgba(0,0,0,.08))
+	Test-case-message-color = set_default_value(Test-case-message-color,#fff)
+	Test-case-background = set_default_value(Test-case-background,rgba(23, 43, 77, 0.8))
+
+	Test-case-color-AC = set_default_value(Test-case-color-AC,#52c41a)
+	Test-case-color-WA = set_default_value(Test-case-color-WA,#fb6340)
+	Test-case-color-RE = set_default_value(Test-case-color-RE,#8e44ad)
+	Test-case-color-TLE = set_default_value(Test-case-color-TLE,#001277)
+	Test-case-color-MLE = set_default_value(Test-case-color-MLE,#000000)
+	Test-case-color-OLE = set_default_value(Test-case-color-OLE,TLE)
+	Test-case-color-UKE = set_default_value(Test-case-color-UKE,#34495e)
+	Test-case-text-color = set_default_value(Test-case-text-color,#fff)
+
+	article-icon-1-color = set_default_value(article-icon-1-color,#fea706)
+	article-icon-2-color = set_default_value(article-icon-2-color,#e07090)
+	article-icon-3-color = set_default_value(article-icon-3-color,#ac3725)
+	article-icon-4-color = set_default_value(article-icon-4-color,#3498db)
+
+	Sidebar-popup-padding = set_default_value(Sidebar-popup-padding,10px)
+	Sidebar-popup-ani = set_default_value(Sidebar-popup-ani,fade 0.2s ease)
+
+	Float-card-hover-ani = set_default_value(Float-card-hover-ani,background-color .3s)
+
+	Highcharts-hover-bigpoint-op = set_default_value(Highcharts-hover-bigpoint-op,0.25)
+
+	Userpage-text-color = set_default_value(Userpage-text-color,#fff)
+
+	Badge-text-color = set_default_value(Badge-text-color,#fff)
+
+	Badge-border-radius = set_default_value(Badge-border-radius,2px)
+	Label-border-radius = set_default_value(Label-border-radius,2px)
+
+	Footer-text-color = set_default_value(Footer-text-color,rgba(255, 255, 255, .75))
+	Footer-text-hover-color = set_default_value(Footer-text-hover-color,#fff)
+
+	Card-L1-hover-transition = set_default_value(Card-L1-hover-transition,.15s ease)
+	Operate-hover-ani = set_default_value(Operate-hover-ani,.4s ease)
+
+	Privateitem-hover-ani = set_default_value(Privateitem-hover-ani,.3s)
+
+	Discuss-button-ani = set_default_value(Discuss-button-ani,.3s)
+
+	Article-rside-width = set_default_value(Article-rside-width,240px)
+
+	Button-bg-color-blue = set_default_value(Button-bg-color-blue,#3498db)
+	Button-bg-color-black = set_default_value(Button-bg-color-black,#121212)
+	Button-bg-color-red = set_default_value(Button-bg-color-red,#e74c3c)
+	Button-bg-color-special-red = set_default_value(Button-bg-color-special-red,transparent)
+	Button-bg-color-special-blue = set_default_value(Button-bg-color-special-blue,transparent)
+
+	Button-hover-bg-color-blue = set_default_value(Button-hover-bg-color-blue,#0c79b1)
+	Button-hover-bg-color-black = set_default_value(Button-hover-bg-color-black,#1f3144)
+	Button-hover-bg-color-red = set_default_value(Button-hover-bg-color-red,#d4483a)
+	Button-hover-bg-color-special-red = set_default_value(Button-hover-bg-color-special-red,rgba(231, 76, 60, 0.1))
+	Button-hover-bg-color-special-blue = set_default_value(Button-hover-bg-color-special-blue,rgba(52, 152, 219, 0.1))
+
+	Button-border-color-black = set_default_value(Button-border-color-black,#7b7c7c)
+	Button-border-color-special-red = set_default_value(Button-border-color-special-red,#e74c3c)
+	Button-border-color-special-blue = set_default_value(Button-border-color-special-blue,#3498db)
+
+	Button-border-size-blue = set_default_value(Button-border-size-blue,1px)
+	Button-border-size-black = set_default_value(Button-border-size-black,1px)
+	Button-border-size-red = set_default_value(Button-border-size-red,1px)
+	Button-border-size-special-red = set_default_value(Button-border-size-special-red,1px)
+	Button-border-size-special-blue = set_default_value(Button-border-size-special-blue,1px)
+
+	Button-radius = set_default_value(Button-radius,3px)
+	Small-button-radius = set_default_value(Small-button-radius,3px)
+
+	Button-padding-width = set_default_value(Button-padding-width,15px)
+	Button-padding-height = set_default_value(Button-padding-height,5.382px)
+	Small-button-padding-width = set_default_value(Small-button-padding-width,8px)
+	Small-button-padding-height = set_default_value(Small-button-padding-height,2.75px)
+
+	Button-hover-ani = set_default_value(Button-hover-ani,.3s ease-out)
+
+	Expand-radius = set_default_value(Expand-radius,5px)
+
+	Homepage-L2-Card-blue-text-color = set_default_value(Homepage-L2-Card-blue-text-color,#fff)
+
+	if Better-Benben-Tab
+		Benben-tab-height = set_default_value(Benben-tab-height,50px)
+	else
+		Benben-tab-height = set_default_value(Benben-tab-height,36.8px)
+
+	// 全局背景
+		// 根据有无背景图片设置背景模式
+		Background = get_depend_list((CustomBackground Background-color))
+		Article-Background = get_depend_list((CustomBackground Article-bg-color))
+
+
+// 字体处理
+
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?(.*))")
+	if Better-font
+		@font-face {
+			font-family: 'FontWithASyntaxHighlighter'
+			font-style: dark
+			font-weight: 300 700
+
+			src: url(https://imgservices-1252317822.image.myqcloud.com/coco/s08172024/3b03a24c.50xym2.woff2) format('woff2')
+			unicode-range: U+003B-003B,U+0028-0029,U+005B-005B,U+005D-005D,U+007B-007B,U+007D-007D
+
+			// 目前仅修改 , ; ( ) [ ] { }
+		}
+
+		@font-palette-values --Alternate {
+			font-family: "FontWithASyntaxHighlighter"
+			override-colors:
+				0 #ffd70a, // 这个是 {}
+				4 #da63a1, // 这个是 []()
+				8 #c4c6c9; // 这个是 ;
+		}
+
+	/*google 的服务真方便吧*/
+
+	/* cyrillic-ext */
+	@font-face {
+		font-family: 'JetBrains Mono';
+		font-style: normal;
+		font-weight: 300 700;
+		src: url(https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxTN1OVgaY.woff2) format('woff2');
+		unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+	}
+	/* cyrillic */
+	@font-face {
+		font-family: 'JetBrains Mono';
+		font-style: normal;
+		font-weight: 300 700;
+		src: url(https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxTPlOVgaY.woff2) format('woff2');
+		unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+	}
+	/* greek */
+	@font-face {
+		font-family: 'JetBrains Mono';
+		font-style: normal;
+		font-weight: 300 700;
+		src: url(https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxTOVOVgaY.woff2) format('woff2');
+		unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+	}
+	/* vietnamese */
+	@font-face {
+		font-family: 'JetBrains Mono';
+		font-style: normal;
+		font-weight: 300 700;
+		src: url(https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxTNVOVgaY.woff2) format('woff2');
+		unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+	}
+	/* latin-ext */
+	@font-face {
+		font-family: 'JetBrains Mono';
+		font-style: normal;
+		font-weight: 300 700;
+		src: url(https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxTNFOVgaY.woff2) format('woff2');
+		unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+	}
+	/* latin */
+	@font-face {
+		font-family: 'JetBrains Mono';
+		font-style: normal;
+		font-weight: 300 700;
+		src: url(https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxTOlOV.woff2) format('woff2');
+		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	}
+
+// 全局样式
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?(.*))")  
+	body
+		use_mainly_background()
+	
+	// 滚动条样式修改
+	if Custom-Scrollbar
+		::-webkit-scrollbar 
+			width: 6px
+			height: 10px
+			
+		::-webkit-scrollbar-track
+			background-color: Scrollbar-track-color
+		
+		::-webkit-scrollbar-thumb
+			background-color: Scrollbar-thumb-color
+
+			&:hover
+				background-color: Scrollbar-hover-color
+	
+	// 输入框样式修改
+	{Main_Inputbox}
+		use_depend_list(background-color,(Input-bg-color Card-bg-color-L1),1) // 设置背景色
+		use_depend_list(color,(Input-text-color),1);
+		use_depend_list(border-color,(Input-border-color Input-text-color),1)
+		border-radius: Inputbox-radius !important if Custom-Inputbox
+		&:focus
+			use_depend_list(background-color,(Input-focus-bg-color Card-bg-color-L2),1)
+		&::placeholder
+			use_depend_list(color,(Input-placeholder-color));
+		&:focus,&.focused
+			border-color: Input-focus-border-color !important
+	
+	// #409eff
+
+	.mp-dialog-input>input:focus-visible,.cs-dialog-item-content:focus-visible // 这个 outline 太魔怔了
+			outline: 0 !important
+	
+	section>.block>button.block-item
+		use_depend_list(background-color,(Input-bg-color Card-bg-color-L1),1)
+		color: Input-placeholder-color !important
+
+	.block.filter-tags .combo-wrapper>.text>span
+		color: Input-placeholder-color !important
+
+	.combo-wrapper>.text>span,div.combo-wrapper>.text
+		color: Combowrapper-text-color !important
+
+	// 洛谷的顶栏样式修改
+	.header-layout.tiny[data-v-7ddab1d5],.header:has(>.max)
+		use_depend_list(background,(Navbar-bg-color Card-bg-color-L1),1)
+
+	// 洛谷右上悬浮卡图标样式修改
+	.header > .user-nav a.icon > svg > path,.header > .user-nav a.icon-btn > svg > path
+		fill: Card-icon-color !important
+
+	// 一级 Card 样式修改
+	{Card_L1}
+		background: Card-bg-color-L1 !important
+		border-radius: Card-L1-radius if Custom-Card
+		box-shadow: Card-L1-shadow !important
+		transition: box-shadow Card-L1-hover-transition
+		&:hover
+			box-shadow: Card-L1-hover-shadow !important
+	
+	// 二级 Card 样式修改
+	{Card_L2}
+		background: Card-bg-color-L2 !important
+		border-radius: Card-L2-radius if Custom-Card
+		border-color: L2-Card-border !important
+
+	// 悬浮 Card 样式修改
+	{Card_float}
+		border: none !important
+		background: Card-bg-color-float !important
+		border-radius: Card-float-radius if Custom-Card
+	
+	{Hover_card_float}
+		//border-radius: Card-float-radius if Custom-Card // TODO：分离
+		&:hover //,&:focus
+			background: Card-hover-color-float !important
+			transition: Float-card-hover-ani !important
+
+	// 文字标题样式修改
+	{Title}
+		color: Post-heading-color !important
+	
+	// 正文文字样式修改
+	{Text} // TODO：选择器实现不是特别优美
+		color: Text-color !important
+	
+	// 超链接样式修改
+	a,.color-default[data-v-0640126c], .color-default-noline[data-v-0640126c]
+		color: A-color
+		&:hover
+			color: A-hover-color
+
+	{A}
+		color: A-color !important
+		&:hover
+			color: A-hover-color !important
+
+	// Hover 超链接样式修改
+	{Hover-A}
+		&:hover
+			color: A-hover-color !important
+
+	// 分割线样式修改
+	{Divider}
+		border-color: Divider-color !important
+	hr
+		background: Divider-color !important
+	
+	// 陈述样式
+	{State}
+		color: State-color !important
+	.action > svg > path
+		fill: State-color
+
+	// 介绍样式
+	{Introduce}
+		color: Introduce-color !important
+
+	// 洛谷左上目录超链接样式
+	.link[data-v-c9185fa2]
+		color: Directory-a-color !important
+	
+	// 洛谷右上图标样式
+	{Other_Icon}
+		fill: Other-icon-color !important
+	
+	// 操作文字样式
+	{Operate}
+		color: Operate-color !important
+	{Operate_hover}
+		transition: color Operate-hover-ani !important
+		&:hover
+			color: Operate-hover-color !important
+	
+	.button-2line:hover>.text
+		color: Operate-hover-color !important
+
+	// 侧栏样式修改
+	#app > nav.lfe-body
+		background: Sidebar-bg-color !important
+		&>a
+			color: Sidebar-icon-color !important
+			.icon>svg>path
+				color: Sidebar-icon-color !important
+		
+		.popup-button
+			color: Sidebar-btn-color !important
+			.icon>svg>path
+				color: Sidebar-btn-color !important
+		
+		&>div:nth-child(1)
+			background-color: Sidebar-luogu-bg-color !important
+			&>a>img
+				use_img_bg_color(Sidebar-luogu-icon-color)
+
+	// 标签样式修改
+	{ColorfulLabel}
+		color: ColorfulLabel-text-color !important
+		border-radius: Label-border-radius !important
+	{GrayLabel}
+		& , &>span
+			color: GrayLabel-text-color !important
+		border-color: GrayLabel-border-color !important
+		background: GrayLabel-bg-color !important
+		border-radius: Label-border-radius !important
+	
+	// Badge 样式修改
+	{Badge}
+		color: Badge-text-color !important
+		border-radius: Badge-border-radius !important
+
+	// 主标题颜色
+	div.header-layout h1
+		color: Main-post-heading-color !important
+
+	// 各讨论区图标颜色
+
+	discuss-color = (Luogu-discuss-color-1 Luogu-discuss-color-2 Luogu-discuss-color-3 Luogu-discuss-color-4 Luogu-discuss-color-5 Luogu-discuss-color-6)
+
+	for i in 0..5
+		div.card.left.padding-default > div.section > a:nth-child({i+1}),.side div.card.padding-default:not(.left) > div.section > a:nth-child({i})
+			if Better-discuss-button
+				& > span
+					transition: color Discuss-button-ani !important
+				& > span:hover
+					color: discuss-color[i] !important
+			
+			& > span.active
+				color: discuss-color[i] !important
+			& > svg > path
+				fill: discuss-color[i] !important
+	
+	// 讨论区评论
+	{Discuss}
+		background: Discuss-bd-color !important
+		& > :nth-child(1)
+			border-bottom-left-radius: 0 !important
+			border-bottom-right-radius: 0 !important
+			background: Discuss-hd-color !important
+
+	// Markdown 编辑器
+
+	.CodeMirror-gutters,.cm-gutters
+		background: Markdown-gutter-color !important
+	.ͼ2 .cm-activeLineGutter
+		background: Markdown-gutter-active-color !important
+
+	.mp-editor-toolbar,.CodeMirror-scroll,.mp-preview-area,.cs-header,.cs-contentm,.cs-main,.cs-footer
+		background: Markdown-bg-color !important
+
+
+	.CodeMirror-scroll
+		border-radius: 0 !important
+	.CodeMirror-code pre.CodeMirror-line
+		background: none !important
+	.CodeMirror-cursor,.cm-layer.cm-layer-above.cm-cursorLayer>.cm-cursor.cm-cursor-primary
+		border-color: Input-text-color !important
+	.mp-editor-menu>li>a,.cs-header > .cs-toolbar .cs-toolbar-tool-button
+		border: Markdown-button-hover-border !important
+		&:not(:hover),&:not(:hover) *
+			border-color: Markdown-bg-color !important
+
+		&  svg > path
+			fill: Other-icon-color !important
+		& i
+			color: Other-icon-color !important
+		&:hover
+			& i
+				color: Markdown-button-hover-text-color !important
+			& svg path
+				fill: Markdown-button-hover-text-color !important
+			
+			background: Markdown-button-hover-bg-color !important
+
+	// 题目限制文字
+	.stat > .stat.color-inverse span
+		color: Topic-text-color !important
+	.stat > .stat.color-inverse div
+		border-color: Topic-text-color !important
+
+	// 去除用户栏边框
+	.user-nav .center
+		border: none
+	
+	// 题目类型标签修改
+	{Topic-type-Label}
+		&[style*="rgb(232\, 232\, 232)"]:not(.selected)
+			background: Topic-type-Label-not-select !important
+		&[style*="--tag-color: #2949b4"],&[style*="rgb(41\, 73\, 180)"]
+			background: Topic-type-Label-algorithm !important
+		&[style*="--tag-color: #13c2c2"],&[style*="rgb(19\, 194\, 194)"]
+			background: Topic-type-Label-source !important
+		&[style*="--tag-color: #3498db"],&[style*="rgb(52\, 152\, 219)"]
+			background: Topic-type-Label-time !important
+		&[style*="--tag-color: #52c41a"],&[style*="rgb(82\, 196\, 26)"]
+			background: Topic-type-Label-area !important
+		&[style*="--tag-color: #f39c11"],&[style*="rgb(243\, 156\, 17)"]
+			background: Topic-type-Label-special !important
+	
+	// 题目难度标签修改
+	{Topic-difficulty-Label}
+		&[style*="rgb(191\, 191\, 191);"]
+			background: Topic-difficulty-Label-1 !important
+		&[style*="rgb(254\, 76\, 97);"]
+			background: Topic-difficulty-Label-2 !important
+		&[style*="rgb(243\, 156\, 17);"]
+			background: Topic-difficulty-Label-3 !important
+		&[style*="rgb(255\, 193\, 22);"]
+			background: Topic-difficulty-Label-4 !important
+		&[style*="rgb(82\, 196\, 26);"]
+			background: Topic-difficulty-Label-5 !important
+		&[style*="rgb(52\, 152\, 219);"]
+			background: Topic-difficulty-Label-6 !important
+		&[style*="rgb(157\, 61\, 207);"]
+			background: Topic-difficulty-Label-7 !important
+		&[style*="rgb(14\, 29\, 105);"]
+			background: Topic-difficulty-Label-8 !important
+
+	// 行内代码块
+	{InLine-code-block}
+		background: InLine-code-block-bg-color !important
+		border: InLine-code-block-border !important
+		border-color: InLine-code-block-border-color !important
+		border-radius: InLine-code-block-radius !important
+		color: Code-block-text-color !important
+
+		if Better-font
+			font-family: "FontWithASyntaxHighlighter","JetBrains Mono" !important
+			font-palette: --Alternate;
+		else
+			font-family: "JetBrains Mono" !important
+	
+	{Code-block}
+		background: Code-block-bg-color !important
+		border: Code-block-border !important
+		border-color: Code-block-border-color !important
+		border-radius: Code-block-radius !important
+		color: Code-block-text-color !important
+
+		& code
+			background: Code-block-bg-color !important
+			color: Code-block-text-color !important
+			border: none !important
+
+			if Better-font
+				font-family: "FontWithASyntaxHighlighter","JetBrains Mono" !important
+				font-palette: --Alternate;
+			else
+				font-family: "JetBrains Mono" !important
+
+			span:not(.hljs-class)
+				font-family: "JetBrains Mono" !important
+			
+			.hljs-comment,.hljs-quote // 注释
+				color: Code-block-quote-color !important
+			
+			.hljs-meta,.hljs-meta .hljs-keyword // meta
+				color: Code-block-meta-color !important
+			
+			.hljs-meta .hljs-meta-string // meta-string
+				color: Code-block-meta-string-color !important
+			
+			.hljs-string // string
+				color: Code-block-string-color !important
+
+			.hljs-keyword,.hljs-type // 关键字
+				color: Code-block-keyword-color !important
+			
+			.hljs-built_in, .hljs-function > .hljs-title // 函数名
+				color: Code-block-title-color !important
+			
+			.hljs-number // 数字
+				color: Code-block-number-color !important
+			
+			.hljs-function > .hljs-params // 函数后括号
+				color: Code-block-params-color !important
+
+	// 私信框
+	.message-block .message
+		background: Privateletter-bg-color !important
+		&:after
+			display: none if Privateletter-hide
+	
+	.message-block.left .message:after
+		border-right-color: Privateletter-bg-color !important
+
+	.message-block.right .message:after
+		border-left-color: Privateletter-bg-color !important
+	
+	.card.wrapper.padding-none > .side > .panel-content > .list > .item
+		transition: background Privateitem-hover-ani !important
+		&:hover
+			background: Privateitem-hover-bg-color !important
+		
+
+	// 更好的评测详情色块
+	if Better-test-case
+		.test-case-wrap 
+			margin-top: Test-case-margin-top
+
+			line-height: 0
+			& *
+				line-height: 1.5
+
+			// 整块色块大小，间隔
+			> .wrapper
+				margin-right: Test-case-margin-right 
+				margin-bottom: Test-case-margin-bottom
+
+				.test-case //颜色标准化 [更新预定]
+					width: Test-case-size
+					height: Test-case-size
+					transition: Test-case-ani
+					box-shadow: Test-case-shadow
+					border-radius: Test-case-border-radius
+					margin: 0
+
+					&:hover
+						transform: translateY(- Test-case-translate)
+						box-shadow: Test-case-hover-shadow
+
+						.info
+							white-space: normal
+
+					.info // 评测信息 TODO：变量化
+						width: calc(100% - 10px)
+						line-height: 15px
+						font-size: 10px
+						white-space: nowrap
+						overflow: hidden
+						text-overflow: ellipsis
+					.id // 左上方编号 TODO：变量化
+						margin-left: 3px
+					.status // 评测状态
+						line-height: 1.8
+						font-weight: bold
+						font-size: 22px
+						margin-bottom: -3px
+
+				.message
+					transition: Test-case-message-ani !important
+					display: block !important
+					border-radius: 5px !important
+					box-shadow: Test-case-message-shadow // TODO：变量化
+					min-width: 10em
+					padding: 0
+					margin: 0
+					margin-top: 45px
+					opacity: 0
+					pointer-events: none
+					color: Test-case-message-color !important
+					background: Test-case-background !important
+
+				&:hover .message
+					border-radius: 30px
+					margin-top: -25px
+					min-width: 12em
+					min-height: 1em
+					width: unset
+					height: unset
+					padding: 5px 18px
+					opacity: 1 !important
+
+				// 对通过颜色进行一个修改
+				.test-case[style*='rgb(82']
+					background-color: Test-case-color-AC !important
+				.test-case[style*='rgb(231']
+					background-color Test-case-color-WA !important
+				.test-case[style*='rgb(157']
+					background-color Test-case-color-RE !important
+				.test-case[style*='rgb(5']
+					background-color Test-case-color-TLE !important
+				.test-case[style*='rgb(14']
+					background-color Test-case-color-UKE !important
+
+				.test-case *
+					color: Test-case-text-color !important
+
+				// 不知道干嘛的，先注释起来
+				//.test-case[style*='rgb(20']
+				//	background-color #3498db !important 
+
+		if Better-test-case-2
+			MLE-size = (Test-case-size - 45.5px) / 2
+			OLE-size = (Test-case-size - 42.263px) / 2
+
+			.test-case[style*='rgb(5'] .status
+				if Test-case-color-OLE == "MLE"
+					margin: 0 OLE-size+0.5px
+				else
+					margin: 0 MLE-size+0.5px
+
+			.test-case-wrap .content
+				overflow: hidden
+				animation: test-case-check 1s;
+				animation-timeline: scroll(x self);
+
+			@keyframes test-case-check
+				from,to
+					background-color: Test-case-color-MLE;
+					border-radius: Test-case-border-radius
+
+	// 页首修改
+	.main-container > .wrapper.wrapped.lfe-body:has(>.header) > .background,.main-container > header.theme-bg
+		background: Header-bg-color !important
+	
+	// 页尾修改
+	.main-container > .wrapper.wrapped.lfe-body:has(>.footer),.main-container > footer.theme-bg
+		&,& .background
+			background: Footer-bg-color !important
+		& .info,& .links
+			&>p,& a
+				color: Footer-text-color !important
+				transition: color Operate-hover-ani !important
+			& a:hover
+				color: Footer-text-hover-color !important
+		& .slogan
+			color: Footer-bigtext-color !important
+		& .logo,& .logo-img
+			use_img_bg_color(Footer-img-color)
+
+	// Swal 弹窗样式
+	.swal2-popup
+		background: Card-bg-color-float !important
+
+	// 加载圈
+	.spinner.dark
+		color: Spinner-dark-color !important
+		margin-top: 5px !important
+		box-shadow: 0 !important
+
+	// 侧栏
+	@keyframes fade 
+		from
+			opacity:0;
+		to 
+			opacity:1;
+
+	#app > nav.lfe-body .popup // 应用框
+		//box-shadow: 0 0.5rem 2rem 0 rgba(0, 0, 0, .2);
+		padding: Sidebar-popup-padding !important
+		animation: Sidebar-popup-ani !important
+
+	if Better-Sidebar
+		#app > .lfe-body > .popup-button
+			margin-top: 8px
+		
+		#app > .lfe-body > a:first-of-type
+			margin-top: 10px
+		
+		#app > .lfe-body > a
+			height: 3.7em
+			margin-top: 3px
+			padding: 0 !important
+		
+		#app > .lfe-body > a > .icon
+				line-height: 2.4em
+				font-size: 18px
+				width: 100%
+				margin: 0 !important
+				transition: all 0.3s ease
+	
+		#app > .lfe-body > a > .text
+				opacity:0
+				margin-top: -1em
+				display: block
+				transition: all 0.3s ease
+	
+		#app > .lfe-body > a:hover > .icon
+				line-height: 1.5em
+				font-size: 17px
+	
+		#app > .lfe-body > a:hover > .text
+				opacity:1
+				margin-top: 0.2em
+
+	// 个人主页简介设置
+	.user-info > .lfe-caption:not(.slogan)
+		color: Userpage-text-color !important
+
+	// 更好的题库通过条
+	if Better-Progressframe
+		.progress-frame
+			border-radius: .5rem
+			box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1)
+			border: none !important
+	
+	.progress-frame
+		background: Progressframe-bg-color !important
+
+	.progress-frame > div
+		background-color: Progressframe-color !important
+	
+	if Better-problem-toolip
+		@css{ // Open Sans 导入
+			@font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'),local('OpenSans-Light'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OX-hpOqc.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'),local('OpenSans-Light'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OVuhpOqc.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'),local('OpenSans-Light'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OXuhpOqc.woff2) format('woff2');unicode-range:U+1F00-1FFF}@font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'),local('OpenSans-Light'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OUehpOqc.woff2) format('woff2');unicode-range:U+0370-03FF}@font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'),local('OpenSans-Light'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OXehpOqc.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'),local('OpenSans-Light'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OXOhpOqc.woff2) format('woff2');unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'),local('OpenSans-Light'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN_r8OUuhp.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'),local('OpenSans-Regular'),url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFWJ0bbck.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'),local('OpenSans-Regular'),url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFUZ0bbck.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'),local('OpenSans-Regular'),url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFWZ0bbck.woff2) format('woff2');unicode-range:U+1F00-1FFF}@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'),local('OpenSans-Regular'),url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFVp0bbck.woff2) format('woff2');unicode-range:U+0370-03FF}@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'),local('OpenSans-Regular'),url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFWp0bbck.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'),local('OpenSans-Regular'),url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFW50bbck.woff2) format('woff2');unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans Regular'),local('OpenSans-Regular'),url(https://fonts.gstatic.com/s/opensans/v15/mem8YaGs126MiZpBA-UFVZ0b.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans SemiBold'),local('OpenSans-SemiBold'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UNirkOX-hpOqc.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans SemiBold'),local('OpenSans-SemiBold'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UNirkOVuhpOqc.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans SemiBold'),local('OpenSans-SemiBold'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UNirkOXuhpOqc.woff2) format('woff2');unicode-range:U+1F00-1FFF}@font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans SemiBold'),local('OpenSans-SemiBold'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UNirkOUehpOqc.woff2) format('woff2');unicode-range:U+0370-03FF}@font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans SemiBold'),local('OpenSans-SemiBold'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UNirkOXehpOqc.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans SemiBold'),local('OpenSans-SemiBold'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UNirkOXOhpOqc.woff2) format('woff2');unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans SemiBold'),local('OpenSans-SemiBold'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UNirkOUuhp.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'),local('OpenSans-Bold'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN7rgOX-hpOqc.woff2) format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F}@font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'),local('OpenSans-Bold'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN7rgOVuhpOqc.woff2) format('woff2');unicode-range:U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}@font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'),local('OpenSans-Bold'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN7rgOXuhpOqc.woff2) format('woff2');unicode-range:U+1F00-1FFF}@font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'),local('OpenSans-Bold'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN7rgOUehpOqc.woff2) format('woff2');unicode-range:U+0370-03FF}@font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'),local('OpenSans-Bold'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN7rgOXehpOqc.woff2) format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+1EA0-1EF9,U+20AB}@font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'),local('OpenSans-Bold'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN7rgOXOhpOqc.woff2) format('woff2');unicode-range:U+0100-024F,U+0259,U+1E00-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF}@font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'),local('OpenSans-Bold'),url(https://fonts.gstatic.com/s/opensans/v15/mem5YaGs126MiZpBA-UN7rgOUuhp.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+		}
+		.lfe-tooltip-theme > .tooltip-inner
+			font-family: 'Open Sans' !important
+		.tooltip-arrow
+			top: 26.5px;
+
+	// 系统维护修复
+	if Better-userpage
+		.card.padding-default > div[style*="background-color: rgb(255\, 235\, 236);"]
+			display: none !important
+		.introduction.marked[style*="display: none;"]
+			display: block !important
+
+	.main-container.lside-bar > main
+		background: none !important
+
+	// 优化巨型按钮渲染
+	if Better-big-button
+		.drop > br
+			display: none
+		.problem-card .drop > div
+			margin-bottom: 10px !important
+
+	.drop,.image-block
+		background: Big-button-bg-color !important
+		border: Big-button-border !important
+		&:hover
+			border: Big-button-border-hover !important
+
+	// 个人信息条修改
+	.dropdown
+		&:has(>.card>.user-info),&:has(>.l-card>.user-info)
+			background: transparent !important
+
+	// 翻页按钮修改
+	.page-bar button,.page-area button,.card.padding-default:has(>.member-list)>div[style*="display: flex; align-items: center;"] button
+		background: Small-button-bg-color !important
+		border: Small-button-border !important
+		color: Text-color !important
+		& img
+			use_img_bg_color(Text-color) // TODO：目前实现其实渲染出来不是 Text-color，但是效果不错
+		&:hover
+			border: Small-button-border-hover !important
+		&.selected
+			background: Small-button-select-bg-color !important
+			border-color: Small-button-select-bg-color !important
+			color: Small-button-text-select-color !important
+
+	// 连续输入框右侧 border
+	.input-group>:not(:last-child)
+		&,& input
+			border-top-right-radius: 0 !important
+			border-bottom-right-radius: 0 !important
+	
+	.input-group>:not(:first-child)
+		&,& input
+			border-top-left-radius: 0 !important
+			border-bottom-left-radius: 0 !important
+
+	.dropdown.shown:has(.dropdown-operations)
+		background: none !important
+
+	// 按钮系统
+	{Button}
+		border-radius: Button-radius !important
+		use_button_style(Button-padding-width,Button-padding-height)
+	{Small-Button}
+		border-radius: Small-button-radius !important
+		use_button_style(Small-button-padding-width,Small-button-padding-height)
+
+	.expand > .expand
+		background: Expand-shadow !important
+		border-radius: Expand-radius !important
+
+	.card.max[style*="background-image: url('gg1.svg')"]
+		background-image: url('gg1.svg') !important
+		background-repeat: no-repeat !important
+		background-size: cover !important
+		background-position: center !important
+
+	*::selection
+		background-color: Text-selection-color
+	*::-moz-selection
+		background-color: Text-selection-color
+	*::-webkit-selection
+		background-color: Text-selection-color
+
+	// 各种小 bug 的修复
+	.load-more
+		border-bottom: 0 !important if bug-fix1
+
+	// 此 bug 因为更换新前端似乎已被修复
+	//if bug-fix2
+	//	.reply-container .dropdown
+	//		display: flex !important
+
+	//	.reply-container .dropdown:not(.shown) // 短小的 bug 修复，bug 成因找了我 3h
+	//		&,& *
+	//			height: 0 !important
+	//			min-height: 0 !important
+
+	if bug-fix2
+		.shown .arrow
+			transform: none !important
+
+		.combo-wrapper.shown .arrow
+			transform: scaleY(-1) !important
+			& *
+				transition-duration: .4s !important
+	
+	if bug-fix3
+		@css{
+		.lfe-tooltip-theme > .tooltip-inner {
+			position: relative;
+			left: max(0px,calc(50% - 37.5px));
+		}
+		}
+	
+	if bug-fix4
+		.page-bar button 
+			width: auto !important
+	
+	if bug-fix5
+		.load-more
+			min-height: auto !important
+			padding: 1em 0 !important
+
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/problem/solution?(.*))")
+	use_new_bar()
+	.solution-article .operations .button // 这又写得啥。。
+		opacity: 1 !important
+	a // 神秘的 filter，前端写样式的时候不会注意点吗
+		filter: none !important
+	
+	.user-nav.rside.show.nav-scrollbar // 朋友要用，做的紧急修改，TODO
+		width: Article-rside-width !important
+		max-width: Article-rside-width !important
+
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/article?(.*))")
+	use_new_bar()
+	a // 神秘的 filter，前端写样式的时候不会注意点吗
+		filter: none !important
+
+// 洛谷专栏样式（新前端就是不一样）
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/article/[A-Za-z0-9]{8}$)")
+	// 专栏图标样式
+	.button-2line
+		& path
+			fill: Article-icon-color !important
+	
+	// 修一个小问题
+	.actions:has(>.button-2line)>*
+		margin: 0 1em !important
+	.actions:has(>.button-2line)>a>.button-2line
+		margin: 0 !important
+
+	article-icons = (article-icon-1-color article-icon-2-color article-icon-3-color article-icon-4-color)
+	for i in 0..3
+		.actions:has(>.button-2line)
+			&>:nth-child({i+1}):hover path,&>.active:nth-child({i+1}) path
+				fill: article-icons[i] !important
+	
+	if Better-article-card=="on" // 卡片化！
+		.main-container > main.lcolor-bg-grey-1
+			position relative !important
+			top 1em !important
+			border-radius 6px !important
+			box-sizing border-box !important
+			width 100% !important
+			min-width 448px !important
+			max-width 768px !important
+			margin-left auto !important
+			margin-right auto !important
+
+			&>div[style*="background-color: rgb(255\, 255\, 255);"]
+				background: none !important
+			
+			& .banner-content
+				padding-left: 1em
+				padding-right: 1em
+			
+			// 特殊处理 TODO：单独变量化
+			& .l-card.reply-item
+				background: Card-bg-color-float !important
+		
+		.main-container.lside-bar>footer
+			background: none !important
+			&>hr
+				display: none !important
+		
+		.toc-wrapper
+			right: -205px !important
+		
+	else
+		.main-container.lside-bar
+			use_mainly_background(Article-Background)
+
+			&>*
+				background: none !important
+
+			& div[style*="background-color: rgb(255\, 255\, 255);"]
+				background-color: Article-text-bg-color !important
+	
+	.user-nav.rside.show.nav-scrollbar // 朋友要用，做的紧急修改，TODO
+		width: Article-rside-width !important
+		max-width: Article-rside-width !important
+
+// 主站样式
+@-moz-document regexp("^(https?://www.luogu.com(.cn)?/)(?!article/[A-Za-z0-9]{8}$).*")
+	// 整体布局
+	main.lfe-body // main 背景的 background 设成 none
+		background: none !important
+
+// 洛谷主页专属样式(万年屎山的尊贵待遇www)
+@-moz-document regexp("^(https?://www.luogu.com(.cn)?/)$")
+	*
+		box-sizing: content-box // 这个东西，万恶之源，但是屎山必须得动
+	.lg-index-content > .am-g *
+		box-sizing: border-box
+	
+	if Homepage-L2-Card-border // 主页二级卡片 border
+		.am-panel
+			border: none
+	else
+		.am-panel-success
+			border-color: Homepage-L2-Card-green-border !important
+		.am-panel-danger
+			border-color: Homepage-L2-Card-red-border !important
+		.am-panel-primary
+			border-color: Homepage-L2-Card-blue-border !important
+			& .am-panel-title a
+				color: Homepage-L2-Card-blue-text-color !important
+	
+	// 洛谷首页绿红超链接
+	.am-panel-success > .am-panel-hd > .am-panel-title > a
+		color: Homepage-a-green
+		&:focus, &:hover
+			color: A-hover-color
+	.am-panel-danger > .am-panel-hd > .am-panel-title > a
+		color: Homepage-a-red
+		&:focus, &:hover
+			color: A-hover-color
+
+	.lg-article > div
+		color: Text-color
+	
+	if Homepage-Profile-Picture-hide // 洛谷首页头像边框去除
+		.am-comment-avatar
+			border: none !important
+
+	// 主页的特殊石山 -- 通过状态栏样式修改
+	.highcharts-container .highcharts-axis-labels text,.highcharts-container > svg > g.highcharts-yaxis > text > tspan
+		fill: Introduce-color !important
+	.highcharts-container > svg > g:nth-child(8) > path,.highcharts-container > svg > g.highcharts-axis.highcharts-xaxis > path
+		stroke: Divider-color !important
+
+	// 犇犇样式修改
+	#feed		
+		.am-comment-main
+			border: none if Benben-border-del
+			border-radius: Benben-radius
+			border-color: Homepage-L2-Card-blue-border
+			box-shadow: Benben-shadow !important
+			transition: box-shadow Benben-hover-ani !important
+
+			&:hover
+				box-shadow: Benben-hover-shadow !important
+
+			.am-comment-hd,.am-comment-bd
+				border-radius: Benben-radius
+			.am-comment-hd
+				border-bottom-left-radius: 0
+				border-bottom-right-radius: 0
+				background: Benben-hd-color
+			.am-comment-bd
+				border-top-left-radius: 0
+				border-top-right-radius: 0
+				background: Benben-bd-color
+
+			&:after
+				border-right-color: Benben-hd-color
+			&:before
+				if Benben-border-del
+					border-right-color: Benben-hd-color
+				else
+					border-right-color: Homepage-L2-Card-blue-border
+
+			&:before, &:after
+				display: none if Benben-hide
+
+	// 犇犇 Tab 条优化
+	.feed-selector > a
+		font-weight: 500
+		transition: all .15s ease
+		color: Benben-tab-text-color
+		background-color: Benben-tab-bg-color
+		box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08) if Better-Benben-Tab && !DarkMode // TODO：变量化
+		border-radius: Card-L2-radius !important
+		height: Benben-tab-height
+		line-height: Benben-tab-height
+		padding: 0 !important
+
+	.feed-selector > a:hover
+		background-color: Benben-tab-hover-color !important
+
+	.feed-selector.am-active > a
+		color: Benben-tab-focus-text-color
+		background: Benben-tab-focus-bg-color !important
+
+	if Better-Benben-Tab
+		.lg-index-benben div:nth-of-type(4) 
+				background: transparent !important
+				box-shadow: none !important
+				padding-left: 0
+				padding-right: 0
+
+		.lg-index-benben div:nth-of-type(4) #home-center-nav
+				background: transparent
+	
+	// 主页题目通过条
+	if Better-highcharts
+		path.highcharts-area
+			//color: white;
+			//background: white;
+			fill: Highcharts-bg-color !important // 通过背景色
+
+		path.highcharts-point.highcharts-color-0 
+			fill: Highcharts-point-color !important // 点色
+
+		path.highcharts-point.highcharts-color-0.highcharts-point-hover // hover 点色
+			fill: Highcharts-hover-point-color !important
+			stroke: Highcharts-hover-point-border-color !important
+
+		path.highcharts-halo.highcharts-color-0  // 氛围环
+			fill: Highcharts-hover-bigpoint-color !important
+			fill-opacity: Highcharts-hover-bigpoint-op !important
+
+		rect.highcharts-point.highcharts-color-1
+			fill: Highcharts-strip-color !important // 柱子主体
+			stroke: Highcharts-strip-border-color !important // 柱子边框
+			&.highcharts-point-hover
+				fill: Highcharts-strip-hover-color !important
+
+		path.highcharts-graph
+			stroke: Highcharts-line-color !important
+
+		.highcharts-label.highcharts-tooltip.highcharts-color-0 // 文本框
+			&>text
+				fill: Highcharts-text-color !important
+				&>[style*="fill:#7cb5ec"]
+					fill: Highcharts-text-point-color-1 !important
+				&>[style*="fill:#43434"]
+					fill: Highcharts-text-point-color-2 !important
+			&>.highcharts-label-box.highcharts-tooltip-box:not(.highcharts-shadow) 
+				fill: Highcharts-text-bg-color !important
+				stroke: Highcharts-text-border-color !important
