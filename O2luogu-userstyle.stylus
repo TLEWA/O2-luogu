@@ -477,11 +477,6 @@ Tab 选中也可以 hover（不建议）
 		else
 			Exlg-Codeheader-bg-color = set_default_value(Exlg-Codeheader-bg-color,#eee)
 
-		if DarkMode
-			Exlg-Codeheader-bg-color = set_default_value(Exlg-Codeheader-bg-color,#2f3741)
-		else
-			Exlg-Codeheader-bg-color = set_default_value(Exlg-Codeheader-bg-color,#eee)
-
 // 全局变量定义
 	// 默认值定义
 
