@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.0.1
+@version      2.0.0.2
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -29,6 +29,7 @@
 @var	checkbox Better-problem-toolip "更好的题库通过条信息样式" 1
 @var	checkbox Better-big-button "更好的巨型按钮排版" 1
 @var	checkbox Better-discuss-button "更好的讨论区板块选择" 1
+@var	checkbox exlg-compatible "exlg 兼容" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -451,6 +452,14 @@ Tab 选中也可以 hover（不建议）
 			padding: (Padding-height - Button-border-size-special-red) (Padding-width - Button-border-size-special-red)
 		padding: (Padding-height - 1px) (Padding-width - 1px)
 	
+// 兼容性选项
+	if exlg-compatible
+		Card_L2 += ",.exlg-emo-btn"
+		Hover_card_float += ",.exlg-dash-options"
+		Introduce += ",a.exlg-dropdown.field *"
+		Hover-A += ",a.exlg-dropdown.field *"
+		Card_float += ".exlg-messages-outter > div"
+		Text += ".exlg-messages-outter *"
 
 // 全局变量定义
 	// 默认值定义
