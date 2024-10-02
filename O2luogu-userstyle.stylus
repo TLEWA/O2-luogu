@@ -293,6 +293,7 @@
 @var	text Homepage-L2-Card-blue-text-color "洛谷首页二级卡片蓝色文字" "Default"
 
 @var	text Text-selection-color "文字框选色" "Default"
+@var	text Codeblock-text-selection-color "代码块文字框选色" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -635,6 +636,7 @@ Tab 选中也可以 hover（不建议）
 		Markdown-bg-color = set_default_value(Markdown-bg-color,#2f3741)
 
 		Text-selection-color = set_default_value(Text-selection-color,#474c63)
+		Codeblock-text-selection-color = set_default_value(Codeblock-text-selection-color,#264f78)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
 		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
@@ -763,6 +765,7 @@ Tab 选中也可以 hover（不建议）
 		Markdown-bg-color = set_default_value(Markdown-bg-color,#fff)
 
 		Text-selection-color = set_default_value(Text-selection-color,#afeeee)
+		Codeblock-text-selection-color = set_default_value(Codeblock-text-selection-color,#d6d6d6)
 
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
@@ -1319,6 +1322,13 @@ Tab 选中也可以 hover（不建议）
 		&:hover
 			background: Privateitem-hover-bg-color !important
 		
+	// TODO：查明不生效原因
+	code::selection, code *::selection
+		background-color: Codeblock-text-selection-color !important
+	code::-moz-selection, code *::-moz-selection
+		background-color: Codeblock-text-selection-color !important
+	code::-webkit-selection,code *::-webkit-selection
+		background-color: Codeblock-text-selection-color !important
 
 	// 更好的评测详情色块
 	if Better-test-case
