@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.0.2
+@version      2.0.0.3
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -30,6 +30,7 @@
 @var	checkbox Better-big-button "更好的巨型按钮排版" 1
 @var	checkbox Better-discuss-button "更好的讨论区板块选择" 1
 @var	checkbox exlg-compatible "exlg 兼容" 1
+@var	checkbox Better-control-nav "更好的主页广告翻页选择点" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -298,11 +299,17 @@
 
 @var	text Exlg-Codeheader-bg-color "exlg 代码块头部背景色" "Default"
 
+@var	text Control-nav-ani "主页广告翻页选择点动画效果" "Default"
+@var	text Control-nav-bg-color "主页广告翻页选择点背景" "Default"
+@var	text Control-nav-active-bg-color "主页广告翻页选择点选中背景" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
 @var	checkbox bug-fix4 "[bug-fix] 翻页按钮宽度计算错误" 1
 @var	checkbox bug-fix5 "[bug-fix] 私信 '加载更多' 文字位置异常" 1
+@var	checkbox bug-fix6 "[bug-fix] 查找记录输入框边框 focus 样式异常" 1
+@var	checkbox bug-fix7 "[bug-fix] 查找题单界面题单选择栏对齐异常" 1
 
 ==/UserStyle== */
 
@@ -460,8 +467,15 @@ Tab 选中也可以 hover（不建议）
 		Hover_card_float += ",.exlg-dash-options"
 		Introduce += ",a.exlg-dropdown.field *"
 		Hover-A += ",a.exlg-dropdown.field *"
-		Card_float += ".exlg-messages-outter > div"
-		Text += ".exlg-messages-outter *"
+		Card_float += ",.exlg-messages-outter > div,.exlg-show-emo"
+		Text += ",.exlg-messages-outter *,.exlg-emo-btn"
+		Operate += ",.exlg-unselectable>a"
+		Operate_hover += ",.exlg-unselectable>a"
+
+		if DarkMode
+			Exlg-Codeheader-bg-color = set_default_value(Exlg-Codeheader-bg-color,#2f3741)
+		else
+			Exlg-Codeheader-bg-color = set_default_value(Exlg-Codeheader-bg-color,#eee)
 
 		if DarkMode
 			Exlg-Codeheader-bg-color = set_default_value(Exlg-Codeheader-bg-color,#2f3741)
@@ -653,6 +667,9 @@ Tab 选中也可以 hover（不建议）
 
 		Text-selection-color = set_default_value(Text-selection-color,#474c63)
 		Codeblock-text-selection-color = set_default_value(Codeblock-text-selection-color,#264f78)
+
+		Control-nav-bg-color = set_default_value(Control-nav-bg-color,#a7a9ad)
+		Control-nav-active-bg-color = set_default_value(Control-nav-active-bg-color,#5e72e4)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
 		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
@@ -783,6 +800,9 @@ Tab 选中也可以 hover（不建议）
 		Text-selection-color = set_default_value(Text-selection-color,#afeeee)
 		Codeblock-text-selection-color = set_default_value(Codeblock-text-selection-color,#d6d6d6)
 
+		Control-nav-bg-color = set_default_value(Control-nav-bg-color,#c4c6c9)
+		Control-nav-active-bg-color = set_default_value(Control-nav-active-bg-color,#7d7d7d)
+
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
 	Topic-type-Label-time = set_default_value(Topic-type-Label-time,#3498db)
@@ -893,6 +913,8 @@ Tab 选中也可以 hover（不建议）
 	Expand-radius = set_default_value(Expand-radius,5px)
 
 	Homepage-L2-Card-blue-text-color = set_default_value(Homepage-L2-Card-blue-text-color,#fff)
+
+	Control-nav-ani = set_default_value(Control-nav-ani,0.5s ease)
 
 	if Better-Benben-Tab
 		Benben-tab-height = set_default_value(Benben-tab-height,50px)
@@ -1684,6 +1706,14 @@ Tab 选中也可以 hover（不建议）
 		.load-more
 			min-height: auto !important
 			padding: 1em 0 !important
+	
+	if bug-fix6
+		div.refined-input.input-wrap.frame.focused+div.input-wrap
+			border-left-color: Input-focus-border-color !important
+	
+	if bug-fix7
+		.card:has(>section>.find-problem) b.desc.no-wrap
+			margin-right: 2.3em !important
 
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/problem/solution?(.*))")
 	use_new_bar()
@@ -1914,3 +1944,11 @@ Tab 选中也可以 hover（不建议）
 			&>.highcharts-label-box.highcharts-tooltip-box:not(.highcharts-shadow) 
 				fill: Highcharts-text-bg-color !important
 				stroke: Highcharts-text-border-color !important
+	
+	.am-slider-default .am-control-nav li a.am-active
+		width: 15px !important if Better-control-nav
+		background: Control-nav-active-bg-color !important
+
+	.am-slider-default .am-control-nav li a
+		transition: all Control-nav-ani !important
+		background: Control-nav-bg-color !important
