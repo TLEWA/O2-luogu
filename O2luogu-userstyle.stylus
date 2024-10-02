@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.0.2
+@version      2.0.0.3
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -296,11 +296,14 @@
 @var	text Text-selection-color "文字框选色" "Default"
 @var	text Codeblock-text-selection-color "代码块文字框选色" "Default"
 
+@var	text Exlg-Codeheader-bg-color "exlg 代码块头部背景色" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
 @var	checkbox bug-fix4 "[bug-fix] 翻页按钮宽度计算错误" 1
 @var	checkbox bug-fix5 "[bug-fix] 私信 '加载更多' 文字位置异常" 1
+@var	checkbox bug-fix6 "[bug-fix] 查找记录输入框边框 focus 样式异常" 1
 
 ==/UserStyle== */
 
@@ -458,8 +461,15 @@ Tab 选中也可以 hover（不建议）
 		Hover_card_float += ",.exlg-dash-options"
 		Introduce += ",a.exlg-dropdown.field *"
 		Hover-A += ",a.exlg-dropdown.field *"
-		Card_float += ".exlg-messages-outter > div"
-		Text += ".exlg-messages-outter *"
+		Card_float += ",.exlg-messages-outter > div,.exlg-show-emo"
+		Text += ",.exlg-messages-outter *,.exlg-emo-btn"
+		Operate += ",.exlg-unselectable>a"
+		Operate_hover += ",.exlg-unselectable>a"
+
+		if DarkMode
+			Exlg-Codeheader-bg-color = set_default_value(Exlg-Codeheader-bg-color,#2f3741)
+		else
+			Exlg-Codeheader-bg-color = set_default_value(Exlg-Codeheader-bg-color,#eee)
 
 // 全局变量定义
 	// 默认值定义
@@ -1276,6 +1286,11 @@ Tab 选中也可以 hover（不建议）
 		border-radius: Code-block-radius !important
 		color: Code-block-text-color !important
 
+		if exlg-compatible
+			&[exlg-copy-code-block]
+				border-top-left-radius: 0 !important
+				border-top-right-radius: 0 !important
+
 		& code
 			background: Code-block-bg-color !important
 			color: Code-block-text-color !important
@@ -1627,6 +1642,12 @@ Tab 选中也可以 hover（不建议）
 	*::-webkit-selection
 		background-color: Text-selection-color
 
+	// exlg 兼容
+	if exlg-compatible
+		.exlg-code-title.exlg-beautified-cbex
+			background-color: Exlg-Codeheader-bg-color !important
+			color: Post-heading-color !important
+
 	// 各种小 bug 的修复
 	.load-more
 		border-bottom: 0 !important if bug-fix1
@@ -1666,6 +1687,10 @@ Tab 选中也可以 hover（不建议）
 		.load-more
 			min-height: auto !important
 			padding: 1em 0 !important
+	
+	if bug-fix6
+		div.refined-input.input-wrap.frame.focused+div.input-wrap
+			border-left-color: Input-focus-border-color !important
 
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/problem/solution?(.*))")
 	use_new_bar()
