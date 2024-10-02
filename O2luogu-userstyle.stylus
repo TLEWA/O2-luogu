@@ -31,6 +31,7 @@
 @var	checkbox Better-discuss-button "更好的讨论区板块选择" 1
 @var	checkbox exlg-compatible "exlg 兼容" 1
 @var	checkbox Better-control-nav "更好的主页广告翻页选择点" 1
+@var	checkbox Hide-AD "隐藏洛谷边栏广告" 0
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -1661,6 +1662,10 @@ Tab 选中也可以 hover（不建议）
 		.exlg-code-title.exlg-beautified-cbex
 			background-color: Exlg-Codeheader-bg-color !important
 			color: Post-heading-color !important
+	
+	if Hide-AD
+		.side div:not([class*="card"]):has(>a[target*="_blank"]>img)
+			display: none !important
 
 	// 各种小 bug 的修复
 	.load-more
