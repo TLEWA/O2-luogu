@@ -296,6 +296,8 @@
 @var	text Text-selection-color "文字框选色" "Default"
 @var	text Codeblock-text-selection-color "代码块文字框选色" "Default"
 
+@var	text Exlg-Codeheader-bg-color "exlg 代码块头部背景色" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -460,6 +462,11 @@ Tab 选中也可以 hover（不建议）
 		Hover-A += ",a.exlg-dropdown.field *"
 		Card_float += ".exlg-messages-outter > div"
 		Text += ".exlg-messages-outter *"
+
+		if DarkMode
+			Exlg-Codeheader-bg-color = set_default_value(Exlg-Codeheader-bg-color,#2f3741)
+		else
+			Exlg-Codeheader-bg-color = set_default_value(Exlg-Codeheader-bg-color,#eee)
 
 // 全局变量定义
 	// 默认值定义
@@ -1276,6 +1283,11 @@ Tab 选中也可以 hover（不建议）
 		border-radius: Code-block-radius !important
 		color: Code-block-text-color !important
 
+		if exlg-compatible
+			&[exlg-copy-code-block]
+				border-top-left-radius: 0 !important
+				border-top-right-radius: 0 !important
+
 		& code
 			background: Code-block-bg-color !important
 			color: Code-block-text-color !important
@@ -1626,6 +1638,12 @@ Tab 选中也可以 hover（不建议）
 		background-color: Text-selection-color
 	*::-webkit-selection
 		background-color: Text-selection-color
+
+	// exlg 兼容
+	if exlg-compatible
+		.exlg-code-title.exlg-beautified-cbex
+			background-color: Exlg-Codeheader-bg-color !important
+			color: Post-heading-color !important
 
 	// 各种小 bug 的修复
 	.load-more
