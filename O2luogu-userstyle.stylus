@@ -307,6 +307,8 @@
 @var	text Control-nav-bg-color "主页广告翻页选择点背景" "Default"
 @var	text Control-nav-active-bg-color "主页广告翻页选择点选中背景" "Default"
 
+@var text pws "侧栏宽度" "14%" 
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
