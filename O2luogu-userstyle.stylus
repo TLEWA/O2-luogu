@@ -294,6 +294,7 @@
 
 @var	text Markdown-gutter-color "Markdown 编辑器行数显示背景色" "Default"
 @var	text Markdown-gutter-active-color "Markdown 编辑器行数显示选中背景色" "Default"
+@var	text Markdown-line-active-color "Markdown 编辑器代码行选中背景色" "Default"
 @var	text Markdown-bg-color "Markdown 编辑器背景色" "Default"
 
 @var	text Homepage-L2-Card-blue-text-color "洛谷首页二级卡片蓝色文字" "Default"
@@ -306,6 +307,11 @@
 @var	text Control-nav-ani "主页广告翻页选择点动画效果" "Default"
 @var	text Control-nav-bg-color "主页广告翻页选择点背景" "Default"
 @var	text Control-nav-active-bg-color "主页广告翻页选择点选中背景" "Default"
+
+@var	text UpdEditer-gutter-color "代码提交编辑器行数显示背景色" "Default"
+@var	text UpdEditer-gutter-active-color "代码提交编辑器行数显示选中背景色" "Default"
+@var	text UpdEditer-line-active-color "代码提交编辑器代码行选中背景色" "Default"
+@var	text UpdEditer-bg-color "代码提交编辑器背景色" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -662,6 +668,7 @@ Tab 选中也可以 hover（不建议）
 
 		Markdown-gutter-color = set_default_value(Markdown-gutter-color,#242c38)
 		Markdown-gutter-active-color = set_default_value(Markdown-gutter-active-color,#3e4752)
+		Markdown-line-active-color = set_default_value(Markdown-line-active-color,#596874)
 		Markdown-bg-color = set_default_value(Markdown-bg-color,#2f3741)
 
 		Text-selection-color = set_default_value(Text-selection-color,#474c63)
@@ -669,6 +676,11 @@ Tab 选中也可以 hover（不建议）
 
 		Control-nav-bg-color = set_default_value(Control-nav-bg-color,#a7a9ad)
 		Control-nav-active-bg-color = set_default_value(Control-nav-active-bg-color,#5e72e4)
+
+		UpdEditer-gutter-color = set_default_value(UpdEditer-gutter-color,#242c38)
+		UpdEditer-gutter-active-color = set_default_value(UpdEditer-gutter-active-color,#3e4752)
+		UpdEditer-line-active-color = set_default_value(UpdEditer-line-active-color,#596874)
+		UpdEditer-bg-color = set_default_value(UpdEditer-bg-color,#2f3741)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
 		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
@@ -794,6 +806,7 @@ Tab 选中也可以 hover（不建议）
 
 		Markdown-gutter-color = set_default_value(Markdown-gutter-color,#f7f7f7)
 		Markdown-gutter-active-color = set_default_value(Markdown-gutter-active-color,#e2f2ff)
+		Markdown-line-active-color = set_default_value(Markdown-line-active-color,#f1fbff)
 		Markdown-bg-color = set_default_value(Markdown-bg-color,#fff)
 
 		Text-selection-color = set_default_value(Text-selection-color,#afeeee)
@@ -801,6 +814,11 @@ Tab 选中也可以 hover（不建议）
 
 		Control-nav-bg-color = set_default_value(Control-nav-bg-color,#c4c6c9)
 		Control-nav-active-bg-color = set_default_value(Control-nav-active-bg-color,#3498db)
+
+		UpdEditer-gutter-color = set_default_value(UpdEditer-gutter-color,#ebebeb)
+		UpdEditer-gutter-active-color = set_default_value(UpdEditer-gutter-active-color,#dcdcdc)
+		UpdEditer-line-active-color = set_default_value(UpdEditer-line-active-color,#fffbd1)
+		UpdEditer-bg-color = set_default_value(UpdEditer-bg-color,#fff)
 
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
@@ -1215,6 +1233,8 @@ Tab 选中也可以 hover（不建议）
 		background: Markdown-gutter-color !important
 	.ͼ2 .cm-activeLineGutter
 		background: Markdown-gutter-active-color !important
+	.ͼ2 .cm-activeLine
+		background: Markdown-line-active-color !important
 
 	.mp-editor-toolbar,.CodeMirror-scroll,.mp-preview-area,.cs-header,.cs-contentm,.cs-main,.cs-footer
 		background: Markdown-bg-color !important
@@ -1677,6 +1697,17 @@ Tab 选中也可以 hover（不建议）
 	// 全局字体
 	body,.lfe-body
 		font-family: Font-Stack, -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif
+
+	// 提交代码框颜色系统
+	.ace_editor
+		background: UpdEditer-bg-color !important
+		& .ace_gutter
+			background: UpdEditer-gutter-color !important
+		& .ace_gutter-active-line
+			background: UpdEditer-gutter-active-color !important
+		& .ace_active-line
+			background: UpdEditer-line-active-color !important
+
 
 	// 各种小 bug 的修复
 	.load-more
