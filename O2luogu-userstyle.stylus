@@ -366,7 +366,7 @@ Tab 选中也可以 hover（不建议）
 	False = "False"
 
 	// 选择器
-		Main_Inputbox = "input[type=text],input[type=password],textarea#feed-content,.input-wrap,.combo-wrapper>.text,.CodeMirror-code pre.CodeMirror-line,textarea,.mp-dialog-input>input,select,.refined-input.text" // 主流样式的输入框
+		Main_Inputbox = "input[type=text],input[type=password],textarea#feed-content,.input-wrap,.combo-wrapper>.text,.CodeMirror-code pre.CodeMirror-line,textarea,.mp-dialog-input>input,select,.refined-input.text,.input-group>input" // 主流样式的输入框
 		Card_L1 = ".lg-article, .lg-article-sub, .lg-article-nctrl, .card, .float-bottom,.l-card" // 一级卡片
 		Card_L2 = ".am-panel,.inner-card,.discuss-container .discuss,.swal2-validation-message" // 二级卡片
 		Card_float = "#app > nav.lfe-body .popup,.user-nav .center,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog" // 悬浮卡片
@@ -481,8 +481,8 @@ Tab 选中也可以 hover（不建议）
 		Hover_card_float += ",.exlg-dash-options"
 		Introduce += ",a.exlg-dropdown.field *"
 		Hover-A += ",a.exlg-dropdown.field *"
-		Card_float += ",.exlg-messages-outter > div,.exlg-show-emo"
-		Text += ",.exlg-messages-outter *,.exlg-emo-btn"
+		Card_float += ",.exlg-messages-outter > div,.exlg-show-emo,.exlg-message-inner"
+		Text += ",.exlg-messages-outter *,.exlg-emo-btn,.exlg-message-inner"
 		Operate += ",.exlg-unselectable>a"
 		Operate_hover += ",.exlg-unselectable>a"
 
