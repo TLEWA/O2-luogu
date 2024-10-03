@@ -1963,3 +1963,8 @@ Tab 选中也可以 hover（不建议）
 	.am-slider-default .am-control-nav li a
 		transition: all Control-nav-ani !important
 		background: Control-nav-bg-color !important
+
+	.side
+		width: pws !important 
+	.main
+		width: (99% - pws) !important
