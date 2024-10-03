@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.0.5
+@version      2.0.1.0
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -316,6 +316,19 @@
 @var	text UpdEditer-line-active-color "代码提交编辑器代码行选中背景色" "Default"
 @var	text UpdEditer-linenumber-color "代码提交编辑器行数数字色" "Default"
 @var	text UpdEditer-bg-color "代码提交编辑器背景色" "Default"
+
+@var	text UpdEditer-text-color "代码提交编辑器文字色" "Default"
+@var	text UpdEditer-quote-color "代码提交编辑器注释色" "Default"
+@var	text UpdEditer-meta-color "代码提交编辑器 meta 色" "Default"
+@var	text UpdEditer-meta-string-color "代码提交编辑器 meta-string 色" "Default"
+@var	text UpdEditer-string-color "代码提交编辑器字符串色" "Default"
+@var	text UpdEditer-keyword-color "代码提交编辑器关键字色" "Default"
+@var	text UpdEditer-number-color "代码提交编辑器数字颜色" "Default"
+@var	text UpdEditer-operator-color "代码提交编辑器操作符颜色" "Default"
+@var	text UpdEditer-punctuation-color "代码提交编辑器标点颜色" "Default"
+@var	text UpdEditer-paren-color "代码提交编辑器括号颜色" "Default"
+@var	text UpdEditer-type-color "代码提交编辑器 type 色" "Default"
+@var	text UpdEditer-func-color "代码提交编辑器函数色" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -945,6 +958,22 @@ Tab 选中也可以 hover（不建议）
 	Markdown-linenumber-color = set_default_value(Markdown-linenumber-color,#6c6c6c)
 
 	Test-case-color-QUE = set_default_value(Test-case-color-QUE,#14558f)
+
+	if !DarkMode
+		UpdEditer-text-color = set_default_value(UpdEditer-text-color,#000)	
+		UpdEditer-operator-color = set_default_value(UpdEditer-operator-color,#000)
+		UpdEditer-punctuation-color = set_default_value(UpdEditer-punctuation-color,#000)
+		UpdEditer-paren-color = set_default_value(UpdEditer-paren-color,#000)
+	UpdEditer-text-color = set_default_value(UpdEditer-text-color,#bcbec4)
+	UpdEditer-quote-color = set_default_value(UpdEditer-quote-color,#7e7f84)
+	UpdEditer-string-color = set_default_value(UpdEditer-string-color,#6aab73)
+	UpdEditer-keyword-color = set_default_value(UpdEditer-keyword-color,#cf8e6d)
+	UpdEditer-number-color = set_default_value(UpdEditer-number-color,#2aacb8)
+	UpdEditer-operator-color = set_default_value(UpdEditer-operator-color,#bcbec4)
+	UpdEditer-punctuation-color = set_default_value(UpdEditer-punctuation-color,#bcbec4)
+	UpdEditer-paren-color = set_default_value(UpdEditer-paren-color,#bcbec4)
+	UpdEditer-type-color = set_default_value(UpdEditer-type-color,#8888c6)
+	UpdEditer-func-color = set_default_value(UpdEditer-func-color,#8888c6)
 
 	if Better-Benben-Tab
 		Benben-tab-height = set_default_value(Benben-tab-height,50px)
@@ -1718,6 +1747,19 @@ Tab 选中也可以 hover（不建议）
 	body,.lfe-body
 		font-family: Font-Stack, -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif
 
+
+	/*
+	UpdEditer-text-color
+	UpdEditer-quote-color
+	UpdEditer-string-color
+	UpdEditer-keyword-color
+	UpdEditer-number-color
+	UpdEditer-operator-color
+	UpdEditer-punctuation-color
+	UpdEditer-paren-color
+	UpdEditer-type-color
+	*/
+
 	// 提交代码框颜色系统
 	.ace_editor
 		background: UpdEditer-bg-color !important
@@ -1728,7 +1770,31 @@ Tab 选中也可以 hover（不建议）
 			background: UpdEditer-gutter-active-color !important
 		& .ace_active-line
 			background: UpdEditer-line-active-color !important
-
+		
+		// 颜色系统
+		.ace_keyword
+			color: UpdEditer-keyword-color !important
+		.ace_identifier,.ace_other
+			color: UpdEditer-text-color !important
+		.ace_comment
+			color: UpdEditer-quote-color !important
+		.ace_string
+			color: UpdEditer-string-color !important
+		.ace_numeric
+			color: UpdEditer-number-color !important
+		.ace_operator,.ace_keyword.ace_operator
+			color: UpdEditer-operator-color !important
+		.ace_punctuation
+			color: UpdEditer-punctuation-color !important
+		.ace_paren
+			color: UpdEditer-paren-color !important
+		.ace_storage
+			color: UpdEditer-type-color !important
+		.ace_function
+			color: UpdEditer-func-color !important
+		
+		.ace_indent-guide // TODO：把这个 base64 解析出来
+			display: none
 
 	// 各种小 bug 的修复
 	.load-more
