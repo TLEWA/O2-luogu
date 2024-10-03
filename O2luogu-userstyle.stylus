@@ -32,6 +32,7 @@
 @var	checkbox exlg-compatible "exlg 兼容" 1
 @var	checkbox Better-control-nav "更好的主页广告翻页选择点" 1
 @var	checkbox Hide-AD "隐藏洛谷边栏广告" 0
+@var	checkbox Hide-testcase-load "评测结果加载缓冲" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -176,6 +177,7 @@
 @var	text Test-case-color-MLE "评测详情背景色-MLE(实验性，功能受限)" "Default"
 @var	text Test-case-color-OLE "评测详情背景色-OLE(实验性，功能受限)" "Default"
 @var	text Test-case-color-UKE "评测详情背景色-UKE" "Default"
+@var	text Test-case-color-QUE "评测详情背景色-加载中" "Default"
 @var	text Test-case-text-color "评测详情文字色" "Default"
 
 @var	text Privateletter-bg-color "私信信息背景色" "Default"
@@ -942,6 +944,8 @@ Tab 选中也可以 hover（不建议）
 
 	Markdown-linenumber-color = set_default_value(Markdown-linenumber-color,#6c6c6c)
 
+	Test-case-color-QUE = set_default_value(Test-case-color-QUE,#14558f)
+
 	if Better-Benben-Tab
 		Benben-tab-height = set_default_value(Benben-tab-height,50px)
 	else
@@ -1479,13 +1483,18 @@ Tab 选中也可以 hover（不建议）
 				.test-case[style*='rgb(82']
 					background-color: Test-case-color-AC !important
 				.test-case[style*='rgb(231']
-					background-color Test-case-color-WA !important
+					background-color: Test-case-color-WA !important
 				.test-case[style*='rgb(157']
-					background-color Test-case-color-RE !important
+					background-color: Test-case-color-RE !important
 				.test-case[style*='rgb(5']
-					background-color Test-case-color-TLE !important
+					background-color: Test-case-color-TLE !important
 				.test-case[style*='rgb(14']
-					background-color Test-case-color-UKE !important
+					background-color: Test-case-color-UKE !important
+				.test-case[style*="rgb(20"]
+					background-color: Test-case-color-QUE !important
+				if Hide-testcase-load
+					.test-case:not([style*="rgb"])
+						display: none !important
 
 				.test-case *
 					color: Test-case-text-color !important
