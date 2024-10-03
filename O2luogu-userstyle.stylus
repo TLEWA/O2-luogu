@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.0.5
+@version      2.0.1.0
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -32,6 +32,7 @@
 @var	checkbox exlg-compatible "exlg 兼容" 1
 @var	checkbox Better-control-nav "更好的主页广告翻页选择点" 1
 @var	checkbox Hide-AD "隐藏洛谷边栏广告" 0
+@var	checkbox Hide-testcase-load "评测结果加载缓冲" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -176,6 +177,7 @@
 @var	text Test-case-color-MLE "评测详情背景色-MLE(实验性，功能受限)" "Default"
 @var	text Test-case-color-OLE "评测详情背景色-OLE(实验性，功能受限)" "Default"
 @var	text Test-case-color-UKE "评测详情背景色-UKE" "Default"
+@var	text Test-case-color-QUE "评测详情背景色-加载中" "Default"
 @var	text Test-case-text-color "评测详情文字色" "Default"
 
 @var	text Privateletter-bg-color "私信信息背景色" "Default"
@@ -294,6 +296,8 @@
 
 @var	text Markdown-gutter-color "Markdown 编辑器行数显示背景色" "Default"
 @var	text Markdown-gutter-active-color "Markdown 编辑器行数显示选中背景色" "Default"
+@var	text Markdown-line-active-color "Markdown 编辑器代码行选中背景色" "Default"
+@var	text Markdown-linenumber-color "Markdoen 编辑器行数数字色" "Default"
 @var	text Markdown-bg-color "Markdown 编辑器背景色" "Default"
 
 @var	text Homepage-L2-Card-blue-text-color "洛谷首页二级卡片蓝色文字" "Default"
@@ -306,6 +310,25 @@
 @var	text Control-nav-ani "主页广告翻页选择点动画效果" "Default"
 @var	text Control-nav-bg-color "主页广告翻页选择点背景" "Default"
 @var	text Control-nav-active-bg-color "主页广告翻页选择点选中背景" "Default"
+
+@var	text UpdEditer-gutter-color "代码提交编辑器行数显示背景色" "Default"
+@var	text UpdEditer-gutter-active-color "代码提交编辑器行数显示选中背景色" "Default"
+@var	text UpdEditer-line-active-color "代码提交编辑器代码行选中背景色" "Default"
+@var	text UpdEditer-linenumber-color "代码提交编辑器行数数字色" "Default"
+@var	text UpdEditer-bg-color "代码提交编辑器背景色" "Default"
+
+@var	text UpdEditer-text-color "代码提交编辑器文字色" "Default"
+@var	text UpdEditer-quote-color "代码提交编辑器注释色" "Default"
+@var	text UpdEditer-meta-color "代码提交编辑器 meta 色" "Default"
+@var	text UpdEditer-meta-string-color "代码提交编辑器 meta-string 色" "Default"
+@var	text UpdEditer-string-color "代码提交编辑器字符串色" "Default"
+@var	text UpdEditer-keyword-color "代码提交编辑器关键字色" "Default"
+@var	text UpdEditer-number-color "代码提交编辑器数字颜色" "Default"
+@var	text UpdEditer-operator-color "代码提交编辑器操作符颜色" "Default"
+@var	text UpdEditer-punctuation-color "代码提交编辑器标点颜色" "Default"
+@var	text UpdEditer-paren-color "代码提交编辑器括号颜色" "Default"
+@var	text UpdEditer-type-color "代码提交编辑器 type 色" "Default"
+@var	text UpdEditer-func-color "代码提交编辑器函数色" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -356,7 +379,7 @@ Tab 选中也可以 hover（不建议）
 	False = "False"
 
 	// 选择器
-		Main_Inputbox = "input[type=text],input[type=password],textarea#feed-content,.input-wrap,.combo-wrapper>.text,.CodeMirror-code pre.CodeMirror-line,textarea,.mp-dialog-input>input,select,.refined-input.text" // 主流样式的输入框
+		Main_Inputbox = "input[type=text],input[type=password],textarea#feed-content,.input-wrap,.combo-wrapper>.text,.CodeMirror-code pre.CodeMirror-line,textarea,.mp-dialog-input>input,select,.refined-input.text,.input-group>input" // 主流样式的输入框
 		Card_L1 = ".lg-article, .lg-article-sub, .lg-article-nctrl, .card, .float-bottom,.l-card" // 一级卡片
 		Card_L2 = ".am-panel,.inner-card,.discuss-container .discuss,.swal2-validation-message" // 二级卡片
 		Card_float = "#app > nav.lfe-body .popup,.user-nav .center,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog" // 悬浮卡片
@@ -471,8 +494,8 @@ Tab 选中也可以 hover（不建议）
 		Hover_card_float += ",.exlg-dash-options"
 		Introduce += ",a.exlg-dropdown.field *"
 		Hover-A += ",a.exlg-dropdown.field *"
-		Card_float += ",.exlg-messages-outter > div,.exlg-show-emo"
-		Text += ",.exlg-messages-outter *,.exlg-emo-btn"
+		Card_float += ",.exlg-messages-outter > div,.exlg-show-emo,.exlg-message-inner"
+		Text += ",.exlg-messages-outter *,.exlg-emo-btn,.exlg-message-inner"
 		Operate += ",.exlg-unselectable>a"
 		Operate_hover += ",.exlg-unselectable>a"
 
@@ -662,6 +685,7 @@ Tab 选中也可以 hover（不建议）
 
 		Markdown-gutter-color = set_default_value(Markdown-gutter-color,#242c38)
 		Markdown-gutter-active-color = set_default_value(Markdown-gutter-active-color,#3e4752)
+		Markdown-line-active-color = set_default_value(Markdown-line-active-color,#596874)
 		Markdown-bg-color = set_default_value(Markdown-bg-color,#2f3741)
 
 		Text-selection-color = set_default_value(Text-selection-color,#474c63)
@@ -669,6 +693,12 @@ Tab 选中也可以 hover（不建议）
 
 		Control-nav-bg-color = set_default_value(Control-nav-bg-color,#a7a9ad)
 		Control-nav-active-bg-color = set_default_value(Control-nav-active-bg-color,#5e72e4)
+
+		UpdEditer-gutter-color = set_default_value(UpdEditer-gutter-color,#242c38)
+		UpdEditer-gutter-active-color = set_default_value(UpdEditer-gutter-active-color,#3e4752)
+		UpdEditer-line-active-color = set_default_value(UpdEditer-line-active-color,#596874)
+		UpdEditer-linenumber-color = set_default_value(UpdEditer-linenumber-color,#999999)
+		UpdEditer-bg-color = set_default_value(UpdEditer-bg-color,#2f3741)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
 		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
@@ -794,6 +824,7 @@ Tab 选中也可以 hover（不建议）
 
 		Markdown-gutter-color = set_default_value(Markdown-gutter-color,#f7f7f7)
 		Markdown-gutter-active-color = set_default_value(Markdown-gutter-active-color,#e2f2ff)
+		Markdown-line-active-color = set_default_value(Markdown-line-active-color,#f1fbff)
 		Markdown-bg-color = set_default_value(Markdown-bg-color,#fff)
 
 		Text-selection-color = set_default_value(Text-selection-color,#afeeee)
@@ -801,6 +832,12 @@ Tab 选中也可以 hover（不建议）
 
 		Control-nav-bg-color = set_default_value(Control-nav-bg-color,#c4c6c9)
 		Control-nav-active-bg-color = set_default_value(Control-nav-active-bg-color,#3498db)
+
+		UpdEditer-gutter-color = set_default_value(UpdEditer-gutter-color,#ebebeb)
+		UpdEditer-gutter-active-color = set_default_value(UpdEditer-gutter-active-color,#dcdcdc)
+		UpdEditer-line-active-color = set_default_value(UpdEditer-line-active-color,#fffbd1)
+		UpdEditer-linenumber-color = set_default_value(UpdEditer-linenumber-color,#999999)
+		UpdEditer-bg-color = set_default_value(UpdEditer-bg-color,#fff)
 
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
@@ -917,6 +954,26 @@ Tab 选中也可以 hover（不建议）
 
 	Font-Stack = set_default_value(Font-Stack,"")
 	Code-block-fontstack = set_default_value(Code-block-fontstack,"JetBrains Mono")
+
+	Markdown-linenumber-color = set_default_value(Markdown-linenumber-color,#6c6c6c)
+
+	Test-case-color-QUE = set_default_value(Test-case-color-QUE,#14558f)
+
+	if !DarkMode
+		UpdEditer-text-color = set_default_value(UpdEditer-text-color,#000)	
+		UpdEditer-operator-color = set_default_value(UpdEditer-operator-color,#000)
+		UpdEditer-punctuation-color = set_default_value(UpdEditer-punctuation-color,#000)
+		UpdEditer-paren-color = set_default_value(UpdEditer-paren-color,#000)
+	UpdEditer-text-color = set_default_value(UpdEditer-text-color,#bcbec4)
+	UpdEditer-quote-color = set_default_value(UpdEditer-quote-color,#7e7f84)
+	UpdEditer-string-color = set_default_value(UpdEditer-string-color,#6aab73)
+	UpdEditer-keyword-color = set_default_value(UpdEditer-keyword-color,#cf8e6d)
+	UpdEditer-number-color = set_default_value(UpdEditer-number-color,#2aacb8)
+	UpdEditer-operator-color = set_default_value(UpdEditer-operator-color,#bcbec4)
+	UpdEditer-punctuation-color = set_default_value(UpdEditer-punctuation-color,#bcbec4)
+	UpdEditer-paren-color = set_default_value(UpdEditer-paren-color,#bcbec4)
+	UpdEditer-type-color = set_default_value(UpdEditer-type-color,#8888c6)
+	UpdEditer-func-color = set_default_value(UpdEditer-func-color,#8888c6)
 
 	if Better-Benben-Tab
 		Benben-tab-height = set_default_value(Benben-tab-height,50px)
@@ -1213,11 +1270,18 @@ Tab 选中也可以 hover（不建议）
 
 	.CodeMirror-gutters,.cm-gutters
 		background: Markdown-gutter-color !important
+		color: Markdown-linenumber-color !important
+	.CodeMirror-linenumber
+		color: Markdown-linenumber-color !important
 	.ͼ2 .cm-activeLineGutter
 		background: Markdown-gutter-active-color !important
+	.ͼ2 .cm-activeLine
+		background: Markdown-line-active-color !important
 
-	.mp-editor-toolbar,.CodeMirror-scroll,.mp-preview-area,.cs-header,.cs-contentm,.cs-main,.cs-footer
+	.mp-editor-toolbar,.CodeMirror-scroll,.mp-preview-area,.cs-header,.cs-contentm,.cs-main,.cs-footer,.mp-editor-zone
 		background: Markdown-bg-color !important
+	.CodeMirror-sizer
+		border-color: transparent !important
 
 
 	.CodeMirror-scroll
@@ -1448,13 +1512,18 @@ Tab 选中也可以 hover（不建议）
 				.test-case[style*='rgb(82']
 					background-color: Test-case-color-AC !important
 				.test-case[style*='rgb(231']
-					background-color Test-case-color-WA !important
+					background-color: Test-case-color-WA !important
 				.test-case[style*='rgb(157']
-					background-color Test-case-color-RE !important
+					background-color: Test-case-color-RE !important
 				.test-case[style*='rgb(5']
-					background-color Test-case-color-TLE !important
+					background-color: Test-case-color-TLE !important
 				.test-case[style*='rgb(14']
-					background-color Test-case-color-UKE !important
+					background-color: Test-case-color-UKE !important
+				.test-case[style*="rgb(20"]
+					background-color: Test-case-color-QUE !important
+				if Hide-testcase-load
+					.test-case:not([style*="rgb"])
+						display: none !important
 
 				.test-case *
 					color: Test-case-text-color !important
@@ -1677,6 +1746,55 @@ Tab 选中也可以 hover（不建议）
 	// 全局字体
 	body,.lfe-body
 		font-family: Font-Stack, -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif
+
+
+	/*
+	UpdEditer-text-color
+	UpdEditer-quote-color
+	UpdEditer-string-color
+	UpdEditer-keyword-color
+	UpdEditer-number-color
+	UpdEditer-operator-color
+	UpdEditer-punctuation-color
+	UpdEditer-paren-color
+	UpdEditer-type-color
+	*/
+
+	// 提交代码框颜色系统
+	.ace_editor
+		background: UpdEditer-bg-color !important
+		& .ace_gutter
+			background: UpdEditer-gutter-color !important
+			color: UpdEditer-linenumber-color !important
+		& .ace_gutter-active-line
+			background: UpdEditer-gutter-active-color !important
+		& .ace_active-line
+			background: UpdEditer-line-active-color !important
+		
+		// 颜色系统
+		.ace_keyword
+			color: UpdEditer-keyword-color !important
+		.ace_identifier,.ace_other
+			color: UpdEditer-text-color !important
+		.ace_comment
+			color: UpdEditer-quote-color !important
+		.ace_string
+			color: UpdEditer-string-color !important
+		.ace_numeric
+			color: UpdEditer-number-color !important
+		.ace_operator,.ace_keyword.ace_operator
+			color: UpdEditer-operator-color !important
+		.ace_punctuation
+			color: UpdEditer-punctuation-color !important
+		.ace_paren
+			color: UpdEditer-paren-color !important
+		.ace_storage
+			color: UpdEditer-type-color !important
+		.ace_function
+			color: UpdEditer-func-color !important
+		
+		.ace_indent-guide // TODO：把这个 base64 解析出来
+			display: none
 
 	// 各种小 bug 的修复
 	.load-more
