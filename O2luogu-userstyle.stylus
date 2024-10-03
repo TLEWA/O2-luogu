@@ -1496,7 +1496,7 @@ Tab 选中也可以 hover（不建议）
 			use_img_bg_color(Footer-img-color)
 
 	// Swal 弹窗样式
-	.swal2-popup
+	.swal2-popup:not([style*="background: transparent;"])
 		background: Card-bg-color-float !important
 
 	// 加载圈
