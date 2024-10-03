@@ -295,6 +295,7 @@
 @var	text Markdown-gutter-color "Markdown 编辑器行数显示背景色" "Default"
 @var	text Markdown-gutter-active-color "Markdown 编辑器行数显示选中背景色" "Default"
 @var	text Markdown-line-active-color "Markdown 编辑器代码行选中背景色" "Default"
+@var	text Markdown-linenumber-color "Markdoen 编辑器行数数字色" "Default"
 @var	text Markdown-bg-color "Markdown 编辑器背景色" "Default"
 
 @var	text Homepage-L2-Card-blue-text-color "洛谷首页二级卡片蓝色文字" "Default"
@@ -311,6 +312,7 @@
 @var	text UpdEditer-gutter-color "代码提交编辑器行数显示背景色" "Default"
 @var	text UpdEditer-gutter-active-color "代码提交编辑器行数显示选中背景色" "Default"
 @var	text UpdEditer-line-active-color "代码提交编辑器代码行选中背景色" "Default"
+@var	text UpdEditer-linenumber-color "代码提交编辑器行数数字色" "Default"
 @var	text UpdEditer-bg-color "代码提交编辑器背景色" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
@@ -680,6 +682,7 @@ Tab 选中也可以 hover（不建议）
 		UpdEditer-gutter-color = set_default_value(UpdEditer-gutter-color,#242c38)
 		UpdEditer-gutter-active-color = set_default_value(UpdEditer-gutter-active-color,#3e4752)
 		UpdEditer-line-active-color = set_default_value(UpdEditer-line-active-color,#596874)
+		UpdEditer-linenumber-color = set_default_value(UpdEditer-linenumber-color,#999999)
 		UpdEditer-bg-color = set_default_value(UpdEditer-bg-color,#2f3741)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
@@ -818,6 +821,7 @@ Tab 选中也可以 hover（不建议）
 		UpdEditer-gutter-color = set_default_value(UpdEditer-gutter-color,#ebebeb)
 		UpdEditer-gutter-active-color = set_default_value(UpdEditer-gutter-active-color,#dcdcdc)
 		UpdEditer-line-active-color = set_default_value(UpdEditer-line-active-color,#fffbd1)
+		UpdEditer-linenumber-color = set_default_value(UpdEditer-linenumber-color,#999999)
 		UpdEditer-bg-color = set_default_value(UpdEditer-bg-color,#fff)
 
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
@@ -935,6 +939,8 @@ Tab 选中也可以 hover（不建议）
 
 	Font-Stack = set_default_value(Font-Stack,"")
 	Code-block-fontstack = set_default_value(Code-block-fontstack,"JetBrains Mono")
+
+	Markdown-linenumber-color = set_default_value(Markdown-linenumber-color,#6c6c6c)
 
 	if Better-Benben-Tab
 		Benben-tab-height = set_default_value(Benben-tab-height,50px)
@@ -1231,13 +1237,18 @@ Tab 选中也可以 hover（不建议）
 
 	.CodeMirror-gutters,.cm-gutters
 		background: Markdown-gutter-color !important
+		color: Markdown-linenumber-color !important
+	.CodeMirror-linenumber
+		color: Markdown-linenumber-color !important
 	.ͼ2 .cm-activeLineGutter
 		background: Markdown-gutter-active-color !important
 	.ͼ2 .cm-activeLine
 		background: Markdown-line-active-color !important
 
-	.mp-editor-toolbar,.CodeMirror-scroll,.mp-preview-area,.cs-header,.cs-contentm,.cs-main,.cs-footer
+	.mp-editor-toolbar,.CodeMirror-scroll,.mp-preview-area,.cs-header,.cs-contentm,.cs-main,.cs-footer,.mp-editor-zone
 		background: Markdown-bg-color !important
+	.CodeMirror-sizer
+		border-color: transparent !important
 
 
 	.CodeMirror-scroll
@@ -1703,6 +1714,7 @@ Tab 选中也可以 hover（不建议）
 		background: UpdEditer-bg-color !important
 		& .ace_gutter
 			background: UpdEditer-gutter-color !important
+			color: UpdEditer-linenumber-color !important
 		& .ace_gutter-active-line
 			background: UpdEditer-gutter-active-color !important
 		& .ace_active-line
