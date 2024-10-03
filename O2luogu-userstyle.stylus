@@ -36,6 +36,9 @@
 
 @var	text CustomBackground "自定义背景" "None"
 
+@var	text Font-Stack "全局字体" "Default"
+@var	text Code-block-fontstack "代码块字体" "Default"
+
 @var	text Card-L1-radius "一级卡片圆角大小" "Default"
 @var	text Card-L2-radius "二级卡片圆角大小" "Default"
 @var	text Card-float-radius "悬浮卡片圆角大小" "Default"
@@ -912,6 +915,9 @@ Tab 选中也可以 hover（不建议）
 
 	Control-nav-ani = set_default_value(Control-nav-ani,0.5s ease)
 
+	Font-Stack = set_default_value(Font-Stack,"")
+	Code-block-fontstack = set_default_value(Code-block-fontstack,"JetBrains Mono")
+
 	if Better-Benben-Tab
 		Benben-tab-height = set_default_value(Benben-tab-height,50px)
 	else
@@ -996,6 +1002,7 @@ Tab 选中也可以 hover（不建议）
 		src: url(https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxTOlOV.woff2) format('woff2');
 		unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 	}
+
 
 // 全局样式
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?(.*))")  
@@ -1289,10 +1296,10 @@ Tab 选中也可以 hover（不建议）
 		color: Code-block-text-color !important
 
 		if Better-font
-			font-family: "FontWithASyntaxHighlighter","JetBrains Mono" !important
+			font-family: "FontWithASyntaxHighlighter",Code-block-fontstack !important
 			font-palette: --Alternate;
 		else
-			font-family: "JetBrains Mono" !important
+			font-family: Code-block-fontstack !important
 	
 	{Code-block}
 		background: Code-block-bg-color !important
@@ -1312,13 +1319,13 @@ Tab 选中也可以 hover（不建议）
 			border: none !important
 
 			if Better-font
-				font-family: "FontWithASyntaxHighlighter","JetBrains Mono" !important
+				font-family: "FontWithASyntaxHighlighter",Code-block-fontstack !important
 				font-palette: --Alternate;
 			else
-				font-family: "JetBrains Mono" !important
+				font-family: Code-block-fontstack !important
 
 			span:not(.hljs-class)
-				font-family: "JetBrains Mono" !important
+				font-family: Code-block-fontstack !important
 			
 			.hljs-comment,.hljs-quote // 注释
 				color: Code-block-quote-color !important
@@ -1666,6 +1673,10 @@ Tab 选中也可以 hover（不建议）
 	if Hide-AD
 		.side div:not([class*="card"]):has(>a[target*="_blank"]>img)
 			display: none !important
+
+	// 全局字体
+	body,.lfe-body
+		font-family: Font-Stack, -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif
 
 	// 各种小 bug 的修复
 	.load-more
