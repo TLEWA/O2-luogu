@@ -369,14 +369,11 @@
 提交代码框选择条
 
 题库选择条，算法来源 hover
-近期比赛 bug 修复
 hover 配色，hover 动画
 选择框 hover 色
 评论样式
 初等动画效果
 隐藏广告
-exlg 兼容
-bugfix 移植
 广告阴影化
 
 阴影化 v2
@@ -713,6 +710,8 @@ Tab 选中也可以 hover（不建议）
 		UpdEditer-line-active-color = set_default_value(UpdEditer-line-active-color,#596874)
 		UpdEditer-linenumber-color = set_default_value(UpdEditer-linenumber-color,#999999)
 		UpdEditer-bg-color = set_default_value(UpdEditer-bg-color,#2f3741)
+
+		Select-button-hover-bg-color = set_default_value(Select-button-hover-bg-color,#3e4752)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
 		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
@@ -853,6 +852,8 @@ Tab 选中也可以 hover（不建议）
 		UpdEditer-linenumber-color = set_default_value(UpdEditer-linenumber-color,#999999)
 		UpdEditer-bg-color = set_default_value(UpdEditer-bg-color,#fff)
 
+		Select-button-hover-bg-color = set_default_value(Select-button-hover-bg-color,#f9f9f9)
+
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
 	Topic-type-Label-time = set_default_value(Topic-type-Label-time,#3498db)
@@ -972,7 +973,6 @@ Tab 选中也可以 hover（不建议）
 	Markdown-linenumber-color = set_default_value(Markdown-linenumber-color,#6c6c6c)
 
 	Test-case-color-QUE = set_default_value(Test-case-color-QUE,#14558f)
-	//Select-button-hover-bg-color = set_default_value(Select-button-hover-bg-color,)
 
 	if !DarkMode
 		UpdEditer-text-color = set_default_value(UpdEditer-text-color,#000)	
@@ -1102,6 +1102,10 @@ Tab 选中也可以 hover（不建议）
 		border-radius: Card-L1-radius if Custom-Card
 		box-shadow: Card-L1-shadow !important
 		transition: box-shadow Card-L1-hover-transition
+
+		word-wrap: break-word
+		word-break: break-all
+
 		&:hover
 			box-shadow: Card-L1-hover-shadow !important
 	
@@ -1110,6 +1114,9 @@ Tab 选中也可以 hover（不建议）
 		background: Card-bg-color-L2 !important
 		border-radius: Card-L2-radius if Custom-Card
 		border-color: L2-Card-border !important
+
+		word-wrap: break-word
+		word-break: break-all
 
 	// 悬浮 Card 样式修改
 	{Card_float}
@@ -1331,7 +1338,7 @@ Tab 选中也可以 hover（不建议）
 			background: Topic-difficulty-Label-8 !important
 	
 	// 题目难度文字修改
-	.info-rows a>span
+	.info-rows a[href*="/problem/list"]>span
 		&[style*="rgb(191\, 191\, 191);"]
 			color: Difficulty-text-color-1 !important
 		&[style*="rgb(254\, 76\, 97);"]
@@ -1745,19 +1752,6 @@ Tab 选中也可以 hover（不建议）
 	body,.lfe-body
 		font-family: Font-Stack, -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif
 
-
-	/*
-	UpdEditer-text-color
-	UpdEditer-quote-color
-	UpdEditer-string-color
-	UpdEditer-keyword-color
-	UpdEditer-number-color
-	UpdEditer-operator-color
-	UpdEditer-punctuation-color
-	UpdEditer-paren-color
-	UpdEditer-type-color
-	*/
-
 	// 提交代码框颜色系统
 	.ace_editor
 		background: UpdEditer-bg-color !important
@@ -1795,6 +1789,9 @@ Tab 选中也可以 hover（不建议）
 		
 		.ace_indent-guide // TODO：把这个 base64 解析出来
 			background: none !important
+
+	.block-item.select-button.lfe-form-sz-middle:hover
+		background: Select-button-hover-bg-color !important
 
 	// 各种小 bug 的修复
 	.load-more
