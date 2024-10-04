@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.1.4
+@version      2.0.2.0
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -33,6 +33,7 @@
 @var	checkbox Better-control-nav "更好的主页广告翻页选择点" 1
 @var	checkbox Hide-AD "隐藏洛谷边栏广告" 0
 @var	checkbox Hide-testcase-load "评测结果加载缓冲" 1
+@var	checkbox Better-problem-tag "更好的题目 tag 渲染" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -341,6 +342,12 @@
 
 @var	text Select-button-hover-bg-color "题库主页算法难度选择按钮背景色" "Default"
 
+@var	text Problem-tag-radius "problem tag 圆角样式" "Default"
+@var	text Problem-tag-padding "problem tag padding 样式" "Default"
+@var	text Problem-tag-ani "problem tag 动画效果" "Default"
+@var	text Problem-tag-hover-trans "problem tag hover 上移距离" "Default"
+@var	text Problem-tag-hover-shadow "problem tag hover 阴影" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -366,7 +373,8 @@
 开发待办事项：
 
 勾子颜色，名字颜色自定义
-提交代码框选择条
+普及 hover 动画
+图标 hover
 
 题库选择条，算法来源 hover
 hover 配色，hover 动画
@@ -382,6 +390,7 @@ hover 配色，hover 动画
 Tab 选中也可以 hover（不建议）
 私信框自定义背景
 确定键长按
+提交代码框 bug 修复
 */
 
 // 常量
@@ -408,7 +417,7 @@ Tab 选中也可以 hover（不建议）
 		ColorfulLabel = ".difficulty a.color-default[colorscheme='default']>span,.box>span.lfe-caption,span.lfe-caption.tag,a.tag.color-none>span,.difficulty-tags>.row>span.lfe-caption,.difficulty>span.lfe-caption,a.status-link>span.lfe-caption,.lfe-caption.tag>span,.author-margin>.lfe-caption,.team-authority,.inner-card span.lfe-caption[style*='color:'],.status>.lfe-caption" // 标签
 		GrayLabel = '.card.info-card.center.padding-default .tags>span.tag[style*="rgb(232"]:not(.selected),.inner-card>.row>div>span.lfe-caption,.card.log.padding-default li span.lfe-caption' // 灰度标签
 		Topic-type-Label = ".tags-wrap.multiline>a>span,.card.info-card.center.padding-default .tag-select-area .tags>span.tag,.block-item.tag" // 题目类型标签
-		Topic-difficulty-Label = ".difficulty span.lfe-caption,.difficulty-tags span.lfe-caption,.block-item.tag" // 题目难度标签
+		Topic-difficulty-Label = ".difficulty a span.lfe-caption,.difficulty span.lfe-caption,.difficulty-tags span.lfe-caption,.block-item.tag" // 题目难度标签
 		InLine-code-block = "[class*='marked'] code,.am-comment-bd p>code" // 行内代码块
 		Code-block = "pre:not([mp-editor-container],.CodeMirror-line)" // 代码块
 		Discuss = ".row-wrap > .card.comment.padding-default, .log,.article-comment .l-card.reply-item" // 讨论区评论
@@ -852,7 +861,7 @@ Tab 选中也可以 hover（不建议）
 		UpdEditer-linenumber-color = set_default_value(UpdEditer-linenumber-color,#999999)
 		UpdEditer-bg-color = set_default_value(UpdEditer-bg-color,#fff)
 
-		Select-button-hover-bg-color = set_default_value(Select-button-hover-bg-color,#f9f9f9)
+		Select-button-hover-bg-color = set_default_value(Select-button-hover-bg-color,#f6f6f6)
 
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
@@ -998,6 +1007,14 @@ Tab 选中也可以 hover（不建议）
 	Difficulty-text-color-6 = set_default_value(Difficulty-text-color-6,Topic-difficulty-Label-6)
 	Difficulty-text-color-7 = set_default_value(Difficulty-text-color-7,Topic-difficulty-Label-7)
 	Difficulty-text-color-8 = set_default_value(Difficulty-text-color-8,Topic-difficulty-Label-8)
+
+	Problem-tag-radius = set_default_value(Problem-tag-radius,5px)
+	Problem-tag-padding = set_default_value(Problem-tag-padding,0.5px 9px)
+	Problem-tag-ani = set_default_value(Problem-tag-ani,0.15s ease-out)
+	Problem-tag-hover-trans = set_default_value(Problem-tag-hover-trans,1px)
+	if DarkMode
+		Problem-tag-hover-shadow = set_default_value(Problem-tag-hover-shadow,none)
+	Problem-tag-hover-shadow = set_default_value(Problem-tag-hover-shadow,0 4px 6px rgba(50,50,93,.11)\, 0 1px 3px rgba(0,0,0,.08))
 
 	if Better-Benben-Tab
 		Benben-tab-height = set_default_value(Benben-tab-height,50px)
@@ -1792,6 +1809,17 @@ Tab 选中也可以 hover（不建议）
 
 	.block-item.select-button.lfe-form-sz-middle:hover
 		background: Select-button-hover-bg-color !important
+
+	// 更好的题目 tag 渲染
+	if Better-problem-tag
+		{Topic-difficulty-Label} \, .tag.color-none>span.lfe-caption
+			&[style*="color"]
+				border-radius: Problem-tag-radius !important
+				padding: Problem-tag-padding
+				transition: all Problem-tag-ani
+				&:hover
+					transform: translateY(- Problem-tag-hover-trans);
+					box-shadow: Problem-tag-hover-shadow;
 
 	// 各种小 bug 的修复
 	.load-more
