@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.1.1
+@version      2.0.1.2
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -992,7 +992,7 @@ Tab 选中也可以 hover（不建议）
 
 	// 导入 Noto Sans
 	/*google 的服务真方便吧*/
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC')
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900')
 	@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono')
 	
 	if Better-font
