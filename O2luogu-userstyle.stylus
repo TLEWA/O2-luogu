@@ -330,6 +330,15 @@
 @var	text UpdEditer-type-color "代码提交编辑器 type 色" "Default"
 @var	text UpdEditer-func-color "代码提交编辑器函数色" "Default"
 
+@var	text Difficulty-text-color-1 "题目难度文字-暂无评定色" "Default"
+@var	text Difficulty-text-color-2 "题目难度文字-入门色" "Default"
+@var	text Difficulty-text-color-3 "题目难度文字-普及-色" "Default"
+@var	text Difficulty-text-color-4 "题目难度文字-普及/提高−色" "Default"
+@var	text Difficulty-text-color-5 "题目难度文字-普及+/提高色" "Default"
+@var	text Difficulty-text-color-6 "题目难度文字-提高+/省选−色" "Default"
+@var	text Difficulty-text-color-7 "题目难度文字-省选/NOI−色" "Default"
+@var	text Difficulty-text-color-8 "题目难度文字-NOI/NOI+/CTSC色" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -353,6 +362,9 @@
 
 /*
 开发待办事项：
+
+题目颜色，勾子颜色，名字颜色自定义
+提交代码框选择条
 
 题库选择条，算法来源 hover
 近期比赛 bug 修复
@@ -387,7 +399,7 @@ Tab 选中也可以 hover（不建议）
 		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header" // 标题文字
 		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5" // 正文文字
 		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name" // 陈述文字
-		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message" // 介绍文字
+		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label" // 介绍文字
 		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.stat>.field,.difficulty-tags,.difficulty-tags>.row,div[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
 		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.cs-close-container" // 杂项图标
 		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 操作文字
@@ -975,6 +987,15 @@ Tab 选中也可以 hover（不建议）
 	UpdEditer-type-color = set_default_value(UpdEditer-type-color,#8888c6)
 	UpdEditer-func-color = set_default_value(UpdEditer-func-color,#8888c6)
 
+	Difficulty-text-color-1 = set_default_value(Difficulty-text-color-1,Topic-difficulty-Label-1)
+	Difficulty-text-color-2 = set_default_value(Difficulty-text-color-2,Topic-difficulty-Label-2)
+	Difficulty-text-color-3 = set_default_value(Difficulty-text-color-3,Topic-difficulty-Label-3)
+	Difficulty-text-color-4 = set_default_value(Difficulty-text-color-4,Topic-difficulty-Label-4)
+	Difficulty-text-color-5 = set_default_value(Difficulty-text-color-5,Topic-difficulty-Label-5)
+	Difficulty-text-color-6 = set_default_value(Difficulty-text-color-6,Topic-difficulty-Label-6)
+	Difficulty-text-color-7 = set_default_value(Difficulty-text-color-7,Topic-difficulty-Label-7)
+	Difficulty-text-color-8 = set_default_value(Difficulty-text-color-8,Topic-difficulty-Label-8)
+
 	if Better-Benben-Tab
 		Benben-tab-height = set_default_value(Benben-tab-height,50px)
 	else
@@ -1305,6 +1326,25 @@ Tab 选中也可以 hover（不建议）
 			background: Topic-difficulty-Label-7 !important
 		&[style*="rgb(14\, 29\, 105);"]
 			background: Topic-difficulty-Label-8 !important
+	
+	// 题目难度文字修改
+	.info-rows a>span
+		&[style*="rgb(191\, 191\, 191);"]
+			color: Difficulty-text-color-1 !important
+		&[style*="rgb(254\, 76\, 97);"]
+			color: Difficulty-text-color-2 !important
+		&[style*="rgb(243\, 156\, 17);"]
+			color: Difficulty-text-color-3 !important
+		&[style*="rgb(255\, 193\, 22);"]
+			color: Difficulty-text-color-4 !important
+		&[style*="rgb(82\, 196\, 26);"]
+			color: Difficulty-text-color-5 !important
+		&[style*="rgb(52\, 152\, 219);"]
+			color: Difficulty-text-color-6 !important
+		&[style*="rgb(157\, 61\, 207);"]
+			color: Difficulty-text-color-7 !important
+		&[style*="rgb(14\, 29\, 105);"]
+			color: Difficulty-text-color-8 !important
 
 	// 行内代码块
 	{InLine-code-block}
@@ -1718,6 +1758,8 @@ Tab 选中也可以 hover（不建议）
 	// 提交代码框颜色系统
 	.ace_editor
 		background: UpdEditer-bg-color !important
+		color: UpdEditer-text-color !important
+
 		& .ace_gutter
 			background: UpdEditer-gutter-color !important
 			color: UpdEditer-linenumber-color !important
