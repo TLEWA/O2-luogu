@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.1.3
+@version      2.0.1.4
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -339,6 +339,8 @@
 @var	text Difficulty-text-color-7 "题目难度文字-省选/NOI−色" "Default"
 @var	text Difficulty-text-color-8 "题目难度文字-NOI/NOI+/CTSC色" "Default"
 
+@var	text Select-button-hover-bg-color "题库主页算法难度选择按钮背景色" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -405,7 +407,7 @@ Tab 选中也可以 hover（不建议）
 		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 操作文字
 		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 可选中操作文字
 		Hover-A = ".action>a,.center>footer>a,.am-panel-primary .am-panel-title a" // 选中超链接
-		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a" // 强制超链接
+		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a" // 强制超链接
 		ColorfulLabel = ".difficulty a.color-default[colorscheme='default']>span,.box>span.lfe-caption,span.lfe-caption.tag,a.tag.color-none>span,.difficulty-tags>.row>span.lfe-caption,.difficulty>span.lfe-caption,a.status-link>span.lfe-caption,.lfe-caption.tag>span,.author-margin>.lfe-caption,.team-authority,.inner-card span.lfe-caption[style*='color:'],.status>.lfe-caption" // 标签
 		GrayLabel = '.card.info-card.center.padding-default .tags>span.tag[style*="rgb(232"]:not(.selected),.inner-card>.row>div>span.lfe-caption,.card.log.padding-default li span.lfe-caption' // 灰度标签
 		Topic-type-Label = ".tags-wrap.multiline>a>span,.card.info-card.center.padding-default .tag-select-area .tags>span.tag,.block-item.tag" // 题目类型标签
@@ -970,6 +972,7 @@ Tab 选中也可以 hover（不建议）
 	Markdown-linenumber-color = set_default_value(Markdown-linenumber-color,#6c6c6c)
 
 	Test-case-color-QUE = set_default_value(Test-case-color-QUE,#14558f)
+	//Select-button-hover-bg-color = set_default_value(Select-button-hover-bg-color,)
 
 	if !DarkMode
 		UpdEditer-text-color = set_default_value(UpdEditer-text-color,#000)	
@@ -1841,7 +1844,7 @@ Tab 选中也可以 hover（不建议）
 		.card:has(>section>.find-problem) b.desc.no-wrap
 			margin-right: 2.3em !important
 
-@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/problem/solution?(.*))")
+@-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/solution|ranking).*$")
 	use_new_bar()
 	.solution-article .operations .button // 这又写得啥。。
 		opacity: 1 !important
