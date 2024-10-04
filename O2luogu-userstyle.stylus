@@ -348,6 +348,8 @@
 @var	text Problem-tag-hover-trans "problem tag hover 上移距离" "Default"
 @var	text Problem-tag-hover-shadow "problem tag hover 阴影" "Default"
 
+@var	text A-hover-ani "超链接 hover 动画" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -375,6 +377,7 @@
 勾子颜色，名字颜色自定义
 普及 hover 动画
 图标 hover
+更改排行榜的 id 宽度
 
 题库选择条，算法来源 hover
 hover 配色，hover 动画
@@ -1020,6 +1023,8 @@ Tab 选中也可以 hover（不建议）
 		Benben-tab-height = set_default_value(Benben-tab-height,50px)
 	else
 		Benben-tab-height = set_default_value(Benben-tab-height,36.8px)
+	
+	A-hover-ani = set_default_value(A-hover-ani,0.15s ease-out)
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -1158,16 +1163,19 @@ Tab 选中也可以 hover（不建议）
 	// 超链接样式修改
 	a,.color-default[data-v-0640126c], .color-default-noline[data-v-0640126c]
 		color: A-color
+		transition: color A-hover-ani !important
 		&:hover
 			color: A-hover-color
 
 	{A}
 		color: A-color !important
+		transition: color A-hover-ani !important
 		&:hover
 			color: A-hover-color !important
 
 	// Hover 超链接样式修改
 	{Hover-A}
+		transition: color A-hover-ani !important
 		&:hover
 			color: A-hover-color !important
 
@@ -1817,6 +1825,7 @@ Tab 选中也可以 hover（不建议）
 				border-radius: Problem-tag-radius !important
 				padding: Problem-tag-padding
 				transition: all Problem-tag-ani
+				line-height: 1.5
 				&:hover
 					transform: translateY(- Problem-tag-hover-trans);
 					box-shadow: Problem-tag-hover-shadow;
