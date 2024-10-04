@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.2.0
+@version      2.0.2.1
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -34,6 +34,7 @@
 @var	checkbox Hide-AD "隐藏洛谷边栏广告" 0
 @var	checkbox Hide-testcase-load "评测结果加载缓冲" 1
 @var	checkbox Better-problem-tag "更好的题目 tag 渲染" 1
+@var	checkbox Better-Markdown-button "Markdown 编辑器确认取消按钮洛谷样式化" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -349,6 +350,7 @@
 @var	text Problem-tag-hover-shadow "problem tag hover 阴影" "Default"
 
 @var	text A-hover-ani "超链接 hover 动画" "Default"
+@var	text Button-default-color "按钮默认文字色" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -471,28 +473,38 @@ Tab 选中也可以 hover（不建议）
 		transform:translateX(-10000px) !important
 		filter: drop-shadow(10000px 0px 0px Color) !important
 
+	blue_button_patch(Padding-width,Padding-height)
+		border: Button-border-size-blue solid Button-bg-color-blue !important
+		background: Button-bg-color-blue !important
+		color: Button-default-color !important
+		&:hover
+			border: Button-border-size-blue solid Button-hover-bg-color-blue !important
+			background: Button-hover-bg-color-blue !important
+		padding: (Padding-height - Button-border-size-blue) (Padding-width - Button-border-size-blue)
+
+	red_button_patch(Padding-width,Padding-height)
+		border: Button-border-size-red solid Button-bg-color-red !important
+		background: Button-bg-color-red !important
+		color: Button-default-color !important
+		&:hover
+			border: Button-border-size-blue solid Button-hover-bg-color-red !important
+			background: Button-hover-bg-color-red !important
+		padding: (Padding-height - Button-border-size-red) (Padding-width - Button-border-size-red)
+
 	// TODO：v2.0
 	use_button_style(Padding-width,Padding-height)
 		line-height: 1.5 !important // 统一新老前端标准
 		transition: background Button-hover-ani \, border-color Button-hover-ani !important
+
 		// 蓝色按钮
 		&.am-btn-primary,&[style*="background-color: rgb(52\, 152\, 219);"],&[style*="background-color: rgba(52\, 152\, 219\, 0.9);"],&.solid,&#go.submit
-			border: Button-border-size-blue solid Button-bg-color-blue !important
-			background: Button-bg-color-blue !important
-			&:hover
-				border: Button-border-size-blue solid Button-hover-bg-color-blue !important
-				background: Button-hover-bg-color-blue !important
-			padding: (Padding-height - Button-border-size-blue) (Padding-width - Button-border-size-blue)
+			blue_button_patch(Padding-width,Padding-height)
 		&.am-btn-danger,&.lcolor-var-red-3.solid,&[style*="background-color: rgb(231\, 76\, 60);"]
-			border: Button-border-size-red solid Button-bg-color-red !important
-			background: Button-bg-color-red !important
-			&:hover
-				border: Button-border-size-blue solid Button-hover-bg-color-red !important
-				background: Button-hover-bg-color-red !important
-			padding: (Padding-height - Button-border-size-red) (Padding-width - Button-border-size-red)
+			red_button_patch(Padding-width,Padding-height)
 		&[style*="background-color: rgba(0\, 0\, 0\, 0.5);"]
 			border: Button-border-size-black solid Button-border-color-black !important
 			background: Button-bg-color-black !important
+			color: Button-default-color !important
 			&:hover
 				background: Button-hover-bg-color-black !important
 				opacity: 1 !important
@@ -500,12 +512,14 @@ Tab 选中也可以 hover（不建议）
 		&[style*="background-color: rgba(52\, 152\, 219\, 0);"],&[style*="background-color: rgba(52\, 152\, 219\, 0.1);"] // TODO：改掉这沟槽的东西
 			border: Button-border-size-special-blue solid Button-border-color-special-blue !important
 			background: Button-bg-color-special-blue !important
+			color: Button-border-size-special-blue !important
 			&:hover
 				background: Button-hover-bg-color-special-blue !important
 			padding: (Padding-height - Button-border-size-special-blue) (Padding-width - Button-border-size-special-blue)
 		&[style*="background-color: rgba(231\, 76\, 60\, 0);"],&[style*="background-color: rgba(231\, 76\, 60\, 0.1);"]
 			border: Button-border-size-special-red solid Button-border-color-special-red !important
 			background: Button-bg-color-special-red !important
+			color: Button-border-size-special-red !important
 			&:hover
 				background: Button-hover-bg-color-special-red !important
 			padding: (Padding-height - Button-border-size-special-red) (Padding-width - Button-border-size-special-red)
@@ -1026,6 +1040,8 @@ Tab 选中也可以 hover（不建议）
 	
 	A-hover-ani = set_default_value(A-hover-ani,0.15s ease-out)
 
+	Button-default-color = set_default_value(Button-default-color,#fff)
+
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -1302,7 +1318,6 @@ Tab 选中也可以 hover（不建议）
 	.CodeMirror-cursor,.cm-layer.cm-layer-above.cm-cursorLayer>.cm-cursor.cm-cursor-primary
 		border-color: Input-text-color !important
 	.mp-editor-menu>li>a,.cs-header > .cs-toolbar .cs-toolbar-tool-button
-		border: Markdown-button-hover-border !important
 		&:not(:hover),&:not(:hover) *
 			border-color: Markdown-bg-color !important
 
@@ -1315,7 +1330,9 @@ Tab 选中也可以 hover（不建议）
 				color: Markdown-button-hover-text-color !important
 			& svg path
 				fill: Markdown-button-hover-text-color !important
-			
+	.mp-editor-menu>li>a
+		border: Markdown-button-hover-border !important
+		&:hover
 			background: Markdown-button-hover-bg-color !important
 
 	// 题目限制文字
@@ -1829,6 +1846,18 @@ Tab 选中也可以 hover（不建议）
 				&:hover
 					transform: translateY(- Problem-tag-hover-trans);
 					box-shadow: Problem-tag-hover-shadow;
+
+	// 更好的洛谷 Markdown 按钮样式
+	if Better-Markdown-button
+		.mp-dialog-button[type*="button"],.cs-dialog-submit-area>:first-child
+			blue_button_patch(Button-padding-width,Button-padding-height)
+			line-height: 1.5 !important // 统一新老前端标准
+			transition: background Button-hover-ani \, border-color Button-hover-ani !important
+		.mp-dialog-button[type*="submit"],.cs-dialog-submit-area>:last-child
+			red_button_patch(Button-padding-width,Button-padding-height)
+			line-height: 1.5 !important // 统一新老前端标准
+			transition: background Button-hover-ani \, border-color Button-hover-ani !important
+		
 
 	// 各种小 bug 的修复
 	.load-more
