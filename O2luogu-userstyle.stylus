@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.3.0
+@version      2.0.3.1
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -38,6 +38,7 @@
 @var	checkbox Better-Header-ani "Header 出现动画" 1
 @var	checkbox Better-Header-text-ani "Header 文字出现动画" 1
 @var	checkbox Better-User-nav "更好的个人信息框" 1
+@var	checkbox Better-problem-bar "更好的题库选择条" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -369,6 +370,17 @@
 @var	text Header-ani "Header 动画效果" "Default"
 @var	text Header-text-ani-padding "Header 文字动画初始向下位置" "Default"
 @var	text Header-text-ani "Header 文字动画效果" "Default"
+
+
+@var	text Problem-select-bar-bg-color "题库选择条背景色" "Default"
+@var	text Problem-select-bar-active-bg-color "题库选择条选中背景色" "Default"
+@var	text Problem-select-bar-text-color "题库选择条透明背景文字色" "Default"
+@var	text Problem-select-bar-hbg-text-color "题库选择条文字色" "Default"
+@var	text Problem-select-bar-active-text-color "题库选择条选中文字色" "Default"
+@var	text Problem-select-bar-text-hover-color "题库选择条透明背景文字 hover 色" "Default"
+@var	text Problem-select-bar-hbg-text-hover-color "题库选择条文字 hover 色" "Default"
+@var	text Problem-select-bar-text-hover-ani "题库选择条文字 hover 动画" "Default"
+@var	text Problem-select-bar-bg-hover-ani "题库选择条背景 hover 动画" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -1070,6 +1082,19 @@ Tab 选中也可以 hover（不建议）
 	Header-ani = set_default_value(Header-ani,0.75s ease)
 	Header-text-ani-padding = set_default_value(Header-text-ani-padding,100px)
 	Header-text-ani = set_default_value(Header-text-ani,0.75s ease)
+
+	Problem-select-bar-bg-color = set_default_value(Problem-select-bar-bg-color,#e0f7ff)
+	Problem-select-bar-active-bg-color = set_default_value(Problem-select-bar-active-bg-color,#3498db)
+	Problem-select-bar-text-color = set_default_value(Problem-select-bar-text-color,Introduce-color)
+	Problem-select-bar-hbg-text-color = set_default_value(Problem-select-bar-hbg-text-color,#3498db)
+	Problem-select-bar-active-text-color = set_default_value(Problem-select-bar-active-text-color,#fff)
+	Problem-select-bar-hbg-text-hover-color = set_default_value(Problem-select-bar-hbg-text-hover-color,#0056b3)
+	if DarkMode
+		Problem-select-bar-text-hover-color = set_default_value(Problem-select-bar-text-hover-color,#fff)
+	else
+		Problem-select-bar-text-hover-color = set_default_value(Problem-select-bar-text-hover-color,#000)
+	Problem-select-bar-text-hover-ani = set_default_value(Problem-select-bar-text-hover-ani,0.6s ease)
+	Problem-select-bar-bg-hover-ani = set_default_value(Problem-select-bar-bg-hover-ani,0.6s ease)
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -1923,6 +1948,40 @@ Tab 选中也可以 hover（不建议）
 		.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
 			& .lfe-h1
 				animation: ShowTop Header-text-ani
+
+	// 题库条设置
+	.card > section .block > .block-item.category
+		&>.luogu>li
+			color: Problem-select-bar-hbg-text-color !important
+			background: Problem-select-bar-bg-color !important
+			&:hover
+				color: Problem-select-bar-hbg-text-hover-color !important
+		&>.remote>li
+			color: Problem-select-bar-text-color !important
+			&:hover
+				color: Problem-select-bar-text-hover-color !important
+		& li
+			transition: color Problem-select-bar-text-hover-ani,background Problem-select-bar-bg-hover-ani !important
+			background: transparent !important
+		if !Better-problem-bar
+			&>ul>li.selected
+				color: Problem-select-bar-active-text-color !important
+				background: Problem-select-bar-active-bg-color !important
+				&:hover
+					color: Problem-select-bar-active-text-color !important
+		else
+			&:not(:hover)
+				&>ul>li.selected
+					color: Problem-select-bar-active-text-color !important
+					background: Problem-select-bar-active-bg-color !important
+					&:hover
+						color: Problem-select-bar-active-text-color !important
+			& li:hover
+				color: Problem-select-bar-active-text-color !important
+				background: Problem-select-bar-active-bg-color !important
+				&:hover
+					color: Problem-select-bar-active-text-color !important
+
 
 	// 各种小 bug 的修复
 	.load-more
