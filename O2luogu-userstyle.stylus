@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.2.2
+@version      2.0.3.0
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -35,7 +35,8 @@
 @var	checkbox Hide-testcase-load "评测结果加载缓冲" 1
 @var	checkbox Better-problem-tag "更好的题目 tag 渲染" 1
 @var	checkbox Better-Markdown-button "Markdown 编辑器确认取消按钮洛谷样式化" 1
-@var	checkbox Better-Markdown-button "Markdown 编辑器确认取消按钮洛谷样式化" 1
+@var	checkbox Better-Header-ani "Header 出现动画" 1
+@var	checkbox Better-Header-text-ani "Header 文字出现动画" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -360,6 +361,13 @@
 @var	text Username-color-5 "红名文字色" "Default"
 @var	text Username-color-6 "紫名文字色" "Default"
 
+@var	text Input-active-ani "输入框 active 动画" "Default"
+
+@var	text Header-ani-padding "Header 动画初始向下位置" "Default"
+@var	text Header-ani "Header 动画效果" "Default"
+@var	text Header-text-ani-padding "Header 文字动画初始向下位置" "Default"
+@var	text Header-text-ani "Header 文字动画效果" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -368,6 +376,7 @@
 @var	checkbox bug-fix6 "[bug-fix] 查找记录输入框边框 focus 样式异常" 1
 @var	checkbox bug-fix7 "[bug-fix] 查找题单界面题单选择栏对齐异常" 1
 @var	checkbox bug-fix8 "[bug-fix] 新前端代码选择框选择后文字颜色异常" 1
+@var	checkbox bug-fix9 "[bug-fix] 洛谷标题文字和新前端卡片用户名极端情况下被裁剪" 1
 
 ==/UserStyle== */
 
@@ -390,14 +399,6 @@
 图标 hover
 更改排行榜的 id 宽度
 
-题库选择条，算法来源 hover
-hover 配色，hover 动画
-选择框 hover 色
-评论样式
-初等动画效果
-隐藏广告
-广告阴影化
-
 阴影化 v2
 实现页首页尾自定义v2
 主页通过栏（无法实现）
@@ -418,7 +419,7 @@ Tab 选中也可以 hover（不建议）
 		Card_L2 = ".am-panel,.inner-card,.discuss-container .discuss,.swal2-validation-message" // 二级卡片
 		Card_float = "#app > nav.lfe-body .popup,.user-nav .center,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog" // 悬浮卡片
 		Hover_card_float = "#app > nav.lfe-body .popup a,.dropdown-operations li,.dropdown li,.candidates li,.am-modal-footer"
-		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header" // 标题文字
+		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I" // 标题文字
 		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5" // 正文文字
 		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name" // 陈述文字
 		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label" // 介绍文字
@@ -427,7 +428,7 @@ Tab 选中也可以 hover（不建议）
 		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 操作文字
 		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 可选中操作文字
 		Hover-A = ".action>a,.center>footer>a,.am-panel-primary .am-panel-title a" // 选中超链接
-		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a" // 强制超链接
+		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a,span.C.G" // 强制超链接
 		ColorfulLabel = ".difficulty a.color-default[colorscheme='default']>span,.box>span.lfe-caption,span.lfe-caption.tag,a.tag.color-none>span,.difficulty-tags>.row>span.lfe-caption,.difficulty>span.lfe-caption,a.status-link>span.lfe-caption,.lfe-caption.tag>span,.author-margin>.lfe-caption,.team-authority,.inner-card span.lfe-caption[style*='color:'],.status>.lfe-caption" // 标签
 		GrayLabel = '.card.info-card.center.padding-default .tags>span.tag[style*="rgb(232"]:not(.selected),.inner-card>.row>div>span.lfe-caption,.card.log.padding-default li span.lfe-caption' // 灰度标签
 		Topic-type-Label = ".tags-wrap.multiline>a>span,.card.info-card.center.padding-default .tag-select-area .tags>span.tag,.block-item.tag" // 题目类型标签
@@ -522,14 +523,16 @@ Tab 选中也可以 hover（不建议）
 		&[style*="background-color: rgba(52\, 152\, 219\, 0);"],&[style*="background-color: rgba(52\, 152\, 219\, 0.1);"] // TODO：改掉这沟槽的东西
 			border: Button-border-size-special-blue solid Button-border-color-special-blue !important
 			background: Button-bg-color-special-blue !important
-			color: Button-border-size-special-blue !important
+			&,& *
+				color: Button-border-color-special-blue !important
 			&:hover
 				background: Button-hover-bg-color-special-blue !important
 			padding: (Padding-height - Button-border-size-special-blue) (Padding-width - Button-border-size-special-blue)
 		&[style*="background-color: rgba(231\, 76\, 60\, 0);"],&[style*="background-color: rgba(231\, 76\, 60\, 0.1);"]
 			border: Button-border-size-special-red solid Button-border-color-special-red !important
 			background: Button-bg-color-special-red !important
-			color: Button-border-size-special-red !important
+			&,& *
+				color: Button-border-color-special-red !important
 			&:hover
 				background: Button-hover-bg-color-special-red !important
 			padding: (Padding-height - Button-border-size-special-red) (Padding-width - Button-border-size-special-red)
@@ -1059,6 +1062,12 @@ Tab 选中也可以 hover（不建议）
 	Username-color-5 = set_default_value(Username-color-5,#fe4c61)
 	Username-color-6 = set_default_value(Username-color-6,#8e44ad)
 
+	Input-active-ani = set_default_value(Input-active-ani,0.3s ease-out)
+	Header-ani-padding = set_default_value(Header-ani-padding,30px)
+	Header-ani = set_default_value(Header-ani,0.75s ease)
+	Header-text-ani-padding = set_default_value(Header-text-ani-padding,100px)
+	Header-text-ani = set_default_value(Header-text-ani,0.75s ease)
+
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -1121,6 +1130,7 @@ Tab 选中也可以 hover（不建议）
 		use_depend_list(color,(Input-text-color),1);
 		use_depend_list(border-color,(Input-border-color Input-text-color),1)
 		border-radius: Inputbox-radius !important if Custom-Inputbox
+		transition: border-color Input-active-ani !important
 		&:focus
 			use_depend_list(background-color,(Input-focus-bg-color Card-bg-color-L2),1)
 		&::placeholder
@@ -1158,9 +1168,6 @@ Tab 选中也可以 hover（不建议）
 		box-shadow: Card-L1-shadow !important
 		transition: box-shadow Card-L1-hover-transition
 
-		word-wrap: break-word
-		word-break: break-all
-
 		&:hover
 			box-shadow: Card-L1-hover-shadow !important
 	
@@ -1169,10 +1176,7 @@ Tab 选中也可以 hover（不建议）
 		background: Card-bg-color-L2 !important
 		border-radius: Card-L2-radius if Custom-Card
 		border-color: L2-Card-border !important
-
-		word-wrap: break-word
-		word-break: break-all
-
+	
 	// 悬浮 Card 样式修改
 	{Card_float}
 		border: none !important
@@ -1619,6 +1623,10 @@ Tab 选中也可以 hover（不建议）
 	// 页首修改
 	.main-container > .wrapper.wrapped.lfe-body:has(>.header) > .background,.main-container > header.theme-bg
 		background: Header-bg-color !important
+		if bug-fix9
+			& .lfe-h1
+				overflow: visible 
+
 	
 	// 页尾修改
 	.main-container > .wrapper.wrapped.lfe-body:has(>.footer),.main-container > footer.theme-bg
@@ -1876,18 +1884,40 @@ Tab 选中也可以 hover（不建议）
 			transition: background Button-hover-ani \, border-color Button-hover-ani !important
 
 	{Username} // 洛谷用户 id
-		&[style*="color: rgb(191\, 191\, 191);"]
+		&[style*="color: rgb(191\, 191\, 191);"],&[style*="color: var(--lfe-color--grey-3);"]
 			color: Username-color-1 !important
-		&[style*="color: rgb(52\, 152\, 219);"]
+		&[style*="color: rgb(52\, 152\, 219);"],&[style*="color: var(--lfe-color--blue-3);"]
 			color: Username-color-2 !important
-		&[style*="color: rgb(82\, 196\, 26);"]
+		&[style*="color: rgb(82\, 196\, 26);"],&[style*="color: var(--lfe-color--green-3);"]
 			color: Username-color-3 !important
-		&[style*="color: rgb(243\, 156\, 17);"]
+		&[style*="color: rgb(243\, 156\, 17);"],&[style*="color: var(--lfe-color--orange-3);"]
 			color: Username-color-4 !important
-		&[style*="color: rgb(254\, 76\, 97);"]
+		&[style*="color: rgb(254\, 76\, 97);"],&[style*="color: var(--lfe-color--red-3);"]
 			color: Username-color-5 !important
-		&[style*="color: rgb(157\, 61\, 207);"]
+		&[style*="color: rgb(157\, 61\, 207);"],&[style*="color: var(--lfe-color--purple-3);"]
 			color: Username-color-6 !important
+
+	// Header 出现动画
+	if Better-Header-ani
+		@keyframes Header-anim
+			from
+				padding-bottom: Header-ani-padding
+			to 
+				padding-bottom: 0px
+		.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
+			animation: Header-anim Header-ani
+
+	if Better-Header-text-ani
+		@keyframes ShowTop
+			from
+				opacity: 0
+				margin-left: - Header-text-ani-padding
+			to 
+				opacity: 1
+				margin-left: 0px
+		.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
+			& .lfe-h1
+				animation: ShowTop Header-text-ani
 
 	// 各种小 bug 的修复
 	.load-more
@@ -1940,6 +1970,10 @@ Tab 选中也可以 hover（不建议）
 	if bug-fix8
 		.hljs::selection, .hljs ::selection
 			color: unset !important
+	
+	if bug-fix9
+		.user-info .luogu-username>.name
+			overflow: visible !important
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/solution|ranking).*$")
 	use_new_bar()
