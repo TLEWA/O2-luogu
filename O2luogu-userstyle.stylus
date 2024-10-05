@@ -1956,7 +1956,7 @@ Tab 选中也可以 hover（不建议）
 			background: Problem-select-bar-bg-color !important
 			&:hover
 				color: Problem-select-bar-hbg-text-hover-color !important
-		&>.remote>li
+		&>.remote>li,&>.all>li
 			color: Problem-select-bar-text-color !important
 			&:hover
 				color: Problem-select-bar-text-hover-color !important
