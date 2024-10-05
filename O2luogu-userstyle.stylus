@@ -382,6 +382,8 @@
 @var	text Problem-select-bar-text-hover-ani "题库选择条文字 hover 动画" "Default"
 @var	text Problem-select-bar-bg-hover-ani "题库选择条背景 hover 动画" "Default"
 
+@var	text Input-active-shadow "输入框 active 阴影" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -428,7 +430,7 @@ Tab 选中也可以 hover（不建议）
 	False = "False"
 
 	// 选择器
-		Main_Inputbox = "input[type=text],input[type=password],textarea#feed-content,.input-wrap,.combo-wrapper>.text,.CodeMirror-code pre.CodeMirror-line,textarea,.mp-dialog-input>input,select,.refined-input.text,.input-group>input" // 主流样式的输入框
+		Main_Inputbox = "input[type=text],input[type=password],textarea#feed-content,.input-wrap,.combo-wrapper>.text,.CodeMirror-code pre.CodeMirror-line,textarea,.mp-dialog-input>input,select,.refined-input.text,.input-group>input,textarea.lfe-form-sz-middle" // 主流样式的输入框
 		Card_L1 = ".lg-article, .lg-article-sub, .lg-article-nctrl, .card, .float-bottom,.l-card" // 一级卡片
 		Card_L2 = ".am-panel,.inner-card,.discuss-container .discuss,.swal2-validation-message" // 二级卡片
 		Card_float = "#app > nav.lfe-body .popup,.user-nav .center,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog" // 悬浮卡片
@@ -1096,6 +1098,8 @@ Tab 选中也可以 hover（不建议）
 	Problem-select-bar-text-hover-ani = set_default_value(Problem-select-bar-text-hover-ani,0.6s ease)
 	Problem-select-bar-bg-hover-ani = set_default_value(Problem-select-bar-bg-hover-ani,0.6s ease)
 
+	Input-active-shadow = set_default_value(Input-active-shadow,inset 0 1px 1px rgba(0,0,0,.075)\,0 0 5px rgba(59,180,242,.3))
+
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -1158,13 +1162,14 @@ Tab 选中也可以 hover（不建议）
 		use_depend_list(color,(Input-text-color),1);
 		use_depend_list(border-color,(Input-border-color Input-text-color),1)
 		border-radius: Inputbox-radius !important if Custom-Inputbox
-		transition: border-color Input-active-ani !important
+		transition: border-color Input-active-ani,box-shadow Input-active-ani !important
 		&:focus
 			use_depend_list(background-color,(Input-focus-bg-color Card-bg-color-L2),1)
 		&::placeholder
 			use_depend_list(color,(Input-placeholder-color));
 		&:focus,&.focused
 			border-color: Input-focus-border-color !important
+			box-shadow: Input-active-shadow !important
 	
 	// #409eff
 
