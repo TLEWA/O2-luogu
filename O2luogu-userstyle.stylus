@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.1.4
+@version      2.0.2.1
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -33,6 +33,8 @@
 @var	checkbox Better-control-nav "更好的主页广告翻页选择点" 1
 @var	checkbox Hide-AD "隐藏洛谷边栏广告" 0
 @var	checkbox Hide-testcase-load "评测结果加载缓冲" 1
+@var	checkbox Better-problem-tag "更好的题目 tag 渲染" 1
+@var	checkbox Better-Markdown-button "Markdown 编辑器确认取消按钮洛谷样式化" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -341,6 +343,15 @@
 
 @var	text Select-button-hover-bg-color "题库主页算法难度选择按钮背景色" "Default"
 
+@var	text Problem-tag-radius "problem tag 圆角样式" "Default"
+@var	text Problem-tag-padding "problem tag padding 样式" "Default"
+@var	text Problem-tag-ani "problem tag 动画效果" "Default"
+@var	text Problem-tag-hover-trans "problem tag hover 上移距离" "Default"
+@var	text Problem-tag-hover-shadow "problem tag hover 阴影" "Default"
+
+@var	text A-hover-ani "超链接 hover 动画" "Default"
+@var	text Button-default-color "按钮默认文字色" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -366,7 +377,9 @@
 开发待办事项：
 
 勾子颜色，名字颜色自定义
-提交代码框选择条
+普及 hover 动画
+图标 hover
+更改排行榜的 id 宽度
 
 题库选择条，算法来源 hover
 hover 配色，hover 动画
@@ -382,6 +395,7 @@ hover 配色，hover 动画
 Tab 选中也可以 hover（不建议）
 私信框自定义背景
 确定键长按
+提交代码框 bug 修复
 */
 
 // 常量
@@ -408,7 +422,7 @@ Tab 选中也可以 hover（不建议）
 		ColorfulLabel = ".difficulty a.color-default[colorscheme='default']>span,.box>span.lfe-caption,span.lfe-caption.tag,a.tag.color-none>span,.difficulty-tags>.row>span.lfe-caption,.difficulty>span.lfe-caption,a.status-link>span.lfe-caption,.lfe-caption.tag>span,.author-margin>.lfe-caption,.team-authority,.inner-card span.lfe-caption[style*='color:'],.status>.lfe-caption" // 标签
 		GrayLabel = '.card.info-card.center.padding-default .tags>span.tag[style*="rgb(232"]:not(.selected),.inner-card>.row>div>span.lfe-caption,.card.log.padding-default li span.lfe-caption' // 灰度标签
 		Topic-type-Label = ".tags-wrap.multiline>a>span,.card.info-card.center.padding-default .tag-select-area .tags>span.tag,.block-item.tag" // 题目类型标签
-		Topic-difficulty-Label = ".difficulty span.lfe-caption,.difficulty-tags span.lfe-caption,.block-item.tag" // 题目难度标签
+		Topic-difficulty-Label = ".difficulty a span.lfe-caption,.difficulty span.lfe-caption,.difficulty-tags span.lfe-caption,.block-item.tag" // 题目难度标签
 		InLine-code-block = "[class*='marked'] code,.am-comment-bd p>code" // 行内代码块
 		Code-block = "pre:not([mp-editor-container],.CodeMirror-line)" // 代码块
 		Discuss = ".row-wrap > .card.comment.padding-default, .log,.article-comment .l-card.reply-item" // 讨论区评论
@@ -459,28 +473,38 @@ Tab 选中也可以 hover（不建议）
 		transform:translateX(-10000px) !important
 		filter: drop-shadow(10000px 0px 0px Color) !important
 
+	blue_button_patch(Padding-width,Padding-height)
+		border: Button-border-size-blue solid Button-bg-color-blue !important
+		background: Button-bg-color-blue !important
+		color: Button-default-color !important
+		&:hover
+			border: Button-border-size-blue solid Button-hover-bg-color-blue !important
+			background: Button-hover-bg-color-blue !important
+		padding: (Padding-height - Button-border-size-blue) (Padding-width - Button-border-size-blue)
+
+	red_button_patch(Padding-width,Padding-height)
+		border: Button-border-size-red solid Button-bg-color-red !important
+		background: Button-bg-color-red !important
+		color: Button-default-color !important
+		&:hover
+			border: Button-border-size-blue solid Button-hover-bg-color-red !important
+			background: Button-hover-bg-color-red !important
+		padding: (Padding-height - Button-border-size-red) (Padding-width - Button-border-size-red)
+
 	// TODO：v2.0
 	use_button_style(Padding-width,Padding-height)
 		line-height: 1.5 !important // 统一新老前端标准
 		transition: background Button-hover-ani \, border-color Button-hover-ani !important
+
 		// 蓝色按钮
 		&.am-btn-primary,&[style*="background-color: rgb(52\, 152\, 219);"],&[style*="background-color: rgba(52\, 152\, 219\, 0.9);"],&.solid,&#go.submit
-			border: Button-border-size-blue solid Button-bg-color-blue !important
-			background: Button-bg-color-blue !important
-			&:hover
-				border: Button-border-size-blue solid Button-hover-bg-color-blue !important
-				background: Button-hover-bg-color-blue !important
-			padding: (Padding-height - Button-border-size-blue) (Padding-width - Button-border-size-blue)
+			blue_button_patch(Padding-width,Padding-height)
 		&.am-btn-danger,&.lcolor-var-red-3.solid,&[style*="background-color: rgb(231\, 76\, 60);"]
-			border: Button-border-size-red solid Button-bg-color-red !important
-			background: Button-bg-color-red !important
-			&:hover
-				border: Button-border-size-blue solid Button-hover-bg-color-red !important
-				background: Button-hover-bg-color-red !important
-			padding: (Padding-height - Button-border-size-red) (Padding-width - Button-border-size-red)
+			red_button_patch(Padding-width,Padding-height)
 		&[style*="background-color: rgba(0\, 0\, 0\, 0.5);"]
 			border: Button-border-size-black solid Button-border-color-black !important
 			background: Button-bg-color-black !important
+			color: Button-default-color !important
 			&:hover
 				background: Button-hover-bg-color-black !important
 				opacity: 1 !important
@@ -488,12 +512,14 @@ Tab 选中也可以 hover（不建议）
 		&[style*="background-color: rgba(52\, 152\, 219\, 0);"],&[style*="background-color: rgba(52\, 152\, 219\, 0.1);"] // TODO：改掉这沟槽的东西
 			border: Button-border-size-special-blue solid Button-border-color-special-blue !important
 			background: Button-bg-color-special-blue !important
+			color: Button-border-size-special-blue !important
 			&:hover
 				background: Button-hover-bg-color-special-blue !important
 			padding: (Padding-height - Button-border-size-special-blue) (Padding-width - Button-border-size-special-blue)
 		&[style*="background-color: rgba(231\, 76\, 60\, 0);"],&[style*="background-color: rgba(231\, 76\, 60\, 0.1);"]
 			border: Button-border-size-special-red solid Button-border-color-special-red !important
 			background: Button-bg-color-special-red !important
+			color: Button-border-size-special-red !important
 			&:hover
 				background: Button-hover-bg-color-special-red !important
 			padding: (Padding-height - Button-border-size-special-red) (Padding-width - Button-border-size-special-red)
@@ -852,7 +878,7 @@ Tab 选中也可以 hover（不建议）
 		UpdEditer-linenumber-color = set_default_value(UpdEditer-linenumber-color,#999999)
 		UpdEditer-bg-color = set_default_value(UpdEditer-bg-color,#fff)
 
-		Select-button-hover-bg-color = set_default_value(Select-button-hover-bg-color,#f9f9f9)
+		Select-button-hover-bg-color = set_default_value(Select-button-hover-bg-color,#f6f6f6)
 
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
@@ -999,10 +1025,22 @@ Tab 选中也可以 hover（不建议）
 	Difficulty-text-color-7 = set_default_value(Difficulty-text-color-7,Topic-difficulty-Label-7)
 	Difficulty-text-color-8 = set_default_value(Difficulty-text-color-8,Topic-difficulty-Label-8)
 
+	Problem-tag-radius = set_default_value(Problem-tag-radius,5px)
+	Problem-tag-padding = set_default_value(Problem-tag-padding,0.5px 9px)
+	Problem-tag-ani = set_default_value(Problem-tag-ani,0.15s ease-out)
+	Problem-tag-hover-trans = set_default_value(Problem-tag-hover-trans,1px)
+	if DarkMode
+		Problem-tag-hover-shadow = set_default_value(Problem-tag-hover-shadow,none)
+	Problem-tag-hover-shadow = set_default_value(Problem-tag-hover-shadow,0 4px 6px rgba(50,50,93,.11)\, 0 1px 3px rgba(0,0,0,.08))
+
 	if Better-Benben-Tab
 		Benben-tab-height = set_default_value(Benben-tab-height,50px)
 	else
 		Benben-tab-height = set_default_value(Benben-tab-height,36.8px)
+	
+	A-hover-ani = set_default_value(A-hover-ani,0.15s ease-out)
+
+	Button-default-color = set_default_value(Button-default-color,#fff)
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -1141,16 +1179,19 @@ Tab 选中也可以 hover（不建议）
 	// 超链接样式修改
 	a,.color-default[data-v-0640126c], .color-default-noline[data-v-0640126c]
 		color: A-color
+		transition: color A-hover-ani !important
 		&:hover
 			color: A-hover-color
 
 	{A}
 		color: A-color !important
+		transition: color A-hover-ani !important
 		&:hover
 			color: A-hover-color !important
 
 	// Hover 超链接样式修改
 	{Hover-A}
+		transition: color A-hover-ani !important
 		&:hover
 			color: A-hover-color !important
 
@@ -1277,7 +1318,6 @@ Tab 选中也可以 hover（不建议）
 	.CodeMirror-cursor,.cm-layer.cm-layer-above.cm-cursorLayer>.cm-cursor.cm-cursor-primary
 		border-color: Input-text-color !important
 	.mp-editor-menu>li>a,.cs-header > .cs-toolbar .cs-toolbar-tool-button
-		border: Markdown-button-hover-border !important
 		&:not(:hover),&:not(:hover) *
 			border-color: Markdown-bg-color !important
 
@@ -1290,7 +1330,9 @@ Tab 选中也可以 hover（不建议）
 				color: Markdown-button-hover-text-color !important
 			& svg path
 				fill: Markdown-button-hover-text-color !important
-			
+	.mp-editor-menu>li>a
+		border: Markdown-button-hover-border !important
+		&:hover
 			background: Markdown-button-hover-bg-color !important
 
 	// 题目限制文字
@@ -1792,6 +1834,30 @@ Tab 选中也可以 hover（不建议）
 
 	.block-item.select-button.lfe-form-sz-middle:hover
 		background: Select-button-hover-bg-color !important
+
+	// 更好的题目 tag 渲染
+	if Better-problem-tag
+		{Topic-difficulty-Label} \, .tag.color-none>span.lfe-caption
+			&[style*="color"]
+				border-radius: Problem-tag-radius !important
+				padding: Problem-tag-padding
+				transition: all Problem-tag-ani
+				line-height: 1.5
+				&:hover
+					transform: translateY(- Problem-tag-hover-trans);
+					box-shadow: Problem-tag-hover-shadow;
+
+	// 更好的洛谷 Markdown 按钮样式
+	if Better-Markdown-button
+		.mp-dialog-button[type*="button"],.cs-dialog-submit-area>:first-child
+			blue_button_patch(Button-padding-width,Button-padding-height)
+			line-height: 1.5 !important // 统一新老前端标准
+			transition: background Button-hover-ani \, border-color Button-hover-ani !important
+		.mp-dialog-button[type*="submit"],.cs-dialog-submit-area>:last-child
+			red_button_patch(Button-padding-width,Button-padding-height)
+			line-height: 1.5 !important // 统一新老前端标准
+			transition: background Button-hover-ani \, border-color Button-hover-ani !important
+		
 
 	// 各种小 bug 的修复
 	.load-more
