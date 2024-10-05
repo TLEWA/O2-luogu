@@ -35,6 +35,7 @@
 @var	checkbox Hide-testcase-load "评测结果加载缓冲" 1
 @var	checkbox Better-problem-tag "更好的题目 tag 渲染" 1
 @var	checkbox Better-Markdown-button "Markdown 编辑器确认取消按钮洛谷样式化" 1
+@var	checkbox Better-Markdown-button "Markdown 编辑器确认取消按钮洛谷样式化" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -352,6 +353,13 @@
 @var	text A-hover-ani "超链接 hover 动画" "Default"
 @var	text Button-default-color "按钮默认文字色" "Default"
 
+@var	text Username-color-1 "灰名文字色" "Default"
+@var	text Username-color-2 "蓝名文字色" "Default"
+@var	text Username-color-3 "绿名文字色" "Default"
+@var	text Username-color-4 "橙名文字色" "Default"
+@var	text Username-color-5 "红名文字色" "Default"
+@var	text Username-color-6 "紫名文字色" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -359,6 +367,7 @@
 @var	checkbox bug-fix5 "[bug-fix] 私信 '加载更多' 文字位置异常" 1
 @var	checkbox bug-fix6 "[bug-fix] 查找记录输入框边框 focus 样式异常" 1
 @var	checkbox bug-fix7 "[bug-fix] 查找题单界面题单选择栏对齐异常" 1
+@var	checkbox bug-fix8 "[bug-fix] 新前端代码选择框选择后文字颜色异常" 1
 
 ==/UserStyle== */
 
@@ -414,11 +423,11 @@ Tab 选中也可以 hover（不建议）
 		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name" // 陈述文字
 		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label" // 介绍文字
 		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.stat>.field,.difficulty-tags,.difficulty-tags>.row,div[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
-		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.cs-close-container" // 杂项图标
+		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.cs-close-container,.container .close path" // 杂项图标
 		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 操作文字
 		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 可选中操作文字
 		Hover-A = ".action>a,.center>footer>a,.am-panel-primary .am-panel-title a" // 选中超链接
-		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a" // 强制超链接
+		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a" // 强制超链接
 		ColorfulLabel = ".difficulty a.color-default[colorscheme='default']>span,.box>span.lfe-caption,span.lfe-caption.tag,a.tag.color-none>span,.difficulty-tags>.row>span.lfe-caption,.difficulty>span.lfe-caption,a.status-link>span.lfe-caption,.lfe-caption.tag>span,.author-margin>.lfe-caption,.team-authority,.inner-card span.lfe-caption[style*='color:'],.status>.lfe-caption" // 标签
 		GrayLabel = '.card.info-card.center.padding-default .tags>span.tag[style*="rgb(232"]:not(.selected),.inner-card>.row>div>span.lfe-caption,.card.log.padding-default li span.lfe-caption' // 灰度标签
 		Topic-type-Label = ".tags-wrap.multiline>a>span,.card.info-card.center.padding-default .tag-select-area .tags>span.tag,.block-item.tag" // 题目类型标签
@@ -427,7 +436,7 @@ Tab 选中也可以 hover（不建议）
 		Code-block = "pre:not([mp-editor-container],.CodeMirror-line)" // 代码块
 		Discuss = ".row-wrap > .card.comment.padding-default, .log,.article-comment .l-card.reply-item" // 讨论区评论
 		Badge = ".am-badge,.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span" // 用户 Tag
-		Button = ".lfe-form-sz-middle,.am-btn,.lform-size-middle,.lform-sz-middle,#go.submit" // 中型按钮
+		Button = ".lfe-form-sz-middle,.am-btn,.lform-size-middle,.lform-sz-middle,a[href*='http']>#go" // 中型按钮
 		Small-Button = ".lfe-form-sz-small,.lform-sz-small,.lform-size-small,.copy-btn,.copy-btn.lfe-form-sz-middle" // 小型按钮
 
 // 全局工具函数
@@ -497,7 +506,7 @@ Tab 选中也可以 hover（不建议）
 		transition: background Button-hover-ani \, border-color Button-hover-ani !important
 
 		// 蓝色按钮
-		&.am-btn-primary,&[style*="background-color: rgb(52\, 152\, 219);"],&[style*="background-color: rgba(52\, 152\, 219\, 0.9);"],&.solid,&#go.submit
+		&.am-btn-primary,&[style*="background-color: rgb(52\, 152\, 219);"],&[style*="background-color: rgba(52\, 152\, 219\, 0.9);"],&.solid,&#go
 			blue_button_patch(Padding-width,Padding-height)
 		&.am-btn-danger,&.lcolor-var-red-3.solid,&[style*="background-color: rgb(231\, 76\, 60);"]
 			red_button_patch(Padding-width,Padding-height)
@@ -1906,6 +1915,10 @@ Tab 选中也可以 hover（不建议）
 	if bug-fix7
 		.card:has(>section>.find-problem) b.desc.no-wrap
 			margin-right: 2.3em !important
+	
+	if bug-fix8
+		.hljs::selection, .hljs ::selection
+			color: unset !important
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/solution|ranking).*$")
 	use_new_bar()
