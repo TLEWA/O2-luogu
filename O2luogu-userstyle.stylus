@@ -1625,6 +1625,10 @@ Tab 选中也可以 hover（不建议）
 	// 页首修改
 	.main-container > .wrapper.wrapped.lfe-body:has(>.header) > .background,.main-container > header.theme-bg
 		background: Header-bg-color !important
+		if bug-fix9
+			& .lfe-h1
+				overflow: visible 
+
 	
 	// 页尾修改
 	.main-container > .wrapper.wrapped.lfe-body:has(>.footer),.main-container > footer.theme-bg
@@ -1946,6 +1950,10 @@ Tab 选中也可以 hover（不建议）
 	if bug-fix8
 		.hljs::selection, .hljs ::selection
 			color: unset !important
+	
+	if bug-fix9
+		.user-info .luogu-username>.name
+			overflow: visible !important
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/solution|ranking).*$")
 	use_new_bar()
