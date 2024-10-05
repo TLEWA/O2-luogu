@@ -1696,7 +1696,7 @@ Tab 选中也可以 hover（不建议）
 	.progress-frame
 		background: Progressframe-bg-color !important
 
-	.progress-frame > div
+	.progress-frame div[style*="background-color: rgb(52\, 152\, 219);"]
 		background-color: Progressframe-color !important
 	
 	if Better-problem-toolip
