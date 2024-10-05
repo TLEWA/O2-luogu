@@ -35,7 +35,6 @@
 @var	checkbox Hide-testcase-load "评测结果加载缓冲" 1
 @var	checkbox Better-problem-tag "更好的题目 tag 渲染" 1
 @var	checkbox Better-Markdown-button "Markdown 编辑器确认取消按钮洛谷样式化" 1
-@var	checkbox Better-Markdown-button "Markdown 编辑器确认取消按钮洛谷样式化" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -393,14 +392,6 @@
 图标 hover
 更改排行榜的 id 宽度
 
-题库选择条，算法来源 hover
-hover 配色，hover 动画
-选择框 hover 色
-评论样式
-初等动画效果
-隐藏广告
-广告阴影化
-
 阴影化 v2
 实现页首页尾自定义v2
 主页通过栏（无法实现）
@@ -525,14 +516,14 @@ Tab 选中也可以 hover（不建议）
 		&[style*="background-color: rgba(52\, 152\, 219\, 0);"],&[style*="background-color: rgba(52\, 152\, 219\, 0.1);"] // TODO：改掉这沟槽的东西
 			border: Button-border-size-special-blue solid Button-border-color-special-blue !important
 			background: Button-bg-color-special-blue !important
-			color: Button-border-size-special-blue !important
+			color: Button-border-color-special-blue !important
 			&:hover
 				background: Button-hover-bg-color-special-blue !important
 			padding: (Padding-height - Button-border-size-special-blue) (Padding-width - Button-border-size-special-blue)
 		&[style*="background-color: rgba(231\, 76\, 60\, 0);"],&[style*="background-color: rgba(231\, 76\, 60\, 0.1);"]
 			border: Button-border-size-special-red solid Button-border-color-special-red !important
 			background: Button-bg-color-special-red !important
-			color: Button-border-size-special-red !important
+			color: Button-border-color-special-red !important
 			&:hover
 				background: Button-hover-bg-color-special-red !important
 			padding: (Padding-height - Button-border-size-special-red) (Padding-width - Button-border-size-special-red)
@@ -1164,9 +1155,6 @@ Tab 选中也可以 hover（不建议）
 		box-shadow: Card-L1-shadow !important
 		transition: box-shadow Card-L1-hover-transition
 
-		word-wrap: break-word
-		word-break: break-all
-
 		&:hover
 			box-shadow: Card-L1-hover-shadow !important
 	
@@ -1175,10 +1163,7 @@ Tab 选中也可以 hover（不建议）
 		background: Card-bg-color-L2 !important
 		border-radius: Card-L2-radius if Custom-Card
 		border-color: L2-Card-border !important
-
-		word-wrap: break-word
-		word-break: break-all
-
+	
 	// 悬浮 Card 样式修改
 	{Card_float}
 		border: none !important
