@@ -313,6 +313,7 @@
 
 @var	text Text-selection-color "文字框选色" "Default"
 @var	text Codeblock-text-selection-color "代码块文字框选色" "Default"
+@var	text Markdown-text-selection-color "Markdown 编辑器文字框选色" "Default"
 
 @var	text Exlg-Codeheader-bg-color "exlg 代码块头部背景色" "Default"
 
@@ -440,12 +441,12 @@ Tab 选中也可以 hover（不建议）
 
 	// 选择器
 		Main_Inputbox = "input[type=text],input[type=password],textarea#feed-content,.input-wrap,.combo-wrapper>.text,.CodeMirror-code pre.CodeMirror-line,textarea,.mp-dialog-input>input,select,.refined-input.text,.input-group>input,textarea.lfe-form-sz-middle" // 主流样式的输入框
-		Card_L1 = ".lg-article, .lg-article-sub, .lg-article-nctrl, .card, .float-bottom,.l-card,.main-wrapper.theme-light" // 一级卡片
+		Card_L1 = ".lg-article, .lg-article-sub, .lg-article-nctrl, .card, .float-bottom,.l-card" // 一级卡片
 		Card_L2 = ".am-panel,.inner-card,.discuss-container .discuss,.swal2-validation-message" // 二级卡片
 		Card_float = "#app > nav.lfe-body .popup,.user-nav .center,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog" // 悬浮卡片
 		Hover_card_float = "#app > nav.lfe-body .popup a,.dropdown-operations li,.dropdown li,.candidates li,.am-modal-footer"
 		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I" // 标题文字
-		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light" // 正文文字
+		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner" // 正文文字
 		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name" // 陈述文字
 		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label" // 介绍文字
 		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.stat>.field,.difficulty-tags,.difficulty-tags>.row,div[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
@@ -760,11 +761,12 @@ Tab 选中也可以 hover（不建议）
 
 		Markdown-gutter-color = set_default_value(Markdown-gutter-color,#242c38)
 		Markdown-gutter-active-color = set_default_value(Markdown-gutter-active-color,#3e4752)
-		Markdown-line-active-color = set_default_value(Markdown-line-active-color,#596874)
+		Markdown-line-active-color = set_default_value(Markdown-line-active-color,#cceeff44)
 		Markdown-bg-color = set_default_value(Markdown-bg-color,#2f3741)
 
 		Text-selection-color = set_default_value(Text-selection-color,#474c63)
 		Codeblock-text-selection-color = set_default_value(Codeblock-text-selection-color,#264f78)
+		Markdown-text-selection-color = set_default_value(Markdown-text-selection-color,#264f78)
 
 		Control-nav-bg-color = set_default_value(Control-nav-bg-color,#a7a9ad)
 		Control-nav-active-bg-color = set_default_value(Control-nav-active-bg-color,#5e72e4)
@@ -901,11 +903,12 @@ Tab 选中也可以 hover（不建议）
 
 		Markdown-gutter-color = set_default_value(Markdown-gutter-color,#f7f7f7)
 		Markdown-gutter-active-color = set_default_value(Markdown-gutter-active-color,#e2f2ff)
-		Markdown-line-active-color = set_default_value(Markdown-line-active-color,#f1fbff)
+		Markdown-line-active-color = set_default_value(Markdown-line-active-color,#cceeff44)
 		Markdown-bg-color = set_default_value(Markdown-bg-color,#fff)
 
 		Text-selection-color = set_default_value(Text-selection-color,#afeeee)
 		Codeblock-text-selection-color = set_default_value(Codeblock-text-selection-color,#d6d6d6)
+		Markdown-text-selection-color = set_default_value(Markdown-text-selection-color,#d6d6d6)
 
 		Control-nav-bg-color = set_default_value(Control-nav-bg-color,#c4c6c9)
 		Control-nav-active-bg-color = set_default_value(Control-nav-active-bg-color,#3498db)
@@ -1404,6 +1407,21 @@ Tab 选中也可以 hover（不建议）
 	.CodeMirror-sizer
 		border-color: transparent !important
 
+	//.cm-scroller,.CodeMirror-scroll,.cm-scroller .ͼ4 .cm-line,.cm-scroller .cm-line
+	//	&,& *
+	//		&::selection
+	//			background-color: Markdown-text-selection-color !important
+	.cm-activeLine::selection,.cm-activeLine ::selection,.CodeMirror-line::selection, .CodeMirror-line>span::selection, .CodeMirror-line>span>span::selection
+		background-color: Markdown-text-selection-color !important
+	.cm-selectionBackground,.CodeMirror-selected
+		background: Markdown-text-selection-color !important
+
+	/*
+	.ͼ2 .cm-selectionBackground {background: #d9d9d9;}
+	.ͼ3 .cm-selectionBackground {background: #222;}
+	.ͼ2.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground {background: #d7d4f0;}
+	.ͼ3.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground {background: #233;}
+	*/
 
 	.CodeMirror-scroll
 		border-radius: 0 !important
@@ -2080,14 +2098,15 @@ Tab 选中也可以 hover（不建议）
 			padding-bottom: 14px
 			height: 27em
 			background:#ffffff3b !important
-
-
 	
 		#app > .lfe-body > div:has(.logo-wrap)
 			border-top-right-radius: 30px
 	
 	#app > .lfe-body 
 		box-shadow: SideBar-shadow !important
+
+	section>.block:has(>button.block-item) input
+		box-shadow: none !important
 
 	// 各种小 bug 的修复
 	.load-more
