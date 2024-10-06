@@ -40,6 +40,7 @@
 @var	checkbox Better-User-nav "更好的个人信息框(类 exlg 样式)" 1
 @var	checkbox Better-problem-bar "更好的题库选择条" 1
 @var	checkbox Better-Card-select-bar "更好的 Card 选择条" 1
+@var	checkbox Better-InputGroup "更统一的 InputGroup 样式" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -2039,6 +2040,14 @@ Tab 选中也可以 hover（不建议）
 					width: 100%
 			&:not(.selected):hover::before
 				animation: Card-select-bar-ani Card-select-bar-out-ani !important
+
+	if Better-InputGroup // 更统一的 InputGroup 样式
+		.input-group>:not(:last-child) input
+			height: 25px !important
+			padding: 1.75px 14px 1.75px 14px !important
+		.input-group>button:last-child
+			height: 30px !important
+			padding: 4px 18px !important
 
 	// 各种小 bug 的修复
 	.load-more
