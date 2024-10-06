@@ -37,7 +37,7 @@
 @var	checkbox Better-Markdown-button "Markdown 编辑器确认取消按钮洛谷样式化" 1
 @var	checkbox Better-Header-ani "Header 出现动画" 1
 @var	checkbox Better-Header-text-ani "Header 文字出现动画" 1
-@var	checkbox Better-User-nav "更好的个人信息框" 1
+@var	checkbox Better-User-nav "更好的个人信息框(类 exlg 样式)" 1
 @var	checkbox Better-problem-bar "更好的题库选择条" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
@@ -382,6 +382,8 @@
 @var	text Problem-select-bar-text-hover-ani "题库选择条文字 hover 动画" "Default"
 @var	text Problem-select-bar-bg-hover-ani "题库选择条背景 hover 动画" "Default"
 
+@var	text Input-active-shadow "输入框 active 阴影" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -428,7 +430,7 @@ Tab 选中也可以 hover（不建议）
 	False = "False"
 
 	// 选择器
-		Main_Inputbox = "input[type=text],input[type=password],textarea#feed-content,.input-wrap,.combo-wrapper>.text,.CodeMirror-code pre.CodeMirror-line,textarea,.mp-dialog-input>input,select,.refined-input.text,.input-group>input" // 主流样式的输入框
+		Main_Inputbox = "input[type=text],input[type=password],textarea#feed-content,.input-wrap,.combo-wrapper>.text,.CodeMirror-code pre.CodeMirror-line,textarea,.mp-dialog-input>input,select,.refined-input.text,.input-group>input,textarea.lfe-form-sz-middle" // 主流样式的输入框
 		Card_L1 = ".lg-article, .lg-article-sub, .lg-article-nctrl, .card, .float-bottom,.l-card" // 一级卡片
 		Card_L2 = ".am-panel,.inner-card,.discuss-container .discuss,.swal2-validation-message" // 二级卡片
 		Card_float = "#app > nav.lfe-body .popup,.user-nav .center,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog" // 悬浮卡片
@@ -1096,6 +1098,8 @@ Tab 选中也可以 hover（不建议）
 	Problem-select-bar-text-hover-ani = set_default_value(Problem-select-bar-text-hover-ani,0.6s ease)
 	Problem-select-bar-bg-hover-ani = set_default_value(Problem-select-bar-bg-hover-ani,0.6s ease)
 
+	Input-active-shadow = set_default_value(Input-active-shadow,inset 0 1px 1px rgba(0,0,0,.075)\,0 0 5px rgba(59,180,242,.3))
+
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -1158,13 +1162,14 @@ Tab 选中也可以 hover（不建议）
 		use_depend_list(color,(Input-text-color),1);
 		use_depend_list(border-color,(Input-border-color Input-text-color),1)
 		border-radius: Inputbox-radius !important if Custom-Inputbox
-		transition: border-color Input-active-ani !important
+		transition: border-color Input-active-ani,box-shadow Input-active-ani !important
 		&:focus
 			use_depend_list(background-color,(Input-focus-bg-color Card-bg-color-L2),1)
 		&::placeholder
 			use_depend_list(color,(Input-placeholder-color));
 		&:focus,&.focused
 			border-color: Input-focus-border-color !important
+			box-shadow: Input-active-shadow !important
 	
 	// #409eff
 
@@ -1188,6 +1193,28 @@ Tab 选中也可以 hover（不建议）
 	// 洛谷右上悬浮卡图标样式修改
 	.header > .user-nav a.icon > svg > path,.header > .user-nav a.icon-btn > svg > path
 		fill: Card-icon-color !important
+
+	// 更好的个人信息框
+	if Better-User-nav
+		Hover_card_float+=",.center>.ops>a.color-none"
+		.center>.ops>a.color-none
+			width: auto
+			align-items: center
+			justify-content: space-between
+			padding: 6px 14px
+			font-size: 14px
+			border-radius: 8px
+			cursor: pointer
+			margin: 2px
+			width: 14em
+			text-align: left
+			& svg
+				margin-right: 8px
+				width: 16px
+		.ops>a.color-none:after
+			transform: rotate(-90deg)
+			content: url("data:image/svg+xml;charset=UTF-8, %3Csvg%20style=%22fill:%20rgb(108,%20117,%20125);%22%20width=%2210%22%20height=%2210%22%20viewBox=%220%200%209%209%22%20fill=%22rgb(108,%20117,%20125)%22%20xmlns=%22http://www.w3.org/2000/svg%22%20class=%22link-icon--right%22%3E%3Cpath%20fill-rule=%22evenodd%22%20clip-rule=%22evenodd%22%20d=%22M7.50588%203.40623C7.40825%203.3086%207.24996%203.3086%207.15232%203.40623L4.41244%206.14612L1.67255%203.40623C1.57491%203.3086%201.41662%203.3086%201.31899%203.40623C1.22136%203.50386%201.22136%203.66215%201.31899%203.75978L4.11781%206.5586C4.28053%206.72132%204.54434%206.72132%204.70706%206.5586L7.50588%203.75978C7.60351%203.66215%207.60351%203.50386%207.50588%203.40623Z%22%20fill=%22rgb(108,%20117,%20125)%22%3E%3C/path%3E%3Cpath%20d=%22M7.15232%203.40623L7.50588%203.75978L7.50588%203.75978L7.15232%203.40623ZM7.50588%203.40623L7.15232%203.75978L7.15233%203.75978L7.50588%203.40623ZM4.41244%206.14612L4.05888%206.49967C4.15265%206.59344%204.27983%206.64612%204.41244%206.64612C4.54504%206.64612%204.67222%206.59344%204.76599%206.49967L4.41244%206.14612ZM1.67255%203.40623L2.0261%203.05268L2.0261%203.05268L1.67255%203.40623ZM1.31899%203.40623L0.965439%203.05268L0.965439%203.05268L1.31899%203.40623ZM1.31899%203.75978L1.67255%203.40623V3.40623L1.31899%203.75978ZM4.11781%206.5586L3.76425%206.91215L4.11781%206.5586ZM4.70706%206.5586L4.35351%206.20505L4.70706%206.5586ZM7.50588%203.75978L7.15233%203.40623L7.15232%203.40623L7.50588%203.75978ZM7.50588%203.75978C7.40825%203.85742%207.24996%203.85742%207.15232%203.75978L7.85943%203.05268C7.56654%202.75978%207.09166%202.75978%206.79877%203.05268L7.50588%203.75978ZM4.76599%206.49967L7.50588%203.75978L6.79877%203.05268L4.05888%205.79257L4.76599%206.49967ZM1.31899%203.75978L4.05888%206.49967L4.76599%205.79257L2.0261%203.05268L1.31899%203.75978ZM1.67254%203.75979C1.57491%203.85742%201.41662%203.85742%201.31899%203.75979L2.0261%203.05268C1.73321%202.75978%201.25833%202.75978%200.965439%203.05268L1.67254%203.75979ZM1.67255%203.40623C1.77018%203.50386%201.77018%203.66215%201.67255%203.75978L0.965439%203.05268C0.672546%203.34557%200.672546%203.82044%200.965439%204.11334L1.67255%203.40623ZM4.47136%206.20505L1.67255%203.40623L0.965439%204.11334L3.76425%206.91215L4.47136%206.20505ZM4.35351%206.20505C4.38605%206.1725%204.43882%206.1725%204.47136%206.20505L3.76425%206.91215C4.12223%207.27013%204.70264%207.27013%205.06062%206.91215L4.35351%206.20505ZM7.15232%203.40623L4.35351%206.20505L5.06062%206.91215L7.85943%204.11334L7.15232%203.40623ZM7.15233%203.75978C7.05469%203.66215%207.05469%203.50386%207.15233%203.40623L7.85943%204.11334C8.15233%203.82045%208.15233%203.34557%207.85943%203.05268L7.15233%203.75978Z%22%20fill=%22rgb(108,%20117,%20125)%22%3E%3C/path%3E%3C/svg%3E")
+			float: right
 
 	// 一级 Card 样式修改
 	{Card_L1}
@@ -1981,7 +2008,6 @@ Tab 选中也可以 hover（不建议）
 				background: Problem-select-bar-active-bg-color !important
 				&:hover
 					color: Problem-select-bar-active-text-color !important
-
 
 	// 各种小 bug 的修复
 	.load-more
