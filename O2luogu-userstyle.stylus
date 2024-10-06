@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.3.1
+@version      2.0.4.1
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -40,6 +40,8 @@
 @var	checkbox Better-User-nav "更好的个人信息框(类 exlg 样式)" 1
 @var	checkbox Better-problem-bar "更好的题库选择条" 1
 @var	checkbox Better-Card-select-bar "更好的 Card 选择条" 1
+@var	checkbox Better-InputGroup "更统一的 InputGroup 样式" 1
+@var	checkbox Smart-SideBar "(实验性) Smart-Luogu 式侧栏" 0
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -388,6 +390,8 @@
 @var	text Card-select-bar-out-ani "Card 选择条渐现动画" "Default"
 
 @var	text Input-active-shadow "输入框 active 阴影" "Default"
+
+@var	text SideBar-shadow "侧栏阴影" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -1109,6 +1113,11 @@ Tab 选中也可以 hover（不建议）
 	Card-select-bar-select-color = set_default_value(Card-select-bar-select-color,#3498db)
 	Card-select-bar-out-ani = set_default_value(Card-select-bar-out-ani,.6s ease)
 
+	if Smart-SideBar && !DarkMode
+		SideBar-shadow = set_default_value(SideBar-shadow, 4px 5px 15px rgba(91, 91, 91, .5)\, 2px 5px 8px rgba(121, 121, 121, .56))
+	SideBar-shadow = set_default_value(SideBar-shadow, none)
+	
+
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -1196,7 +1205,7 @@ Tab 选中也可以 hover（不建议）
 		color: Combowrapper-text-color !important
 
 	// 洛谷的顶栏样式修改
-	.header-layout.tiny[data-v-7ddab1d5],.header:has(>.max)
+	.wrapper.wrapped.lfe-body.header-layout.tiny,.header:has(>.max)
 		use_depend_list(background,(Navbar-bg-color Card-bg-color-L1),1)
 
 	// 洛谷右上悬浮卡图标样式修改
@@ -1230,7 +1239,7 @@ Tab 选中也可以 hover（不建议）
 		background: Card-bg-color-L1 !important
 		border-radius: Card-L1-radius if Custom-Card
 		box-shadow: Card-L1-shadow !important
-		transition: box-shadow Card-L1-hover-transition
+		transition: box-shadow Card-L1-hover-transition !important
 
 		&:hover
 			box-shadow: Card-L1-hover-shadow !important
@@ -1589,7 +1598,7 @@ Tab 选中也可以 hover（不建议）
 				.test-case //颜色标准化 [更新预定]
 					width: Test-case-size
 					height: Test-case-size
-					transition: Test-case-ani
+					transition: Test-case-ani !important
 					box-shadow: Test-case-shadow
 					border-radius: Test-case-border-radius
 					margin: 0
@@ -2040,6 +2049,44 @@ Tab 选中也可以 hover（不建议）
 			&:not(.selected):hover::before
 				animation: Card-select-bar-ani Card-select-bar-out-ani !important
 
+	if Better-InputGroup // 更统一的 InputGroup 样式
+		.input-group>:not(:last-child) input
+			height: 25px !important
+			padding: 1.75px 14px 1.75px 14px !important
+		.input-group>button:last-child
+			height: 30px !important
+			padding: 4px 18px !important
+
+	if Smart-SideBar // Smart-Luogu 式侧栏
+		// 顶栏适配
+		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:has(>.header),.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
+			position: relative !important
+			right: 60px !important
+			padding-left: 120px !important
+			padding-right: 60px !important
+			width: calc(100% - 120px) !important
+			&>.container,
+				padding-left: 120px !important
+			&>.background
+				padding-left: 120px !important
+		
+		#app > .lfe-body
+			animation:clan 1s
+			backdrop-filter: blur(20px) !important
+			-webkit-backdrop-filter: blur(20px) !important
+			border-radius: 0px 30px 30px 0px
+			margin-left: 0px
+			margin-top: 10.5%
+			padding-bottom: 14px
+			height: 27em
+			background:#ffffff3b !important
+	
+		#app > .lfe-body > div:has(.logo-wrap)
+			border-top-right-radius: 30px
+	
+	#app > .lfe-body 
+		box-shadow: SideBar-shadow !important
+
 	// 各种小 bug 的修复
 	.load-more
 		border-bottom: 0 !important if bug-fix1
@@ -2262,7 +2309,7 @@ Tab 选中也可以 hover（不建议）
 	// 犇犇 Tab 条优化
 	.feed-selector > a
 		font-weight: 500
-		transition: all .15s ease
+		transition: all .15s ease !important
 		color: Benben-tab-text-color
 		background-color: Benben-tab-bg-color
 		box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08) if Better-Benben-Tab && !DarkMode // TODO：变量化
