@@ -39,6 +39,7 @@
 @var	checkbox Better-Header-text-ani "Header 文字出现动画" 1
 @var	checkbox Better-User-nav "更好的个人信息框(类 exlg 样式)" 1
 @var	checkbox Better-problem-bar "更好的题库选择条" 1
+@var	checkbox Better-Card-select-bar "更好的 Card 选择条" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -381,6 +382,10 @@
 @var	text Problem-select-bar-hbg-text-hover-color "题库选择条文字 hover 色" "Default"
 @var	text Problem-select-bar-text-hover-ani "题库选择条文字 hover 动画" "Default"
 @var	text Problem-select-bar-bg-hover-ani "题库选择条背景 hover 动画" "Default"
+
+@var	text Card-select-bar-hover-ani "Card 选择条 hover 动画" "Default"
+@var	text Card-select-bar-select-color "Card 选择条选中色" "Default"
+@var	text Card-select-bar-out-ani "Card 选择条渐现动画" "Default"
 
 @var	text Input-active-shadow "输入框 active 阴影" "Default"
 
@@ -1099,6 +1104,10 @@ Tab 选中也可以 hover（不建议）
 	Problem-select-bar-bg-hover-ani = set_default_value(Problem-select-bar-bg-hover-ani,0.6s ease)
 
 	Input-active-shadow = set_default_value(Input-active-shadow,inset 0 1px 1px rgba(0,0,0,.075)\,0 0 5px rgba(59,180,242,.3))
+
+	Card-select-bar-hover-ani = set_default_value(Card-select-bar-hover-ani,.3s ease)
+	Card-select-bar-select-color = set_default_value(Card-select-bar-select-color,#3498db)
+	Card-select-bar-out-ani = set_default_value(Card-select-bar-out-ani,.6s ease)
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -2008,6 +2017,28 @@ Tab 选中也可以 hover（不建议）
 				background: Problem-select-bar-active-bg-color !important
 				&:hover
 					color: Problem-select-bar-active-text-color !important
+
+	// 卡片选择条
+	// Card-select-bar-hover-ani = 
+	// Card-select-bar-select-color
+
+	.menu > .items .entry
+		&.selected
+			color: Card-select-bar-select-color !important
+			&::before
+				background-color: Card-select-bar-select-color !important
+		&,&::before
+			transition: all Card-select-bar-hover-ani !important
+		if Better-Card-select-bar
+			@keyframes Card-select-bar-ani
+				from
+					margin: 0 .5em
+					width: calc(100% - 1em)
+				to
+					margin: 0
+					width: 100%
+			&:not(.selected):hover::before
+				animation: Card-select-bar-ani Card-select-bar-out-ani !important
 
 	// 各种小 bug 的修复
 	.load-more
