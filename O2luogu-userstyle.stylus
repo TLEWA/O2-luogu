@@ -44,6 +44,7 @@
 @var	checkbox Smart-SideBar "(实验性) Smart-Luogu 式侧栏" 0
 @var	checkbox Discuss-Sidebar-right "讨论区边栏右置" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
+@var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 
 @var	text CustomBackground "自定义背景" "None"
 
@@ -272,12 +273,14 @@
 @var	text Button-bg-color-red "洛谷红色按钮背景色" "Default"
 @var	text Button-bg-color-special-red "洛谷镂空红按钮背景色" "Default"
 @var	text Button-bg-color-special-blue "洛谷镂空蓝按钮背景色" "Default"
+@var	text Button-bg-color-green "洛谷绿色按钮背景色" "Default"
 
 @var	text Button-hover-bg-color-blue "洛谷蓝色按钮背景 hover 色" "Default"
 @var	text Button-hover-bg-color-black "洛谷黑色按钮背景 hover 色" "Default"
 @var	text Button-hover-bg-color-red "洛谷红色按钮背景 hover 色" "Default"
 @var	text Button-hover-bg-color-special-red "洛谷镂空红按钮背景 hover 色" "Default"
 @var	text Button-hover-bg-color-special-blue "洛谷镂空蓝按钮背景 hover 色" "Default"
+@var	text Button-hover-bg-color-green "洛谷绿色按钮背景 hover 色" "Default"
 
 @var	text Button-border-color-black "洛谷黑色按钮边框色" "Default"
 @var	text Button-border-color-special-red "洛谷镂空红按钮边框色" "Default"
@@ -288,6 +291,7 @@
 @var	text Button-border-size-red "洛谷红色按钮边框大小" "Default"
 @var	text Button-border-size-special-red "洛谷镂空红按钮边框大小" "Default"
 @var	text Button-border-size-special-blue "洛谷镂空蓝按钮边框大小" "Default"
+@var	text Button-border-size-green "洛谷绿色按钮边框大小" "Default"
 
 @var	text Button-radius "中型按钮圆角样式" "Default"
 @var	text Small-button-radius "小型按钮圆角样式" "Default"
@@ -399,6 +403,9 @@
 
 @var	text Discuss-Sidebar-width "讨论区边栏宽度" "Default"
 @var	text Discuss-Sidebar-margin "讨论区边栏与卡片间隔" "Default"
+
+@var	text Button-active-scale "按钮 actvie 缩小倍率(0 ~ 1)，越高越大" "Default"
+@var	text Button-active-ani "按钮 actvie 缩小动画效果" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -559,7 +566,7 @@ Tab 选中也可以 hover（不建议）
 		background: Button-bg-color-red !important
 		color: Button-default-color !important
 		&:hover
-			border: Button-border-size-blue solid Button-hover-bg-color-red !important
+			border: Button-border-size-red solid Button-hover-bg-color-red !important
 			background: Button-hover-bg-color-red !important
 		padding: (Padding-height - Button-border-size-red) (Padding-width - Button-border-size-red)
 
@@ -571,7 +578,7 @@ Tab 选中也可以 hover（不建议）
 		// 蓝色按钮
 		&.am-btn-primary,&[style*="background-color: rgb(52\, 152\, 219);"],&[style*="background-color: rgba(52\, 152\, 219\, 0.9);"],&.solid,&#go
 			blue_button_patch(Padding-width,Padding-height)
-		&.am-btn-danger,&.lcolor-var-red-3.solid,&[style*="background-color: rgb(231\, 76\, 60);"]
+		&.am-btn-danger,&.lcolor-var-red-3.solid,&[style*="background-color: rgb(231\, 76\, 60);"],&[style*="background-color: rgba(231\, 76\, 60\, 0.9);"]
 			red_button_patch(Padding-width,Padding-height)
 		&[style*="background-color: rgba(0\, 0\, 0\, 0.5);"]
 			border: Button-border-size-black solid Button-border-color-black !important
@@ -597,7 +604,42 @@ Tab 选中也可以 hover（不建议）
 			&:hover
 				background: Button-hover-bg-color-special-red !important
 			padding: (Padding-height - Button-border-size-special-red) (Padding-width - Button-border-size-special-red)
-		padding: (Padding-height - 1px) (Padding-width - 1px)
+		&[style*="background-color: rgb(82\, 196\, 26);"],&[style*="background-color: rgba(82\, 196\, 26\, 0.9);"],.am-btn-success
+			border: Button-border-size-green solid Button-bg-color-green !important
+			background: Button-bg-color-green !important
+			color: Button-default-color !important
+			&:hover
+				background: Button-hover-bg-color-green !important
+			padding: (Padding-height - Button-border-size-green) (Padding-width - Button-border-size-green)
+
+		if Button-ani-select!='off'
+			if Button-ani-select=='jelly'
+				@keyframes Button-active
+					0%,
+					100% 
+						transform: scale(1, 1);
+
+					25% 
+						transform: scale(1 - Button-active-scale, 1 + Button-active-scale);
+
+					50% 
+						transform: scale(1 + Button-active-scale, 1 - Button-active-scale);
+
+					75% 
+						transform: scale(1 - Button-active-scale / 2, 1 + Button-active-scale / 2);
+			else
+				@keyframes Button-active
+					0%,
+						100% 
+							transform: scale(1)
+
+						50% 
+							transform: scale(1 - Button-active-scale)
+
+			&:focus:not(:active)
+				animation: Button-active Button-active-ani !important
+		
+		padding: (Padding-height - 1px) (Padding-width - 1px) // 默认 padding 大小
 	
 // 兼容性选项
 	if exlg-compatible
@@ -1036,12 +1078,14 @@ Tab 选中也可以 hover（不建议）
 	Button-bg-color-red = set_default_value(Button-bg-color-red,#e74c3c)
 	Button-bg-color-special-red = set_default_value(Button-bg-color-special-red,transparent)
 	Button-bg-color-special-blue = set_default_value(Button-bg-color-special-blue,transparent)
+	Button-bg-color-green = set_default_value(Button-bg-color-green,#52c41a)
 
 	Button-hover-bg-color-blue = set_default_value(Button-hover-bg-color-blue,#0c79b1)
 	Button-hover-bg-color-black = set_default_value(Button-hover-bg-color-black,#1f3144)
 	Button-hover-bg-color-red = set_default_value(Button-hover-bg-color-red,#d4483a)
 	Button-hover-bg-color-special-red = set_default_value(Button-hover-bg-color-special-red,rgba(231, 76, 60, 0.1))
 	Button-hover-bg-color-special-blue = set_default_value(Button-hover-bg-color-special-blue,rgba(52, 152, 219, 0.1))
+	Button-hover-bg-color-green = set_default_value(Button-hover-bg-color-green,#4aaa4a)
 
 	Button-border-color-black = set_default_value(Button-border-color-black,#7b7c7c)
 	Button-border-color-special-red = set_default_value(Button-border-color-special-red,#e74c3c)
@@ -1052,6 +1096,7 @@ Tab 选中也可以 hover（不建议）
 	Button-border-size-red = set_default_value(Button-border-size-red,1px)
 	Button-border-size-special-red = set_default_value(Button-border-size-special-red,1px)
 	Button-border-size-special-blue = set_default_value(Button-border-size-special-blue,1px)
+	Button-border-size-green = set_default_value(Button-border-size-green,1px)
 
 	Button-radius = set_default_value(Button-radius,3px)
 	Small-button-radius = set_default_value(Small-button-radius,3px)
@@ -1156,6 +1201,9 @@ Tab 选中也可以 hover（不建议）
 	SideBar-shadow = set_default_value(SideBar-shadow, none)
 	SideBar-position = set_default_value(SideBar-position, 50%)
 	SideBar-ani = set_default_value(SideBar-ani,0.75s ease)
+
+	Button-active-scale = set_default_value(Button-active-scale,0.03)
+	Button-active-ani = set_default_value(Button-active-ani,0.2s ease-out)
 
 	if Discuss-Sidebar-right
 		Discuss-Sidebar-width = set_default_value(Discuss-Sidebar-width,calc(25% - 1em))
@@ -1418,21 +1466,10 @@ Tab 选中也可以 hover（不建议）
 	.CodeMirror-sizer
 		border-color: transparent !important
 
-	//.cm-scroller,.CodeMirror-scroll,.cm-scroller .ͼ4 .cm-line,.cm-scroller .cm-line
-	//	&,& *
-	//		&::selection
-	//			background-color: Markdown-text-selection-color !important
 	.cm-activeLine::selection,.cm-activeLine ::selection,.CodeMirror-line::selection, .CodeMirror-line>span::selection, .CodeMirror-line>span>span::selection
 		background-color: Markdown-text-selection-color !important
 	.cm-selectionBackground,.CodeMirror-selected
 		background: Markdown-text-selection-color !important
-
-	/*
-	.ͼ2 .cm-selectionBackground {background: #d9d9d9;}
-	.ͼ3 .cm-selectionBackground {background: #222;}
-	.ͼ2.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground {background: #d7d4f0;}
-	.ͼ3.cm-focused > .cm-scroller > .cm-selectionLayer .cm-selectionBackground {background: #233;}
-	*/
 
 	.CodeMirror-scroll
 		border-radius: 0 !important
@@ -1529,6 +1566,9 @@ Tab 选中也可以 hover（不建议）
 		border-radius: InLine-code-block-radius !important
 		color: Code-block-text-color !important
 
+		&::selection, & *::selection
+			background-color: Codeblock-text-selection-color !important
+
 		if Better-font
 			font-family: "FontWithASyntaxHighlighter",Code-block-fontstack !important
 			font-palette: --Alternate;
@@ -1546,6 +1586,9 @@ Tab 选中也可以 hover（不建议）
 			&[exlg-copy-code-block]
 				border-top-left-radius: 0 !important
 				border-top-right-radius: 0 !important
+		
+		&::selection, & *::selection
+			background-color: Codeblock-text-selection-color !important
 
 		& code
 			background: Code-block-bg-color !important
@@ -1601,14 +1644,6 @@ Tab 选中也可以 hover（不建议）
 		transition: background Privateitem-hover-ani !important
 		&:hover
 			background: Privateitem-hover-bg-color !important
-		
-	// TODO：查明不生效原因
-	code::selection, code *::selection
-		background-color: Codeblock-text-selection-color !important
-	code::-moz-selection, code *::-moz-selection
-		background-color: Codeblock-text-selection-color !important
-	code::-webkit-selection,code *::-webkit-selection
-		background-color: Codeblock-text-selection-color !important
 
 	// 更好的评测详情色块
 	if Better-test-case
