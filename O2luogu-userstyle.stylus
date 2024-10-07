@@ -570,6 +570,22 @@ Tab 选中也可以 hover（不建议）
 			background: Button-hover-bg-color-red !important
 		padding: (Padding-height - Button-border-size-red) (Padding-width - Button-border-size-red)
 
+	use_jelly_ani(Button-scale)
+		0%,100% 
+			transform: scale(1, 1);
+		25% 
+			transform: scale(1 - Button-scale, 1 + Button-scale);
+		50% 
+			transform: scale(1 + Button-scale, 1 - Button-scale);
+		75% 
+			transform: scale(1 - Button-scale / 2, 1 + Button-scale / 2);
+
+	use_contract_ani(Button-scale)
+		0%,100% 
+			transform: scale(1)
+		50% 
+			transform: scale(1 - Button-scale)
+
 	// TODO：v2.0
 	use_button_style(Padding-width,Padding-height)
 		line-height: 1.5 !important // 统一新老前端标准
@@ -615,27 +631,11 @@ Tab 选中也可以 hover（不建议）
 		if Button-ani-select!='off'
 			if Button-ani-select=='jelly'
 				@keyframes Button-active
-					0%,
-					100% 
-						transform: scale(1, 1);
-
-					25% 
-						transform: scale(1 - Button-active-scale, 1 + Button-active-scale);
-
-					50% 
-						transform: scale(1 + Button-active-scale, 1 - Button-active-scale);
-
-					75% 
-						transform: scale(1 - Button-active-scale / 2, 1 + Button-active-scale / 2);
+					use_jelly_ani(Button-active-scale)
 			else
 				@keyframes Button-active
-					0%,
-						100% 
-							transform: scale(1)
-
-						50% 
-							transform: scale(1 - Button-active-scale)
-
+					use_contract_ani(Button-active-scale)
+			
 			&:focus:not(:active)
 				animation: Button-active Button-active-ani !important
 		
