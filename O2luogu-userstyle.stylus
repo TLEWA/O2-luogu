@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.4.2
+@version      2.0.4.4
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -42,6 +42,7 @@
 @var	checkbox Better-Card-select-bar "更好的 Card 选择条" 1
 @var	checkbox Better-InputGroup "更统一的 InputGroup 样式" 1
 @var	checkbox Smart-SideBar "(实验性) Smart-Luogu 式侧栏" 0
+@var	checkbox Font-load "字体是否常态加载" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -433,6 +434,38 @@ Tab 选中也可以 hover（不建议）
 确定键长按
 提交代码框 bug 修复
 */
+
+// 字体处理
+
+if Font-load
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=JetBrains+Mono')
+
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?(.*))")
+
+	// 导入 Noto Sans
+	/*google 的服务真方便吧*/
+	if !Font-load
+		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=JetBrains+Mono')
+
+	if Better-font
+		@font-face {
+			font-family: 'FontWithASyntaxHighlighter'
+			font-style: dark
+			font-weight: 300 700
+
+			src: url(https://imgservices-1252317822.image.myqcloud.com/coco/s08172024/3b03a24c.50xym2.woff2) format('woff2')
+			unicode-range: U+003B-003B,U+0028-0029,U+005B-005B,U+005D-005D,U+007B-007B,U+007D-007D
+
+			// 目前仅修改 , ; ( ) [ ] { }
+		}
+
+		@font-palette-values --Alternate {
+			font-family: "FontWithASyntaxHighlighter"
+			override-colors:
+				0 #ffd70a, // 这个是 {}
+				4 #da63a1, // 这个是 []()
+				8 #c4c6c9; // 这个是 ;
+		}
 
 // 常量
 	Default = "Default"
@@ -1125,37 +1158,6 @@ Tab 选中也可以 hover（不建议）
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
 		Article-Background = get_depend_list((CustomBackground Article-bg-color))
-
-
-// 字体处理
-
-@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?(.*))")
-
-	// 导入 Noto Sans
-	/*google 的服务真方便吧*/
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900')
-	@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono')
-	
-	if Better-font
-		@font-face {
-			font-family: 'FontWithASyntaxHighlighter'
-			font-style: dark
-			font-weight: 300 700
-
-			src: url(https://imgservices-1252317822.image.myqcloud.com/coco/s08172024/3b03a24c.50xym2.woff2) format('woff2')
-			unicode-range: U+003B-003B,U+0028-0029,U+005B-005B,U+005D-005D,U+007B-007B,U+007D-007D
-
-			// 目前仅修改 , ; ( ) [ ] { }
-		}
-
-		@font-palette-values --Alternate {
-			font-family: "FontWithASyntaxHighlighter"
-			override-colors:
-				0 #ffd70a, // 这个是 {}
-				4 #da63a1, // 这个是 []()
-				8 #c4c6c9; // 这个是 ;
-		}
-
 
 // 全局样式
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?(.*))")  
