@@ -1,7 +1,7 @@
 /* ==UserStyle==
-@name         氧洛谷
+@name       氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.0.5
+@version     2.0.0.6  
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -307,7 +307,7 @@
 @var	text Control-nav-bg-color "主页广告翻页选择点背景" "Default"
 @var	text Control-nav-active-bg-color "主页广告翻页选择点选中背景" "Default"
 
-@var text pws "侧栏宽度" "14%" 
+@var   text Card-left-width "侧栏宽度" "Default" 
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -485,7 +485,7 @@ Tab 选中也可以 hover（不建议）
 
 // 全局变量定义
 	// 默认值定义
-
+   Card-left-width = set_default_value(Card-left-width,20%)
 	Card-L1-radius = set_default_value(Card-L1-radius,4px)
 	Card-L2-radius = set_default_value(Card-L2-radius,4px)
 	Card-float-radius = set_default_value(Card-L2-radius,5px) 
@@ -1025,6 +1025,14 @@ Tab 选中也可以 hover（不建议）
 
 			&:hover
 				background-color: Scrollbar-hover-color
+                
+
+	// 题目区右侧侧栏宽度                
+	.side
+		width: Card-left-width !important 
+	.main
+		width: (99% - Card-left-width) !important
+
 	
 	// 输入框样式修改
 	{Main_Inputbox}
@@ -1850,6 +1858,7 @@ Tab 选中也可以 hover（不建议）
 	if Homepage-Profile-Picture-hide // 洛谷首页头像边框去除
 		.am-comment-avatar
 			border: none !important
+            
 
 	// 主页的特殊石山 -- 通过状态栏样式修改
 	.highcharts-container .highcharts-axis-labels text,.highcharts-container > svg > g.highcharts-yaxis > text > tspan
@@ -1965,8 +1974,3 @@ Tab 选中也可以 hover（不建议）
 	.am-slider-default .am-control-nav li a
 		transition: all Control-nav-ani !important
 		background: Control-nav-bg-color !important
-
-	.side
-		width: pws !important 
-	.main
-		width: (99% - pws) !important
