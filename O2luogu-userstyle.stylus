@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.0.4.2
+@version      2.0.5.0
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -42,6 +42,7 @@
 @var	checkbox Better-Card-select-bar "更好的 Card 选择条" 1
 @var	checkbox Better-InputGroup "更统一的 InputGroup 样式" 1
 @var	checkbox Smart-SideBar "(实验性) Smart-Luogu 式侧栏" 0
+@var	checkbox Discuss-Sidebar-right "讨论区边栏右置" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 
 @var	text CustomBackground "自定义背景" "None"
@@ -393,6 +394,11 @@
 @var	text Input-active-shadow "输入框 active 阴影" "Default"
 
 @var	text SideBar-shadow "侧栏阴影" "Default"
+@var	text SideBar-position "侧栏距顶部距离(百分比)" "Default"
+@var	text SideBar-ani "侧栏渐现动画" "Default"
+
+@var	text Discuss-Sidebar-width "讨论区边栏宽度" "Default"
+@var	text Discuss-Sidebar-margin "讨论区边栏与卡片间隔" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -433,6 +439,35 @@ Tab 选中也可以 hover（不建议）
 确定键长按
 提交代码框 bug 修复
 */
+
+// 字体处理
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=JetBrains+Mono')
+
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?(.*))")
+
+	// 导入 Noto Sans
+	/*google 的服务真方便吧*/
+
+	if Better-font
+		@font-face {
+			font-family: 'FontWithASyntaxHighlighter'
+			font-style: dark
+			font-weight: 300 700
+
+			src: url(https://imgservices-1252317822.image.myqcloud.com/coco/s08172024/3b03a24c.50xym2.woff2) format('woff2')
+			unicode-range: U+003B-003B,U+0028-0029,U+005B-005B,U+005D-005D,U+007B-007B,U+007D-007D
+
+			// 目前仅修改 , ; ( ) [ ] { }
+		}
+
+		@font-palette-values --Alternate {
+			font-family: "FontWithASyntaxHighlighter"
+			override-colors:
+				0 #ffd70a, // 这个是 {}
+				4 #da63a1, // 这个是 []()
+				8 #c4c6c9; // 这个是 ;
+		}
 
 // 常量
 	Default = "Default"
@@ -1119,43 +1154,19 @@ Tab 选中也可以 hover（不建议）
 	if Smart-SideBar && !DarkMode
 		SideBar-shadow = set_default_value(SideBar-shadow, 4px 5px 15px rgba(91, 91, 91, .5)\, 2px 5px 8px rgba(121, 121, 121, .56))
 	SideBar-shadow = set_default_value(SideBar-shadow, none)
-	
+	SideBar-position = set_default_value(SideBar-position, 50%)
+	SideBar-ani = set_default_value(SideBar-ani,0.75s ease)
+
+	if Discuss-Sidebar-right
+		Discuss-Sidebar-width = set_default_value(Discuss-Sidebar-width,calc(25% - 1em))
+	else
+		Discuss-Sidebar-width = set_default_value(Discuss-Sidebar-width,calc(20% - 1em))
+	Discuss-Sidebar-margin = set_default_value(Discuss-Sidebar-margin,1em)
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
 		Article-Background = get_depend_list((CustomBackground Article-bg-color))
-
-
-// 字体处理
-
-@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?(.*))")
-
-	// 导入 Noto Sans
-	/*google 的服务真方便吧*/
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900')
-	@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono')
-	
-	if Better-font
-		@font-face {
-			font-family: 'FontWithASyntaxHighlighter'
-			font-style: dark
-			font-weight: 300 700
-
-			src: url(https://imgservices-1252317822.image.myqcloud.com/coco/s08172024/3b03a24c.50xym2.woff2) format('woff2')
-			unicode-range: U+003B-003B,U+0028-0029,U+005B-005B,U+005D-005D,U+007B-007B,U+007D-007D
-
-			// 目前仅修改 , ; ( ) [ ] { }
-		}
-
-		@font-palette-values --Alternate {
-			font-family: "FontWithASyntaxHighlighter"
-			override-colors:
-				0 #ffd70a, // 这个是 {}
-				4 #da63a1, // 这个是 []()
-				8 #c4c6c9; // 这个是 ;
-		}
-
 
 // 全局样式
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?(.*))")  
@@ -1769,25 +1780,25 @@ Tab 选中也可以 hover（不建议）
 			padding: 0 !important
 		
 		#app > .lfe-body > a > .icon
-				line-height: 2.4em
-				font-size: 18px
-				width: 100%
-				margin: 0 !important
-				transition: all 0.3s ease
+			line-height: 2.4em
+			font-size: 18px
+			width: 100%
+			margin: 0 !important
+			transition: all 0.3s ease
 	
 		#app > .lfe-body > a > .text
-				opacity:0
-				margin-top: -1em
-				display: block
-				transition: all 0.3s ease
+			opacity:0
+			margin-top: -1em
+			display: block
+			transition: all 0.3s ease
 	
 		#app > .lfe-body > a:hover > .icon
-				line-height: 1.5em
-				font-size: 17px
+			line-height: 1.5em
+			font-size: 17px
 	
 		#app > .lfe-body > a:hover > .text
-				opacity:1
-				margin-top: 0.2em
+			opacity:1
+			margin-top: 0.2em
 
 	// 个人主页简介设置
 	.user-info > .lfe-caption:not(.slogan)
@@ -1862,6 +1873,8 @@ Tab 选中也可以 hover（不建议）
 		&,& input
 			border-top-right-radius: 0 !important
 			border-bottom-right-radius: 0 !important
+			&,&.focused
+				box-shadow: none !important
 	
 	.input-group>:not(:first-child)
 		&,& input
@@ -2088,25 +2101,43 @@ Tab 选中也可以 hover（不建议）
 			&>.background
 				padding-left: 120px !important
 		
+		@keyframes Sidebar-out
+			from
+				margin-left: -50px
+
 		#app > .lfe-body
-			animation:clan 1s
+			animation: Sidebar-out SideBar-ani !important
 			backdrop-filter: blur(20px) !important
 			-webkit-backdrop-filter: blur(20px) !important
 			border-radius: 0px 30px 30px 0px
 			margin-left: 0px
-			margin-top: 10.5%
+			top: SideBar-position
+			transform: translateY(- SideBar-position)
 			padding-bottom: 14px
 			height: 27em
 			background:#ffffff3b !important
 	
 		#app > .lfe-body > div:has(.logo-wrap)
 			border-top-right-radius: 30px
+		
 	
 	#app > .lfe-body 
 		box-shadow: SideBar-shadow !important
 
 	section>.block:has(>button.block-item) input
 		box-shadow: none !important
+
+	// 讨论区设置
+	.full-container[currenttemplate="DiscussList"]
+		& .side
+			width: Discuss-Sidebar-width !important
+			box-sizing: border-box !important
+			if Discuss-Sidebar-right
+				float: right !important
+				margin-right: 0 !important
+				margin-left: Discuss-Sidebar-margin !important
+			else
+				margin-right: Discuss-Sidebar-margin !important
 
 	// 各种小 bug 的修复
 	.load-more
