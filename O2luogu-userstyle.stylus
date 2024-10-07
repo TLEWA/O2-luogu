@@ -272,12 +272,14 @@
 @var	text Button-bg-color-red "洛谷红色按钮背景色" "Default"
 @var	text Button-bg-color-special-red "洛谷镂空红按钮背景色" "Default"
 @var	text Button-bg-color-special-blue "洛谷镂空蓝按钮背景色" "Default"
+@var	text Button-bg-color-green "洛谷绿色按钮背景色" "Default"
 
 @var	text Button-hover-bg-color-blue "洛谷蓝色按钮背景 hover 色" "Default"
 @var	text Button-hover-bg-color-black "洛谷黑色按钮背景 hover 色" "Default"
 @var	text Button-hover-bg-color-red "洛谷红色按钮背景 hover 色" "Default"
 @var	text Button-hover-bg-color-special-red "洛谷镂空红按钮背景 hover 色" "Default"
 @var	text Button-hover-bg-color-special-blue "洛谷镂空蓝按钮背景 hover 色" "Default"
+@var	text Button-hover-bg-color-green "洛谷绿色按钮背景 hover 色" "Default"
 
 @var	text Button-border-color-black "洛谷黑色按钮边框色" "Default"
 @var	text Button-border-color-special-red "洛谷镂空红按钮边框色" "Default"
@@ -288,6 +290,7 @@
 @var	text Button-border-size-red "洛谷红色按钮边框大小" "Default"
 @var	text Button-border-size-special-red "洛谷镂空红按钮边框大小" "Default"
 @var	text Button-border-size-special-blue "洛谷镂空蓝按钮边框大小" "Default"
+@var	text Button-border-size-green "洛谷绿色按钮边框大小" "Default"
 
 @var	text Button-radius "中型按钮圆角样式" "Default"
 @var	text Small-button-radius "小型按钮圆角样式" "Default"
@@ -559,7 +562,7 @@ Tab 选中也可以 hover（不建议）
 		background: Button-bg-color-red !important
 		color: Button-default-color !important
 		&:hover
-			border: Button-border-size-blue solid Button-hover-bg-color-red !important
+			border: Button-border-size-red solid Button-hover-bg-color-red !important
 			background: Button-hover-bg-color-red !important
 		padding: (Padding-height - Button-border-size-red) (Padding-width - Button-border-size-red)
 
@@ -571,7 +574,7 @@ Tab 选中也可以 hover（不建议）
 		// 蓝色按钮
 		&.am-btn-primary,&[style*="background-color: rgb(52\, 152\, 219);"],&[style*="background-color: rgba(52\, 152\, 219\, 0.9);"],&.solid,&#go
 			blue_button_patch(Padding-width,Padding-height)
-		&.am-btn-danger,&.lcolor-var-red-3.solid,&[style*="background-color: rgb(231\, 76\, 60);"]
+		&.am-btn-danger,&.lcolor-var-red-3.solid,&[style*="background-color: rgb(231\, 76\, 60);"],&[style*="background-color: rgba(231\, 76\, 60\, 0.9);"]
 			red_button_patch(Padding-width,Padding-height)
 		&[style*="background-color: rgba(0\, 0\, 0\, 0.5);"]
 			border: Button-border-size-black solid Button-border-color-black !important
@@ -597,7 +600,14 @@ Tab 选中也可以 hover（不建议）
 			&:hover
 				background: Button-hover-bg-color-special-red !important
 			padding: (Padding-height - Button-border-size-special-red) (Padding-width - Button-border-size-special-red)
-		padding: (Padding-height - 1px) (Padding-width - 1px)
+		&[style*="background-color: rgb(82\, 196\, 26);"],&[style*="background-color: rgba(82\, 196\, 26\, 0.9);"]
+			border: Button-border-size-green solid Button-bg-color-green !important
+			background: Button-bg-color-green !important
+			color: Button-default-color !important
+			&:hover
+				background: Button-hover-bg-color-green !important
+			padding: (Padding-height - Button-border-size-green) (Padding-width - Button-border-size-green)
+		padding: (Padding-height - 1px) (Padding-width - 1px) // 默认 padding 大小
 	
 // 兼容性选项
 	if exlg-compatible
@@ -1036,12 +1046,14 @@ Tab 选中也可以 hover（不建议）
 	Button-bg-color-red = set_default_value(Button-bg-color-red,#e74c3c)
 	Button-bg-color-special-red = set_default_value(Button-bg-color-special-red,transparent)
 	Button-bg-color-special-blue = set_default_value(Button-bg-color-special-blue,transparent)
+	Button-bg-color-green = set_default_value(Button-bg-color-green,#52c41a)
 
 	Button-hover-bg-color-blue = set_default_value(Button-hover-bg-color-blue,#0c79b1)
 	Button-hover-bg-color-black = set_default_value(Button-hover-bg-color-black,#1f3144)
 	Button-hover-bg-color-red = set_default_value(Button-hover-bg-color-red,#d4483a)
 	Button-hover-bg-color-special-red = set_default_value(Button-hover-bg-color-special-red,rgba(231, 76, 60, 0.1))
 	Button-hover-bg-color-special-blue = set_default_value(Button-hover-bg-color-special-blue,rgba(52, 152, 219, 0.1))
+	Button-hover-bg-color-green = set_default_value(Button-hover-bg-color-green,#4aaa4a)
 
 	Button-border-color-black = set_default_value(Button-border-color-black,#7b7c7c)
 	Button-border-color-special-red = set_default_value(Button-border-color-special-red,#e74c3c)
@@ -1052,6 +1064,7 @@ Tab 选中也可以 hover（不建议）
 	Button-border-size-red = set_default_value(Button-border-size-red,1px)
 	Button-border-size-special-red = set_default_value(Button-border-size-special-red,1px)
 	Button-border-size-special-blue = set_default_value(Button-border-size-special-blue,1px)
+	Button-border-size-green = set_default_value(Button-border-size-green,1px)
 
 	Button-radius = set_default_value(Button-radius,3px)
 	Small-button-radius = set_default_value(Small-button-radius,3px)
