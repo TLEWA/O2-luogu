@@ -44,6 +44,7 @@
 @var	checkbox Smart-SideBar "(实验性) Smart-Luogu 式侧栏" 0
 @var	checkbox Discuss-Sidebar-right "讨论区边栏右置" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
+@var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 
 @var	text CustomBackground "自定义背景" "None"
 
@@ -403,6 +404,9 @@
 @var	text Discuss-Sidebar-width "讨论区边栏宽度" "Default"
 @var	text Discuss-Sidebar-margin "讨论区边栏与卡片间隔" "Default"
 
+@var	text Button-active-scale "按钮 actvie 缩小倍率(0 ~ 1)，越高越大" "Default"
+@var	text Button-active-ani "按钮 actvie 缩小动画效果" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -600,13 +604,41 @@ Tab 选中也可以 hover（不建议）
 			&:hover
 				background: Button-hover-bg-color-special-red !important
 			padding: (Padding-height - Button-border-size-special-red) (Padding-width - Button-border-size-special-red)
-		&[style*="background-color: rgb(82\, 196\, 26);"],&[style*="background-color: rgba(82\, 196\, 26\, 0.9);"]
+		&[style*="background-color: rgb(82\, 196\, 26);"],&[style*="background-color: rgba(82\, 196\, 26\, 0.9);"],.am-btn-success
 			border: Button-border-size-green solid Button-bg-color-green !important
 			background: Button-bg-color-green !important
 			color: Button-default-color !important
 			&:hover
 				background: Button-hover-bg-color-green !important
 			padding: (Padding-height - Button-border-size-green) (Padding-width - Button-border-size-green)
+
+		if Button-ani-select!='off'
+			if Button-ani-select=='jelly'
+				@keyframes Button-active
+					0%,
+					100% 
+						transform: scale(1, 1);
+
+					25% 
+						transform: scale(1 - Button-active-scale, 1 + Button-active-scale);
+
+					50% 
+						transform: scale(1 + Button-active-scale, 1 - Button-active-scale);
+
+					75% 
+						transform: scale(1 - Button-active-scale / 2, 1 + Button-active-scale / 2);
+			else
+				@keyframes Button-active
+					0%,
+						100% 
+							transform: scale(1)
+
+						50% 
+							transform: scale(1 - Button-active-scale)
+
+			&:focus:not(:active)
+				animation: Button-active Button-active-ani !important
+		
 		padding: (Padding-height - 1px) (Padding-width - 1px) // 默认 padding 大小
 	
 // 兼容性选项
@@ -1169,6 +1201,9 @@ Tab 选中也可以 hover（不建议）
 	SideBar-shadow = set_default_value(SideBar-shadow, none)
 	SideBar-position = set_default_value(SideBar-position, 50%)
 	SideBar-ani = set_default_value(SideBar-ani,0.75s ease)
+
+	Button-active-scale = set_default_value(Button-active-scale,0.03)
+	Button-active-ani = set_default_value(Button-active-ani,0.2s ease-out)
 
 	if Discuss-Sidebar-right
 		Discuss-Sidebar-width = set_default_value(Discuss-Sidebar-width,calc(25% - 1em))
