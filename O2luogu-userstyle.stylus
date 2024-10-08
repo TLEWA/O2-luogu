@@ -45,6 +45,7 @@
 @var	checkbox Discuss-Sidebar-right "讨论区边栏右置" 1
 @var	checkbox More-Sidebar-Ani "侧栏在更多场景展示动画" 1
 @var	checkbox No-btn-outline "去除主页按钮 outline" 1
+@var	checkbox A-hover-line "(实验性)(非积极支持)开启超链接 hover 下划线动画" 0
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 @var	select Input-ani-select "输入框点击动画选择" ["contract","jelly","off"]
@@ -420,6 +421,10 @@
 @var	text Input-active-scale "输入框 actvie 缩小倍率(0 ~ 1)，越高越大" "Default"
 @var	text Input-active-anim "输入框 actvie 缩小动画效果" "Default"
 
+@var	text A-hover-line-ani "超链接 hover 下划线动画效果" "Default"
+@var	text A-hover-line-color "超链接 hover 下划线颜色" "Default"
+@var	text A-hover-line-height "超链接 hover 下划线粗细" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -604,6 +609,21 @@ Tab 选中也可以 hover（不建议）
 			transform: scale(1)
 		50% 
 			transform: scale(1 - Button-scale)
+
+	use_hover_line(Hover-line-ani,Hover-line-color,Hover-line-height)
+		position: relative
+		&::after
+			content: ""
+			width: 0
+			height: Hover-line-height
+			background: Hover-line-color
+			position: absolute
+			top: 100%
+			left: 50%
+			transition: all Hover-line-ani
+		&:hover::after
+			left: 0%
+			width: 100%
 
 	// TODO：v2.0
 	use_button_style(Padding-width,Padding-height)
@@ -1256,6 +1276,10 @@ Tab 选中也可以 hover（不建议）
 	Input-active-scale = set_default_value(Input-active-scale,0.005)
 	Input-active-anim = set_default_value(Input-active-anim,0.4s ease-out)
 
+	A-hover-line-ani = set_default_value(A-hover-line-ani,.3s)
+	A-hover-line-color = set_default_value(A-hover-line-color,rgba(255, 0, 0, .575))
+	A-hover-line-height = set_default_value(A-hover-line-height,2px)
+
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -1305,7 +1329,7 @@ Tab 选中也可以 hover（不建议）
 				else
 					@keyframes Input-active
 						use_contract_ani(Input-active-scale)
-				
+
 				&:focus:not(:active)
 					animation: Input-active Input-active-anim !important		
 	
@@ -1396,12 +1420,14 @@ Tab 选中也可以 hover（不建议）
 		transition: color A-hover-ani !important
 		&:hover
 			color: A-hover-color
+		use_hover_line(A-hover-line-ani,A-hover-line-color,A-hover-line-height) if A-hover-line
 
 	{A}
 		color: A-color !important
 		transition: color A-hover-ani !important
 		&:hover
 			color: A-hover-color !important
+		use_hover_line(A-hover-line-ani,A-hover-line-color,A-hover-line-height) if A-hover-line
 
 	// Hover 超链接样式修改
 	{Hover-A}
@@ -1985,9 +2011,15 @@ Tab 选中也可以 hover（不建议）
 	{Button}
 		border-radius: Button-radius !important
 		use_button_style(Button-padding-width,Button-padding-height)
+		if A-hover-line
+			&::after
+				height: 0 !important
 	{Small-Button}
 		border-radius: Small-button-radius !important
 		use_button_style(Small-button-padding-width,Small-button-padding-height)
+		if A-hover-line
+			&::after
+				height: 0 !important
 
 	.expand > .expand
 		background: Expand-shadow !important
