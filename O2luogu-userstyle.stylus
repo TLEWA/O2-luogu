@@ -1287,7 +1287,7 @@ Tab 选中也可以 hover（不建议）
 
 	A-hover-line-ani = set_default_value(A-hover-line-ani,.3s)
 	A-hover-line-color = set_default_value(A-hover-line-color,rgba(255, 0, 0, .575))
-	A-hover-line-height = set_default_value(A-hover-line-height,2px)
+	A-hover-line-height = set_default_value(A-hover-line-height,1.5px)
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -2129,7 +2129,6 @@ Tab 选中也可以 hover（不建议）
 			transition: background Button-hover-ani \, border-color Button-hover-ani !important
 
 	{Username} // 洛谷用户 id
-		anti_hover_line() if A-hover-line && Anti-Username-hover-line
 		&[style*="color: rgb(191\, 191\, 191);"],&[style*="color: var(--lfe-color--grey-3);"]
 			color: Username-color-1 !important
 		&[style*="color: rgb(52\, 152\, 219);"],&[style*="color: var(--lfe-color--blue-3);"]
@@ -2144,6 +2143,8 @@ Tab 选中也可以 hover（不建议）
 			color: Username-color-6 !important
 		&[style*="color: rgb(173\, 139\, 0);"],&[style*="color: var(--lfe-color--yellow-4);"]
 			color: Username-color-7 !important
+	a.color-none[href*='/user/'][target='_blank'],a.name[href*='/user/'][style*='font-weight: bold;']
+		anti_hover_line() if A-hover-line && Anti-Username-hover-line
 
 	// Header 出现动画
 	if Better-Header-ani
@@ -2290,6 +2291,11 @@ Tab 选中也可以 hover（不建议）
 	if Anti-forum-container-hover-line && A-hover-line
 		.forum-container
 			anti_hover_line()
+	
+	if A-hover-line
+		.row.content-left.title.link.color-default
+			anti_hover_line()
+			overflow: unset !important
 
 	// 各种小 bug 的修复
 	.load-more
@@ -2512,6 +2518,7 @@ Tab 选中也可以 hover（不建议）
 
 	// 犇犇 Tab 条优化
 	.feed-selector > a
+		anti_hover_line()
 		font-weight: 500
 		transition: all .15s ease !important
 		color: Benben-tab-text-color
