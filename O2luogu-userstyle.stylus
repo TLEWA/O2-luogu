@@ -44,6 +44,7 @@
 @var	checkbox Smart-SideBar "(实验性) Smart-Luogu 式侧栏" 0
 @var	checkbox Discuss-Sidebar-right "讨论区边栏右置" 1
 @var	checkbox More-Sidebar-Ani "侧栏在更多场景展示动画" 1
+@var	checkbox No-btn-outline "去除主页按钮 outline" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 
@@ -610,7 +611,7 @@ Tab 选中也可以 hover（不建议）
 			blue_button_patch(Padding-width,Padding-height)
 		&.am-btn-danger,&.lcolor-var-red-3.solid,&[style*="background-color: rgb(231\, 76\, 60);"],&[style*="background-color: rgba(231\, 76\, 60\, 0.9);"]
 			red_button_patch(Padding-width,Padding-height)
-		&[style*="background-color: rgba(0\, 0\, 0\, 0.5);"]
+		&[style*="background-color: rgba(0\, 0\, 0\, 0.5);"],&.button-transparent
 			border: Button-border-size-black solid Button-border-color-black !important
 			background: Button-bg-color-black !important
 			color: Button-default-color !important
@@ -662,6 +663,10 @@ Tab 选中也可以 hover（不建议）
 			
 			&:focus:not(:active)
 				animation: Button-active Button-active-ani !important
+		
+		if No-btn-outline
+			&:focus
+				outline: none !important
 
 		padding: (Padding-height - 1px) (Padding-width - 1px) // 默认 padding 大小
 	
