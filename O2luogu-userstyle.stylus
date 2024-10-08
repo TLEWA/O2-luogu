@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.1.0.0 pre
+@version      2.1.0.0
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -283,6 +283,13 @@
 @var	text Button-hover-bg-color-special-blue "洛谷镂空蓝按钮背景 hover 色" "Default"
 @var	text Button-hover-bg-color-green "洛谷绿色按钮背景 hover 色" "Default"
 
+@var	text Button-active-bg-color-blue "洛谷蓝色按钮背景 active 色" "Default"
+@var	text Button-active-bg-color-black "洛谷黑色按钮背景 active 色" "Default"
+@var	text Button-active-bg-color-red "洛谷红色按钮背景 active 色" "Default"
+@var	text Button-active-bg-color-special-red "洛谷镂空红按钮背景 active 色" "Default"
+@var	text Button-active-bg-color-special-blue "洛谷镂空蓝按钮背景 active 色" "Default"
+@var	text Button-active-bg-color-green "洛谷绿色按钮背景 active 色" "Default"
+
 @var	text Button-border-color-black "洛谷黑色按钮边框色" "Default"
 @var	text Button-border-color-special-red "洛谷镂空红按钮边框色" "Default"
 @var	text Button-border-color-special-blue "洛谷镂空蓝按钮边框色" "Default"
@@ -558,8 +565,11 @@ Tab 选中也可以 hover（不建议）
 		background: Button-bg-color-blue !important
 		color: Button-default-color !important
 		&:hover
-			border: Button-border-size-blue solid Button-hover-bg-color-blue !important
+			border-color: Button-hover-bg-color-blue !important
 			background: Button-hover-bg-color-blue !important
+		&:active
+			border-color: Button-active-bg-color-blue !important
+			background: Button-active-bg-color-blue !important
 		padding: (Padding-height - Button-border-size-blue) (Padding-width - Button-border-size-blue)
 
 	red_button_patch(Padding-width,Padding-height)
@@ -567,8 +577,11 @@ Tab 选中也可以 hover（不建议）
 		background: Button-bg-color-red !important
 		color: Button-default-color !important
 		&:hover
-			border: Button-border-size-red solid Button-hover-bg-color-red !important
+			border-color: utton-hover-bg-color-red !important
 			background: Button-hover-bg-color-red !important
+		&:active
+			border-color: Button-active-bg-color-red !important
+			background: Button-active-bg-color-red !important
 		padding: (Padding-height - Button-border-size-red) (Padding-width - Button-border-size-red)
 
 	use_jelly_ani(Button-scale)
@@ -604,6 +617,8 @@ Tab 选中也可以 hover（不建议）
 			&:hover
 				background: Button-hover-bg-color-black !important
 				opacity: 1 !important
+			&:active
+				background: Button-active-bg-color-black !important
 			padding: (Padding-height - Button-border-size-black) (Padding-width - Button-border-size-black)
 		&[style*="background-color: rgba(52\, 152\, 219\, 0);"],&[style*="background-color: rgba(52\, 152\, 219\, 0.1);"] // TODO：改掉这沟槽的东西
 			border: Button-border-size-special-blue solid Button-border-color-special-blue !important
@@ -612,6 +627,8 @@ Tab 选中也可以 hover（不建议）
 				color: Button-border-color-special-blue !important
 			&:hover
 				background: Button-hover-bg-color-special-blue !important
+			&:active
+				background: Button-active-bg-color-special-blue !important
 			padding: (Padding-height - Button-border-size-special-blue) (Padding-width - Button-border-size-special-blue)
 		&[style*="background-color: rgba(231\, 76\, 60\, 0);"],&[style*="background-color: rgba(231\, 76\, 60\, 0.1);"]
 			border: Button-border-size-special-red solid Button-border-color-special-red !important
@@ -620,13 +637,19 @@ Tab 选中也可以 hover（不建议）
 				color: Button-border-color-special-red !important
 			&:hover
 				background: Button-hover-bg-color-special-red !important
+			&:active
+				background: Button-active-bg-color-special-red !important
 			padding: (Padding-height - Button-border-size-special-red) (Padding-width - Button-border-size-special-red)
 		&[style*="background-color: rgb(82\, 196\, 26);"],&[style*="background-color: rgba(82\, 196\, 26\, 0.9);"],.am-btn-success
 			border: Button-border-size-green solid Button-bg-color-green !important
 			background: Button-bg-color-green !important
 			color: Button-default-color !important
 			&:hover
+				border-color: Button-hover-bg-color-green !important
 				background: Button-hover-bg-color-green !important
+			&:active
+				border-color: Button-active-bg-color-green !important
+				background: Button-active-bg-color-green !important
 			padding: (Padding-height - Button-border-size-green) (Padding-width - Button-border-size-green)
 
 		if Button-ani-select!='off'
@@ -929,7 +952,7 @@ Tab 选中也可以 hover（不建议）
 
 		Benben-tab-bg-color = set_default_value(Benben-tab-bg-color,#fff)
 		Benben-tab-hover-color = set_default_value(Benben-tab-hover-color,#eee)
-		Benben-tab-text-color = set_default_value(Benben-tab-text-color,#5e72e4)
+		Benben-tab-text-color = set_default_value(Benben-tab-text-color,#3498db)
 		Benben-tab-focus-bg-color = set_default_value(Benben-tab-focus-bg-color,#48D1CC)
 		Benben-tab-focus-text-color = set_default_value(Benben-tab-focus-text-color, #fff)
 
@@ -1087,6 +1110,13 @@ Tab 选中也可以 hover（不建议）
 	Button-hover-bg-color-special-red = set_default_value(Button-hover-bg-color-special-red,rgba(231, 76, 60, 0.1))
 	Button-hover-bg-color-special-blue = set_default_value(Button-hover-bg-color-special-blue,rgba(52, 152, 219, 0.1))
 	Button-hover-bg-color-green = set_default_value(Button-hover-bg-color-green,#4aaa4a)
+
+	Button-active-bg-color-blue = set_default_value(Button-active-bg-color-blue,#0a6c9e)
+	Button-active-bg-color-black = set_default_value(Button-active-bg-color-black,#1f364e)
+	Button-active-bg-color-red = set_default_value(Button-active-bg-color-red,#bc4033)
+	Button-active-bg-color-special-red = set_default_value(Button-active-bg-color-special-red,rgba(231, 76, 60, 0.14))
+	Button-active-bg-color-special-blue = set_default_value(Button-active-bg-color-special-blue,rgba(52, 152, 219, 0.14))
+	Button-active-bg-color-green = set_default_value(Button-active-bg-color-green,#398339)
 
 	Button-border-color-black = set_default_value(Button-border-color-black,#7b7c7c)
 	Button-border-color-special-red = set_default_value(Button-border-color-special-red,#e74c3c)
@@ -2131,9 +2161,9 @@ Tab 选中也可以 hover（不建议）
 		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:has(>.header),.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
 			position: relative !important
 			right: 60px !important
-			padding-left: 120px !important
-			padding-right: 60px !important
-			width: calc(100% - 120px) !important
+			padding-left: 75.2px !important
+			padding-right: 16px !important
+			width: calc(100% - 31.2px) !important
 			&>.container,
 				padding-left: 120px !important
 			&>.background
