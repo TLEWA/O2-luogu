@@ -41,7 +41,7 @@
 @var	checkbox Better-problem-bar "更好的题库选择条" 1
 @var	checkbox Better-Card-select-bar "更好的 Card 选择条" 1
 @var	checkbox Better-InputGroup "更统一的 InputGroup 样式" 1
-@var	checkbox Smart-SideBar "(实验性) Smart-Luogu 式侧栏" 0
+@var	checkbox Smart-SideBar "(实验性) Smart-Luogu 式侧栏" 1
 @var	checkbox Discuss-Sidebar-right "讨论区边栏右置" 1
 @var	checkbox More-Sidebar-Ani "侧栏在更多场景展示动画" 1
 @var	checkbox No-btn-outline "去除主页按钮 outline" 1
@@ -52,6 +52,7 @@
 
 @var	text Font-Stack "全局字体" "Default"
 @var	text Code-block-fontstack "代码块字体" "Default"
+@var	text Markdown-fontstack "Markdown 编辑器字体" "Default"
 
 @var	text Card-L1-radius "一级卡片圆角大小" "Default"
 @var	text Card-L2-radius "二级卡片圆角大小" "Default"
@@ -458,7 +459,7 @@ Tab 选中也可以 hover（不建议）
 
 // 字体处理
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=JetBrains+Mono')
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=JetBrains+Mono&family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap')
 
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?(.*))")
 
@@ -1247,6 +1248,8 @@ Tab 选中也可以 hover（不建议）
 		Discuss-Sidebar-width = set_default_value(Discuss-Sidebar-width,calc(20% - 1em))
 	Discuss-Sidebar-margin = set_default_value(Discuss-Sidebar-margin,1em)
 
+	Markdown-fontstack = set_default_value(Markdown-fontstack,'Fira Code'\, 'Source Code Pro'\, 'Noto Sans SC')
+
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -1509,6 +1512,10 @@ Tab 选中也可以 hover（不建议）
 	.cm-selectionBackground,.CodeMirror-selected
 		background: Markdown-text-selection-color !important
 
+	.CodeMirror-scroll,.cm-scroller
+		font-family: Markdown-fontstack, monospace !important
+	.cm-scroller
+		font-size: 16px !important
 	.CodeMirror-scroll
 		border-radius: 0 !important
 	.CodeMirror-code pre.CodeMirror-line
