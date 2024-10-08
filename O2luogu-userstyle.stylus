@@ -46,6 +46,12 @@
 @var	checkbox More-Sidebar-Ani "侧栏在更多场景展示动画" 1
 @var	checkbox No-btn-outline "去除主页按钮 outline" 1
 @var	checkbox A-hover-line "(实验性)(非积极支持)开启超链接 hover 下划线动画" 0
+@var	checkbox Anti-Sidebar-hover-line "侧栏禁用 hover 下划线动画" 1
+@var	checkbox Anti-Float-hover-line "悬浮选择框禁用 hover 下划线动画" 1
+@var	checkbox Anti-forum-container-hover-line "讨论区板块框禁用 hover 下划线动画" 1
+@var	checkbox Anti-Username-hover-line "用户名禁用 hover 下划线动画" 0
+@var	checkbox Anti-Diff-hover-line "题目难度禁用 hover 下划线动画" 0
+@var	checkbox Anti-pict-hover-line "图片链接禁用 hover 下划线动画" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 @var	select Input-ani-select "输入框点击动画选择" ["contract","jelly","off"]
@@ -624,6 +630,9 @@ Tab 选中也可以 hover（不建议）
 		&:hover::after
 			left: 0%
 			width: 100%
+	anti_hover_line()
+		&::after
+			height: 0 !important
 
 	// TODO：v2.0
 	use_button_style(Padding-width,Padding-height)
@@ -1402,6 +1411,7 @@ Tab 选中也可以 hover（不建议）
 	
 	{Hover_card_float}
 		//border-radius: Card-float-radius if Custom-Card // TODO：分离
+		anti_hover_line() if A-hover-line && Anti-Float-hover-line
 		&:hover //,&:focus
 			background: Card-hover-color-float !important
 			transition: Float-card-hover-ani !important
@@ -1428,6 +1438,10 @@ Tab 选中也可以 hover（不建议）
 		&:hover
 			color: A-hover-color !important
 		use_hover_line(A-hover-line-ani,A-hover-line-color,A-hover-line-height) if A-hover-line
+	
+	if Anti-pict-hover-line && A-hover-line
+		a:has(>img)
+			anti_hover_line()
 
 	// Hover 超链接样式修改
 	{Hover-A}
@@ -1475,6 +1489,7 @@ Tab 选中也可以 hover（不建议）
 		background: Sidebar-bg-color !important
 		&>a
 			color: Sidebar-icon-color !important
+			anti_hover_line() if A-hover-line && Anti-Sidebar-hover-line
 			.icon>svg>path
 				color: Sidebar-icon-color !important
 		
@@ -1629,6 +1644,7 @@ Tab 选中也可以 hover（不建议）
 	
 	// 题目难度文字修改
 	.info-rows a[href*="/problem/list"]>span
+		anti_hover_line() if A-hover-line && Anti-Diff-hover-line
 		&[style*="rgb(191\, 191\, 191);"]
 			color: Difficulty-text-color-1 !important
 		&[style*="rgb(254\, 76\, 97);"]
@@ -2011,15 +2027,11 @@ Tab 选中也可以 hover（不建议）
 	{Button}
 		border-radius: Button-radius !important
 		use_button_style(Button-padding-width,Button-padding-height)
-		if A-hover-line
-			&::after
-				height: 0 !important
+		anti_hover_line() if A-hover-line
 	{Small-Button}
 		border-radius: Small-button-radius !important
 		use_button_style(Small-button-padding-width,Small-button-padding-height)
-		if A-hover-line
-			&::after
-				height: 0 !important
+		anti_hover_line() if A-hover-line
 
 	.expand > .expand
 		background: Expand-shadow !important
@@ -2117,6 +2129,7 @@ Tab 选中也可以 hover（不建议）
 			transition: background Button-hover-ani \, border-color Button-hover-ani !important
 
 	{Username} // 洛谷用户 id
+		anti_hover_line() if A-hover-line && Anti-Username-hover-line
 		&[style*="color: rgb(191\, 191\, 191);"],&[style*="color: var(--lfe-color--grey-3);"]
 			color: Username-color-1 !important
 		&[style*="color: rgb(52\, 152\, 219);"],&[style*="color: var(--lfe-color--blue-3);"]
@@ -2273,6 +2286,10 @@ Tab 选中也可以 hover（不建议）
 				margin-left: Discuss-Sidebar-margin !important
 			else
 				margin-right: Discuss-Sidebar-margin !important
+
+	if Anti-forum-container-hover-line && A-hover-line
+		.forum-container
+			anti_hover_line()
 
 	// 各种小 bug 的修复
 	.load-more
