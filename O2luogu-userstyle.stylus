@@ -52,6 +52,7 @@
 @var	checkbox Anti-Username-hover-line "用户名禁用 hover 下划线动画" 0
 @var	checkbox Anti-Diff-hover-line "题目难度禁用 hover 下划线动画" 0
 @var	checkbox Anti-pict-hover-line "图片链接禁用 hover 下划线动画" 1
+@var	checkbox Anti-Markdown-hover-line "Markdown 编辑器图标禁用 hover 下划线动画" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 @var	select Input-ani-select "输入框点击动画选择" ["contract","jelly","off"]
@@ -1340,7 +1341,9 @@ Tab 选中也可以 hover（不建议）
 						use_contract_ani(Input-active-scale)
 
 				&:focus:not(:active)
-					animation: Input-active Input-active-anim !important		
+					animation: Input-active Input-active-anim !important
+	input[type="password"]
+		font-family:  -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif !important
 	
 	// #409eff
 
@@ -1516,8 +1519,13 @@ Tab 选中也可以 hover（不建议）
 	
 	// Badge 样式修改
 	{Badge}
+		anti_hover_line() if A-hover-line
 		color: Badge-text-color !important
 		border-radius: Badge-border-radius !important
+	
+	if A-hover-line
+		a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag']
+			anti_hover_line()
 
 	// 主标题颜色
 	div.header-layout h1
@@ -1595,9 +1603,10 @@ Tab 选中也可以 hover（不建议）
 				fill: Markdown-button-hover-text-color !important
 	.mp-editor-menu>li>a
 		border: Markdown-button-hover-border !important
+		anti_hover_line() if A-hover-line && Anti-Markdown-hover-line
 		&:hover
 			background: Markdown-button-hover-bg-color !important
-
+		
 	// 题目限制文字
 	.stat > .stat.color-inverse span
 		color: Topic-text-color !important
@@ -1610,6 +1619,7 @@ Tab 选中也可以 hover（不建议）
 	
 	// 题目类型标签修改
 	{Topic-type-Label}
+		anti_hover_line() if A-hover-line
 		&[style*="rgb(232\, 232\, 232)"]:not(.selected)
 			background: Topic-type-Label-not-select !important
 		&[style*="--tag-color: #2949b4"],&[style*="rgb(41\, 73\, 180)"]
@@ -1644,7 +1654,6 @@ Tab 选中也可以 hover（不建议）
 	
 	// 题目难度文字修改
 	.info-rows a[href*="/problem/list"]>span
-		anti_hover_line() if A-hover-line && Anti-Diff-hover-line
 		&[style*="rgb(191\, 191\, 191);"]
 			color: Difficulty-text-color-1 !important
 		&[style*="rgb(254\, 76\, 97);"]
@@ -1661,6 +1670,10 @@ Tab 选中也可以 hover（不建议）
 			color: Difficulty-text-color-7 !important
 		&[style*="rgb(14\, 29\, 105);"]
 			color: Difficulty-text-color-8 !important
+	
+	if A-hover-line
+		.difficulty a
+			anti_hover_line() 
 
 	// 行内代码块
 	{InLine-code-block}
