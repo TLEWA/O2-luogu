@@ -53,6 +53,7 @@
 @var	checkbox Anti-Diff-hover-line "题目难度禁用 hover 下划线动画" 0
 @var	checkbox Anti-pict-hover-line "图片链接禁用 hover 下划线动画" 1
 @var	checkbox Anti-Markdown-hover-line "Markdown 编辑器图标禁用 hover 下划线动画" 1
+@var	checkbox Anti-HeaderFooter "保留洛谷原生主题" 0
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 @var	select Input-ani-select "输入框点击动画选择" ["contract","jelly","off"]
@@ -1463,6 +1464,9 @@ Tab 选中也可以 hover（不建议）
 		border-color: Divider-color !important
 	hr
 		background: Divider-color !important
+
+	.frac-line
+		border-color: Text-color !important
 	
 	// 陈述样式
 	{State}
@@ -1495,20 +1499,20 @@ Tab 选中也可以 hover（不建议）
 
 	// 侧栏样式修改
 	#app > nav.lfe-body
-		background: Sidebar-bg-color !important
+		background: Sidebar-bg-color !important if !Anti-HeaderFooter
 		&>a
-			color: Sidebar-icon-color !important
+			color: Sidebar-icon-color !important if !Anti-HeaderFooter
 			anti_hover_line() if A-hover-line && Anti-Sidebar-hover-line
 			.icon>svg>path
-				color: Sidebar-icon-color !important
+				color: Sidebar-icon-color !important if !Anti-HeaderFooter
 		
 		.popup-button
-			color: Sidebar-btn-color !important
+			color: Sidebar-btn-color !important if !Anti-HeaderFooter
 			.icon>svg>path
-				color: Sidebar-btn-color !important
+				color: Sidebar-btn-color !important if !Anti-HeaderFooter
 		
 		&>div:nth-child(1)
-			background-color: Sidebar-luogu-bg-color !important
+			background-color: Sidebar-luogu-bg-color !important if !Anti-HeaderFooter
 			&>a>img
 				use_img_bg_color(Sidebar-luogu-icon-color)
 
@@ -1882,7 +1886,7 @@ Tab 选中也可以 hover（不建议）
 
 	// 页首修改
 	.main-container > .wrapper.wrapped.lfe-body:has(>.header) > .background,.main-container > header.theme-bg
-		background: Header-bg-color !important
+		background: Header-bg-color !important if !Anti-HeaderFooter
 		if bug-fix9
 			& .lfe-h1
 				overflow: visible 
@@ -1891,7 +1895,7 @@ Tab 选中也可以 hover（不建议）
 	// 页尾修改
 	.main-container > .wrapper.wrapped.lfe-body:has(>.footer),.main-container > footer.theme-bg
 		&,& .background
-			background: Footer-bg-color !important
+			background: Footer-bg-color !important if !Anti-HeaderFooter
 		& .info,& .links
 			&>p,& a
 				color: Footer-text-color !important
@@ -2046,11 +2050,16 @@ Tab 选中也可以 hover（不建议）
 	{Button}
 		border-radius: Button-radius !important
 		use_button_style(Button-padding-width,Button-padding-height)
-		anti_hover_line() if A-hover-line
+		&:is(a),&>a
+			anti_hover_line() if A-hover-line
 	{Small-Button}
 		border-radius: Small-button-radius !important
 		use_button_style(Small-button-padding-width,Small-button-padding-height)
-		anti_hover_line() if A-hover-line
+		&:is(a),&>a
+			anti_hover_line() if A-hover-line
+	if A-hover-line
+		a:has(>button)
+			anti_hover_line()
 
 	.expand > .expand
 		background: Expand-shadow !important
@@ -2333,6 +2342,9 @@ Tab 选中也可以 hover（不建议）
 	if bug-fix2
 		.shown .arrow
 			transform: none !important
+
+		.combo-wrapper .arrow
+			font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif !important
 
 		.combo-wrapper.shown .arrow
 			transform: scaleY(-1) !important
