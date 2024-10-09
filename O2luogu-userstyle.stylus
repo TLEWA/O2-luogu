@@ -2267,14 +2267,14 @@ Tab 选中也可以 hover（不建议）
 				left: -50px
 			to
 				left: 0px
-		
-		//More-Sidebar-Ani
+
 		#app > .lfe-body
 			animation: Sidebar-out SideBar-ani if !More-Sidebar-Ani
 			//backdrop-filter: blur(20px) !important
 			//-webkit-backdrop-filter: blur(20px) !important
 			border-radius: 0px 30px 30px 0px
 			margin-left: 0px
+			position: sticky
 			top: SideBar-position
 			transform: translateY(- SideBar-position)
 			padding-bottom: 14px
