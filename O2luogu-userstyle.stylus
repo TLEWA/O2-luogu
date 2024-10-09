@@ -45,6 +45,11 @@
 @var	checkbox Discuss-Sidebar-right "讨论区边栏右置" 1
 @var	checkbox More-Sidebar-Ani "侧栏在更多场景展示动画" 1
 @var	checkbox No-btn-outline "去除主页按钮 outline" 1
+@var	checkbox Anti-HeaderFooter "保留洛谷原生主题" 0
+@var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
+@var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
+@var	select Input-ani-select "输入框点击动画选择" ["contract","jelly","off"]
+
 @var	checkbox A-hover-line "(实验性)(非积极支持)开启超链接 hover 下划线动画" 0
 @var	checkbox Anti-Sidebar-hover-line "侧栏禁用 hover 下划线动画" 1
 @var	checkbox Anti-Float-hover-line "悬浮选择框禁用 hover 下划线动画" 1
@@ -53,10 +58,8 @@
 @var	checkbox Anti-Diff-hover-line "题目难度禁用 hover 下划线动画" 0
 @var	checkbox Anti-pict-hover-line "图片链接禁用 hover 下划线动画" 1
 @var	checkbox Anti-Markdown-hover-line "Markdown 编辑器图标禁用 hover 下划线动画" 1
-@var	checkbox Anti-HeaderFooter "保留洛谷原生主题" 0
-@var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
-@var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
-@var	select Input-ani-select "输入框点击动画选择" ["contract","jelly","off"]
+@var	checkbox Anti-Outbtn "登出按钮禁用 hover 下划线动画" 1
+@var	checkbox Anti-Usernav "用户栏图标禁用 hover 下划线动画" 1
 
 @var	text CustomBackground "自定义背景" "None"
 
@@ -422,7 +425,8 @@
 @var	text SideBar-ani "侧栏渐现动画" "Default"
 
 @var	text Discuss-Sidebar-width "讨论区边栏宽度" "Default"
-@var	text Discuss-Sidebar-margin "讨论区边栏与卡片间隔" "Default"
+@var	text Discuss-Main-width "讨论区主栏宽度" "Default"
+@var	text Discuss-Sidebar-margin "讨论区边栏与卡片间隔(居左时才生效)(洛谷原版特性兼容)" "Default"
 
 @var	text Button-active-scale "按钮 actvie 缩小倍率(0 ~ 1)，越高越大" "Default"
 @var	text Button-active-ani "按钮 actvie 缩小动画效果" "Default"
@@ -622,10 +626,11 @@ Tab 选中也可以 hover（不建议）
 
 	use_hover_line(Hover-line-ani,Hover-line-color,Hover-line-height)
 		position: relative
+		overflow: unset !important
 		&::after
 			content: ""
 			width: 0
-			height: Hover-line-height
+			height: Hover-line-height !important
 			background: Hover-line-color
 			position: absolute
 			top: 100%
@@ -636,7 +641,7 @@ Tab 选中也可以 hover（不建议）
 			width: 100%
 	anti_hover_line()
 		&::after
-			height: 0 !important
+			opacity: 0 !important
 
 	// TODO：v2.0
 	use_button_style(Padding-width,Padding-height)
@@ -1280,8 +1285,10 @@ Tab 选中也可以 hover（不建议）
 
 	if Discuss-Sidebar-right
 		Discuss-Sidebar-width = set_default_value(Discuss-Sidebar-width,calc(25% - 1em))
+		Discuss-Main-width = set_default_value(Discuss-Main-width,calc(75%))
 	else
 		Discuss-Sidebar-width = set_default_value(Discuss-Sidebar-width,calc(20% - 1em))
+		Discuss-Main-width = set_default_value(Discuss-Main-width,calc(80% - 5em))
 	Discuss-Sidebar-margin = set_default_value(Discuss-Sidebar-margin,1em)
 
 	Markdown-fontstack = set_default_value(Markdown-fontstack,'Fira Code'\, 'Source Code Pro'\, 'Noto Sans SC')
@@ -2306,24 +2313,35 @@ Tab 选中也可以 hover（不建议）
 
 	// 讨论区设置
 	.full-container[currenttemplate="DiscussList"]
-		& .side
-			width: Discuss-Sidebar-width !important
-			box-sizing: border-box !important
-			if Discuss-Sidebar-right
-				float: right !important
-				margin-right: 0 !important
-				margin-left: Discuss-Sidebar-margin !important
-			else
-				margin-right: Discuss-Sidebar-margin !important
+		@media (min-width: 769px)
+			& .side
+				width: Discuss-Sidebar-width !important
+				box-sizing: border-box !important
+				if Discuss-Sidebar-right
+					float: right !important
+					margin-right: 0 !important
+					//margin-left: Discuss-Sidebar-margin !important
+				else
+					margin-right: Discuss-Sidebar-margin !important
+			& .main
+				width: Discuss-Main-width !important
 
 	if Anti-forum-container-hover-line && A-hover-line
 		.forum-container
 			anti_hover_line()
 	
 	if A-hover-line
-		.row.content-left.title.link.color-default
+		.row.row-space-between.bottom > .row.content-left.title.link.color-default
 			anti_hover_line()
 			overflow: unset !important
+	
+	if Anti-Outbtn && A-hover-line
+		.center>footer>a,.login-actions a
+			anti_hover_line()
+	
+	if Anti-Usernav && A-hover-line
+		.user-nav>a,.user-nav>nav>:not(.dropdown) a,.user-nav>nav>a
+			anti_hover_line()
 
 	// 各种小 bug 的修复
 	.load-more
