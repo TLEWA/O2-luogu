@@ -46,6 +46,7 @@
 @var	checkbox More-Sidebar-Ani "侧栏在更多场景展示动画" 1
 @var	checkbox No-btn-outline "去除主页按钮 outline" 1
 @var	checkbox Anti-HeaderFooter "保留洛谷原生主题" 0
+@var	checkbox Better-Usernav-box "更好的右上图标栏" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 @var	select Input-ani-select "输入框点击动画选择" ["contract","jelly","off"]
@@ -437,6 +438,11 @@
 @var	text A-hover-line-color "超链接 hover 下划线颜色" "Default"
 @var	text A-hover-line-height "超链接 hover 下划线粗细" "Default"
 
+@var	text Usernav-box-margin "悬浮右上信息框距顶部距离" "Default"
+@var	text Usernav-box-ani-margin "悬浮右上信息框动画初始距顶部距离(可以为负)" "Default"
+@var	text Usernav-box-ani "悬浮右上信息框动画效果" "Default"
+@var	text Usernav-box-radius "右上信息框圆角大小" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -472,7 +478,6 @@
 
 阴影化 v2
 实现页首页尾自定义v2
-主页通过栏（无法实现）
 Tab 选中也可以 hover（不建议）
 私信框自定义背景
 确定键长按
@@ -1300,6 +1305,14 @@ Tab 选中也可以 hover（不建议）
 	A-hover-line-color = set_default_value(A-hover-line-color,rgba(255, 0, 0, .575))
 	A-hover-line-height = set_default_value(A-hover-line-height,1.5px)
 
+	Usernav-box-margin = set_default_value(Usernav-box-margin,10px)
+	Usernav-box-ani-margin = set_default_value(Usernav-box-ani-margin,-50px)
+	Usernav-box-ani = set_default_value(Usernav-box-ani,0.75s ease)
+	if Better-Usernav-box
+		Usernav-box-radius = set_default_value(Usernav-box-radius,10px)
+	else
+		Usernav-box-radius = set_default_value(Usernav-box-radius,5px)
+
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -1403,6 +1416,7 @@ Tab 选中也可以 hover（不建议）
 			width: auto !important
 			height: auto !important
 			background: none !important
+			opacity: 1 !important
 
 	// 一级 Card 样式修改
 	{Card_L1}
@@ -2342,6 +2356,21 @@ Tab 选中也可以 hover（不建议）
 	if Anti-Usernav && A-hover-line
 		.user-nav>a,.user-nav>nav>:not(.dropdown) a,.user-nav>nav>a
 			anti_hover_line()
+
+	if Better-Usernav-box
+		@keyframes Show-Usernav-box
+			0%
+				opacity: 0
+				margin-top: Usernav-box-ani-margin
+
+			100%
+				opacity: 1
+				margin-top: Usernav-box-margin
+	
+	.user-nav:has(>nav)
+		border-radius: Usernav-box-radius !important
+		margin-top: Usernav-box-margin if Better-Usernav-box
+		animation: Show-Usernav-box Usernav-box-ani if Better-Usernav-box
 
 	// 各种小 bug 的修复
 	.load-more
