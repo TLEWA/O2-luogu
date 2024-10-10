@@ -47,6 +47,9 @@
 @var	checkbox No-btn-outline "去除主页按钮 outline" 1
 @var	checkbox Anti-HeaderFooter "保留洛谷原生主题" 0
 @var	checkbox Better-Usernav-box "更好的右上图标栏" 1
+@var	checkbox More-Usernav-box-Ani "右上图标栏在更多场景展示动画" 1
+@var	checkbox Usernav-float "右上图标栏与下侧卡片布局对齐" 1
+@var	checkbox Better-prob-card "新前端题解区卡片应用氧洛谷式排版" 1
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 @var	select Input-ani-select "输入框点击动画选择" ["contract","jelly","off"]
@@ -442,6 +445,9 @@
 @var	text Usernav-box-ani-margin "悬浮右上信息框动画初始距顶部距离(可以为负)" "Default"
 @var	text Usernav-box-ani "悬浮右上信息框动画效果" "Default"
 @var	text Usernav-box-radius "右上信息框圆角大小" "Default"
+
+@var	text Prob-lcard-width "题目/题解页面主卡片宽度" "Default"
+@var	text Prob-side-width "题目/题解页面 side 卡片宽度" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -1312,6 +1318,9 @@ Tab 选中也可以 hover（不建议）
 		Usernav-box-radius = set_default_value(Usernav-box-radius,10px)
 	else
 		Usernav-box-radius = set_default_value(Usernav-box-radius,5px)
+	
+	Prob-lcard-width = set_default_value(Prob-lcard-width,calc(66.67% - .5em))
+	Prob-side-width = set_default_value(Prob-side-width,calc(33.33% - .5em))
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -1349,7 +1358,7 @@ Tab 选中也可以 hover（不建议）
 			use_depend_list(background-color,(Input-focus-bg-color Card-bg-color-L2),1)
 		&::placeholder
 			use_depend_list(color,(Input-placeholder-color));
-		&:focus,&.focused
+		&:focus,&.focused,&:focus-within
 			border-color: Input-focus-border-color !important
 			box-shadow: Input-active-shadow !important
 		&:not(textarea):focus:not(:active) // 修补一下动画冲突 TODO：把这个也加上动画
@@ -2366,11 +2375,31 @@ Tab 选中也可以 hover（不建议）
 			100%
 				opacity: 1
 				margin-top: Usernav-box-margin
+		
+		.user-nav:has(>nav)
+			margin-top: Usernav-box-margin
+			animation: Show-Usernav-box Usernav-box-ani if !More-Usernav-box-Ani
+		
+		if More-Usernav-box-Ani
+			.main-container > .wrapper.wrapped.lfe-body>.header:not([pageloading*="true"])>.user-nav
+				animation: Show-Usernav-box Usernav-box-ani
+	
+	if Usernav-float
+		.user-nav:has(>nav)
+			position: unset !important
+			float: right !important
 	
 	.user-nav:has(>nav)
 		border-radius: Usernav-box-radius !important
-		margin-top: Usernav-box-margin if Better-Usernav-box
-		animation: Show-Usernav-box Usernav-box-ani if Better-Usernav-box
+
+	.refined-input:has(.east)>input,.article-mine-filter
+		box-shadow: none !important		
+
+	.full-container
+		.side
+			width: Prob-side-width !important
+		.main
+			width: Prob-lcard-width !important
 
 	// 各种小 bug 的修复
 	.load-more
@@ -2446,6 +2475,21 @@ Tab 选中也可以 hover（不建议）
 	.user-nav.rside.show.nav-scrollbar // 朋友要用，做的紧急修改，TODO
 		width: Article-rside-width !important
 		max-width: Article-rside-width !important
+
+@-moz-document regexp("^https?://www.luogu.com(.cn)?/problem/solution.*$")
+	if Better-prob-card
+		.sidebar-container.layout
+			&>.side
+				width: Prob-side-width !important
+				float: right !important
+				margin-left: 0 !important
+				margin-right: 0 !important
+			&>.main
+				width: Prob-lcard-width !important
+				margin-left: 0 !important
+				margin-right: 0 !important
+				float: left !important
+			display: block !important
 
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/article?(.*))")
 	use_new_bar()
