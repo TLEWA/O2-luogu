@@ -2396,9 +2396,9 @@ Tab 选中也可以 hover（不建议）
 		box-shadow: none !important		
 
 	.full-container
-		.side
+		&>.side
 			width: Prob-side-width !important
-		.main
+		&>.main
 			width: Prob-lcard-width !important
 
 	// 各种小 bug 的修复
