@@ -2225,6 +2225,7 @@ Tab 选中也可以 hover（不建议）
 		.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
 			& .lfe-h1
 				animation: ShowTop Header-text-ani
+				float: left if Better-Usernav-box
 
 	// 题库条设置
 	.card > section .block > .block-item.category
@@ -2380,9 +2381,15 @@ Tab 选中也可以 hover（不建议）
 			margin-top: Usernav-box-margin
 			animation: Show-Usernav-box Usernav-box-ani if !More-Usernav-box-Ani
 		
+		
 		if More-Usernav-box-Ani
 			.main-container > .wrapper.wrapped.lfe-body>.header:not([pageloading*="true"])>.user-nav
 				animation: Show-Usernav-box Usernav-box-ani
+		
+		.main-container > .wrapper.wrapped.lfe-body:has(>.header),.main-container > header.theme-bg
+			& .functional
+				width: 100% !important
+				float: left
 	
 	if Usernav-float
 		.user-nav:has(>nav)
