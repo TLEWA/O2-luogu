@@ -2336,7 +2336,7 @@ Tab 选中也可以 hover（不建议）
 		box-shadow: none !important
 
 	// 讨论区设置
-	.full-container[currenttemplate="DiscussList"]
+	.full-container[currenttemplate="DiscussList"],.full-container[currenttemplate="DiscussPost"]
 		@media (min-width: 769px)
 			& .side
 				width: Discuss-Sidebar-width !important
@@ -2403,10 +2403,11 @@ Tab 选中也可以 hover（不建议）
 		box-shadow: none !important		
 
 	.full-container
-		&>.side
-			width: Prob-side-width !important
-		&>.main
-			width: Prob-lcard-width !important
+		@media (min-width: 769px)
+			&>.side
+				width: Prob-side-width !important
+			&>.main
+				width: Prob-lcard-width !important
 
 	// 各种小 bug 的修复
 	.load-more
