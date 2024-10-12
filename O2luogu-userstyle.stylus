@@ -449,6 +449,11 @@
 @var	text Prob-lcard-width "题目/题解页面主卡片宽度" "Default"
 @var	text Prob-side-width "题目/题解页面 side 卡片宽度" "Default"
 
+@var	text Float-Card-shadow "悬浮卡片阴影" "Default"
+
+@var	text Privateletter-right-bg-color "私信右侧信息背景色" "Default"
+@var	text Privateletter-right-text-color "私信右侧信息文字色" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -530,6 +535,7 @@ Tab 选中也可以 hover（不建议）
 		Card_L2 = ".am-panel,.inner-card,.discuss-container .discuss,.swal2-validation-message" // 二级卡片
 		Card_float = "#app > nav.lfe-body .popup,.user-nav .center,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog" // 悬浮卡片
 		Hover_card_float = "#app > nav.lfe-body .popup a,.dropdown-operations li,.dropdown li,.candidates li,.am-modal-footer"
+		Shadow_card_float = "#app > nav.lfe-body .popup, .user-nav .center,.dropdown"
 		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I" // 标题文字
 		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner" // 正文文字
 		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name" // 陈述文字
@@ -937,6 +943,9 @@ Tab 选中也可以 hover（不建议）
 		UpdEditer-bg-color = set_default_value(UpdEditer-bg-color,#2f3741)
 
 		Select-button-hover-bg-color = set_default_value(Select-button-hover-bg-color,#3e4752)
+
+		Privateletter-right-bg-color = set_default_value(Privateletter-right-bg-color,#4682b4)
+		Privateletter-right-text-color = set_default_value(Privateletter-right-text-color,#f2faff)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
 		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
@@ -1079,6 +1088,9 @@ Tab 选中也可以 hover（不建议）
 		UpdEditer-bg-color = set_default_value(UpdEditer-bg-color,#fff)
 
 		Select-button-hover-bg-color = set_default_value(Select-button-hover-bg-color,#f6f6f6)
+
+		Privateletter-right-bg-color = set_default_value(Privateletter-right-bg-color,#3498db)
+		Privateletter-right-text-color = set_default_value(Privateletter-right-text-color,#f2faff)
 
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
@@ -1322,6 +1334,13 @@ Tab 选中也可以 hover（不建议）
 	Prob-lcard-width = set_default_value(Prob-lcard-width,calc(66.67% - .5em))
 	Prob-side-width = set_default_value(Prob-side-width,calc(33.33% - .5em))
 
+	if DarkMode
+		Float-Card-shadow = set_default_value(Float-Card-shadow,none)
+	else
+		Float-Card-shadow = set_default_value(Float-Card-shadow,0 0.5rem 2rem 0 rgba(0, 0, 0, .2))
+
+
+
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -1455,6 +1474,9 @@ Tab 选中也可以 hover（不建议）
 		&:hover //,&:focus
 			background: Card-hover-color-float !important
 			transition: Float-card-hover-ani !important
+	
+	{Shadow_card_float}
+		box-shadow: Float-Card-shadow !important
 
 	// 文字标题样式修改
 	{Title}
@@ -1791,11 +1813,15 @@ Tab 选中也可以 hover（不建议）
 		&:after
 			display: none if Privateletter-hide
 	
+	.message-block.right .message
+		background: Privateletter-right-bg-color !important
+		color: Privateletter-right-text-color !important
+
 	.message-block.left .message:after
 		border-right-color: Privateletter-bg-color !important
 
 	.message-block.right .message:after
-		border-left-color: Privateletter-bg-color !important
+		border-left-color: Privateletter-right-bg-color !important
 	
 	.card.wrapper.padding-none > .side > .panel-content > .list > .item
 		transition: background Privateitem-hover-ani !important
@@ -2227,7 +2253,7 @@ Tab 选中也可以 hover（不建议）
 				animation: ShowTop Header-text-ani
 				@media (min-width: 577px) 
 					float: left if Better-Usernav-box
-					max-width: calc(100% - 250px) if Better-Usernav-box
+					max-width: calc(100% - 255px) if Better-Usernav-box
 
 	// 题库条设置
 	.card > section .block > .block-item.category
