@@ -465,6 +465,7 @@
 @var	checkbox bug-fix9 "[bug-fix] 洛谷标题文字和新前端卡片用户名极端情况下被裁剪" 1
 @var	checkbox bug-fix10 "[bug-fix] 讨论区滚动条异常" 1
 @var	checkbox bug-fix11 "[bug-fix] 主页签到运势勾子位置异常" 1
+@var	checkbox bug-fix12 "[bug-fix] 题单界面 '查找题单' 文字对齐异常" 1
 
 ==/UserStyle== */
 
@@ -1595,9 +1596,9 @@ Tab 选中也可以 hover（不建议）
 
 	// 各讨论区图标颜色
 
-	discuss-color = (Luogu-discuss-color-1 Luogu-discuss-color-2 Luogu-discuss-color-3 Luogu-discuss-color-4 Luogu-discuss-color-5 Luogu-discuss-color-6)
+	discuss-color = (Luogu-discuss-color-1 Luogu-discuss-color-2 Luogu-discuss-color-3 Luogu-discuss-color-4 Luogu-discuss-color-5 Luogu-discuss-color-6 Luogu-discuss-color-3)
 
-	for i in 0..5
+	for i in 0..6
 		div.card.left.padding-default > div.section > a:nth-child({i+1}),.side div.card.padding-default:not(.left) > div.section > a:nth-child({i})
 			if Better-discuss-button
 				& > span
@@ -1607,8 +1608,23 @@ Tab 选中也可以 hover（不建议）
 			
 			& > span.active
 				color: discuss-color[i] !important
-			& > svg > path
-				fill: discuss-color[i] !important
+			//& > svg > path
+			//	fill: discuss-color[i] !important
+	
+	a.forum-container.router-link-exact-active.router-link-active.color-default.link
+		&[style*="#272727"]  > svg > path
+			fill: discuss-color[0]
+		&[style*="#14558f"]  > svg > path 
+			fill: discuss-color[1]
+		&[style*="#f39c11"]  > svg > path 
+			fill: discuss-color[2]
+		&[style*="#9d3dcf"]  > svg > path 
+			fill: discuss-color[3]
+		&[style*="#52c41a"]  > svg > path 
+			fill: discuss-color[4]
+		&[style*="#2949b4"]  > svg > path 
+			fill: discuss-color[5]
+
 	
 	// 讨论区评论
 	{Discuss}
@@ -2495,6 +2511,10 @@ Tab 选中也可以 hover（不建议）
 	if bug-fix9
 		.user-info .luogu-username>.name
 			overflow: visible !important
+	
+	if bug-fix12
+		.find-problem.no-wrap.lfe-h2
+			margin-bottom: 0 !important
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/discuss.*$")
 	if bug-fix10
