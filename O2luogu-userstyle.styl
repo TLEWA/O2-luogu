@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.1.0.3
+@version      2.1.0.4
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -468,6 +468,7 @@
 @var	checkbox bug-fix10 "[bug-fix] 讨论区滚动条异常" 1
 @var	checkbox bug-fix11 "[bug-fix] 主页签到运势勾子位置异常" 1
 @var	checkbox bug-fix12 "[bug-fix] 题单界面 '查找题单' 文字对齐异常" 1
+@var	checkbox bug-fix13 "[bug-fix] 团队成员编辑卡滚动条异常" 1
 
 ==/UserStyle== */
 
@@ -2524,6 +2525,19 @@ Tab 选中也可以 hover（不建议）
 	if bug-fix12
 		.find-problem.no-wrap.lfe-h2
 			margin-bottom: 0 !important
+	
+	if bug-fix13
+		.card.info-card.center.padding-default .dropdown
+			&,& *
+				height: 0 !important
+				min-height: 0 !important
+				width: 0 !important
+				min-width: 0 !important
+				margin: 0 !important
+				padding: 0 !important
+				top: 0 !important
+				left: 0 !important
+				display: none !important
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/discuss.*$")
 	if bug-fix10
