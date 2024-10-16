@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.1.0.2
+@version      2.1.0.3
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -453,6 +453,8 @@
 
 @var	text Privateletter-right-bg-color "私信右侧信息背景色" "Default"
 @var	text Privateletter-right-text-color "私信右侧信息文字色" "Default"
+
+@var	text Top-progress-color "顶部加载条颜色" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -947,6 +949,8 @@ Tab 选中也可以 hover（不建议）
 
 		Privateletter-right-bg-color = set_default_value(Privateletter-right-bg-color,#4682b4)
 		Privateletter-right-text-color = set_default_value(Privateletter-right-text-color,#f2faff)
+
+		Top-progress-color = set_default_value(Top-progress-color,#5e72e4)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
 		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
@@ -1092,6 +1096,8 @@ Tab 选中也可以 hover（不建议）
 
 		Privateletter-right-bg-color = set_default_value(Privateletter-right-bg-color,#3498db)
 		Privateletter-right-text-color = set_default_value(Privateletter-right-text-color,#f2faff)
+
+		Top-progress-color = set_default_value(Top-progress-color,#3498db)
 
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
@@ -1957,11 +1963,11 @@ Tab 选中也可以 hover（不建议）
 					border-radius: Test-case-border-radius
 
 	// 页首修改
-	.main-container > .wrapper.wrapped.lfe-body:has(>.header) > .background,.main-container > header.theme-bg
+	.main-container > .wrapper.wrapped.lfe-body:has(>.background) > .background,.main-container > header.theme-bg
 		background: Header-bg-color !important if !Anti-HeaderFooter
 		if bug-fix9
 			& .lfe-h1
-				overflow: visible 
+				overflow: visible !important
 
 	
 	// 页尾修改
@@ -2336,7 +2342,7 @@ Tab 选中也可以 hover（不建议）
 
 	if Smart-SideBar // Smart-Luogu 式侧栏
 		// 顶栏适配
-		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:has(>.header),.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
+		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:has(>.background),.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
 			position: relative !important
 			right: 60px !important
 			padding-left: 75.2px !important
@@ -2430,7 +2436,7 @@ Tab 选中也可以 hover（不建议）
 			.main-container > .wrapper.wrapped.lfe-body>.header:not([pageloading*="true"])>.user-nav
 				animation: Show-Usernav-box Usernav-box-ani
 		
-		.main-container > .wrapper.wrapped.lfe-body:has(>.header),.main-container > header.theme-bg
+		.main-container > .wrapper.wrapped.lfe-body:has(>.background),.main-container > header.theme-bg
 			& .functional
 				width: 100% !important
 				float: left
@@ -2452,6 +2458,9 @@ Tab 选中也可以 hover（不建议）
 				width: Prob-side-width !important
 			&>.main
 				width: Prob-lcard-width !important
+
+	.top-progress > .bar
+		background: Top-progress-color !important
 
 	// 各种小 bug 的修复
 	.load-more
