@@ -30,6 +30,7 @@
 @var	checkbox Better-big-button "更好的巨型按钮排版" 1
 @var	checkbox Better-discuss-button "更好的讨论区板块选择" 1
 @var	checkbox exlg-compatible "exlg 兼容" 1
+@var	checkbox oiso-compatible "(实验性)(不积极支持)oiso 兼容" 1
 @var	checkbox Better-control-nav "更好的主页广告翻页选择点" 1
 @var	checkbox Hide-AD "隐藏洛谷边栏广告" 0
 @var	checkbox Hide-testcase-load "评测结果加载缓冲" 1
@@ -51,6 +52,7 @@
 @var	checkbox Usernav-float "右上图标栏与下侧卡片布局对齐" 1
 @var	checkbox Better-prob-card "新前端题解区卡片应用氧洛谷式排版" 1
 @var	checkbox Fast-Font-load "字体常驻加载" 0
+
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 @var	select Input-ani-select "输入框点击动画选择" ["contract","jelly","off"]
@@ -2288,7 +2290,20 @@ if Fast-Font-load
 				animation: ShowTop Header-text-ani
 				@media (min-width: 577px) 
 					float: left if Better-Usernav-box
-					max-width: calc(100% - 255px) if Better-Usernav-box
+		
+		
+		if Better-Usernav-box
+			@media (min-width: 577px) 
+				.main-container > .wrapper.wrapped.lfe-body:has(.user-nav > nav) .lfe-h1
+					max-width: calc(100% - 174px)
+				
+				if exlg-compatible || oiso-compatible
+					.main-container > .wrapper.wrapped.lfe-body:has(.user-nav > nav > #exlg-dash-wrapper,.user-nav > nav > a:first-child) .lfe-h1
+						max-width: calc(100% - 255px)
+				if exlg-compatible && oiso-compatible
+					.main-container > .wrapper.wrapped.lfe-body:has(.user-nav > nav > #exlg-dash-wrapper+a,.user-nav > nav > a:first-child+#exlg-dash-wrapper) .lfe-h1
+						max-width: calc(100% - 336px) !important
+						
 
 	// 题库条设置
 	.card > section .block > .block-item.category
