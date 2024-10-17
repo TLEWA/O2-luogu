@@ -50,6 +50,7 @@
 @var	checkbox More-Usernav-box-Ani "右上图标栏在更多场景展示动画" 1
 @var	checkbox Usernav-float "右上图标栏与下侧卡片布局对齐" 1
 @var	checkbox Better-prob-card "新前端题解区卡片应用氧洛谷式排版" 1
+@var	checkbox Fast-Font-load "字体常驻加载" 0
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 @var	select Input-ani-select "输入框点击动画选择" ["contract","jelly","off"]
@@ -501,9 +502,12 @@ Tab 选中也可以 hover（不建议）
 
 // 字体处理
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=JetBrains+Mono&family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap')
+if Fast-Font-load
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=JetBrains+Mono&family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap')
 
-@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?(.*))")
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
+	if !Fast-Font-load
+		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=JetBrains+Mono&family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap')
 
 	// 导入 Noto Sans
 	/*google 的服务真方便吧*/
@@ -1355,7 +1359,7 @@ Tab 选中也可以 hover（不建议）
 		Article-Background = get_depend_list((CustomBackground Article-bg-color))
 
 // 全局样式
-@-moz-document regexp("^(https?://www.luogu.com(.cn)?/).*")  
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
 	body
 		use_mainly_background()
 	
