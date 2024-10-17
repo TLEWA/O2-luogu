@@ -473,6 +473,7 @@
 @var	checkbox bug-fix11 "[bug-fix] 主页签到运势勾子位置异常" 1
 @var	checkbox bug-fix12 "[bug-fix] 题单界面 '查找题单' 文字对齐异常" 1
 @var	checkbox bug-fix13 "[bug-fix] 团队成员编辑卡滚动条异常" 1
+@var	checkbox bug-fix14 "[bug-fix] 比赛页面侧栏卡片布局错误" 1
 
 ==/UserStyle== */
 
@@ -2566,6 +2567,12 @@ if Fast-Font-load
 				top: 0 !important
 				left: 0 !important
 				display: none !important
+	
+	if bug-fix14
+		.side > .card.padding-default > .info-rows[style="margin-bottom: 1em;"]
+			margin-bottom: 0 !important
+		.side > .card.padding-default > p:last-child
+			margin-bottom: 0 !important
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/discuss.*$")
 	if bug-fix10
