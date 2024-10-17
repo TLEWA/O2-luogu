@@ -457,6 +457,9 @@
 
 @var	text Top-progress-color "顶部加载条颜色" "Default"
 
+@var	text Table-color "Maekdown 列表颜色" "Default"
+@var	text Table-radius "Maekdown 列表圆角样式" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -956,6 +959,8 @@ if Fast-Font-load
 		Privateletter-right-text-color = set_default_value(Privateletter-right-text-color,#f2faff)
 
 		Top-progress-color = set_default_value(Top-progress-color,#5e72e4)
+
+		Table-color = set_default_value(Table-color,#c4c6c9)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
 		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
@@ -1103,6 +1108,8 @@ if Fast-Font-load
 		Privateletter-right-text-color = set_default_value(Privateletter-right-text-color,#f2faff)
 
 		Top-progress-color = set_default_value(Top-progress-color,#3498db)
+
+		Table-color = set_default_value(Table-color,#ddd)
 
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
@@ -1351,7 +1358,7 @@ if Fast-Font-load
 	else
 		Float-Card-shadow = set_default_value(Float-Card-shadow,0 0.5rem 2rem 0 rgba(0, 0, 0, .2))
 
-
+	Table-radius = set_default_value(Table-radius,4px)
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -2466,6 +2473,23 @@ if Fast-Font-load
 
 	.top-progress > .bar
 		background: Top-progress-color !important
+	
+	table
+		border-collapse: separate
+		th, td
+			border-color: Table-color
+		&>thead
+			&>tr:first-child
+				&>th:first-child
+					border-top-left-radius: Table-radius
+				&>th:last-child
+					border-top-right-radius: Table-radius
+		&>tbody
+			&>tr:last-child
+				&>td:first-child
+					border-bottom-left-radius: Table-radius
+				&>td:last-child
+					border-bottom-right-radius: Table-radius
 
 	// 各种小 bug 的修复
 	.load-more
