@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.1.0.0
+@version      2.1.0.4
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -50,6 +50,7 @@
 @var	checkbox More-Usernav-box-Ani "右上图标栏在更多场景展示动画" 1
 @var	checkbox Usernav-float "右上图标栏与下侧卡片布局对齐" 1
 @var	checkbox Better-prob-card "新前端题解区卡片应用氧洛谷式排版" 1
+@var	checkbox Fast-Font-load "字体常驻加载" 0
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 @var	select Input-ani-select "输入框点击动画选择" ["contract","jelly","off"]
@@ -454,6 +455,11 @@
 @var	text Privateletter-right-bg-color "私信右侧信息背景色" "Default"
 @var	text Privateletter-right-text-color "私信右侧信息文字色" "Default"
 
+@var	text Top-progress-color "顶部加载条颜色" "Default"
+
+@var	text Table-color "Maekdown 列表颜色" "Default"
+@var	text Table-radius "Maekdown 列表圆角样式" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -465,6 +471,9 @@
 @var	checkbox bug-fix9 "[bug-fix] 洛谷标题文字和新前端卡片用户名极端情况下被裁剪" 1
 @var	checkbox bug-fix10 "[bug-fix] 讨论区滚动条异常" 1
 @var	checkbox bug-fix11 "[bug-fix] 主页签到运势勾子位置异常" 1
+@var	checkbox bug-fix12 "[bug-fix] 题单界面 '查找题单' 文字对齐异常" 1
+@var	checkbox bug-fix13 "[bug-fix] 团队成员编辑卡滚动条异常" 1
+@var	checkbox bug-fix14 "[bug-fix] 比赛页面侧栏卡片布局错误" 1
 
 ==/UserStyle== */
 
@@ -497,9 +506,12 @@ Tab 选中也可以 hover（不建议）
 
 // 字体处理
 
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=JetBrains+Mono&family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap')
+if Fast-Font-load
+	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=JetBrains+Mono&family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap')
 
-@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?(.*))")
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
+	if !Fast-Font-load
+		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=JetBrains+Mono&family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap')
 
 	// 导入 Noto Sans
 	/*google 的服务真方便吧*/
@@ -535,7 +547,7 @@ Tab 选中也可以 hover（不建议）
 		Card_L2 = ".am-panel,.inner-card,.discuss-container .discuss,.swal2-validation-message" // 二级卡片
 		Card_float = "#app > nav.lfe-body .popup,.user-nav .center,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog" // 悬浮卡片
 		Hover_card_float = "#app > nav.lfe-body .popup a,.dropdown-operations li,.dropdown li,.candidates li,.am-modal-footer"
-		Shadow_card_float = "#app > nav.lfe-body .popup, .user-nav .center,.dropdown"
+		Shadow_card_float = "#app > nav.lfe-body .popup, .user-nav .center,.dropdown:not(.dropdown:has(>.card>.user-info), .dropdown:has(>.l-card>.user-info))"
 		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I" // 标题文字
 		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner" // 正文文字
 		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name" // 陈述文字
@@ -946,6 +958,10 @@ Tab 选中也可以 hover（不建议）
 
 		Privateletter-right-bg-color = set_default_value(Privateletter-right-bg-color,#4682b4)
 		Privateletter-right-text-color = set_default_value(Privateletter-right-text-color,#f2faff)
+
+		Top-progress-color = set_default_value(Top-progress-color,#5e72e4)
+
+		Table-color = set_default_value(Table-color,#c4c6c9)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
 		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
@@ -1091,6 +1107,10 @@ Tab 选中也可以 hover（不建议）
 
 		Privateletter-right-bg-color = set_default_value(Privateletter-right-bg-color,#3498db)
 		Privateletter-right-text-color = set_default_value(Privateletter-right-text-color,#f2faff)
+
+		Top-progress-color = set_default_value(Top-progress-color,#3498db)
+
+		Table-color = set_default_value(Table-color,#ddd)
 
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
@@ -1339,7 +1359,7 @@ Tab 选中也可以 hover（不建议）
 	else
 		Float-Card-shadow = set_default_value(Float-Card-shadow,0 0.5rem 2rem 0 rgba(0, 0, 0, .2))
 
-
+	Table-radius = set_default_value(Table-radius,4px)
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -1347,7 +1367,7 @@ Tab 选中也可以 hover（不建议）
 		Article-Background = get_depend_list((CustomBackground Article-bg-color))
 
 // 全局样式
-@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?(.*))")  
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
 	body
 		use_mainly_background()
 	
@@ -1595,9 +1615,9 @@ Tab 选中也可以 hover（不建议）
 
 	// 各讨论区图标颜色
 
-	discuss-color = (Luogu-discuss-color-1 Luogu-discuss-color-2 Luogu-discuss-color-3 Luogu-discuss-color-4 Luogu-discuss-color-5 Luogu-discuss-color-6)
+	discuss-color = (Luogu-discuss-color-1 Luogu-discuss-color-2 Luogu-discuss-color-3 Luogu-discuss-color-4 Luogu-discuss-color-5 Luogu-discuss-color-6 Luogu-discuss-color-3)
 
-	for i in 0..5
+	for i in 0..6
 		div.card.left.padding-default > div.section > a:nth-child({i+1}),.side div.card.padding-default:not(.left) > div.section > a:nth-child({i})
 			if Better-discuss-button
 				& > span
@@ -1607,8 +1627,23 @@ Tab 选中也可以 hover（不建议）
 			
 			& > span.active
 				color: discuss-color[i] !important
-			& > svg > path
-				fill: discuss-color[i] !important
+			//& > svg > path
+			//	fill: discuss-color[i] !important
+	
+	a.forum-container.router-link-exact-active.router-link-active.color-default.link
+		&[style*="#272727"]  > svg > path
+			fill: discuss-color[0]
+		&[style*="#14558f"]  > svg > path 
+			fill: discuss-color[1]
+		&[style*="#f39c11"]  > svg > path 
+			fill: discuss-color[2]
+		&[style*="#9d3dcf"]  > svg > path 
+			fill: discuss-color[3]
+		&[style*="#52c41a"]  > svg > path 
+			fill: discuss-color[4]
+		&[style*="#2949b4"]  > svg > path 
+			fill: discuss-color[5]
+
 	
 	// 讨论区评论
 	{Discuss}
@@ -1941,11 +1976,11 @@ Tab 选中也可以 hover（不建议）
 					border-radius: Test-case-border-radius
 
 	// 页首修改
-	.main-container > .wrapper.wrapped.lfe-body:has(>.header) > .background,.main-container > header.theme-bg
+	.main-container > .wrapper.wrapped.lfe-body:has(>.background) > .background,.main-container > header.theme-bg
 		background: Header-bg-color !important if !Anti-HeaderFooter
 		if bug-fix9
 			& .lfe-h1
-				overflow: visible 
+				overflow: visible !important
 
 	
 	// 页尾修改
@@ -2320,7 +2355,7 @@ Tab 选中也可以 hover（不建议）
 
 	if Smart-SideBar // Smart-Luogu 式侧栏
 		// 顶栏适配
-		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:has(>.header),.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
+		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:has(>.background),.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
 			position: relative !important
 			right: 60px !important
 			padding-left: 75.2px !important
@@ -2414,7 +2449,7 @@ Tab 选中也可以 hover（不建议）
 			.main-container > .wrapper.wrapped.lfe-body>.header:not([pageloading*="true"])>.user-nav
 				animation: Show-Usernav-box Usernav-box-ani
 		
-		.main-container > .wrapper.wrapped.lfe-body:has(>.header),.main-container > header.theme-bg
+		.main-container > .wrapper.wrapped.lfe-body:has(>.background),.main-container > header.theme-bg
 			& .functional
 				width: 100% !important
 				float: left
@@ -2436,6 +2471,26 @@ Tab 选中也可以 hover（不建议）
 				width: Prob-side-width !important
 			&>.main
 				width: Prob-lcard-width !important
+
+	.top-progress > .bar
+		background: Top-progress-color !important
+	
+	table
+		border-collapse: separate
+		th, td
+			border-color: Table-color
+		&>thead
+			&>tr:first-child
+				&>th:first-child
+					border-top-left-radius: Table-radius
+				&>th:last-child
+					border-top-right-radius: Table-radius
+		&>tbody
+			&>tr:last-child
+				&>td:first-child
+					border-bottom-left-radius: Table-radius
+				&>td:last-child
+					border-bottom-right-radius: Table-radius
 
 	// 各种小 bug 的修复
 	.load-more
@@ -2495,6 +2550,29 @@ Tab 选中也可以 hover（不建议）
 	if bug-fix9
 		.user-info .luogu-username>.name
 			overflow: visible !important
+	
+	if bug-fix12
+		.find-problem.no-wrap.lfe-h2
+			margin-bottom: 0 !important
+	
+	if bug-fix13
+		.card.info-card.center.padding-default .dropdown
+			&,& *
+				height: 0 !important
+				min-height: 0 !important
+				width: 0 !important
+				min-width: 0 !important
+				margin: 0 !important
+				padding: 0 !important
+				top: 0 !important
+				left: 0 !important
+				display: none !important
+	
+	if bug-fix14
+		.side > .card.padding-default > .info-rows[style="margin-bottom: 1em;"]
+			margin-bottom: 0 !important
+		.side > .card.padding-default > p:last-child
+			margin-bottom: 0 !important
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/discuss.*$")
 	if bug-fix10
