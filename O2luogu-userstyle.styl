@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.1.0.4
+@version      2.1.1.0
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -56,6 +56,7 @@
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 @var	select Input-ani-select "输入框点击动画选择" ["contract","jelly","off"]
+@var	select Avatar-ani-select "用户头像 hover 动画选择" ["bigger","slime","off"]
 
 @var	checkbox A-hover-line "(实验性)(非积极支持)开启超链接 hover 下划线动画" 0
 @var	checkbox Anti-Sidebar-hover-line "侧栏禁用 hover 下划线动画" 1
@@ -435,10 +436,10 @@
 @var	text Discuss-Main-width "讨论区主栏宽度" "Default"
 @var	text Discuss-Sidebar-margin "讨论区边栏与卡片间隔(居左时才生效)(洛谷原版特性兼容)" "Default"
 
-@var	text Button-active-scale "按钮 actvie 缩小倍率(0 ~ 1)，越高越大" "Default"
-@var	text Button-active-ani "按钮 actvie 缩小动画效果" "Default"
-@var	text Input-active-scale "输入框 actvie 缩小倍率(0 ~ 1)，越高越大" "Default"
-@var	text Input-active-anim "输入框 actvie 缩小动画效果" "Default"
+@var	text Button-active-scale "按钮 actvie 变化倍率(0 ~ 1)，越高越大" "Default"
+@var	text Button-active-ani "按钮 actvie 变化动画效果" "Default"
+@var	text Input-active-scale "输入框 actvie 变化倍率(0 ~ 1)，越高越大" "Default"
+@var	text Input-active-anim "输入框 actvie 变化动画效果" "Default"
 
 @var	text A-hover-line-ani "超链接 hover 下划线动画效果" "Default"
 @var	text A-hover-line-color "超链接 hover 下划线颜色" "Default"
@@ -461,6 +462,9 @@
 
 @var	text Table-color "Maekdown 列表颜色" "Default"
 @var	text Table-radius "Maekdown 列表圆角样式" "Default"
+
+@var	text Avatar-hover-scale "用户头像 hover 变化倍率(0 ~ 1)，越高越大" "Default"
+@var	text Avatar-hover-ani "用户头像 hover 动画效果" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -571,6 +575,7 @@ if Fast-Font-load
 		Button = ".lfe-form-sz-middle,.am-btn,.lform-size-middle,.lform-sz-middle,a[href*='http']>#go" // 中型按钮
 		Small-Button = ".lfe-form-sz-small,.lform-sz-small,.lform-size-small,.copy-btn,.copy-btn.lfe-form-sz-middle" // 小型按钮
 		Username = "a.color-none[href*='/user/'][target='_blank']>span,a.name[href*='/user/'][style*='font-weight: bold;']" // 用户 id
+		Avatar = "img.avatar" // 用户头像
 
 // 全局工具函数
 
@@ -654,6 +659,17 @@ if Fast-Font-load
 			transform: scale(1)
 		50% 
 			transform: scale(1 - Button-scale)
+	
+	use_bigger_ani(Scale)
+		transform: scale(1 + Scale)
+	
+	use_slime_ani(Scale)
+		from,to
+			transform: scale(1)
+		33%
+			transform: scale(1 + Scale)
+		66%
+			transform: scale(1 - Scale)
 
 	use_hover_line(Hover-line-ani,Hover-line-color,Hover-line-height)
 		position: relative
@@ -1362,6 +1378,9 @@ if Fast-Font-load
 		Float-Card-shadow = set_default_value(Float-Card-shadow,0 0.5rem 2rem 0 rgba(0, 0, 0, .2))
 
 	Table-radius = set_default_value(Table-radius,4px)
+
+	Avatar-hover-scale = set_default_value(Avatar-hover-scale,0.07)
+	Avatar-hover-ani = set_default_value(Avatar-hover-ani,.26s ease-out)
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -2506,6 +2525,18 @@ if Fast-Font-load
 					border-bottom-left-radius: Table-radius
 				&>td:last-child
 					border-bottom-right-radius: Table-radius
+
+	if Avatar-ani-select!="off"
+		{Avatar}
+			if Avatar-ani-select=="bigger"
+				transition: transform Avatar-hover-ani !important
+				&:hover
+					use_bigger_ani(Avatar-hover-scale)
+			else 
+				@keyframes Avatar-hover
+					use_slime_ani(Avatar-hover-scale)		
+				&:hover
+					animation: Avatar-hover Avatar-hover-ani !important
 
 	// 各种小 bug 的修复
 	.load-more
