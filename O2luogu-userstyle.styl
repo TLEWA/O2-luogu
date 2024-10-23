@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.1.0.4
+@version      2.1.1.0
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -30,6 +30,7 @@
 @var	checkbox Better-big-button "更好的巨型按钮排版" 1
 @var	checkbox Better-discuss-button "更好的讨论区板块选择" 1
 @var	checkbox exlg-compatible "exlg 兼容" 1
+@var	checkbox oiso-compatible "(实验性)(不积极支持)oiso 兼容" 1
 @var	checkbox Better-control-nav "更好的主页广告翻页选择点" 1
 @var	checkbox Hide-AD "隐藏洛谷边栏广告" 0
 @var	checkbox Hide-testcase-load "评测结果加载缓冲" 1
@@ -51,9 +52,11 @@
 @var	checkbox Usernav-float "右上图标栏与下侧卡片布局对齐" 1
 @var	checkbox Better-prob-card "新前端题解区卡片应用氧洛谷式排版" 1
 @var	checkbox Fast-Font-load "字体常驻加载" 0
+
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 @var	select Input-ani-select "输入框点击动画选择" ["contract","jelly","off"]
+@var	select Avatar-ani-select "用户头像 hover 动画选择" ["bigger","slime","off"]
 
 @var	checkbox A-hover-line "(实验性)(非积极支持)开启超链接 hover 下划线动画" 0
 @var	checkbox Anti-Sidebar-hover-line "侧栏禁用 hover 下划线动画" 1
@@ -405,7 +408,7 @@
 
 @var	text Header-ani-padding "Header 动画初始向下位置" "Default"
 @var	text Header-ani "Header 动画效果" "Default"
-@var	text Header-text-ani-padding "Header 文字动画初始向下位置" "Default"
+@var	text Header-text-ani-padding "Header 文字动画初始向左位置" "Default"
 @var	text Header-text-ani "Header 文字动画效果" "Default"
 
 
@@ -433,10 +436,10 @@
 @var	text Discuss-Main-width "讨论区主栏宽度" "Default"
 @var	text Discuss-Sidebar-margin "讨论区边栏与卡片间隔(居左时才生效)(洛谷原版特性兼容)" "Default"
 
-@var	text Button-active-scale "按钮 actvie 缩小倍率(0 ~ 1)，越高越大" "Default"
-@var	text Button-active-ani "按钮 actvie 缩小动画效果" "Default"
-@var	text Input-active-scale "输入框 actvie 缩小倍率(0 ~ 1)，越高越大" "Default"
-@var	text Input-active-anim "输入框 actvie 缩小动画效果" "Default"
+@var	text Button-active-scale "按钮 actvie 变化倍率(0 ~ 1)，越高越大" "Default"
+@var	text Button-active-ani "按钮 actvie 变化动画效果" "Default"
+@var	text Input-active-scale "输入框 actvie 变化倍率(0 ~ 1)，越高越大" "Default"
+@var	text Input-active-anim "输入框 actvie 变化动画效果" "Default"
 
 @var	text A-hover-line-ani "超链接 hover 下划线动画效果" "Default"
 @var	text A-hover-line-color "超链接 hover 下划线颜色" "Default"
@@ -457,8 +460,11 @@
 
 @var	text Top-progress-color "顶部加载条颜色" "Default"
 
-@var	text Table-color "Maekdown 列表颜色" "Default"
-@var	text Table-radius "Maekdown 列表圆角样式" "Default"
+@var	text Table-color "Markdown 列表颜色" "Default"
+@var	text Table-radius "Markdown 列表圆角样式" "Default"
+
+@var	text Avatar-hover-scale "用户头像 hover 变化倍率(0 ~ 1)，越高越大" "Default"
+@var	text Avatar-hover-ani "用户头像 hover 动画效果" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -547,9 +553,9 @@ if Fast-Font-load
 		Card_L2 = ".am-panel,.inner-card,.discuss-container .discuss,.swal2-validation-message" // 二级卡片
 		Card_float = "#app > nav.lfe-body .popup,.user-nav .center,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog" // 悬浮卡片
 		Hover_card_float = "#app > nav.lfe-body .popup a,.dropdown-operations li,.dropdown li,.candidates li,.am-modal-footer"
-		Shadow_card_float = "#app > nav.lfe-body .popup, .user-nav .center,.dropdown:not(.dropdown:has(>.card>.user-info), .dropdown:has(>.l-card>.user-info))"
+		Shadow_card_float = ".float-card,#app > nav.lfe-body .popup, .user-nav .center,.dropdown:not(:has(>.dropdown-operations,>.float-card))"
 		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I" // 标题文字
-		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner" // 正文文字
+		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner,.row>.content" // 正文文字
 		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name" // 陈述文字
 		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption" // 介绍文字
 		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.stat>.field,.difficulty-tags,.difficulty-tags>.row,div[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
@@ -557,9 +563,9 @@ if Fast-Font-load
 		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 操作文字
 		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 可选中操作文字
 		Hover-A = ".action>a,.center>footer>a,.am-panel-primary .am-panel-title a" // 选中超链接
-		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a,span.C.G" // 强制超链接
+		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a,span.C.G,.row.title>a,.row div>a,.bar-item,.filter-wrapper a" // 强制超链接
 		ColorfulLabel = ".difficulty a.color-default[colorscheme='default']>span,.box>span.lfe-caption,span.lfe-caption.tag,a.tag.color-none>span,.difficulty-tags>.row>span.lfe-caption,.difficulty>span.lfe-caption,a.status-link>span.lfe-caption,.lfe-caption.tag>span,.author-margin>.lfe-caption,.team-authority,.inner-card span.lfe-caption[style*='color:'],.status>.lfe-caption" // 标签
-		GrayLabel = '.card.info-card.center.padding-default .tags>span.tag[style*="rgb(232"]:not(.selected),.inner-card>.row>div>span.lfe-caption,.card.log.padding-default li span.lfe-caption' // 灰度标签
+		GrayLabel = '.card.info-card.center.padding-default .tags>span.tag[style*="rgb(232"]:not(.selected),.inner-card>.row>div>span.lfe-caption,.card.log.padding-default li span.lfe-caption,.row.info>span' // 灰度标签
 		Topic-type-Label = ".tags-wrap.multiline>a>span,.card.info-card.center.padding-default .tag-select-area .tags>span.tag,.block-item.tag" // 题目类型标签
 		Topic-difficulty-Label = ".difficulty a span.lfe-caption,.difficulty span.lfe-caption,.difficulty-tags span.lfe-caption,.block-item.tag" // 题目难度标签
 		InLine-code-block = "[class*='marked'] code,.am-comment-bd p>code" // 行内代码块
@@ -569,6 +575,7 @@ if Fast-Font-load
 		Button = ".lfe-form-sz-middle,.am-btn,.lform-size-middle,.lform-sz-middle,a[href*='http']>#go" // 中型按钮
 		Small-Button = ".lfe-form-sz-small,.lform-sz-small,.lform-size-small,.copy-btn,.copy-btn.lfe-form-sz-middle" // 小型按钮
 		Username = "a.color-none[href*='/user/'][target='_blank']>span,a.name[href*='/user/'][style*='font-weight: bold;']" // 用户 id
+		Avatar = "img.avatar" // 用户头像
 
 // 全局工具函数
 
@@ -652,6 +659,17 @@ if Fast-Font-load
 			transform: scale(1)
 		50% 
 			transform: scale(1 - Button-scale)
+	
+	use_bigger_ani(Scale)
+		transform: scale(1 + Scale)
+	
+	use_slime_ani(Scale)
+		from,to
+			transform: scale(1)
+		33%
+			transform: scale(1 + Scale)
+		66%
+			transform: scale(1 - Scale)
 
 	use_hover_line(Hover-line-ani,Hover-line-color,Hover-line-height)
 		position: relative
@@ -1360,6 +1378,12 @@ if Fast-Font-load
 		Float-Card-shadow = set_default_value(Float-Card-shadow,0 0.5rem 2rem 0 rgba(0, 0, 0, .2))
 
 	Table-radius = set_default_value(Table-radius,4px)
+
+	Avatar-hover-scale = set_default_value(Avatar-hover-scale,0.07)
+	if Avatar-ani-select=="bigger"
+		Avatar-hover-ani = set_default_value(Avatar-hover-ani,.26s ease-out)
+	else 
+		Avatar-hover-ani = set_default_value(Avatar-hover-ani,.6s ease-out)
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -2288,7 +2312,20 @@ if Fast-Font-load
 				animation: ShowTop Header-text-ani
 				@media (min-width: 577px) 
 					float: left if Better-Usernav-box
-					max-width: calc(100% - 255px) if Better-Usernav-box
+		
+		
+		if Better-Usernav-box
+			@media (min-width: 577px) 
+				.main-container > .wrapper.wrapped.lfe-body:has(.user-nav > nav) .lfe-h1
+					max-width: calc(100% - 174px)
+				
+				if exlg-compatible || oiso-compatible
+					.main-container > .wrapper.wrapped.lfe-body:has(.user-nav > nav > #exlg-dash-wrapper,.user-nav > nav > a:first-child) .lfe-h1
+						max-width: calc(100% - 255px)
+				if exlg-compatible && oiso-compatible
+					.main-container > .wrapper.wrapped.lfe-body:has(.user-nav > nav > #exlg-dash-wrapper+a,.user-nav > nav > a:first-child+#exlg-dash-wrapper) .lfe-h1
+						max-width: calc(100% - 336px) !important
+						
 
 	// 题库条设置
 	.card > section .block > .block-item.category
@@ -2492,6 +2529,18 @@ if Fast-Font-load
 				&>td:last-child
 					border-bottom-right-radius: Table-radius
 
+	if Avatar-ani-select!="off"
+		{Avatar}
+			if Avatar-ani-select=="bigger"
+				transition: transform Avatar-hover-ani !important
+				&:hover
+					use_bigger_ani(Avatar-hover-scale)
+			else 
+				@keyframes Avatar-hover
+					use_slime_ani(Avatar-hover-scale)		
+				&:hover
+					animation: Avatar-hover Avatar-hover-ani !important
+
 	// 各种小 bug 的修复
 	.load-more
 		border-bottom: 0 !important if bug-fix1
@@ -2569,7 +2618,7 @@ if Fast-Font-load
 				display: none !important
 	
 	if bug-fix14
-		.side > .card.padding-default > .info-rows[style="margin-bottom: 1em;"]
+		.side > .card.padding-default > .info-rows[style="margin-bottom: 1em;"]:last-child
 			margin-bottom: 0 !important
 		.side > .card.padding-default > p:last-child
 			margin-bottom: 0 !important
@@ -2611,7 +2660,8 @@ if Fast-Font-load
 		filter: none !important
 
 // 洛谷专栏样式（新前端就是不一样）
-@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/article/[A-Za-z0-9]{8}$)")
+// ^(http(s)?://www.luogu.com(.cn)?/article/(([A-Za-z0-9]{8})|(collection/[0-9]))$)
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/article?(.*))")
 	// 专栏图标样式
 	.button-2line
 		& path
@@ -2652,7 +2702,7 @@ if Fast-Font-load
 			& .l-card.reply-item
 				background: Card-bg-color-float !important
 		
-		.main-container.lside-bar>footer
+		.main-container.lside-bar:has(>.lcolor-bg-grey-1)>footer
 			background: none !important
 			&>hr
 				display: none !important
@@ -2661,7 +2711,7 @@ if Fast-Font-load
 			right: -205px !important
 		
 	else
-		.main-container.lside-bar
+		.main-container.lside-bar:has(>.lcolor-bg-grey-1)
 			use_mainly_background(Article-Background)
 
 			&>*
@@ -2673,6 +2723,33 @@ if Fast-Font-load
 	.user-nav.rside.show.nav-scrollbar // 朋友要用，做的紧急修改，TODO
 		width: Article-rside-width !important
 		max-width: Article-rside-width !important
+	
+	@keyframes bar
+		0%
+			transform-origin 0 50%
+			transform scaleX(0)
+		100%
+			transform-origin 0 50%
+			transform scaleX(1)
+
+	.lfe-body:has(>.main-container>.lcolor-bg-grey-1) > .top-bar::before
+		content ""
+		position absolute
+		top 0
+		left 0
+		right 0
+		height 5px
+		background #fff
+	.lfe-body:has(>.main-container>.lcolor-bg-grey-1) > .top-bar::after
+		content ""
+		position absolute
+		top 0
+		left 0
+		right 0
+		height 5px
+		background blue
+		animation bar 5s linear
+		animation-timeline scroll()
 
 // 主站样式
 @-moz-document regexp("^(https?://www.luogu.com(.cn)?/)(?!article/[A-Za-z0-9]{8}$).*")
