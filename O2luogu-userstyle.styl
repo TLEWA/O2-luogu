@@ -563,7 +563,7 @@ if Fast-Font-load
 		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 操作文字
 		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 可选中操作文字
 		Hover-A = ".action>a,.center>footer>a,.am-panel-primary .am-panel-title a" // 选中超链接
-		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a,span.C.G,.row.title>a" // 强制超链接
+		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a,span.C.G,.row.title>a,.row div>a,.bar-item,.filter-wrapper a" // 强制超链接
 		ColorfulLabel = ".difficulty a.color-default[colorscheme='default']>span,.box>span.lfe-caption,span.lfe-caption.tag,a.tag.color-none>span,.difficulty-tags>.row>span.lfe-caption,.difficulty>span.lfe-caption,a.status-link>span.lfe-caption,.lfe-caption.tag>span,.author-margin>.lfe-caption,.team-authority,.inner-card span.lfe-caption[style*='color:'],.status>.lfe-caption" // 标签
 		GrayLabel = '.card.info-card.center.padding-default .tags>span.tag[style*="rgb(232"]:not(.selected),.inner-card>.row>div>span.lfe-caption,.card.log.padding-default li span.lfe-caption,.row.info>span' // 灰度标签
 		Topic-type-Label = ".tags-wrap.multiline>a>span,.card.info-card.center.padding-default .tag-select-area .tags>span.tag,.block-item.tag" // 题目类型标签
@@ -2660,7 +2660,8 @@ if Fast-Font-load
 		filter: none !important
 
 // 洛谷专栏样式（新前端就是不一样）
-@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/article/(([A-Za-z0-9]{8})|(collection/[0-9]))$)")
+// ^(http(s)?://www.luogu.com(.cn)?/article/(([A-Za-z0-9]{8})|(collection/[0-9]))$)
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/article?(.*))")
 	// 专栏图标样式
 	.button-2line
 		& path
@@ -2731,7 +2732,7 @@ if Fast-Font-load
 			transform-origin 0 50%
 			transform scaleX(1)
 
-	.top-bar::before
+	.lfe-body:has(>.main-container>.lcolor-bg-grey-1) > .top-bar::before
 		content ""
 		position absolute
 		top 0
@@ -2739,7 +2740,7 @@ if Fast-Font-load
 		right 0
 		height 5px
 		background #fff
-	.top-bar::after
+	.lfe-body:has(>.main-container>.lcolor-bg-grey-1) > .top-bar::after
 		content ""
 		position absolute
 		top 0
