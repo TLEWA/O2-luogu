@@ -52,6 +52,7 @@
 @var	checkbox Usernav-float "右上图标栏与下侧卡片布局对齐" 1
 @var	checkbox Better-prob-card "新前端题解区卡片应用氧洛谷式排版" 1
 @var	checkbox Fast-Font-load "字体常驻加载" 0
+@var	checkbox Article-progress-bar "开启专栏区阅读进度条" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -466,6 +467,11 @@
 @var	text Avatar-hover-scale "用户头像 hover 变化倍率(0 ~ 1)，越高越大" "Default"
 @var	text Avatar-hover-ani "用户头像 hover 动画效果" "Default"
 
+@var	text Article-progress-color "专栏文章阅读条颜色" "Default"
+@var	text Article-progress-bg-color "专栏文章阅读条背景色" "Default"
+@var	text Article-progress-height "专栏文章阅读条高度" "Default"
+@var	text Article-progress-ani "专栏文章阅读条动画效果" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -480,6 +486,7 @@
 @var	checkbox bug-fix12 "[bug-fix] 题单界面 '查找题单' 文字对齐异常" 1
 @var	checkbox bug-fix13 "[bug-fix] 团队成员编辑卡滚动条异常" 1
 @var	checkbox bug-fix14 "[bug-fix] 比赛页面侧栏卡片布局错误" 1
+@var	checkbox bug-fix15 "[bug-fix] 个人主页勾子位置异常" 1
 
 ==/UserStyle== */
 
@@ -980,6 +987,8 @@ if Fast-Font-load
 		Top-progress-color = set_default_value(Top-progress-color,#5e72e4)
 
 		Table-color = set_default_value(Table-color,#c4c6c9)
+
+		Article-progress-color = set_default_value(Article-progress-color,#5e72e4)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
 		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
@@ -1129,6 +1138,8 @@ if Fast-Font-load
 		Top-progress-color = set_default_value(Top-progress-color,#3498db)
 
 		Table-color = set_default_value(Table-color,#ddd)
+		
+		Article-progress-color = set_default_value(Article-progress-color,#3498db)
 
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
@@ -1384,6 +1395,11 @@ if Fast-Font-load
 		Avatar-hover-ani = set_default_value(Avatar-hover-ani,.26s ease-out)
 	else 
 		Avatar-hover-ani = set_default_value(Avatar-hover-ani,.6s ease-out)
+	
+	Article-progress-bg-color = set_default_value(Article-progress-bg-color,transparent)
+	Article-progress-height = set_default_value(Article-progress-height,5px)
+
+	Article-progress-ani = set_default_value(Article-progress-ani,5s linear)
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -2622,6 +2638,12 @@ if Fast-Font-load
 			margin-bottom: 0 !important
 		.side > .card.padding-default > p:last-child
 			margin-bottom: 0 !important
+	
+	if bug-fix15
+		@media (min-width: 577px)
+			.user-header-container .ccf-badge
+				font-size: inherit !important
+
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/discuss.*$")
 	if bug-fix10
@@ -2724,32 +2746,33 @@ if Fast-Font-load
 		width: Article-rside-width !important
 		max-width: Article-rside-width !important
 	
-	@keyframes bar
-		0%
-			transform-origin 0 50%
-			transform scaleX(0)
-		100%
-			transform-origin 0 50%
-			transform scaleX(1)
+	if Article-progress-bar
+		@keyframes Article-progress-bar-ani
+			0%
+				transform-origin 0 50%
+				transform scaleX(0)
+			100%
+				transform-origin 0 50%
+				transform scaleX(1)
 
-	.lfe-body:has(>.main-container>.lcolor-bg-grey-1) > .top-bar::before
-		content ""
-		position absolute
-		top 0
-		left 0
-		right 0
-		height 5px
-		background #fff
-	.lfe-body:has(>.main-container>.lcolor-bg-grey-1) > .top-bar::after
-		content ""
-		position absolute
-		top 0
-		left 0
-		right 0
-		height 5px
-		background blue
-		animation bar 5s linear
-		animation-timeline scroll()
+		.lfe-body:has(>.main-container>.lcolor-bg-grey-1) > .top-bar::before
+			content: ""
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			height: Article-progress-height
+			background: Article-progress-bg-color
+		.lfe-body:has(>.main-container>.lcolor-bg-grey-1) > .top-bar::after
+			content: ""
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			height: Article-progress-height
+			background: Article-progress-color
+			animation: Article-progress-bar-ani Article-progress-ani
+			animation-timeline scroll()
 
 // 主站样式
 @-moz-document regexp("^(https?://www.luogu.com(.cn)?/)(?!article/[A-Za-z0-9]{8}$).*")
