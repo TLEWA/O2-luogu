@@ -408,7 +408,7 @@
 
 @var	text Header-ani-padding "Header 动画初始向下位置" "Default"
 @var	text Header-ani "Header 动画效果" "Default"
-@var	text Header-text-ani-padding "Header 文字动画初始向下位置" "Default"
+@var	text Header-text-ani-padding "Header 文字动画初始向左位置" "Default"
 @var	text Header-text-ani "Header 文字动画效果" "Default"
 
 
@@ -2722,6 +2722,34 @@ if Fast-Font-load
 	.user-nav.rside.show.nav-scrollbar // 朋友要用，做的紧急修改，TODO
 		width: Article-rside-width !important
 		max-width: Article-rside-width !important
+	
+	@keyframes bar
+		0%
+			transform-origin 0 50%
+			transform scaleX(0)
+		100%
+			transform-origin 0 50%
+			transform scaleX(1)
+
+	.top-bar::before
+		content ""
+		position absolute
+		top 0
+		left 0
+		right 0
+		height 5px
+		background #fff
+		opacity 0.5
+	.top-bar::after
+		content ""
+		position absolute
+		top 0
+		left 0
+		right 0
+		height 5px
+		background blue
+		animation bar 5s linear
+		animation-timeline scroll()
 
 // 主站样式
 @-moz-document regexp("^(https?://www.luogu.com(.cn)?/)(?!article/[A-Za-z0-9]{8}$).*")
