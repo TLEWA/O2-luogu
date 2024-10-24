@@ -2528,7 +2528,7 @@ if Fast-Font-load
 		@media (min-width: 769px)
 			&>.side
 				width: Prob-side-width !important
-			&>.main
+			&>.main:not([style*="width: 100%;"])
 				width: Prob-lcard-width !important
 
 	.top-progress > .bar
