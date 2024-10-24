@@ -472,6 +472,8 @@
 @var	text Article-progress-height "专栏文章阅读条高度" "Default"
 @var	text Article-progress-ani "专栏文章阅读条动画效果" "Default"
 
+@var	text Checkin-Time-color "主页签到日期显示颜色" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -2018,10 +2020,6 @@ if Fast-Font-load
 	// 页首修改
 	.main-container > .wrapper.wrapped.lfe-body:has(>.background) > .background,.main-container > header.theme-bg
 		background: Header-bg-color !important if !Anti-HeaderFooter
-		if bug-fix9
-			& .lfe-h1
-				overflow: visible !important
-
 	
 	// 页尾修改
 	.main-container > .wrapper.wrapped.lfe-body:has(>.footer),.main-container > footer.theme-bg
@@ -2506,6 +2504,9 @@ if Fast-Font-load
 			& .functional
 				width: 100% !important
 				float: left
+			if bug-fix9
+				& .lfe-h1
+					overflow: visible !important
 	
 	if Usernav-float
 		.user-nav:has(>nav)
