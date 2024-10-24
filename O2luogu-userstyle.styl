@@ -53,6 +53,7 @@
 @var	checkbox Better-prob-card "新前端题解区卡片应用氧洛谷式排版" 1
 @var	checkbox Fast-Font-load "字体常驻加载" 0
 @var	checkbox Article-progress-bar "开启专栏区阅读进度条" 1
+@var	checkbox Text-break-word "讨论区等页面正文横向溢出文字换行" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -1552,6 +1553,7 @@ if Fast-Font-load
 	// 正文文字样式修改
 	{Text} // TODO：选择器实现不是特别优美
 		color: Text-color !important
+		word-wrap: break-word if Text-break-word
 	
 	// 超链接样式修改
 	a,.color-default[data-v-0640126c], .color-default-noline[data-v-0640126c]
@@ -2524,7 +2526,7 @@ if Fast-Font-load
 	.refined-input:has(.east)>input,.article-mine-filter
 		box-shadow: none !important		
 
-	.full-container
+	.full-container:not([currenttemplate*="Discuss"])
 		@media (min-width: 769px)
 			&>.side
 				width: Prob-side-width !important
