@@ -489,6 +489,7 @@
 @var	checkbox bug-fix13 "[bug-fix] 团队成员编辑卡滚动条异常" 1
 @var	checkbox bug-fix14 "[bug-fix] 比赛页面侧栏卡片布局错误" 1
 @var	checkbox bug-fix15 "[bug-fix] 个人主页勾子位置异常" 1
+@var	checkbox bug-fix16 "[bug-fix] 旧前端用户信息栏各组件未对齐" 1
 
 ==/UserStyle== */
 
@@ -2648,6 +2649,10 @@ if Fast-Font-load
 		@media (min-width: 577px)
 			.user-header-container .ccf-badge
 				font-size: inherit !important
+	
+	if bug-fix16
+		.user-info > .user-name > *
+			vertical-align: middle !important
 
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/discuss.*$")
