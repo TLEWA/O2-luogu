@@ -56,6 +56,7 @@
 @var	checkbox Text-break-word "讨论区等页面正文横向溢出文字换行" 1
 @var	checkbox Table-border-change "Markdown 列表中部 border 加粗" 0
 @var	checkbox Table-change "实验性 Markdown 列表更改" 1
+@var	checkbox Better-article-icon-text "文章区下方图标文字 hover 色统一" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -484,6 +485,8 @@
 @var	text Usernav-icon-hover-color "右上图标栏图标 hover 色" "Default"
 @var	text Usernav-navbar-icon-hover-color "右上图标栏菜单栏图标 hover 色" "Default"
 @var	text Usernav-icon-hover-ani "右上图标栏图标 hover 动画" "Default"
+
+@var	text Article-icon-hover-ani "文章区下方图标 hover 动画" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -1406,6 +1409,8 @@ if Fast-Font-load
 		Usernav-icon-hover-color = set_default_value(Usernav-icon-hover-color,#4682b4)
 		Usernav-navbar-icon-hover-color = set_default_value(Usernav-navbar-icon-hover-color,#3498db)
 	Usernav-icon-hover-ani = set_default_value(Usernav-icon-hover-ani,.4s ease)
+
+	Article-icon-hover-ani = set_default_value(Article-icon-hover-ani,.5s ease)
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -2777,6 +2782,14 @@ if Fast-Font-load
 		.actions:has(>.button-2line)
 			&>:nth-child({i+1}):hover path,&>.active:nth-child({i+1}) path
 				fill: article-icons[i] !important
+			& path
+				transition: fill Article-icon-hover-ani !important
+			if Better-article-icon-text
+				&>:nth-child({i+1}):hover span, &>.active:nth-child({i+1}) span
+					color: article-icons[i] !important
+				& span
+					transition: color Article-icon-hover-ani !important
+					
 	
 	if Better-article-card=="on" // 卡片化！
 		.main-container > main.lcolor-bg-grey-1
