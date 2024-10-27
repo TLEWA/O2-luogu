@@ -537,26 +537,6 @@ if Fast-Font-load
 	// 导入 Noto Sans
 	/*google 的服务真方便吧*/
 
-	if Better-font
-		@font-face {
-			font-family: 'FontWithASyntaxHighlighter'
-			font-style: dark
-			font-weight: 300 700
-
-			src: url(https://imgservices-1252317822.image.myqcloud.com/coco/s08172024/3b03a24c.50xym2.woff2) format('woff2')
-			unicode-range: U+003B-003B,U+0028-0029,U+005B-005B,U+005D-005D,U+007B-007B,U+007D-007D
-
-			// 目前仅修改 , ; ( ) [ ] { }
-		}
-
-		@font-palette-values --Alternate {
-			font-family: "FontWithASyntaxHighlighter"
-			override-colors:
-				0 #ffd70a, // 这个是 {}
-				4 #da63a1, // 这个是 []()
-				8 #c4c6c9; // 这个是 ;
-		}
-
 // 常量
 	Default = "Default"
 	None = "None"
@@ -1417,6 +1397,36 @@ if Fast-Font-load
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
 		Article-Background = get_depend_list((CustomBackground Article-bg-color))
+
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))") // 二级自定义字体
+	if Better-font
+		if DarkMode
+			Codeblock-better-color1 = set_default_value(Codeblock-better-color1,#ffd70a)
+			Codeblock-better-color2 = set_default_value(Codeblock-better-color2,#da63a1)
+			Codeblock-better-color3 = set_default_value(Codeblock-better-color3,#c4c6c9)
+		else
+			Codeblock-better-color1 = set_default_value(Codeblock-better-color1,#f34c61)
+			Codeblock-better-color2 = set_default_value(Codeblock-better-color2,#da63a1)
+			Codeblock-better-color3 = set_default_value(Codeblock-better-color3,#36464e)
+
+		@font-face {
+			font-family: 'FontWithASyntaxHighlighter'
+			font-style: dark
+			font-weight: 300 700
+
+			src: url(https://imgservices-1252317822.image.myqcloud.com/coco/s08172024/3b03a24c.50xym2.woff2) format('woff2')
+			unicode-range: U+003B-003B,U+0028-0029,U+005B-005B,U+005D-005D,U+007B-007B,U+007D-007D
+
+			// 目前仅修改 , ; ( ) [ ] { }
+		}
+
+		@font-palette-values --Alternate {
+			font-family: "FontWithASyntaxHighlighter"
+			override-colors:
+				0 Codeblock-better-color1, // 这个是 {}
+				4 #da63a1, // 这个是 []()
+				8 #c4c6c9; // 这个是 ;
+		}
 
 // 全局样式
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
