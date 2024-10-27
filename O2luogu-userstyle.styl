@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.1.1.0
+@version      2.1.2.0
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -53,6 +53,7 @@
 @var	checkbox Better-prob-card "新前端题解区卡片应用氧洛谷式排版" 1
 @var	checkbox Fast-Font-load "字体常驻加载" 0
 @var	checkbox Article-progress-bar "开启专栏区阅读进度条" 1
+@var	checkbox Text-break-word "讨论区等页面正文横向溢出文字换行" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -472,6 +473,16 @@
 @var	text Article-progress-height "专栏文章阅读条高度" "Default"
 @var	text Article-progress-ani "专栏文章阅读条动画效果" "Default"
 
+@var	text Checkin-Time-color "主页签到日期显示颜色" "Default"
+
+@var	text Codeblock-better-color1 "代码块实验性渲染 {} 色" "Default"
+@var	text Codeblock-better-color2 "代码块实验性渲染 []() 色" "Default"
+@var	text Codeblock-better-color3 "代码块实验性渲染 ; 色" "Default"
+
+@var	text Usernav-icon-hover-color "右上图标栏图标 hover 色" "Default"
+@var	text Usernav-navbar-icon-hover-color "右上图标栏菜单栏图标 hover 色" "Default"
+@var	text Usernav-icon-hover-ani "右上图标栏图标 hover 动画" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -486,6 +497,8 @@
 @var	checkbox bug-fix12 "[bug-fix] 题单界面 '查找题单' 文字对齐异常" 1
 @var	checkbox bug-fix13 "[bug-fix] 团队成员编辑卡滚动条异常" 1
 @var	checkbox bug-fix14 "[bug-fix] 比赛页面侧栏卡片布局错误" 1
+@var	checkbox bug-fix15 "[bug-fix] 个人主页勾子位置异常" 1
+@var	checkbox bug-fix16 "[bug-fix] 旧前端用户信息栏各组件未对齐" 1
 
 ==/UserStyle== */
 
@@ -528,26 +541,6 @@ if Fast-Font-load
 	// 导入 Noto Sans
 	/*google 的服务真方便吧*/
 
-	if Better-font
-		@font-face {
-			font-family: 'FontWithASyntaxHighlighter'
-			font-style: dark
-			font-weight: 300 700
-
-			src: url(https://imgservices-1252317822.image.myqcloud.com/coco/s08172024/3b03a24c.50xym2.woff2) format('woff2')
-			unicode-range: U+003B-003B,U+0028-0029,U+005B-005B,U+005D-005D,U+007B-007B,U+007D-007D
-
-			// 目前仅修改 , ; ( ) [ ] { }
-		}
-
-		@font-palette-values --Alternate {
-			font-family: "FontWithASyntaxHighlighter"
-			override-colors:
-				0 #ffd70a, // 这个是 {}
-				4 #da63a1, // 这个是 []()
-				8 #c4c6c9; // 这个是 ;
-		}
-
 // 常量
 	Default = "Default"
 	None = "None"
@@ -566,8 +559,8 @@ if Fast-Font-load
 		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption" // 介绍文字
 		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.stat>.field,.difficulty-tags,.difficulty-tags>.row,div[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
 		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.cs-close-container,.container .close path" // 杂项图标
-		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 操作文字
-		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 可选中操作文字
+		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.user-nav>a.login" // 操作文字
+		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.am-modal-btn,.user-nav>a.login" // 可选中操作文字
 		Hover-A = ".action>a,.center>footer>a,.am-panel-primary .am-panel-title a" // 选中超链接
 		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a,span.C.G,.row.title>a,.row div>a,.bar-item,.filter-wrapper a" // 强制超链接
 		ColorfulLabel = ".difficulty a.color-default[colorscheme='default']>span,.box>span.lfe-caption,span.lfe-caption.tag,a.tag.color-none>span,.difficulty-tags>.row>span.lfe-caption,.difficulty>span.lfe-caption,a.status-link>span.lfe-caption,.lfe-caption.tag>span,.author-margin>.lfe-caption,.team-authority,.inner-card span.lfe-caption[style*='color:'],.status>.lfe-caption" // 标签
@@ -988,6 +981,8 @@ if Fast-Font-load
 		Table-color = set_default_value(Table-color,#c4c6c9)
 
 		Article-progress-color = set_default_value(Article-progress-color,#5e72e4)
+
+		Checkin-Time-color = set_default_value(Checkin-Time-color,#1aae6f)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
 		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
@@ -1139,6 +1134,8 @@ if Fast-Font-load
 		Table-color = set_default_value(Table-color,#ddd)
 		
 		Article-progress-color = set_default_value(Article-progress-color,#3498db)
+
+		Checkin-Time-color = set_default_value(Checkin-Time-color,#396a42)
 
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
@@ -1400,10 +1397,48 @@ if Fast-Font-load
 
 	Article-progress-ani = set_default_value(Article-progress-ani,5s linear)
 
+	if DarkMode
+		Usernav-icon-hover-color = set_default_value(Usernav-icon-hover-color,#5e72e4)
+		Usernav-navbar-icon-hover-color = set_default_value(Usernav-navbar-icon-hover-color,#5e72e4)
+	else
+		Usernav-icon-hover-color = set_default_value(Usernav-icon-hover-color,#4682b4)
+		Usernav-navbar-icon-hover-color = set_default_value(Usernav-navbar-icon-hover-color,#3498db)
+	Usernav-icon-hover-ani = set_default_value(Usernav-icon-hover-ani,.4s ease)
+
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
 		Article-Background = get_depend_list((CustomBackground Article-bg-color))
+
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))") // 二级自定义字体
+	if Better-font
+		if DarkMode
+			Codeblock-better-color1 = set_default_value(Codeblock-better-color1,#ffd70a)
+			Codeblock-better-color2 = set_default_value(Codeblock-better-color2,#da63a1)
+			Codeblock-better-color3 = set_default_value(Codeblock-better-color3,#c4c6c9)
+		else
+			Codeblock-better-color1 = set_default_value(Codeblock-better-color1,#f34c61)
+			Codeblock-better-color2 = set_default_value(Codeblock-better-color2,#da63a1)
+			Codeblock-better-color3 = set_default_value(Codeblock-better-color3,#36464e)
+
+		@font-face {
+			font-family: 'FontWithASyntaxHighlighter'
+			font-style: dark
+			font-weight: 300 700
+
+			src: url(https://imgservices-1252317822.image.myqcloud.com/coco/s08172024/3b03a24c.50xym2.woff2) format('woff2')
+			unicode-range: U+003B-003B,U+0028-0029,U+005B-005B,U+005D-005D,U+007B-007B,U+007D-007D
+
+			// 目前仅修改 , ; ( ) [ ] { }
+		}
+
+		@font-palette-values --Alternate {
+			font-family: "FontWithASyntaxHighlighter"
+			override-colors:
+				0 Codeblock-better-color1, // 这个是 {}
+				4 #da63a1, // 这个是 []()
+				8 #c4c6c9; // 这个是 ;
+		}
 
 // 全局样式
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
@@ -1477,6 +1512,17 @@ if Fast-Font-load
 	// 洛谷右上悬浮卡图标样式修改
 	.header > .user-nav a.icon > svg > path,.header > .user-nav a.icon-btn > svg > path
 		fill: Card-icon-color !important
+	
+	.user-nav 
+		& a:has(>svg)
+			& > svg > path
+				transition: fill Usernav-icon-hover-ani !important
+			& > svg:hover > path
+				fill: Usernav-navbar-icon-hover-color !important
+	.header > .user-nav
+		& a:has(>svg)
+			& > svg:hover > path
+				fill: Usernav-icon-hover-color !important
 
 	// 更好的个人信息框
 	if Better-User-nav
@@ -1544,6 +1590,7 @@ if Fast-Font-load
 	// 正文文字样式修改
 	{Text} // TODO：选择器实现不是特别优美
 		color: Text-color !important
+		word-wrap: break-word if Text-break-word
 	
 	// 超链接样式修改
 	a,.color-default[data-v-0640126c], .color-default-noline[data-v-0640126c]
@@ -2017,10 +2064,6 @@ if Fast-Font-load
 	// 页首修改
 	.main-container > .wrapper.wrapped.lfe-body:has(>.background) > .background,.main-container > header.theme-bg
 		background: Header-bg-color !important if !Anti-HeaderFooter
-		if bug-fix9
-			& .lfe-h1
-				overflow: visible !important
-
 	
 	// 页尾修改
 	.main-container > .wrapper.wrapped.lfe-body:has(>.footer),.main-container > footer.theme-bg
@@ -2505,6 +2548,11 @@ if Fast-Font-load
 			& .functional
 				width: 100% !important
 				float: left
+			if bug-fix9
+				& .lfe-h1
+					margin-top: 0 !important
+					margin-bottom: 0 !important
+					line-height: calc(120% + 1em)
 	
 	if Usernav-float
 		.user-nav:has(>nav)
@@ -2517,11 +2565,11 @@ if Fast-Font-load
 	.refined-input:has(.east)>input,.article-mine-filter
 		box-shadow: none !important		
 
-	.full-container
+	.full-container:not([currenttemplate*="Discuss"])
 		@media (min-width: 769px)
 			&>.side
 				width: Prob-side-width !important
-			&>.main
+			&>.main:not([style*="width: 100%;"])
 				width: Prob-lcard-width !important
 
 	.top-progress > .bar
@@ -2637,6 +2685,16 @@ if Fast-Font-load
 			margin-bottom: 0 !important
 		.side > .card.padding-default > p:last-child
 			margin-bottom: 0 !important
+	
+	if bug-fix15
+		@media (min-width: 577px)
+			.user-header-container .ccf-badge
+				font-size: inherit !important
+	
+	if bug-fix16
+		.user-info > .user-name > *
+			vertical-align: middle !important
+
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/discuss.*$")
 	if bug-fix10
@@ -2925,6 +2983,9 @@ if Fast-Font-load
 	.am-slider-default .am-control-nav li a
 		transition: all Control-nav-ani !important
 		background: Control-nav-bg-color !important
+	
+	.lg-index-calendar.lg-fg-greendark
+		color: Checkin-Time-color !important
 	
 	if bug-fix11
 		.am-u-md-4.lg-punch.am-text-center > h2 svg
