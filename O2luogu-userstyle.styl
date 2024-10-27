@@ -58,6 +58,7 @@
 @var	checkbox Table-change "实验性 Markdown 列表更改" 1
 @var	checkbox Better-article-icon-text "文章区下方图标文字 hover 色统一" 1
 @var	checkbox Better-AD-font "更好的主页广告翻页按钮样式" 1
+@var	checkbox Smooth-scroll "开启平滑滚动" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -1472,6 +1473,9 @@ if Fast-Font-load
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
 	body
 		use_mainly_background()
+	if Smooth-scroll
+		body,html
+			scroll-behavior: smooth
 	
 	// 滚动条样式修改
 	if Custom-Scrollbar
