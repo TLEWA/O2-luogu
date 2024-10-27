@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    github.com/openstyles/stylus
-@version      2.1.1.1
+@version      2.1.2.0
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -478,6 +478,10 @@
 @var	text Codeblock-better-color1 "代码块实验性渲染 {} 色" "Default"
 @var	text Codeblock-better-color2 "代码块实验性渲染 []() 色" "Default"
 @var	text Codeblock-better-color3 "代码块实验性渲染 ; 色" "Default"
+
+@var	text Usernav-icon-hover-color "右上图标栏图标 hover 色" "Default"
+@var	text Usernav-navbar-icon-hover-color "右上图标栏菜单栏图标 hover 色" "Default"
+@var	text Usernav-icon-hover-ani "右上图标栏图标 hover 动画" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -1393,6 +1397,14 @@ if Fast-Font-load
 
 	Article-progress-ani = set_default_value(Article-progress-ani,5s linear)
 
+	if DarkMode
+		Usernav-icon-hover-color = set_default_value(Usernav-icon-hover-color,#5e72e4)
+		Usernav-navbar-icon-hover-color = set_default_value(Usernav-navbar-icon-hover-color,#5e72e4)
+	else
+		Usernav-icon-hover-color = set_default_value(Usernav-icon-hover-color,#4682b4)
+		Usernav-navbar-icon-hover-color = set_default_value(Usernav-navbar-icon-hover-color,#3498db)
+	Usernav-icon-hover-ani = set_default_value(Usernav-icon-hover-ani,.4s ease)
+
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -1500,6 +1512,17 @@ if Fast-Font-load
 	// 洛谷右上悬浮卡图标样式修改
 	.header > .user-nav a.icon > svg > path,.header > .user-nav a.icon-btn > svg > path
 		fill: Card-icon-color !important
+	
+	.user-nav 
+		& a:has(>svg)
+			& > svg > path
+				transition: fill Usernav-icon-hover-ani !important
+			& > svg:hover > path
+				fill: Usernav-navbar-icon-hover-color !important
+	.header > .user-nav
+		& a:has(>svg)
+			& > svg:hover > path
+				fill: Usernav-icon-hover-color !important
 
 	// 更好的个人信息框
 	if Better-User-nav
