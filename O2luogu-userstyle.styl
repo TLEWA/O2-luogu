@@ -1179,12 +1179,12 @@ if Fast-Font-load
 	Test-case-margin-bottom = set_default_value(Test-case-margin-bottom,12px)
 	Test-case-margin-top = set_default_value(Test-case-margin-top,25px)
 	Test-case-size = set_default_value(Test-case-size,96px)
-	Test-case-ani = set_default_value(Test-case-ani,all .2s ease)
+	Test-case-ani = set_default_value(Test-case-ani,.2s ease)
 	Test-case-shadow = set_default_value(Test-case-shadow,0 4px 6px rgba(50,50,93,.11) \, 0 1px 3px rgba(0,0,0,.08))
 	Test-case-border-radius = set_default_value(Test-case-border-radius,3px)
 	Test-case-translate = set_default_value(Test-case-translate,3px)
 	Test-case-hover-shadow = set_default_value(Test-case-hover-shadow,0 10px 30px rgba(50, 50, 93, 0.1)\,0 5px 15px rgba(0, 0, 0, 0.07))
-	Test-case-message-ani = set_default_value(Test-case-message-ani,all .45s ease)
+	Test-case-message-ani = set_default_value(Test-case-message-ani,.45s ease)
 	Test-case-message-shadow = set_default_value(Test-case-message-shadow,0 4px 6px rgba(50,50,93,.11)\, 0 1px 3px rgba(0,0,0,.08))
 	Test-case-message-color = set_default_value(Test-case-message-color,#fff)
 	Test-case-background = set_default_value(Test-case-background,rgba(23, 43, 77, 0.8))
@@ -1206,7 +1206,7 @@ if Fast-Font-load
 	Sidebar-popup-padding = set_default_value(Sidebar-popup-padding,10px)
 	Sidebar-popup-ani = set_default_value(Sidebar-popup-ani,fade 0.2s ease)
 
-	Float-card-hover-ani = set_default_value(Float-card-hover-ani,background-color .3s)
+	Float-card-hover-ani = set_default_value(Float-card-hover-ani,.25s ease)
 
 	Highcharts-hover-bigpoint-op = set_default_value(Highcharts-hover-bigpoint-op,0.25)
 
@@ -1608,9 +1608,10 @@ if Fast-Font-load
 	{Hover_card_float}
 		//border-radius: Card-float-radius if Custom-Card // TODO：分离
 		anti_hover_line() if A-hover-line && Anti-Float-hover-line
+		transition: background Float-card-hover-ani !important
 		&:hover //,&:focus
 			background: Card-hover-color-float !important
-			transition: Float-card-hover-ani !important
+			transition: background Float-card-hover-ani !important
 	
 	{Shadow_card_float}
 		box-shadow: Float-Card-shadow !important
@@ -1998,7 +1999,7 @@ if Fast-Font-load
 				.test-case //颜色标准化 [更新预定]
 					width: Test-case-size
 					height: Test-case-size
-					transition: Test-case-ani !important
+					transition: all Test-case-ani !important
 					box-shadow: Test-case-shadow
 					border-radius: Test-case-border-radius
 					margin: 0
@@ -2026,7 +2027,7 @@ if Fast-Font-load
 						margin-bottom: -3px
 
 				.message
-					transition: Test-case-message-ani !important
+					transition: all Test-case-message-ani !important
 					display: block !important
 					border-radius: 5px !important
 					box-shadow: Test-case-message-shadow // TODO：变量化
