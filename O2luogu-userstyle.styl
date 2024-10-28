@@ -574,7 +574,7 @@ if Fast-Font-load
 		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner,.row>.content" // 正文文字
 		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name" // 陈述文字
 		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption" // 介绍文字
-		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.stat>.field,.difficulty-tags,.difficulty-tags>.row,div[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
+		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.stat>.field,.difficulty-tags,.difficulty-tags>.row,.full-container[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
 		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.cs-close-container,.container .close path" // 杂项图标
 		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.user-nav>a.login" // 操作文字
 		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.am-modal-btn,.user-nav>a.login" // 可选中操作文字
@@ -2388,6 +2388,9 @@ if Fast-Font-load
 				padding-bottom: 0px
 		.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
 			animation: Header-anim Header-ani
+			//transform: translate3d(0, 0, 0)
+		//.main-container > main
+		//	transform: translateZ(0)
 
 	if Better-Header-text-ani
 		@keyframes ShowTop
@@ -2509,13 +2512,13 @@ if Fast-Font-load
 			top: SideBar-position
 			transform: translateY(- SideBar-position)
 			padding-bottom: 14px
-			height: 27em
+			height: 30em
 		
 		if More-Sidebar-Ani
 			#app:has(>.main-container>.wrapper>.header:not([pageloading*="true"])) > .lfe-body,#app:not(:has(>.main-container>.wrapper>.header)) > .lfe-body
 				animation: Sidebar-out SideBar-ani !important
 	
-		#app > .lfe-body > div:has(.logo-wrap)
+		#app > .lfe-body > div:first-child//:has(.logo-wrap)
 			border-top-right-radius: 30px
 		
 	
@@ -2718,6 +2721,10 @@ if Fast-Font-load
 	if bug-fix9
 		.user-info .luogu-username>.name
 			overflow: visible !important
+
+	if bug-fix10
+		html,body
+			overflow-x: hidden
 	
 	if bug-fix12
 		.find-problem.no-wrap.lfe-h2
@@ -2750,12 +2757,6 @@ if Fast-Font-load
 	if bug-fix16
 		.user-info > .user-name > *
 			vertical-align: middle !important
-
-
-@-moz-document regexp("^https?://www.luogu.com(.cn)?/discuss.*$")
-	if bug-fix10
-		body
-			overflow-x: hidden
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/solution|ranking).*$")
 	use_new_bar()
