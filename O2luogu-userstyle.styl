@@ -2869,9 +2869,9 @@ if Fast-Font-load
 			fill: Article-icon-color !important
 	
 	// 修一个小问题
-	.actions:has(>.button-2line)>a:not([disabled="false"])
-		margin: 0 1em !important
 	.actions:has(>.button-2line)>a>.button-2line
+		margin: 0 1em !important
+	.actions:not(:has(>a>.button-2line))>a
 		margin: 0 !important
 
 	article-icons = (article-icon-1-color article-icon-2-color article-icon-3-color article-icon-4-color)
