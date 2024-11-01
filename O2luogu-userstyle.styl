@@ -511,6 +511,9 @@
 @var	text Luogu-article-color-6 "洛谷文章广场'学习·文化课'颜色" "Default"
 @var	text Luogu-article-color-7 "洛谷文章广场'休闲·娱乐'颜色" "Default"
 
+@var	text Directory-a-hover-color "洛谷左上目录超链接 hover 颜色" "Default"
+@var	text Directory-a-hover-ani "洛谷左上目录超链接 hover 动画" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -1458,6 +1461,9 @@ if Fast-Font-load
 	Luogu-article-color-6 = set_default_value(Luogu-article-color-6,#2949b4)
 	Luogu-article-color-7 = set_default_value(Luogu-article-color-7,#fe4c61)
 
+	Directory-a-hover-color = set_default_value(Directory-a-hover-color,#fff)
+	Directory-a-hover-ani = set_default_value(Directory-a-hover-ani,.4s ease)
+
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -1694,8 +1700,12 @@ if Fast-Font-load
 		color: Introduce-color !important
 
 	// 洛谷左上目录超链接样式
-	.link[data-v-c9185fa2]
+	.bread-crumb *
 		color: Directory-a-color !important
+	.bread-crumb .link
+		transition: color Directory-a-hover-ani !important
+		&:hover
+			color: Directory-a-hover-color !important
 	
 	// 洛谷右上图标样式
 	{Other_Icon}
@@ -2871,7 +2881,7 @@ if Fast-Font-load
 	// 修一个小问题
 	.actions:has(>.button-2line)>a>.button-2line
 		margin: 0 1em !important
-	.actions:not(:has(>a>.button-2line))>a
+	.actions:not(:has(>a>.button-2line))>a[disabled="false"]
 		margin: 0 !important
 
 	article-icons = (article-icon-1-color article-icon-2-color article-icon-3-color article-icon-4-color)
