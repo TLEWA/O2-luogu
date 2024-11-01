@@ -528,6 +528,7 @@
 @var	checkbox bug-fix15 "[bug-fix] 个人主页勾子位置异常" 1
 @var	checkbox bug-fix16 "[bug-fix] 旧前端用户信息栏各组件未对齐" 1
 @var	checkbox bug-fix17 "[bug-fix] 用户信息栏展开图标未居中" 1
+@var	checkbox bug-fix18 "[bug-fix] 搜索框组件未居中" 1
 
 ==/UserStyle== */
 
@@ -2548,8 +2549,11 @@ if Fast-Font-load
 	#app > .lfe-body 
 		box-shadow: SideBar-shadow !important
 
-	section>.block:has(>button.block-item) input
+	.refined-input.input-wrap.frame:has(input+svg) > input
 		box-shadow: none !important
+	if bug-fix18
+		.refined-input.input-wrap.frame:has(input+svg) > svg
+			margin: auto .625em !important
 
 	// 讨论区设置
 	.full-container[currenttemplate="DiscussList"],.full-container[currenttemplate="DiscussPost"]
