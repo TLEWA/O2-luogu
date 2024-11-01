@@ -514,6 +514,8 @@
 @var	text Directory-a-hover-color "洛谷左上目录超链接 hover 颜色" "Default"
 @var	text Directory-a-hover-ani "洛谷左上目录超链接 hover 动画" "Default"
 
+@var	text Swal-shadow "小型 swal 信息框弹窗阴影样式" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -1016,6 +1018,8 @@ if Fast-Font-load
 		Article-progress-color = set_default_value(Article-progress-color,#5e72e4)
 
 		Checkin-Time-color = set_default_value(Checkin-Time-color,#1aae6f)
+
+		Swal-shadow = set_default_value(Swal-shadow,none)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
 		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
@@ -1169,6 +1173,8 @@ if Fast-Font-load
 		Article-progress-color = set_default_value(Article-progress-color,#3498db)
 
 		Checkin-Time-color = set_default_value(Checkin-Time-color,#396a42)
+
+		Swal-shadow = set_default_value(Swal-shadow,0 0 .625em #d9d9d9)
 
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
@@ -1463,7 +1469,6 @@ if Fast-Font-load
 
 	Directory-a-hover-color = set_default_value(Directory-a-hover-color,#fff)
 	Directory-a-hover-ani = set_default_value(Directory-a-hover-ani,.4s ease)
-
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -2149,6 +2154,8 @@ if Fast-Font-load
 	// Swal 弹窗样式
 	.swal2-popup:not([style*="background: transparent;"])
 		background: Card-bg-color-float !important
+	.swal2-popup.swal2-toast
+		box-shadow: Swal-shadow !important
 
 	// 加载圈
 	.spinner.dark
