@@ -62,6 +62,7 @@
 @var	checkbox Problem-tag-center "题库 tag 居中" 0
 @var	checkbox Better-Problem-tag-margin "题库 tag 布局方式微调" 1
 @var	checkbox Better-Smooth-scroll "在主页自动禁用平滑滚动" 1
+@var	checkbox Better-Badge "主页 badge 大小与新前端统一化" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -421,7 +422,6 @@
 @var	text Header-text-ani-padding "Header 文字动画初始向左位置" "Default"
 @var	text Header-text-ani "Header 文字动画效果" "Default"
 
-
 @var	text Problem-select-bar-bg-color "题库选择条背景色" "Default"
 @var	text Problem-select-bar-active-bg-color "题库选择条选中背景色" "Default"
 @var	text Problem-select-bar-text-color "题库选择条透明背景文字色" "Default"
@@ -516,6 +516,18 @@
 
 @var	text Swal-shadow "小型 swal 信息框弹窗阴影样式" "Default"
 
+@var	text Usertag-color-1 "灰名 tag 色" "Default"
+@var	text Usertag-color-2 "蓝名 tag 色" "Default"
+@var	text Usertag-color-3 "绿名 tag 色" "Default"
+@var	text Usertag-color-4 "橙名 tag 色" "Default"
+@var	text Usertag-color-5 "红名 tag 色" "Default"
+@var	text Usertag-color-6 "紫名 tag 色" "Default"
+@var	text Usertag-color-7 "棕名 tag 色" "Default"
+
+@var	text Submit-pict "自定义 AC 后展示图片" "Default"
+
+
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -534,6 +546,7 @@
 @var	checkbox bug-fix16 "[bug-fix] 旧前端用户信息栏各组件未对齐" 1
 @var	checkbox bug-fix17 "[bug-fix] 用户信息栏展开图标未居中" 1
 @var	checkbox bug-fix18 "[bug-fix] 搜索框组件未居中" 1
+@var	checkbox bug-fix19 "[bug-fix] 主页 tag 文字居中情况异常" 1
 
 ==/UserStyle== */
 
@@ -609,7 +622,7 @@ if Fast-Font-load
 		Button = ".lfe-form-sz-middle,.am-btn,.lform-size-middle,.lform-sz-middle,a[href*='http']>#go" // 中型按钮
 		Small-Button = ".lfe-form-sz-small,.lform-sz-small,.lform-size-small,.copy-btn,.copy-btn.lfe-form-sz-middle" // 小型按钮
 		Username = "a.color-none[href*='/user/'][target='_blank']>span,a.name[href*='/user/'][style*='font-weight: bold;']" // 用户 id
-		Avatar = "img.avatar,img.am-comment-avatar,.luogu-username>img" // 用户头像
+		Avatar = "img.avatar,img.am-comment-avatar,.luogu-username>img,.message-block>img,.avatar>img" // 用户头像
 
 // 全局工具函数
 
@@ -1469,6 +1482,15 @@ if Fast-Font-load
 
 	Directory-a-hover-color = set_default_value(Directory-a-hover-color,#fff)
 	Directory-a-hover-ani = set_default_value(Directory-a-hover-ani,.4s ease)
+
+	Usertag-color-1 = set_default_value(Usertag-color-1,#bfbfbf)
+	Usertag-color-2 = set_default_value(Usertag-color-2,#3498db)
+	Usertag-color-3 = set_default_value(Usertag-color-3,#52c41a)
+	Usertag-color-4 = set_default_value(Usertag-color-4,#f39c11)
+	Usertag-color-5 = set_default_value(Usertag-color-5,#fe4c61)
+	Usertag-color-6 = set_default_value(Usertag-color-6,#8e44ad)
+	Usertag-color-7 = set_default_value(Usertag-color-7,#ad8b00)
+	
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -1762,6 +1784,40 @@ if Fast-Font-load
 		anti_hover_line() if A-hover-line
 		color: Badge-text-color !important
 		border-radius: Badge-border-radius !important
+	
+	// 新前端应用样式
+	.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span
+		&[style*=": rgb(191\, 191\, 191);"]
+			background-color: Usertag-color-1 !important
+			border-color: Usertag-color-1 !important
+		&[style*=": rgb(52\, 152\, 219);"]
+			background-color: Usertag-color-2 !important
+			border-color: Usertag-color-2 !important
+		&[style*=": rgb(82\, 196\, 26);"]
+			background-color: Usertag-color-3 !important
+			border-color: Usertag-color-3 !important
+		&[style*=": rgb(243\, 156\, 17);"]
+			background-color: Usertag-color-4 !important
+			border-color: Usertag-color-4 !important
+		&[style*=": rgb(254\, 76\, 97);"]
+			background-color: Usertag-color-5 !important
+			border-color: Usertag-color-5 !important
+		&[style*=": rgb(157\, 61\, 207);"],&[style*=": rgb(156\, 61\, 207);"]
+			background-color: Usertag-color-6 !important
+			border-color: Usertag-color-6 !important
+		&[style*=": rgb(173\, 139\, 0);"]
+			background-color: Usertag-color-7 !important
+			border-color: Usertag-color-7 !important
+
+	/*
+	Usertag-color-1
+	Usertag-color-2
+	Usertag-color-3
+	Usertag-color-4
+	Usertag-color-5
+	Usertag-color-6
+	Usertag-color-7
+	*/
 	
 	if A-hover-line
 		a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag']
@@ -2720,6 +2776,10 @@ if Fast-Font-load
 			display: block
 			text-align: center
 
+	if Submit-pict!="Default"
+		.swal2-header > .swal2-image[src*="https://fecdn.luogu.com.cn/luogu/ac-congrats.png"]
+			content: Submit-pict !important
+
 	// 各种小 bug 的修复
 	.load-more
 		border-bottom: 0 !important if bug-fix1
@@ -2825,6 +2885,14 @@ if Fast-Font-load
 				font-size: 10.7px !important
 			& svg
 				height: 16px !important
+	
+	if bug-fix19 || Better-Badge
+		.am-badge
+			line-height: 1.5
+			if Better-Badge
+				padding: 0 8px
+			else 
+				padding: 0 0.625em
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/solution|ranking).*$")
 	use_new_bar()
