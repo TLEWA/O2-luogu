@@ -526,7 +526,9 @@
 
 @var	text Submit-pict "自定义 AC 后展示图片" "Default"
 
-
+@var	text Usersvg-color-1 "绿勾色" "Default"
+@var	text Usersvg-color-2 "蓝勾色" "Default"
+@var	text Usersvg-color-3 "金勾色" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -1490,6 +1492,10 @@ if Fast-Font-load
 	Usertag-color-5 = set_default_value(Usertag-color-5,#fe4c61)
 	Usertag-color-6 = set_default_value(Usertag-color-6,#8e44ad)
 	Usertag-color-7 = set_default_value(Usertag-color-7,#ad8b00)
+
+	Usersvg-color-1 = set_default_value(Usersvg-color-1,#52c41a)
+	Usersvg-color-2 = set_default_value(Usersvg-color-2,#3498db)
+	Usersvg-color-3 = set_default_value(Usersvg-color-3,#ffc116)
 	
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -1806,16 +1812,14 @@ if Fast-Font-load
 		&[style*=": rgb(173\, 139\, 0);"]
 			background-color: Usertag-color-7 !important
 			border-color: Usertag-color-7 !important
-
-	/*
-	Usertag-color-1
-	Usertag-color-2
-	Usertag-color-3
-	Usertag-color-4
-	Usertag-color-5
-	Usertag-color-6
-	Usertag-color-7
-	*/
+	
+	.svg-inline--fa.fa-badge-check
+		&[style*="#52c41a"] path.fa-secondary,&[style*="--lfe-color--green-3"] path.fa-secondary
+			fill: Usersvg-color-1 !important
+		&[style*="#3498db"] path.fa-secondary,&[style*="--lfe-color--blue-3"] path.fa-secondary
+			fill: Usersvg-color-2 !important
+		&[style*="#ffc116"] path.fa-secondary,&[style*="--lfe-color--gold-3"] path.fa-secondary
+			fill: Usersvg-color-3 !important
 	
 	if A-hover-line
 		a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag']
@@ -3242,6 +3246,38 @@ if Fast-Font-load
 		body,html
 			scroll-behavior: auto !important
 	
+	// 老前端应用样式
+	.lg-inline-up>.lg-small:not(:last-child),.feed-username
+		& .lg-bg-gray
+			background-color: Usertag-color-1 !important
+			border-color: Usertag-color-1 !important
+		& .lg-bg-bluelight
+			background-color: Usertag-color-2 !important
+			border-color: Usertag-color-2 !important
+		& .lg-bg-green
+			background-color: Usertag-color-3 !important
+			border-color: Usertag-color-3 !important
+		& .lg-bg-orange
+			background-color: Usertag-color-4 !important
+			border-color: Usertag-color-4 !important
+		& .lg-bg-red
+			background-color: Usertag-color-5 !important
+			border-color: Usertag-color-5 !important
+		& .lg-bg-purple
+			background-color: Usertag-color-6 !important
+			border-color: Usertag-color-6 !important
+		& .lg-bg-brown
+			background-color: Usertag-color-7 !important
+			border-color: Usertag-color-7 !important
+	
+	a.sb_amazeui > svg
+		&[fill*="#5eb95e"] path
+			fill: Usersvg-color-1 !important
+		&[fill*="#3498db"] path
+			fill: Usersvg-color-2 !important
+		&[fill*="#f1c40f"] path
+			fill: Usersvg-color-3 !important
+
 	if bug-fix11
 		.am-u-md-4.lg-punch.am-text-center > h2 svg
 			margin-bottom: 0 !important
