@@ -1507,7 +1507,7 @@ if Fast-Font-load
 			Codeblock-better-color2 = set_default_value(Codeblock-better-color2,#da63a1)
 			Codeblock-better-color3 = set_default_value(Codeblock-better-color3,#36464e)
 
-		@font-face {
+		@font-face
 			font-family: 'FontWithASyntaxHighlighter'
 			font-style: dark
 			font-weight: 300 700
@@ -1516,15 +1516,13 @@ if Fast-Font-load
 			unicode-range: U+003B-003B,U+0028-0029,U+005B-005B,U+005D-005D,U+007B-007B,U+007D-007D
 
 			// 目前仅修改 , ; ( ) [ ] { }
-		}
 
-		@font-palette-values --Alternate {
+		@font-palette-values --Alternate
 			font-family: "FontWithASyntaxHighlighter"
 			override-colors:
 				0 Codeblock-better-color1, // 这个是 {}
 				4 Codeblock-better-color2, // 这个是 []()
 				8 Codeblock-better-color3; // 这个是 ;
-		}
 
 // 全局样式
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
