@@ -530,6 +530,16 @@
 @var	text Usersvg-color-2 "蓝勾色" "Default"
 @var	text Usersvg-color-3 "金勾色" "Default"
 
+@var	text Username-color-ani "名字颜色 hover 变色动画" "Default"
+
+@var	text Username-hover-color-1 "灰名 hover 文字色" "Default"
+@var	text Username-hover-color-2 "蓝名 hover 文字色" "Default"
+@var	text Username-hover-color-3 "绿名 hover 文字色" "Default"
+@var	text Username-hover-color-4 "橙名 hover 文字色" "Default"
+@var	text Username-hover-color-5 "红名 hover 文字色" "Default"
+@var	text Username-hover-color-6 "紫名 hover 文字色" "Default"
+@var	text Username-hover-color-7 "棕名 hover 文字色" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -623,7 +633,7 @@ if Fast-Font-load
 		Badge = ".am-badge,.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span" // 用户 Tag
 		Button = ".lfe-form-sz-middle,.am-btn,.lform-size-middle,.lform-sz-middle,a[href*='http']>#go" // 中型按钮
 		Small-Button = ".lfe-form-sz-small,.lform-sz-small,.lform-size-small,.copy-btn,.copy-btn.lfe-form-sz-middle" // 小型按钮
-		Username = "a.color-none[href*='/user/'][target='_blank']>span,a.name[href*='/user/'][style*='font-weight: bold;']" // 用户 id
+		Username = "a.color-none[href*='/user/'][target='_blank']>span,.name[style*='font-weight: bold;']" // 用户 id
 		Avatar = "img.avatar,img.am-comment-avatar,.luogu-username>img,.message-block>img,.avatar>img" // 用户头像
 
 // 全局工具函数
@@ -1496,6 +1506,16 @@ if Fast-Font-load
 	Usersvg-color-1 = set_default_value(Usersvg-color-1,#52c41a)
 	Usersvg-color-2 = set_default_value(Usersvg-color-2,#3498db)
 	Usersvg-color-3 = set_default_value(Usersvg-color-3,#ffc116)
+
+	Username-color-ani = set_default_value(Username-color-ani,.2s ease)
+
+	Username-hover-color-1 = set_default_value(Username-hover-color-1,#8e8e8e)
+	Username-hover-color-2 = set_default_value(Username-hover-color-2,#095f8a)
+	Username-hover-color-3 = set_default_value(Username-hover-color-3,#338809)
+	Username-hover-color-4 = set_default_value(Username-hover-color-4,#b4820a)
+	Username-hover-color-5 = set_default_value(Username-hover-color-5,#cf3346)
+	Username-hover-color-6 = set_default_value(Username-hover-color-6,#611d7d)
+	Username-hover-color-7 = set_default_value(Username-hover-color-7,#9f8416)
 	
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -2461,20 +2481,35 @@ if Fast-Font-load
 			transition: background Button-hover-ani \, border-color Button-hover-ani !important
 
 	{Username} // 洛谷用户 id
+		transition: color Username-color-ani !important
 		&[style*="color: rgb(191\, 191\, 191);"],&[style*="color: var(--lfe-color--grey-3);"]
 			color: Username-color-1 !important
+			&:hover
+				color: Username-hover-color-1 !important
 		&[style*="color: rgb(52\, 152\, 219);"],&[style*="color: var(--lfe-color--blue-3);"]
 			color: Username-color-2 !important
+			&:hover
+				color: Username-hover-color-2 !important
 		&[style*="color: rgb(82\, 196\, 26);"],&[style*="color: var(--lfe-color--green-3);"]
 			color: Username-color-3 !important
+			&:hover
+				color: Username-hover-color-3 !important
 		&[style*="color: rgb(243\, 156\, 17);"],&[style*="color: var(--lfe-color--orange-3);"]
 			color: Username-color-4 !important
+			&:hover
+				color: Username-hover-color-4 !important
 		&[style*="color: rgb(254\, 76\, 97);"],&[style*="color: var(--lfe-color--pink-3);"]
 			color: Username-color-5 !important
+			&:hover
+				color: Username-hover-color-5 !important
 		&[style*="color: rgb(157\, 61\, 207);"],&[style*="color: var(--lfe-color--purple-3);"]
 			color: Username-color-6 !important
+			&:hover
+				color: Username-hover-color-6 !important
 		&[style*="color: rgb(173\, 139\, 0);"],&[style*="color: var(--lfe-color--yellow-4);"]
 			color: Username-color-7 !important
+			&:hover
+				color: Username-hover-color-7 !important
 	a.color-none[href*='/user/'][target='_blank'],a.name[href*='/user/'][style*='font-weight: bold;']
 		anti_hover_line() if A-hover-line && Anti-Username-hover-line
 
@@ -3277,6 +3312,37 @@ if Fast-Font-load
 			fill: Usersvg-color-2 !important
 		&[fill*="#f1c40f"] path
 			fill: Usersvg-color-3 !important
+
+	a
+		&.lg-fg-gray
+			transition: color Username-color-ani !important
+			color: Username-color-1 !important
+			&:hover
+				color: Username-hover-color-1 !important
+		&.lg-fg-bluelight
+			color: Username-color-2 !important
+			&:hover
+				color: Username-hover-color-2 !important
+		&.lg-fg-green
+			color: Username-color-3 !important
+			&:hover
+				color: Username-hover-color-3 !important
+		&.lg-fg-orange
+			color: Username-color-4 !important
+			&:hover
+				color: Username-hover-color-4 !important
+		&.lg-fg-red
+			color: Username-color-5 !important
+			&:hover
+				color: Username-hover-color-5 !important
+		&.lg-fg-purple
+			color: Username-color-6 !important
+			&:hover
+				color: Username-hover-color-6 !important
+		&.lg-fg-brown
+			color: Username-color-7 !important
+			&:hover
+				color: Username-hover-color-7 !important
 
 	if bug-fix11
 		.am-u-md-4.lg-punch.am-text-center > h2 svg
