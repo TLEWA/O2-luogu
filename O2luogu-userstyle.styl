@@ -540,6 +540,16 @@
 @var	text Username-hover-color-6 "紫名 hover 文字色" "Default"
 @var	text Username-hover-color-7 "棕名 hover 文字色" "Default"
 
+@var	text Usertag-hover-color-1 "灰名 tag hover 文字色" "Default"
+@var	text Usertag-hover-color-2 "蓝名 tag hover 文字色" "Default"
+@var	text Usertag-hover-color-3 "绿名 tag hover 文字色" "Default"
+@var	text Usertag-hover-color-4 "橙名 tag hover 文字色" "Default"
+@var	text Usertag-hover-color-5 "红名 tag hover 文字色" "Default"
+@var	text Usertag-hover-color-6 "紫名 tag hover 文字色" "Default"
+@var	text Usertag-hover-color-7 "棕名 tag hover 文字色" "Default"
+
+@var	text Usertag-color-ani "用户 tag hover 变色动画" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -1516,6 +1526,16 @@ if Fast-Font-load
 	Username-hover-color-5 = set_default_value(Username-hover-color-5,#cf3346)
 	Username-hover-color-6 = set_default_value(Username-hover-color-6,#611d7d)
 	Username-hover-color-7 = set_default_value(Username-hover-color-7,#9f8416)
+
+	Usertag-hover-color-1 = set_default_value(Usertag-hover-color-1,#8e8e8e)
+	Usertag-hover-color-2 = set_default_value(Usertag-hover-color-2,#095f8a)
+	Usertag-hover-color-3 = set_default_value(Usertag-hover-color-3,#338809)
+	Usertag-hover-color-4 = set_default_value(Usertag-hover-color-4,#b4820a)
+	Usertag-hover-color-5 = set_default_value(Usertag-hover-color-5,#cf3346)
+	Usertag-hover-color-6 = set_default_value(Usertag-hover-color-6,#611d7d)
+	Usertag-hover-color-7 = set_default_value(Usertag-hover-color-7,#9f8416)
+
+	Usertag-color-ani = set_default_value(Usertag-color-ani,.4s ease)
 	
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -1811,27 +1831,49 @@ if Fast-Font-load
 	
 	// 新前端应用样式
 	.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span
+		transition: all Usertag-color-ani !important
 		&[style*=": rgb(191\, 191\, 191);"]
 			background-color: Usertag-color-1 !important
 			border-color: Usertag-color-1 !important
+			&:hover
+				background-color: Usertag-hover-color-1 !important
+				border-color: Usertag-hover-color-1 !important
 		&[style*=": rgb(52\, 152\, 219);"]
 			background-color: Usertag-color-2 !important
 			border-color: Usertag-color-2 !important
+			&:hover
+				background-color: Usertag-hover-color-2 !important
+				border-color: Usertag-hover-color-2 !important
 		&[style*=": rgb(82\, 196\, 26);"]
 			background-color: Usertag-color-3 !important
 			border-color: Usertag-color-3 !important
+			&:hover
+				background-color: Usertag-hover-color-3 !important
+				border-color: Usertag-hover-color-3 !important
 		&[style*=": rgb(243\, 156\, 17);"]
 			background-color: Usertag-color-4 !important
 			border-color: Usertag-color-4 !important
+			&:hover
+				background-color: Usertag-hover-color-4 !important
+				border-color: Usertag-hover-color-4 !important
 		&[style*=": rgb(254\, 76\, 97);"]
 			background-color: Usertag-color-5 !important
 			border-color: Usertag-color-5 !important
+			&:hover
+				background-color: Usertag-hover-color-5 !important
+				border-color: Usertag-hover-color-5 !important
 		&[style*=": rgb(157\, 61\, 207);"],&[style*=": rgb(156\, 61\, 207);"]
 			background-color: Usertag-color-6 !important
 			border-color: Usertag-color-6 !important
+			&:hover
+				background-color: Usertag-hover-color-6 !important
+				border-color: Usertag-hover-color-6 !important
 		&[style*=": rgb(173\, 139\, 0);"]
 			background-color: Usertag-color-7 !important
 			border-color: Usertag-color-7 !important
+			&:hover
+				background-color: Usertag-hover-color-7 !important
+				border-color: Usertag-hover-color-7 !important
 	
 	.svg-inline--fa.fa-badge-check
 		&[style*="#52c41a"] path.fa-secondary,&[style*="--lfe-color--green-3"] path.fa-secondary
@@ -3283,27 +3325,49 @@ if Fast-Font-load
 	
 	// 老前端应用样式
 	.lg-inline-up>.lg-small:not(:last-child),.feed-username
+		transition: all Usertag-color-ani !important
 		& .lg-bg-gray
 			background-color: Usertag-color-1 !important
 			border-color: Usertag-color-1 !important
+			&:hover
+				background-color: Usertag-hover-color-1 !important
+				border-color: Usertag-hover-color-1 !important
 		& .lg-bg-bluelight
 			background-color: Usertag-color-2 !important
 			border-color: Usertag-color-2 !important
+			&:hover
+				background-color: Usertag-hover-color-2 !important
+				border-color: Usertag-hover-color-2 !important
 		& .lg-bg-green
 			background-color: Usertag-color-3 !important
 			border-color: Usertag-color-3 !important
+			&:hover
+				background-color: Usertag-hover-color-3 !important
+				border-color: Usertag-hover-color-3 !important
 		& .lg-bg-orange
 			background-color: Usertag-color-4 !important
 			border-color: Usertag-color-4 !important
+			&:hover
+				background-color: Usertag-hover-color-4 !important
+				border-color: Usertag-hover-color-4 !important
 		& .lg-bg-red
 			background-color: Usertag-color-5 !important
 			border-color: Usertag-color-5 !important
+			&:hover
+				background-color: Usertag-hover-color-5 !important
+				border-color: Usertag-hover-color-5 !important
 		& .lg-bg-purple
 			background-color: Usertag-color-6 !important
 			border-color: Usertag-color-6 !important
+			&:hover
+				background-color: Usertag-hover-color-6 !important
+				border-color: Usertag-hover-color-6 !important
 		& .lg-bg-brown
 			background-color: Usertag-color-7 !important
 			border-color: Usertag-color-7 !important
+			&:hover
+				background-color: Usertag-hover-color-7 !important
+				border-color: Usertag-hover-color-7 !important
 	
 	a.sb_amazeui > svg
 		&[fill*="#5eb95e"] path
