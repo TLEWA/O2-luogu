@@ -550,6 +550,13 @@
 
 @var	text Usertag-color-ani "用户 tag hover 变色动画" "Default"
 
+@var	text Usersvg-mid-color "认证等级勾中心对钩色(无法适配主页前端)" "Default"
+@var	text Usersvg-mid-hover-color "认证等级勾中心对钩 hover 色(无法适配主页前端)" "Default"
+@var	text Usersvg-hover-color-1 "绿勾 hover 色" "Default"
+@var	text Usersvg-hover-color-2 "蓝勾 hover 色" "Default"
+@var	text Usersvg-hover-color-3 "金勾 hover 色" "Default"
+@var	text Usersvg-hover-ani "认证等级勾 hover 动画" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -1536,6 +1543,14 @@ if Fast-Font-load
 	Usertag-hover-color-7 = set_default_value(Usertag-hover-color-7,#9f8416)
 
 	Usertag-color-ani = set_default_value(Usertag-color-ani,.4s ease)
+
+	Usersvg-mid-color = set_default_value(Usersvg-mid-color,#fff)
+	Usersvg-mid-hover-color = set_default_value(Usersvg-mid-hover-color,#fff)
+	Usersvg-hover-color-1 = set_default_value(Usersvg-hover-color-1,#338809)
+	Usersvg-hover-color-2 = set_default_value(Usersvg-hover-color-2,#095f8a)
+	Usersvg-hover-color-3 = set_default_value(Usersvg-hover-color-3,#d4a423)
+
+	Usersvg-hover-ani = set_default_value(Usersvg-hover-ani,.4s ease)
 	
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -1876,12 +1891,29 @@ if Fast-Font-load
 				border-color: Usertag-hover-color-7 !important
 	
 	.svg-inline--fa.fa-badge-check
+		& path.fa-secondary,& path.fa-primary
+			transition: fill Usersvg-hover-ani !important
+
 		&[style*="#52c41a"] path.fa-secondary,&[style*="--lfe-color--green-3"] path.fa-secondary
 			fill: Usersvg-color-1 !important
 		&[style*="#3498db"] path.fa-secondary,&[style*="--lfe-color--blue-3"] path.fa-secondary
 			fill: Usersvg-color-2 !important
 		&[style*="#ffc116"] path.fa-secondary,&[style*="--lfe-color--gold-3"] path.fa-secondary
 			fill: Usersvg-color-3 !important
+		
+		& path.fa-primary
+			fill: Usersvg-mid-color !important
+
+		&:hover
+			&[style*="#52c41a"] path.fa-secondary,&[style*="--lfe-color--green-3"] path.fa-secondary
+				fill: Usersvg-hover-color-1 !important
+			&[style*="#3498db"] path.fa-secondary,&[style*="--lfe-color--blue-3"] path.fa-secondary
+				fill: Usersvg-hover-color-2 !important
+			&[style*="#ffc116"] path.fa-secondary,&[style*="--lfe-color--gold-3"] path.fa-secondary
+				fill: Usersvg-hover-color-3 !important
+
+			& path.fa-primary
+				fill: Usersvg-mid-hover-color !important
 	
 	if A-hover-line
 		a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag']
@@ -3325,44 +3357,50 @@ if Fast-Font-load
 	
 	// 老前端应用样式
 	.lg-inline-up>.lg-small:not(:last-child),.feed-username
-		transition: all Usertag-color-ani !important
 		& .lg-bg-gray
+			transition: all Usertag-color-ani !important
 			background-color: Usertag-color-1 !important
 			border-color: Usertag-color-1 !important
 			&:hover
 				background-color: Usertag-hover-color-1 !important
 				border-color: Usertag-hover-color-1 !important
 		& .lg-bg-bluelight
+			transition: all Usertag-color-ani !important
 			background-color: Usertag-color-2 !important
 			border-color: Usertag-color-2 !important
 			&:hover
 				background-color: Usertag-hover-color-2 !important
 				border-color: Usertag-hover-color-2 !important
 		& .lg-bg-green
+			transition: all Usertag-color-ani !important
 			background-color: Usertag-color-3 !important
 			border-color: Usertag-color-3 !important
 			&:hover
 				background-color: Usertag-hover-color-3 !important
 				border-color: Usertag-hover-color-3 !important
 		& .lg-bg-orange
+			transition: all Usertag-color-ani !important
 			background-color: Usertag-color-4 !important
 			border-color: Usertag-color-4 !important
 			&:hover
 				background-color: Usertag-hover-color-4 !important
 				border-color: Usertag-hover-color-4 !important
 		& .lg-bg-red
+			transition: all Usertag-color-ani !important
 			background-color: Usertag-color-5 !important
 			border-color: Usertag-color-5 !important
 			&:hover
 				background-color: Usertag-hover-color-5 !important
 				border-color: Usertag-hover-color-5 !important
 		& .lg-bg-purple
+			transition: all Usertag-color-ani !important
 			background-color: Usertag-color-6 !important
 			border-color: Usertag-color-6 !important
 			&:hover
 				background-color: Usertag-hover-color-6 !important
 				border-color: Usertag-hover-color-6 !important
 		& .lg-bg-brown
+			transition: all Usertag-color-ani !important
 			background-color: Usertag-color-7 !important
 			border-color: Usertag-color-7 !important
 			&:hover
@@ -3370,12 +3408,23 @@ if Fast-Font-load
 				border-color: Usertag-hover-color-7 !important
 	
 	a.sb_amazeui > svg
+		& path
+			transition: fill Usersvg-hover-ani !important
+
 		&[fill*="#5eb95e"] path
 			fill: Usersvg-color-1 !important
 		&[fill*="#3498db"] path
 			fill: Usersvg-color-2 !important
 		&[fill*="#f1c40f"] path
 			fill: Usersvg-color-3 !important
+		
+		&:hover
+			&[fill*="#5eb95e"] path
+				fill: Usersvg-hover-color-1 !important
+			&[fill*="#3498db"] path
+				fill: Usersvg-hover-color-2 !important
+			&[fill*="#f1c40f"] path
+				fill: Usersvg-hover-color-3 !important
 
 	a
 		&.lg-fg-gray
