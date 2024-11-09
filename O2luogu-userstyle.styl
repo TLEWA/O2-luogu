@@ -3066,16 +3066,21 @@ if Fast-Font-load
 	if Better-prob-card
 		.sidebar-container.layout
 			&>.side
-				width: Prob-side-width !important
-				float: right !important
-				margin-left: 0 !important
 				margin-right: 0 !important
 			&>.main
-				width: Prob-lcard-width !important
 				margin-left: 0 !important
-				margin-right: 0 !important
-				float: left !important
-			display: block !important
+			@media (min-width: 769px)
+				&>.side
+					width: Prob-side-width !important
+					min-width: 0 !important
+					float: right !important
+					margin-left: 0 !important
+				&>.main
+					width: Prob-lcard-width !important
+					min-width: 0 !important
+					float: left !important
+					margin-right: 0 !important
+				display: block !important
 
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/article?(.*))")
 	use_new_bar()
@@ -3083,22 +3088,32 @@ if Fast-Font-load
 		filter: none !important
 	if Article-Discuss // 专栏布局与讨论区统一化
 		.sidebar-container.layout
+			if Discuss-Sidebar-right
+				&>.side
+					margin-right: 0 !important
+					float: right !important
+				&>.main
+					margin-left: 0 !important
+					float: left !important
+			else
+				&>.side
+					margin-left: 0 !important
+				&>.main
+					margin-right: 0 !important
 			@media (min-width: 769px)
 				&>.side
 					width: Discuss-Sidebar-width !important
 					box-sizing: border-box !important
+					min-width: 0 !important
 					margin-left: 0 !important
 					margin-right: 0 !important
-					if Discuss-Sidebar-right
-						float: right !important
-					else
+					if !Discuss-Sidebar-right
 						margin-right: Discuss-Sidebar-margin !important
 				&>.main
 					width: Discuss-Main-width !important
+					min-width: 0 !important
 					margin-left: 0 !important
 					margin-right: 0 !important
-					if Discuss-Sidebar-right
-						float: left !important
 				display: block !important if Discuss-Sidebar-right
 
 // 洛谷专栏样式（新前端就是不一样）
