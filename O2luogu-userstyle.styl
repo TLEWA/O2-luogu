@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
-@namespace    github.com/openstyles/stylus
-@version      2.1.1.0
+@namespace    https://userstyles.world/style/18339/default-slug
+@version      2.1.3.0
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -53,6 +53,16 @@
 @var	checkbox Better-prob-card "新前端题解区卡片应用氧洛谷式排版" 1
 @var	checkbox Fast-Font-load "字体常驻加载" 0
 @var	checkbox Article-progress-bar "开启专栏区阅读进度条" 1
+@var	checkbox Text-break-word "讨论区等页面正文横向溢出文字换行" 1
+@var	checkbox Table-border-change "Markdown 列表中部 border 加粗" 0
+@var	checkbox Table-change "实验性 Markdown 列表更改" 1
+@var	checkbox Better-article-icon-text "文章区下方图标文字 hover 色统一" 1
+@var	checkbox Better-AD-font "更好的主页广告翻页按钮样式" 1
+@var	checkbox Smooth-scroll "开启平滑滚动" 1
+@var	checkbox Problem-tag-center "题库 tag 居中" 0
+@var	checkbox Better-Problem-tag-margin "题库 tag 布局方式微调" 1
+@var	checkbox Better-Smooth-scroll "在主页自动禁用平滑滚动" 1
+@var	checkbox Better-Badge "主页 badge 大小与新前端统一化" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -287,7 +297,7 @@
 @var	text Benben-hover-shadow "犇犇 hover 阴影效果" "Default"
 @var	text Benben-hover-ani "犇犇 hover 阴影动画效果" "Default"
 
-@var	text Discuss-button-ani "讨论区板块选择动画" "Default"
+@var	text Discuss-button-ani "讨论区板块选择动画 & 文章广场板块选择动画" "Default"
 
 @var	text Article-rside-width "文章区右侧边栏宽度" "Default"
 
@@ -412,7 +422,6 @@
 @var	text Header-text-ani-padding "Header 文字动画初始向左位置" "Default"
 @var	text Header-text-ani "Header 文字动画效果" "Default"
 
-
 @var	text Problem-select-bar-bg-color "题库选择条背景色" "Default"
 @var	text Problem-select-bar-active-bg-color "题库选择条选中背景色" "Default"
 @var	text Problem-select-bar-text-color "题库选择条透明背景文字色" "Default"
@@ -474,6 +483,73 @@
 
 @var	text Checkin-Time-color "主页签到日期显示颜色" "Default"
 
+@var	text Codeblock-better-color1 "代码块实验性渲染 {} 色" "Default"
+@var	text Codeblock-better-color2 "代码块实验性渲染 []() 色" "Default"
+@var	text Codeblock-better-color3 "代码块实验性渲染 ; 色" "Default"
+
+@var	text Usernav-icon-hover-color "右上图标栏图标 hover 色" "Default"
+@var	text Usernav-navbar-icon-hover-color "右上图标栏菜单栏图标 hover 色" "Default"
+@var	text Usernav-icon-hover-ani "右上图标栏图标 hover 动画" "Default"
+
+@var	text Article-icon-hover-ani "文章区下方图标 hover 动画" "Default"
+
+@var	text AD-font-color "主页广告翻页按钮颜色" "Default"
+@var	text AD-font-bg-color "主页广告翻页按钮背景色" "Default"
+@var	text AD-font-size "主页广告翻页按钮字体大小" "Default"
+@var	text AD-font-bg-width "主页广告翻页按钮背景宽度" "Default"
+@var	text AD-font-bg-height "主页广告翻页按钮背景高度" "Default"
+@var	text AD-font-bg-radius "主页广告翻页按钮背景圆角大小" "Default"
+@var	text AD-font-bg-hoverimg-color "主页广告翻页按钮 hover 图片背景色" "Default"
+@var	text AD-font-bg-hover-color "主页广告翻页按钮 hover 背景色" "Default"
+@var	text AD-font-bg-ani "主页广告翻页按钮背景色变化动画效果" "Default"
+
+@var	text Luogu-article-color-1 "洛谷文章广场'全部'颜色" "Default"
+@var	text Luogu-article-color-2 "洛谷文章广场'题解'颜色" "Default"
+@var	text Luogu-article-color-3 "洛谷文章广场'科技·工程'颜色" "Default"
+@var	text Luogu-article-color-4 "洛谷文章广场'算法·理论'颜色" "Default"
+@var	text Luogu-article-color-5 "洛谷文章广场'生活·游记'颜色" "Default"
+@var	text Luogu-article-color-6 "洛谷文章广场'学习·文化课'颜色" "Default"
+@var	text Luogu-article-color-7 "洛谷文章广场'休闲·娱乐'颜色" "Default"
+
+@var	text Directory-a-hover-color "洛谷左上目录超链接 hover 颜色" "Default"
+@var	text Directory-a-hover-ani "洛谷左上目录超链接 hover 动画" "Default"
+
+@var	text Swal-shadow "小型 swal 信息框弹窗阴影样式" "Default"
+
+@var	text Usertag-color-1 "灰名 tag 色" "Default"
+@var	text Usertag-color-2 "蓝名 tag 色" "Default"
+@var	text Usertag-color-3 "绿名 tag 色" "Default"
+@var	text Usertag-color-4 "橙名 tag 色" "Default"
+@var	text Usertag-color-5 "红名 tag 色" "Default"
+@var	text Usertag-color-6 "紫名 tag 色" "Default"
+@var	text Usertag-color-7 "棕名 tag 色" "Default"
+
+@var	text Submit-pict "自定义 AC 后展示图片" "Default"
+
+@var	text Usersvg-color-1 "绿勾色" "Default"
+@var	text Usersvg-color-2 "蓝勾色" "Default"
+@var	text Usersvg-color-3 "金勾色" "Default"
+
+@var	text Username-color-ani "名字颜色 hover 变色动画" "Default"
+
+@var	text Username-hover-color-1 "灰名 hover 文字色" "Default"
+@var	text Username-hover-color-2 "蓝名 hover 文字色" "Default"
+@var	text Username-hover-color-3 "绿名 hover 文字色" "Default"
+@var	text Username-hover-color-4 "橙名 hover 文字色" "Default"
+@var	text Username-hover-color-5 "红名 hover 文字色" "Default"
+@var	text Username-hover-color-6 "紫名 hover 文字色" "Default"
+@var	text Username-hover-color-7 "棕名 hover 文字色" "Default"
+
+@var	text Usertag-hover-color-1 "灰名 tag hover 文字色" "Default"
+@var	text Usertag-hover-color-2 "蓝名 tag hover 文字色" "Default"
+@var	text Usertag-hover-color-3 "绿名 tag hover 文字色" "Default"
+@var	text Usertag-hover-color-4 "橙名 tag hover 文字色" "Default"
+@var	text Usertag-hover-color-5 "红名 tag hover 文字色" "Default"
+@var	text Usertag-hover-color-6 "紫名 tag hover 文字色" "Default"
+@var	text Usertag-hover-color-7 "棕名 tag hover 文字色" "Default"
+
+@var	text Usertag-color-ani "用户 tag hover 变色动画" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -489,6 +565,10 @@
 @var	checkbox bug-fix13 "[bug-fix] 团队成员编辑卡滚动条异常" 1
 @var	checkbox bug-fix14 "[bug-fix] 比赛页面侧栏卡片布局错误" 1
 @var	checkbox bug-fix15 "[bug-fix] 个人主页勾子位置异常" 1
+@var	checkbox bug-fix16 "[bug-fix] 旧前端用户信息栏各组件未对齐" 1
+@var	checkbox bug-fix17 "[bug-fix] 用户信息栏展开图标未居中" 1
+@var	checkbox bug-fix18 "[bug-fix] 搜索框组件未居中" 1
+@var	checkbox bug-fix19 "[bug-fix] 主页 tag 文字居中情况异常" 1
 
 ==/UserStyle== */
 
@@ -531,26 +611,6 @@ if Fast-Font-load
 	// 导入 Noto Sans
 	/*google 的服务真方便吧*/
 
-	if Better-font
-		@font-face {
-			font-family: 'FontWithASyntaxHighlighter'
-			font-style: dark
-			font-weight: 300 700
-
-			src: url(https://imgservices-1252317822.image.myqcloud.com/coco/s08172024/3b03a24c.50xym2.woff2) format('woff2')
-			unicode-range: U+003B-003B,U+0028-0029,U+005B-005B,U+005D-005D,U+007B-007B,U+007D-007D
-
-			// 目前仅修改 , ; ( ) [ ] { }
-		}
-
-		@font-palette-values --Alternate {
-			font-family: "FontWithASyntaxHighlighter"
-			override-colors:
-				0 #ffd70a, // 这个是 {}
-				4 #da63a1, // 这个是 []()
-				8 #c4c6c9; // 这个是 ;
-		}
-
 // 常量
 	Default = "Default"
 	None = "None"
@@ -565,14 +625,14 @@ if Fast-Font-load
 		Shadow_card_float = ".float-card,#app > nav.lfe-body .popup, .user-nav .center,.dropdown:not(:has(>.dropdown-operations,>.float-card))"
 		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I" // 标题文字
 		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner,.row>.content" // 正文文字
-		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name" // 陈述文字
-		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption" // 介绍文字
-		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.stat>.field,.difficulty-tags,.difficulty-tags>.row,div[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
-		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.cs-close-container,.container .close path" // 杂项图标
-		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 操作文字
-		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn" // 可选中操作文字
+		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name,.collection-info" // 陈述文字
+		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption,.colored-link-selector .name" // 介绍文字
+		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.stat>.field,.difficulty-tags,.difficulty-tags>.row,.full-container[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
+		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.cs-close-container,.container .close path,.dropdown>.float-card>.user-info span>span>span path" // 杂项图标
+		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.user-nav>a.login" // 操作文字
+		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.am-modal-btn,.user-nav>a.login" // 可选中操作文字
 		Hover-A = ".action>a,.center>footer>a,.am-panel-primary .am-panel-title a" // 选中超链接
-		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a,span.C.G,.row.title>a,.row div>a,.bar-item,.filter-wrapper a" // 强制超链接
+		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a,span.C.G,.row.title>a,.row div>a,.bar-item,.filter-wrapper a,.form-item.form-check>a,.form-bottom>a" // 强制超链接
 		ColorfulLabel = ".difficulty a.color-default[colorscheme='default']>span,.box>span.lfe-caption,span.lfe-caption.tag,a.tag.color-none>span,.difficulty-tags>.row>span.lfe-caption,.difficulty>span.lfe-caption,a.status-link>span.lfe-caption,.lfe-caption.tag>span,.author-margin>.lfe-caption,.team-authority,.inner-card span.lfe-caption[style*='color:'],.status>.lfe-caption" // 标签
 		GrayLabel = '.card.info-card.center.padding-default .tags>span.tag[style*="rgb(232"]:not(.selected),.inner-card>.row>div>span.lfe-caption,.card.log.padding-default li span.lfe-caption,.row.info>span' // 灰度标签
 		Topic-type-Label = ".tags-wrap.multiline>a>span,.card.info-card.center.padding-default .tag-select-area .tags>span.tag,.block-item.tag" // 题目类型标签
@@ -583,8 +643,8 @@ if Fast-Font-load
 		Badge = ".am-badge,.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span" // 用户 Tag
 		Button = ".lfe-form-sz-middle,.am-btn,.lform-size-middle,.lform-sz-middle,a[href*='http']>#go" // 中型按钮
 		Small-Button = ".lfe-form-sz-small,.lform-sz-small,.lform-size-small,.copy-btn,.copy-btn.lfe-form-sz-middle" // 小型按钮
-		Username = "a.color-none[href*='/user/'][target='_blank']>span,a.name[href*='/user/'][style*='font-weight: bold;']" // 用户 id
-		Avatar = "img.avatar" // 用户头像
+		Username = "a.color-none[href*='/user/'][target='_blank']>span,.name[style*='font-weight: bold;']" // 用户 id
+		Avatar = "img.avatar,img.am-comment-avatar,.luogu-username>img,.message-block>img,.avatar>img" // 用户头像
 
 // 全局工具函数
 
@@ -844,9 +904,9 @@ if Fast-Font-load
 		Operate-hover-color = set_default_value(Operate-hover-color,#dcdcdc)                      // 部分操作选中色
 		Topic-text-color = set_default_value(Topic-text-color,#fff)                               // 题目限定条件文字选中色
 		ColorfulLabel-text-color = set_default_value(ColorfulLabel-text-color,#fff)               // 标签卡片文字色
-		GrayLabel-text-color = set_default_value(GrayLabel-text-color,#fff)
-		GrayLabel-border-color = set_default_value(GrayLabel-border-color,#a7a9ad)
-		GrayLabel-bg-color = set_default_value(GrayLabel-bg-color,#3f3f3f)
+		GrayLabel-text-color = set_default_value(GrayLabel-text-color,#dddddd)
+		GrayLabel-border-color = set_default_value(GrayLabel-border-color,#3f6b91)
+		GrayLabel-bg-color = set_default_value(GrayLabel-bg-color,#162430)
 		A-color = set_default_value(A-color,#5e72e4)                                              // 超链接颜色
 		A-hover-color = set_default_value(A-hover-color,#0056b3)                                  // 超链接选中色
 		Scrollbar-track-color = set_default_value(Scrollbar-track-color,#161926)    // 滚动槽颜色
@@ -993,6 +1053,8 @@ if Fast-Font-load
 		Article-progress-color = set_default_value(Article-progress-color,#5e72e4)
 
 		Checkin-Time-color = set_default_value(Checkin-Time-color,#1aae6f)
+
+		Swal-shadow = set_default_value(Swal-shadow,none)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
 		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
@@ -1147,6 +1209,8 @@ if Fast-Font-load
 
 		Checkin-Time-color = set_default_value(Checkin-Time-color,#396a42)
 
+		Swal-shadow = set_default_value(Swal-shadow,0 0 .625em #d9d9d9)
+
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
 	Topic-type-Label-time = set_default_value(Topic-type-Label-time,#3498db)
@@ -1172,12 +1236,12 @@ if Fast-Font-load
 	Test-case-margin-bottom = set_default_value(Test-case-margin-bottom,12px)
 	Test-case-margin-top = set_default_value(Test-case-margin-top,25px)
 	Test-case-size = set_default_value(Test-case-size,96px)
-	Test-case-ani = set_default_value(Test-case-ani,all .2s ease)
+	Test-case-ani = set_default_value(Test-case-ani,.2s ease)
 	Test-case-shadow = set_default_value(Test-case-shadow,0 4px 6px rgba(50,50,93,.11) \, 0 1px 3px rgba(0,0,0,.08))
 	Test-case-border-radius = set_default_value(Test-case-border-radius,3px)
 	Test-case-translate = set_default_value(Test-case-translate,3px)
 	Test-case-hover-shadow = set_default_value(Test-case-hover-shadow,0 10px 30px rgba(50, 50, 93, 0.1)\,0 5px 15px rgba(0, 0, 0, 0.07))
-	Test-case-message-ani = set_default_value(Test-case-message-ani,all .45s ease)
+	Test-case-message-ani = set_default_value(Test-case-message-ani,.45s ease)
 	Test-case-message-shadow = set_default_value(Test-case-message-shadow,0 4px 6px rgba(50,50,93,.11)\, 0 1px 3px rgba(0,0,0,.08))
 	Test-case-message-color = set_default_value(Test-case-message-color,#fff)
 	Test-case-background = set_default_value(Test-case-background,rgba(23, 43, 77, 0.8))
@@ -1199,7 +1263,7 @@ if Fast-Font-load
 	Sidebar-popup-padding = set_default_value(Sidebar-popup-padding,10px)
 	Sidebar-popup-ani = set_default_value(Sidebar-popup-ani,fade 0.2s ease)
 
-	Float-card-hover-ani = set_default_value(Float-card-hover-ani,background-color .3s)
+	Float-card-hover-ani = set_default_value(Float-card-hover-ani,.3s)
 
 	Highcharts-hover-bigpoint-op = set_default_value(Highcharts-hover-bigpoint-op,0.25)
 
@@ -1407,15 +1471,112 @@ if Fast-Font-load
 
 	Article-progress-ani = set_default_value(Article-progress-ani,5s linear)
 
+	if DarkMode
+		Usernav-icon-hover-color = set_default_value(Usernav-icon-hover-color,#5e72e4)
+		Usernav-navbar-icon-hover-color = set_default_value(Usernav-navbar-icon-hover-color,#5e72e4)
+	else
+		Usernav-icon-hover-color = set_default_value(Usernav-icon-hover-color,#4682b4)
+		Usernav-navbar-icon-hover-color = set_default_value(Usernav-navbar-icon-hover-color,#3498db)
+	Usernav-icon-hover-ani = set_default_value(Usernav-icon-hover-ani,.4s ease)
+
+	Article-icon-hover-ani = set_default_value(Article-icon-hover-ani,.5s ease)
+
+	AD-font-color = set_default_value(AD-font-color,#fff)
+	AD-font-bg-color = set_default_value(AD-font-bg-color,rgba(51,51,51,0.45))
+	AD-font-size = set_default_value(AD-font-size,20px)
+	AD-font-bg-width = set_default_value(AD-font-bg-width,24px)
+	AD-font-bg-height = set_default_value(AD-font-bg-height,48px)
+	AD-font-bg-radius = set_default_value(AD-font-bg-radius,5px)
+	AD-font-bg-hoverimg-color = set_default_value(AD-font-bg-hoverimg-color,rgba(51,51,51,0.7))
+	AD-font-bg-hover-color = set_default_value(AD-font-bg-hover-color,rgba(51,51,51,1))
+	AD-font-bg-ani = set_default_value(AD-font-bg-ani,.3s ease)
+
+	if DarkMode
+		Luogu-article-color-1 = set_default_value(Luogu-article-color-1,#fff)
+	else
+		Luogu-article-color-1 = set_default_value(Luogu-article-color-1,#272727)
+	Luogu-article-color-2 = set_default_value(Luogu-article-color-2,#3498db)
+	Luogu-article-color-3 = set_default_value(Luogu-article-color-3,#f39c11)
+	Luogu-article-color-4 = set_default_value(Luogu-article-color-4,#9d3dcf)
+	Luogu-article-color-5 = set_default_value(Luogu-article-color-5,#70ad47)
+	Luogu-article-color-6 = set_default_value(Luogu-article-color-6,#2949b4)
+	Luogu-article-color-7 = set_default_value(Luogu-article-color-7,#fe4c61)
+
+	Directory-a-hover-color = set_default_value(Directory-a-hover-color,#fff)
+	Directory-a-hover-ani = set_default_value(Directory-a-hover-ani,.4s ease)
+
+	Usertag-color-1 = set_default_value(Usertag-color-1,#bfbfbf)
+	Usertag-color-2 = set_default_value(Usertag-color-2,#3498db)
+	Usertag-color-3 = set_default_value(Usertag-color-3,#52c41a)
+	Usertag-color-4 = set_default_value(Usertag-color-4,#f39c11)
+	Usertag-color-5 = set_default_value(Usertag-color-5,#fe4c61)
+	Usertag-color-6 = set_default_value(Usertag-color-6,#8e44ad)
+	Usertag-color-7 = set_default_value(Usertag-color-7,#ad8b00)
+
+	Usersvg-color-1 = set_default_value(Usersvg-color-1,#52c41a)
+	Usersvg-color-2 = set_default_value(Usersvg-color-2,#3498db)
+	Usersvg-color-3 = set_default_value(Usersvg-color-3,#ffc116)
+
+	Username-color-ani = set_default_value(Username-color-ani,.2s ease)
+
+	Username-hover-color-1 = set_default_value(Username-hover-color-1,#8e8e8e)
+	Username-hover-color-2 = set_default_value(Username-hover-color-2,#095f8a)
+	Username-hover-color-3 = set_default_value(Username-hover-color-3,#338809)
+	Username-hover-color-4 = set_default_value(Username-hover-color-4,#b4820a)
+	Username-hover-color-5 = set_default_value(Username-hover-color-5,#cf3346)
+	Username-hover-color-6 = set_default_value(Username-hover-color-6,#611d7d)
+	Username-hover-color-7 = set_default_value(Username-hover-color-7,#9f8416)
+
+	Usertag-hover-color-1 = set_default_value(Usertag-hover-color-1,#8e8e8e)
+	Usertag-hover-color-2 = set_default_value(Usertag-hover-color-2,#095f8a)
+	Usertag-hover-color-3 = set_default_value(Usertag-hover-color-3,#338809)
+	Usertag-hover-color-4 = set_default_value(Usertag-hover-color-4,#b4820a)
+	Usertag-hover-color-5 = set_default_value(Usertag-hover-color-5,#cf3346)
+	Usertag-hover-color-6 = set_default_value(Usertag-hover-color-6,#611d7d)
+	Usertag-hover-color-7 = set_default_value(Usertag-hover-color-7,#9f8416)
+
+	Usertag-color-ani = set_default_value(Usertag-color-ani,.4s ease)
+	
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
 		Article-Background = get_depend_list((CustomBackground Article-bg-color))
 
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))") // 二级自定义字体
+	if Better-font
+		if DarkMode
+			Codeblock-better-color1 = set_default_value(Codeblock-better-color1,#ffd70a)
+			Codeblock-better-color2 = set_default_value(Codeblock-better-color2,#da63a1)
+			Codeblock-better-color3 = set_default_value(Codeblock-better-color3,#c4c6c9)
+		else
+			Codeblock-better-color1 = set_default_value(Codeblock-better-color1,#f34c61)
+			Codeblock-better-color2 = set_default_value(Codeblock-better-color2,#da63a1)
+			Codeblock-better-color3 = set_default_value(Codeblock-better-color3,#36464e)
+
+		@font-face
+			font-family: 'FontWithASyntaxHighlighter'
+			font-style: dark
+			font-weight: 300 700
+
+			src: url(https://imgservices-1252317822.image.myqcloud.com/coco/s08172024/3b03a24c.50xym2.woff2) format('woff2')
+			unicode-range: U+003B-003B,U+0028-0029,U+005B-005B,U+005D-005D,U+007B-007B,U+007D-007D
+
+			// 目前仅修改 , ; ( ) [ ] { }
+
+		@font-palette-values --Alternate
+			font-family: "FontWithASyntaxHighlighter"
+			override-colors:
+				0 Codeblock-better-color1, // 这个是 {}
+				4 Codeblock-better-color2, // 这个是 []()
+				8 Codeblock-better-color3; // 这个是 ;
+
 // 全局样式
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
 	body
 		use_mainly_background()
+	if Smooth-scroll
+		body,html
+			scroll-behavior: smooth
 	
 	// 滚动条样式修改
 	if Custom-Scrollbar
@@ -1484,6 +1645,17 @@ if Fast-Font-load
 	// 洛谷右上悬浮卡图标样式修改
 	.header > .user-nav a.icon > svg > path,.header > .user-nav a.icon-btn > svg > path
 		fill: Card-icon-color !important
+	
+	.user-nav 
+		& a:has(>svg)
+			& > svg > path
+				transition: fill Usernav-icon-hover-ani !important
+			& > svg:hover > path
+				fill: Usernav-navbar-icon-hover-color !important
+	.header > .user-nav
+		& a:has(>svg)
+			& > svg:hover > path
+				fill: Usernav-icon-hover-color !important
 
 	// 更好的个人信息框
 	if Better-User-nav
@@ -1537,9 +1709,10 @@ if Fast-Font-load
 	{Hover_card_float}
 		//border-radius: Card-float-radius if Custom-Card // TODO：分离
 		anti_hover_line() if A-hover-line && Anti-Float-hover-line
+		transition: background Float-card-hover-ani !important
 		&:hover //,&:focus
 			background: Card-hover-color-float !important
-			transition: Float-card-hover-ani !important
+			transition: background Float-card-hover-ani !important
 	
 	{Shadow_card_float}
 		box-shadow: Float-Card-shadow !important
@@ -1551,6 +1724,7 @@ if Fast-Font-load
 	// 正文文字样式修改
 	{Text} // TODO：选择器实现不是特别优美
 		color: Text-color !important
+		word-wrap: break-word if Text-break-word
 	
 	// 超链接样式修改
 	a,.color-default[data-v-0640126c], .color-default-noline[data-v-0640126c]
@@ -1597,8 +1771,12 @@ if Fast-Font-load
 		color: Introduce-color !important
 
 	// 洛谷左上目录超链接样式
-	.link[data-v-c9185fa2]
+	.bread-crumb *
 		color: Directory-a-color !important
+	.bread-crumb .link
+		transition: color Directory-a-hover-ani !important
+		&:hover
+			color: Directory-a-hover-color !important
 	
 	// 洛谷右上图标样式
 	{Other_Icon}
@@ -1651,6 +1829,60 @@ if Fast-Font-load
 		color: Badge-text-color !important
 		border-radius: Badge-border-radius !important
 	
+	// 新前端应用样式
+	.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span
+		transition: all Usertag-color-ani !important
+		&[style*=": rgb(191\, 191\, 191);"]
+			background-color: Usertag-color-1 !important
+			border-color: Usertag-color-1 !important
+			&:hover
+				background-color: Usertag-hover-color-1 !important
+				border-color: Usertag-hover-color-1 !important
+		&[style*=": rgb(52\, 152\, 219);"]
+			background-color: Usertag-color-2 !important
+			border-color: Usertag-color-2 !important
+			&:hover
+				background-color: Usertag-hover-color-2 !important
+				border-color: Usertag-hover-color-2 !important
+		&[style*=": rgb(82\, 196\, 26);"]
+			background-color: Usertag-color-3 !important
+			border-color: Usertag-color-3 !important
+			&:hover
+				background-color: Usertag-hover-color-3 !important
+				border-color: Usertag-hover-color-3 !important
+		&[style*=": rgb(243\, 156\, 17);"]
+			background-color: Usertag-color-4 !important
+			border-color: Usertag-color-4 !important
+			&:hover
+				background-color: Usertag-hover-color-4 !important
+				border-color: Usertag-hover-color-4 !important
+		&[style*=": rgb(254\, 76\, 97);"]
+			background-color: Usertag-color-5 !important
+			border-color: Usertag-color-5 !important
+			&:hover
+				background-color: Usertag-hover-color-5 !important
+				border-color: Usertag-hover-color-5 !important
+		&[style*=": rgb(157\, 61\, 207);"],&[style*=": rgb(156\, 61\, 207);"]
+			background-color: Usertag-color-6 !important
+			border-color: Usertag-color-6 !important
+			&:hover
+				background-color: Usertag-hover-color-6 !important
+				border-color: Usertag-hover-color-6 !important
+		&[style*=": rgb(173\, 139\, 0);"]
+			background-color: Usertag-color-7 !important
+			border-color: Usertag-color-7 !important
+			&:hover
+				background-color: Usertag-hover-color-7 !important
+				border-color: Usertag-hover-color-7 !important
+	
+	.svg-inline--fa.fa-badge-check
+		&[style*="#52c41a"] path.fa-secondary,&[style*="--lfe-color--green-3"] path.fa-secondary
+			fill: Usersvg-color-1 !important
+		&[style*="#3498db"] path.fa-secondary,&[style*="--lfe-color--blue-3"] path.fa-secondary
+			fill: Usersvg-color-2 !important
+		&[style*="#ffc116"] path.fa-secondary,&[style*="--lfe-color--gold-3"] path.fa-secondary
+			fill: Usersvg-color-3 !important
+	
 	if A-hover-line
 		a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag']
 			anti_hover_line()
@@ -1676,7 +1908,7 @@ if Fast-Font-load
 			//& > svg > path
 			//	fill: discuss-color[i] !important
 	
-	a.forum-container.router-link-exact-active.router-link-active.color-default.link
+	a.forum-container.router-link-active.color-default.link
 		&[style*="#272727"]  > svg > path
 			fill: discuss-color[0]
 		&[style*="#14558f"]  > svg > path 
@@ -1689,7 +1921,6 @@ if Fast-Font-load
 			fill: discuss-color[4]
 		&[style*="#2949b4"]  > svg > path 
 			fill: discuss-color[5]
-
 	
 	// 讨论区评论
 	{Discuss}
@@ -1926,7 +2157,7 @@ if Fast-Font-load
 				.test-case //颜色标准化 [更新预定]
 					width: Test-case-size
 					height: Test-case-size
-					transition: Test-case-ani !important
+					transition: all Test-case-ani !important
 					box-shadow: Test-case-shadow
 					border-radius: Test-case-border-radius
 					margin: 0
@@ -1954,7 +2185,7 @@ if Fast-Font-load
 						margin-bottom: -3px
 
 				.message
-					transition: Test-case-message-ani !important
+					transition: all Test-case-message-ani !important
 					display: block !important
 					border-radius: 5px !important
 					box-shadow: Test-case-message-shadow // TODO：变量化
@@ -2043,6 +2274,8 @@ if Fast-Font-load
 	// Swal 弹窗样式
 	.swal2-popup:not([style*="background: transparent;"])
 		background: Card-bg-color-float !important
+	.swal2-popup.swal2-toast
+		box-shadow: Swal-shadow !important
 
 	// 加载圈
 	.spinner.dark
@@ -2290,20 +2523,35 @@ if Fast-Font-load
 			transition: background Button-hover-ani \, border-color Button-hover-ani !important
 
 	{Username} // 洛谷用户 id
+		transition: color Username-color-ani !important
 		&[style*="color: rgb(191\, 191\, 191);"],&[style*="color: var(--lfe-color--grey-3);"]
 			color: Username-color-1 !important
+			&:hover
+				color: Username-hover-color-1 !important
 		&[style*="color: rgb(52\, 152\, 219);"],&[style*="color: var(--lfe-color--blue-3);"]
 			color: Username-color-2 !important
+			&:hover
+				color: Username-hover-color-2 !important
 		&[style*="color: rgb(82\, 196\, 26);"],&[style*="color: var(--lfe-color--green-3);"]
 			color: Username-color-3 !important
+			&:hover
+				color: Username-hover-color-3 !important
 		&[style*="color: rgb(243\, 156\, 17);"],&[style*="color: var(--lfe-color--orange-3);"]
 			color: Username-color-4 !important
+			&:hover
+				color: Username-hover-color-4 !important
 		&[style*="color: rgb(254\, 76\, 97);"],&[style*="color: var(--lfe-color--pink-3);"]
 			color: Username-color-5 !important
+			&:hover
+				color: Username-hover-color-5 !important
 		&[style*="color: rgb(157\, 61\, 207);"],&[style*="color: var(--lfe-color--purple-3);"]
 			color: Username-color-6 !important
+			&:hover
+				color: Username-hover-color-6 !important
 		&[style*="color: rgb(173\, 139\, 0);"],&[style*="color: var(--lfe-color--yellow-4);"]
 			color: Username-color-7 !important
+			&:hover
+				color: Username-hover-color-7 !important
 	a.color-none[href*='/user/'][target='_blank'],a.name[href*='/user/'][style*='font-weight: bold;']
 		anti_hover_line() if A-hover-line && Anti-Username-hover-line
 
@@ -2316,6 +2564,9 @@ if Fast-Font-load
 				padding-bottom: 0px
 		.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
 			animation: Header-anim Header-ani
+			//transform: translate3d(0, 0, 0)
+		//.main-container > main
+		//	transform: translateZ(0)
 
 	if Better-Header-text-ani
 		@keyframes ShowTop
@@ -2437,21 +2688,24 @@ if Fast-Font-load
 			top: SideBar-position
 			transform: translateY(- SideBar-position)
 			padding-bottom: 14px
-			height: 27em
+			height: 30em
 		
 		if More-Sidebar-Ani
 			#app:has(>.main-container>.wrapper>.header:not([pageloading*="true"])) > .lfe-body,#app:not(:has(>.main-container>.wrapper>.header)) > .lfe-body
 				animation: Sidebar-out SideBar-ani !important
 	
-		#app > .lfe-body > div:has(.logo-wrap)
+		#app > .lfe-body > div:first-child//:has(.logo-wrap)
 			border-top-right-radius: 30px
 		
 	
 	#app > .lfe-body 
 		box-shadow: SideBar-shadow !important
 
-	section>.block:has(>button.block-item) input
+	.refined-input.input-wrap.frame:has(input+svg) > input
 		box-shadow: none !important
+	if bug-fix18
+		.refined-input.input-wrap.frame:has(input+svg) > svg
+			margin: auto .625em !important
 
 	// 讨论区设置
 	.full-container[currenttemplate="DiscussList"],.full-container[currenttemplate="DiscussPost"]
@@ -2510,7 +2764,9 @@ if Fast-Font-load
 				float: left
 			if bug-fix9
 				& .lfe-h1
-					overflow: visible !important
+					margin-top: 0 !important
+					margin-bottom: 0 !important
+					line-height: calc(120% + 1em)
 	
 	if Usernav-float
 		.user-nav:has(>nav)
@@ -2523,32 +2779,56 @@ if Fast-Font-load
 	.refined-input:has(.east)>input,.article-mine-filter
 		box-shadow: none !important		
 
-	.full-container
+	.full-container:not([currenttemplate*="Discuss"])
 		@media (min-width: 769px)
 			&>.side
 				width: Prob-side-width !important
-			&>.main
+			&>.main:not([style*="width: 100%;"])
 				width: Prob-lcard-width !important
 
 	.top-progress > .bar
 		background: Top-progress-color !important
 	
 	table
-		border-collapse: separate
 		th, td
 			border-color: Table-color
-		&>thead
-			&>tr:first-child
-				&>th:first-child
-					border-top-left-radius: Table-radius
-				&>th:last-child
-					border-top-right-radius: Table-radius
-		&>tbody
-			&>tr:last-child
-				&>td:first-child
-					border-bottom-left-radius: Table-radius
-				&>td:last-child
-					border-bottom-right-radius: Table-radius
+		
+		
+	if Table-change
+		table
+			border-collapse: separate !important
+			&>thead
+				&>tr:first-child
+					&>th:first-child
+						border-top-left-radius: Table-radius
+					&>th:last-child
+						border-top-right-radius: Table-radius
+			&>tbody
+				&>tr:last-child
+					&>td:first-child
+						border-bottom-left-radius: Table-radius
+					&>td:last-child
+						border-bottom-right-radius: Table-radius
+			if Table-border-change == 0
+				&>thead
+					&>tr:first-child
+						&>th:not(:last-child)
+							border-right: none !important
+				&>tbody
+					&>tr
+						&>td:not(:last-child)
+							border-right: none !important
+						&>td
+							border-top: none !important
+
+		table:not(:has(>tbody>tr)) // 只有表头
+			&>thead
+				&>tr:first-child
+					&>th:first-child
+						border-bottom-left-radius: Table-radius
+					&>th:last-child
+						border-bottom-right-radius: Table-radius
+
 
 	if Avatar-ani-select!="off"
 		{Avatar}
@@ -2561,6 +2841,23 @@ if Fast-Font-load
 					use_slime_ani(Avatar-hover-scale)		
 				&:hover
 					animation: Avatar-hover Avatar-hover-ani !important
+
+	if Problem-tag-center
+		.row > .tags > .tags-wrap.multiline
+			if Better-Problem-tag-margin
+				justify-content: space-evenly !important
+				&>a
+					margin-right: 0 !important 
+			else
+				justify-content: center !important
+		// 标题居中
+		div.full-container[currenttemplate="ProblemList"] .table .header > div:nth-child(4) > span
+			display: block
+			text-align: center
+
+	if Submit-pict!="Default"
+		.swal2-header > .swal2-image[src*="https://fecdn.luogu.com.cn/luogu/ac-congrats.png"]
+			content: Submit-pict !important
 
 	// 各种小 bug 的修复
 	.load-more
@@ -2620,6 +2917,10 @@ if Fast-Font-load
 	if bug-fix9
 		.user-info .luogu-username>.name
 			overflow: visible !important
+
+	if bug-fix10
+		body
+			overflow-x: hidden
 	
 	if bug-fix12
 		.find-problem.no-wrap.lfe-h2
@@ -2648,12 +2949,29 @@ if Fast-Font-load
 		@media (min-width: 577px)
 			.user-header-container .ccf-badge
 				font-size: inherit !important
-
-
-@-moz-document regexp("^https?://www.luogu.com(.cn)?/discuss.*$")
-	if bug-fix10
-		body
-			overflow-x: hidden
+	
+	if bug-fix16
+		.user-info > .user-name > *
+			vertical-align: middle !important
+	
+	if bug-fix17
+		.dropdown>.float-card>.user-info>span,.dropdown>.float-card>.user-info>.user-action>span
+			&,&>span>span,&>span
+				vertical-align: middle !important
+			&,& *
+				line-height: 16px !important
+			&>span>span
+				font-size: 10.7px !important
+			& svg
+				height: 16px !important
+	
+	if bug-fix19 || Better-Badge
+		.am-badge
+			line-height: 1.5
+			if Better-Badge
+				padding: 0 8px
+			else 
+				padding: 0 0.625em
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/solution|ranking).*$")
 	use_new_bar()
@@ -2665,6 +2983,26 @@ if Fast-Font-load
 	.user-nav.rside.show.nav-scrollbar // 朋友要用，做的紧急修改，TODO
 		width: Article-rside-width !important
 		max-width: Article-rside-width !important
+	
+	.side .colored-link-selector > a
+		&[style="--link-indicator-color: #272727;"]
+			--link-indicator-color: Luogu-article-color-1 !important
+		&[style="--link-indicator-color: #3498db;"]
+			--link-indicator-color: Luogu-article-color-2 !important
+		&[style="--link-indicator-color: #f39c11;"]
+			--link-indicator-color: Luogu-article-color-3 !important
+		&[style="--link-indicator-color: #9d3dcf;"]
+			--link-indicator-color: Luogu-article-color-4 !important
+		&[style="--link-indicator-color: #70ad47;"]
+			--link-indicator-color: Luogu-article-color-5 !important
+		&[style="--link-indicator-color: #2949b4;"]
+			--link-indicator-color: Luogu-article-color-6 !important
+		&[style="--link-indicator-color: #fe4c61;"]
+			--link-indicator-color: Luogu-article-color-7 !important
+		&>.name
+			transition: color Discuss-button-ani !important
+		&.wrap.active > .name,&.wrap:hover > .name
+			color: var(--link-indicator-color) !important
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/problem/solution.*$")
 	if Better-prob-card
@@ -2695,9 +3033,9 @@ if Fast-Font-load
 			fill: Article-icon-color !important
 	
 	// 修一个小问题
-	.actions:has(>.button-2line)>*
-		margin: 0 1em !important
 	.actions:has(>.button-2line)>a>.button-2line
+		margin: 0 1em !important
+	.actions:not(:has(>a>.button-2line))>a[disabled="false"]
 		margin: 0 !important
 
 	article-icons = (article-icon-1-color article-icon-2-color article-icon-3-color article-icon-4-color)
@@ -2705,6 +3043,14 @@ if Fast-Font-load
 		.actions:has(>.button-2line)
 			&>:nth-child({i+1}):hover path,&>.active:nth-child({i+1}) path
 				fill: article-icons[i] !important
+			& path
+				transition: fill Article-icon-hover-ani !important
+			if Better-article-icon-text
+				&>:nth-child({i+1}):hover span, &>.active:nth-child({i+1}) span
+					color: article-icons[i] !important
+				& span
+					transition: color Article-icon-hover-ani !important
+					
 	
 	if Better-article-card=="on" // 卡片化！
 		.main-container > main.lcolor-bg-grey-1
@@ -2941,6 +3287,127 @@ if Fast-Font-load
 	.lg-index-calendar.lg-fg-greendark
 		color: Checkin-Time-color !important
 	
+	if Better-AD-font
+		.am-slider-default .am-direction-nav .am-nav-prev a
+			left: 0 !important
+			border-top-right-radius: AD-font-bg-radius !important
+			border-bottom-right-radius: AD-font-bg-radius !important
+			&:before
+				content: "\f053" !important
+		.am-slider-default .am-direction-nav .am-nav-next a
+			right: 0 !important
+			border-top-left-radius: AD-font-bg-radius !important
+			border-bottom-left-radius: AD-font-bg-radius !important
+			&:before
+				content: "\f054" !important
+		.am-slider-default .am-direction-nav a
+			opacity: 1 !important
+			width: AD-font-bg-width !important
+			height: AD-font-bg-height !important
+			background-color: AD-font-bg-color !important
+			transform: translateY(-50%) !important
+			margin: 0 !important
+			transition: background-color AD-font-bg-ani !important
+			&:before
+				color: AD-font-color !important
+				height: AD-font-bg-height !important
+				line-height: (AD-font-bg-height*(45/42.0)) !important
+				font-size: AD-font-size !important
+				text-align: center !important
+		.am-slider-default:hover .am-next:hover,.am-slider-default:hover .am-prev:hover
+			background-color: AD-font-bg-hover-color !important
+		.am-slider-default:hover .am-next,.am-slider-default:hover .am-prev
+			background-color: AD-font-bg-hoverimg-color !important
+		
+	if Better-Smooth-scroll
+		body,html
+			scroll-behavior: auto !important
+	
+	// 老前端应用样式
+	.lg-inline-up>.lg-small:not(:last-child),.feed-username
+		transition: all Usertag-color-ani !important
+		& .lg-bg-gray
+			background-color: Usertag-color-1 !important
+			border-color: Usertag-color-1 !important
+			&:hover
+				background-color: Usertag-hover-color-1 !important
+				border-color: Usertag-hover-color-1 !important
+		& .lg-bg-bluelight
+			background-color: Usertag-color-2 !important
+			border-color: Usertag-color-2 !important
+			&:hover
+				background-color: Usertag-hover-color-2 !important
+				border-color: Usertag-hover-color-2 !important
+		& .lg-bg-green
+			background-color: Usertag-color-3 !important
+			border-color: Usertag-color-3 !important
+			&:hover
+				background-color: Usertag-hover-color-3 !important
+				border-color: Usertag-hover-color-3 !important
+		& .lg-bg-orange
+			background-color: Usertag-color-4 !important
+			border-color: Usertag-color-4 !important
+			&:hover
+				background-color: Usertag-hover-color-4 !important
+				border-color: Usertag-hover-color-4 !important
+		& .lg-bg-red
+			background-color: Usertag-color-5 !important
+			border-color: Usertag-color-5 !important
+			&:hover
+				background-color: Usertag-hover-color-5 !important
+				border-color: Usertag-hover-color-5 !important
+		& .lg-bg-purple
+			background-color: Usertag-color-6 !important
+			border-color: Usertag-color-6 !important
+			&:hover
+				background-color: Usertag-hover-color-6 !important
+				border-color: Usertag-hover-color-6 !important
+		& .lg-bg-brown
+			background-color: Usertag-color-7 !important
+			border-color: Usertag-color-7 !important
+			&:hover
+				background-color: Usertag-hover-color-7 !important
+				border-color: Usertag-hover-color-7 !important
+	
+	a.sb_amazeui > svg
+		&[fill*="#5eb95e"] path
+			fill: Usersvg-color-1 !important
+		&[fill*="#3498db"] path
+			fill: Usersvg-color-2 !important
+		&[fill*="#f1c40f"] path
+			fill: Usersvg-color-3 !important
+
+	a
+		&.lg-fg-gray
+			transition: color Username-color-ani !important
+			color: Username-color-1 !important
+			&:hover
+				color: Username-hover-color-1 !important
+		&.lg-fg-bluelight
+			color: Username-color-2 !important
+			&:hover
+				color: Username-hover-color-2 !important
+		&.lg-fg-green
+			color: Username-color-3 !important
+			&:hover
+				color: Username-hover-color-3 !important
+		&.lg-fg-orange
+			color: Username-color-4 !important
+			&:hover
+				color: Username-hover-color-4 !important
+		&.lg-fg-red
+			color: Username-color-5 !important
+			&:hover
+				color: Username-hover-color-5 !important
+		&.lg-fg-purple
+			color: Username-color-6 !important
+			&:hover
+				color: Username-hover-color-6 !important
+		&.lg-fg-brown
+			color: Username-color-7 !important
+			&:hover
+				color: Username-hover-color-7 !important
+
 	if bug-fix11
 		.am-u-md-4.lg-punch.am-text-center > h2 svg
 			margin-bottom: 0 !important
