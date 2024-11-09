@@ -63,6 +63,7 @@
 @var	checkbox Better-Problem-tag-margin "题库 tag 布局方式微调" 1
 @var	checkbox Better-Smooth-scroll "在主页自动禁用平滑滚动" 1
 @var	checkbox Better-Badge "主页 badge 大小与新前端统一化" 1
+@var	checkbox Better-UserNotification-ani "更好的通知中心列表动画" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -556,6 +557,9 @@
 @var	text Usersvg-hover-color-2 "蓝勾 hover 色" "Default"
 @var	text Usersvg-hover-color-3 "金勾 hover 色" "Default"
 @var	text Usersvg-hover-ani "认证等级勾 hover 动画" "Default"
+
+@var	text UserNotification-active-color "通知中心选择列表 active 色" "Default"
+@var	text UserNotification-ani "通知中心选择列表颜色动画" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -1551,6 +1555,12 @@ if Fast-Font-load
 	Usersvg-hover-color-3 = set_default_value(Usersvg-hover-color-3,#d4a423)
 
 	Usersvg-hover-ani = set_default_value(Usersvg-hover-ani,.4s ease)
+
+	if !DarkMode
+		UserNotification-active-color = set_default_value(UserNotification-active-color,#3498db)
+	else
+		UserNotification-active-color = set_default_value(UserNotification-active-color,#5e72e4)
+	UserNotification-ani = set_default_value(UserNotification-ani,.4s ease)
 	
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -2890,6 +2900,21 @@ if Fast-Font-load
 	if Submit-pict!="Default"
 		.swal2-header > .swal2-image[src*="https://fecdn.luogu.com.cn/luogu/ac-congrats.png"]
 			content: Submit-pict !important
+
+	.left-menu-container > .menu
+		if Better-UserNotification-ani
+			transition: color UserNotification-ani !important
+			&:hover
+				color: UserNotification-active-color !important
+		else
+			&.active-menu
+				color: UserNotification-active-color !important
+	
+	if Better-UserNotification-ani
+		.left-menu-container:not(:has(>.menu:hover)) > .active-menu
+			color: UserNotification-active-color !important
+		.left-menu-container:has(>.menu:hover) > .active-menu:not(:hover)
+			color: Text-color !important
 
 	// 各种小 bug 的修复
 	.load-more
