@@ -562,6 +562,9 @@
 @var	text UserNotification-active-color "通知中心选择列表 active 色" "Default"
 @var	text UserNotification-ani "通知中心选择列表颜色动画" "Default"
 
+@var	text Article-sidebar-card-hover-ani "新前端侧栏卡片 hover 动画" "Default"
+@var	text Problem-sol-icon-act-color "题解点赞按钮 active 色" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -674,6 +677,8 @@ if Fast-Font-load
 			background: Navbar-bg-color !important
 		body>div>nav.lside,body>div>div.rside
 			background: Article-sidebar-bg-color !important
+			& ul>li
+				transition: background Article-sidebar-card-hover-ani !important
 			& ul>li:hover
 				background: Article-sidebar-card-hover !important
 	
@@ -1194,7 +1199,7 @@ if Fast-Font-load
 
 		Expand-shadow = set_default_value(Expand-shadow,linear-gradient(rgba(255, 255, 255, 0), #fff))
 
-		Article-sidebar-card-hover = set_default_value(Article-sidebar-card-hover,#f2f2f2)
+		Article-sidebar-card-hover = set_default_value(Article-sidebar-card-hover,#e5e5e5)
 
 		Markdown-gutter-color = set_default_value(Markdown-gutter-color,#f7f7f7)
 		Markdown-gutter-active-color = set_default_value(Markdown-gutter-active-color,#e2f2ff)
@@ -1563,12 +1568,16 @@ if Fast-Font-load
 
 	Usersvg-hover-ani = set_default_value(Usersvg-hover-ani,.4s ease)
 
+	Article-sidebar-card-hover-ani = set_default_value(Article-sidebar-card-hover-ani,0.17s ease-out)
+
 	if !DarkMode
 		UserNotification-active-color = set_default_value(UserNotification-active-color,#3498db)
 	else
 		UserNotification-active-color = set_default_value(UserNotification-active-color,#5e72e4)
 	UserNotification-ani = set_default_value(UserNotification-ani,.4s ease)
 	
+//	Problem-sol-icon-act-color = set_default_value(Problem-sol-icon-act-color,)
+
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -3087,7 +3096,8 @@ if Fast-Font-load
 					min-width: 0 !important
 					float: left !important
 					margin-right: 0 !important
-				display: block !important
+				display: inline-block
+				width: 100%
 
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/article?(.*))")
 	use_new_bar()
@@ -3121,7 +3131,8 @@ if Fast-Font-load
 					min-width: 0 !important
 					margin-left: 0 !important
 					margin-right: 0 !important
-				display: inline-block !important if Discuss-Sidebar-right
+				display: inline-block if Discuss-Sidebar-right
+				width: 100%
 
 // 洛谷专栏样式（新前端就是不一样）
 // ^(http(s)?://www.luogu.com(.cn)?/article/(([A-Za-z0-9]{8})|(collection/[0-9]))$)
