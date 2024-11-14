@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.1.3.1
+@version      2.1.3.2
 @description  正式发布版
 @author       TLEWA
 @license      GPL v3
@@ -28,7 +28,6 @@
 @var	checkbox Better-userpage "'系统维护，该内容暂不可见。'修复" 1
 @var	checkbox Better-problem-toolip "更好的题库通过条信息样式" 1
 @var	checkbox Better-big-button "更好的巨型按钮排版" 1
-@var	checkbox Better-discuss-button "更好的讨论区板块选择" 1
 @var	checkbox exlg-compatible "exlg 兼容" 1
 @var	checkbox oiso-compatible "(实验性)(不积极支持)oiso 兼容" 1
 @var	checkbox Better-control-nav "更好的主页广告翻页选择点" 1
@@ -641,9 +640,9 @@ if Fast-Font-load
 		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I" // 标题文字
 		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner,.row>.content" // 正文文字
 		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name,.collection-info" // 陈述文字
-		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption,.colored-link-selector .name" // 介绍文字
+		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption,.colored-link-selector .name,div.row.row-space-between.top > .content-right > a > .name,.l-flex-info-row>span,.reply-editor-top" // 介绍文字
 		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.stat>.field,.difficulty-tags,.difficulty-tags>.row,.full-container[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
-		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.cs-close-container,.container .close path,.dropdown>.float-card>.user-info span>span>span path" // 杂项图标
+		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.cs-close-container,.container .close path,.dropdown>.float-card>.user-info span>span>span path,.stick-top path" // 杂项图标
 		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.user-nav>a.login,.cs-footer-right > .cs-footer-button" // 操作文字
 		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.am-modal-btn,.user-nav>a.login,.cs-footer-right > .cs-footer-button" // 可选中操作文字
 		Hover-A = ".action>a,.center>footer>a,.am-panel-primary .am-panel-title a" // 选中超链接
@@ -654,7 +653,7 @@ if Fast-Font-load
 		Topic-difficulty-Label = ".difficulty a span.lfe-caption,.difficulty span.lfe-caption,.difficulty-tags span.lfe-caption,.block-item.tag" // 题目难度标签
 		InLine-code-block = "[class*='marked'] code,.am-comment-bd p>code" // 行内代码块
 		Code-block = "pre:not([mp-editor-container],.CodeMirror-line)" // 代码块
-		Discuss = ".row-wrap > .card.comment.padding-default, .log,.article-comment .l-card.reply-item" // 讨论区评论
+		Discuss = ".row-wrap > .card.comment.padding-default, .log,.article-comment .l-card.reply-item,.l-card.comment" // 讨论区评论
 		Badge = ".am-badge,.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span" // 用户 Tag
 		Button = ".lfe-form-sz-middle,.am-btn,.lform-size-middle,.lform-sz-middle,a[href*='http']>#go" // 中型按钮
 		Small-Button = ".lfe-form-sz-small,.lform-sz-small,.lform-size-small,.copy-btn,.copy-btn.lfe-form-sz-middle" // 小型按钮
@@ -1949,37 +1948,6 @@ if Fast-Font-load
 	// 主标题颜色
 	div.header-layout h1
 		color: Main-post-heading-color !important
-
-	// 各讨论区图标颜色
-
-	discuss-color = (Luogu-discuss-color-1 Luogu-discuss-color-2 Luogu-discuss-color-3 Luogu-discuss-color-4 Luogu-discuss-color-5 Luogu-discuss-color-6 Luogu-discuss-color-3)
-
-	for i in 0..6
-		div.card.left.padding-default > div.section > a:nth-child({i+1}),.side div.card.padding-default:not(.left) > div.section > a:nth-child({i})
-			if Better-discuss-button
-				& > span
-					transition: color Discuss-button-ani !important
-				& > span:hover
-					color: discuss-color[i] !important
-			
-			& > span.active
-				color: discuss-color[i] !important
-			//& > svg > path
-			//	fill: discuss-color[i] !important
-	
-	a.forum-container.router-link-active.color-default.link
-		&[style*="#272727"]  > svg > path
-			fill: discuss-color[0]
-		&[style*="#14558f"]  > svg > path 
-			fill: discuss-color[1]
-		&[style*="#f39c11"]  > svg > path 
-			fill: discuss-color[2]
-		&[style*="#9d3dcf"]  > svg > path 
-			fill: discuss-color[3]
-		&[style*="#52c41a"]  > svg > path 
-			fill: discuss-color[4]
-		&[style*="#2949b4"]  > svg > path 
-			fill: discuss-color[5]
 	
 	// 讨论区评论
 	{Discuss}
@@ -3047,7 +3015,7 @@ if Fast-Font-load
 			else 
 				padding: 0 0.625em
 
-@-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/solution|ranking).*$")
+@-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/solution|ranking|discuss).*$")
 	use_new_bar()
 	.solution-article .operations .button // 这又写得啥。。
 		opacity: 1 !important
@@ -3057,26 +3025,6 @@ if Fast-Font-load
 	.user-nav.rside.show.nav-scrollbar // 朋友要用，做的紧急修改，TODO
 		width: Article-rside-width !important
 		max-width: Article-rside-width !important
-	
-	.side .colored-link-selector > a
-		&[style="--link-indicator-color: #272727;"]
-			--link-indicator-color: Luogu-article-color-1 !important
-		&[style="--link-indicator-color: #3498db;"]
-			--link-indicator-color: Luogu-article-color-2 !important
-		&[style="--link-indicator-color: #f39c11;"]
-			--link-indicator-color: Luogu-article-color-3 !important
-		&[style="--link-indicator-color: #9d3dcf;"]
-			--link-indicator-color: Luogu-article-color-4 !important
-		&[style="--link-indicator-color: #70ad47;"]
-			--link-indicator-color: Luogu-article-color-5 !important
-		&[style="--link-indicator-color: #2949b4;"]
-			--link-indicator-color: Luogu-article-color-6 !important
-		&[style="--link-indicator-color: #fe4c61;"]
-			--link-indicator-color: Luogu-article-color-7 !important
-		&>.name
-			transition: color Discuss-button-ani !important
-		&.wrap.active > .name,&.wrap:hover > .name
-			color: var(--link-indicator-color) !important
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/problem/solution.*$")
 	if Better-prob-card
@@ -3098,6 +3046,47 @@ if Fast-Font-load
 					margin-right: 0 !important
 				display: inline-block
 				width: 100%
+
+@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/discuss?(.*))")
+	// 各讨论区图标颜色
+
+	discuss-color = (Luogu-discuss-color-1 Luogu-discuss-color-2 Luogu-discuss-color-3 Luogu-discuss-color-4 Luogu-discuss-color-5 Luogu-discuss-color-6 Luogu-discuss-color-3)
+	
+	div.row.row-space-between.top > .content-right > a,.colored-link-selector > a
+		& > .name
+			transition: color Discuss-button-ani !important
+		& > span.active
+			color: discuss-color[i] !important
+		&[style*="#272727"]
+			& > svg > path
+				fill: discuss-color[0]
+			& > .name:hover
+				color: discuss-color[0] !important
+		&[style*="#14558f"]
+			& > svg > path
+				fill: discuss-color[1]
+			& > .name:hover
+				color: discuss-color[1] !important
+		&[style*="#f39c11"]
+			& > svg > path
+				fill: discuss-color[2]
+			& > .name:hover
+				color: discuss-color[2] !important
+		&[style*="#9d3dcf"]
+			& > svg > path
+				fill: discuss-color[3]
+			& > .name:hover
+				color: discuss-color[3] !important
+		&[style*="#52c41a"]
+			& > svg > path
+				fill: discuss-color[4]
+			& > .name:hover
+				color: discuss-color[4] !important
+		&[style*="#2949b4"]
+			& > svg > path
+				fill: discuss-color[5]
+			& > .name:hover
+				color: discuss-color[5] !important
 
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/article?(.*))")
 	use_new_bar()
@@ -3133,10 +3122,28 @@ if Fast-Font-load
 					margin-right: 0 !important
 				display: inline-block if Discuss-Sidebar-right
 				width: 100%
-
-// 洛谷专栏样式（新前端就是不一样）
-// ^(http(s)?://www.luogu.com(.cn)?/article/(([A-Za-z0-9]{8})|(collection/[0-9]))$)
-@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/article?(.*))")
+	
+	// 文章广场样式
+	.side .colored-link-selector > a
+		&[style="--link-indicator-color: #272727;"]
+			--link-indicator-color: Luogu-article-color-1 !important
+		&[style="--link-indicator-color: #3498db;"]
+			--link-indicator-color: Luogu-article-color-2 !important
+		&[style="--link-indicator-color: #f39c11;"]
+			--link-indicator-color: Luogu-article-color-3 !important
+		&[style="--link-indicator-color: #9d3dcf;"]
+			--link-indicator-color: Luogu-article-color-4 !important
+		&[style="--link-indicator-color: #70ad47;"]
+			--link-indicator-color: Luogu-article-color-5 !important
+		&[style="--link-indicator-color: #2949b4;"]
+			--link-indicator-color: Luogu-article-color-6 !important
+		&[style="--link-indicator-color: #fe4c61;"]
+			--link-indicator-color: Luogu-article-color-7 !important
+		&>.name
+			transition: color Discuss-button-ani !important
+		&.wrap.active > .name,&.wrap:hover > .name
+			color: var(--link-indicator-color) !important
+	
 	// 专栏图标样式
 	.button-2line
 		& path
