@@ -64,6 +64,7 @@
 @var	checkbox Better-Badge "主页 badge 大小与新前端统一化" 1
 @var	checkbox Better-UserNotification-ani "更好的通知中心列表动画" 1
 @var	checkbox Article-Discuss "文章广场应用讨论区布局" 1
+@var	checkbox More-Header-Ani "标题栏在更多场景展示动画" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -2589,11 +2590,13 @@ if Fast-Font-load
 				padding-bottom: Header-ani-padding
 			to 
 				padding-bottom: 0px
-		.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
-			animation: Header-anim Header-ani
-			//transform: translate3d(0, 0, 0)
-		//.main-container > main
-		//	transform: translateZ(0)
+		
+		if More-Header-Ani
+			.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
+				animation: Header-anim Header-ani
+		else
+			.main-container > .wrapper.wrapped.lfe-body,.main-container > header.theme-bg
+				animation: Header-anim Header-ani
 
 	if Better-Header-text-ani
 		@keyframes ShowTop
@@ -2603,12 +2606,18 @@ if Fast-Font-load
 			to 
 				opacity: 1
 				margin-left: 0px
-		.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
-			& .lfe-h1
-				animation: ShowTop Header-text-ani
-				@media (min-width: 577px) 
-					float: left if Better-Usernav-box
-		
+		if More-Header-Ani
+			.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
+				& .lfe-h1
+					animation: ShowTop Header-text-ani
+					@media (min-width: 577px) 
+						float: left if Better-Usernav-box
+		else 
+			.main-container > .wrapper.wrapped.lfe-body,.main-container > header.theme-bg
+				& .lfe-h1
+					animation: ShowTop Header-text-ani
+					@media (min-width: 577px) 
+						float: left if Better-Usernav-box
 		
 		if Better-Usernav-box
 			@media (min-width: 577px) 
@@ -3025,6 +3034,33 @@ if Fast-Font-load
 	.user-nav.rside.show.nav-scrollbar // 朋友要用，做的紧急修改，TODO
 		width: Article-rside-width !important
 		max-width: Article-rside-width !important
+	
+	// 动画效果适配新前端
+	if Better-Header-ani && More-Header-Ani
+		for num in (1..7)
+			@keyframes Header-anim{num}
+				from
+					padding-bottom: Header-ani-padding
+				to 
+					padding-bottom: 0px
+
+			.main-container:has(.colored-link-selector>.active:nth-child({num})) > header.theme-bg
+				animation: Header-anim+num Header-ani !important
+	
+	if Better-Header-text-ani && More-Header-Ani
+		for num in (1..7)
+			@keyframes ShowTop{num}
+				from
+					opacity: 0
+					margin-left: - Header-text-ani-padding
+				to 
+					opacity: 1
+					margin-left: 0px
+			.main-container:has(.colored-link-selector>.active:nth-child({num})) > header.theme-bg
+				& .lfe-h1
+					animation: ShowTop+num Header-text-ani
+					@media (min-width: 577px) 
+						float: left if Better-Usernav-box
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/problem/solution.*$")
 	if Better-prob-card
