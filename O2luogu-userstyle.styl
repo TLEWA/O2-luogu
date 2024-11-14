@@ -851,6 +851,37 @@ if Fast-Font-load
 			display: block
 			clear: both
 	
+	use_discuss_side()
+		.sidebar-container.layout
+			if Discuss-Sidebar-right
+				&>.side
+					margin-right: 0 !important
+					float: right !important
+				&>.main
+					margin-left: 0 !important
+					float: left !important
+			else
+				&>.side
+					margin-left: 0 !important
+				&>.main
+					margin-right: 0 !important
+			@media (min-width: 769px)
+				&>.side
+					width: Discuss-Sidebar-width !important
+					box-sizing: border-box !important
+					min-width: 0 !important
+					margin-left: 0 !important
+					margin-right: 0 !important
+					if !Discuss-Sidebar-right
+						margin-right: Discuss-Sidebar-margin !important
+				&>.main
+					width: Discuss-Main-width !important
+					min-width: 0 !important
+					margin-left: 0 !important
+					margin-right: 0 !important
+				display: inline-block if Discuss-Sidebar-right
+				width: 100%
+	
 // 兼容性选项
 	if exlg-compatible
 		Card_L2 += ",.exlg-emo-btn"
@@ -3084,6 +3115,8 @@ if Fast-Font-load
 				width: 100%
 
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/discuss?(.*))")
+	use_discuss_side()
+	
 	// 各讨论区图标颜色
 
 	discuss-color = (Luogu-discuss-color-1 Luogu-discuss-color-2 Luogu-discuss-color-3 Luogu-discuss-color-4 Luogu-discuss-color-5 Luogu-discuss-color-6 Luogu-discuss-color-3)
@@ -3127,35 +3160,7 @@ if Fast-Font-load
 	a // 神秘的 filter，前端写样式的时候不会注意点吗
 		filter: none !important
 	if Article-Discuss // 专栏布局与讨论区统一化
-		.sidebar-container.layout
-			if Discuss-Sidebar-right
-				&>.side
-					margin-right: 0 !important
-					float: right !important
-				&>.main
-					margin-left: 0 !important
-					float: left !important
-			else
-				&>.side
-					margin-left: 0 !important
-				&>.main
-					margin-right: 0 !important
-			@media (min-width: 769px)
-				&>.side
-					width: Discuss-Sidebar-width !important
-					box-sizing: border-box !important
-					min-width: 0 !important
-					margin-left: 0 !important
-					margin-right: 0 !important
-					if !Discuss-Sidebar-right
-						margin-right: Discuss-Sidebar-margin !important
-				&>.main
-					width: Discuss-Main-width !important
-					min-width: 0 !important
-					margin-left: 0 !important
-					margin-right: 0 !important
-				display: inline-block if Discuss-Sidebar-right
-				width: 100%
+		use_discuss_side()
 	
 	// 文章广场样式
 	.side .colored-link-selector > a
