@@ -852,7 +852,7 @@ if Fast-Font-load
 			clear: both
 	
 	use_discuss_side()
-		.sidebar-container.layout
+		.sidebar-container.layout:has(.side+.main)
 			if Discuss-Sidebar-right
 				&>.side
 					margin-right: 0 !important
@@ -3113,6 +3113,8 @@ if Fast-Font-load
 					margin-right: 0 !important
 				display: inline-block
 				width: 100%
+
+
 
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/discuss?(.*))")
 	use_discuss_side()
