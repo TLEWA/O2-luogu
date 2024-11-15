@@ -565,6 +565,8 @@
 @var	text Article-sidebar-card-hover-ani "新前端侧栏卡片 hover 动画" "Default"
 @var	text Problem-sol-icon-act-color "题解点赞按钮 active 色" "Default"
 
+@var	text Blockquote-border-color "块引用边框色" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -1093,6 +1095,8 @@ if Fast-Font-load
 		Checkin-Time-color = set_default_value(Checkin-Time-color,#1aae6f)
 
 		Swal-shadow = set_default_value(Swal-shadow,none)
+
+		Blockquote-border-color = set_default_value(Blockquote-border-color,#354a83)
 	else
 		Background-color = set_default_value(Background-color,#efefef)
 		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
@@ -1248,6 +1252,8 @@ if Fast-Font-load
 		Checkin-Time-color = set_default_value(Checkin-Time-color,#396a42)
 
 		Swal-shadow = set_default_value(Swal-shadow,0 0 .625em #d9d9d9)
+
+		Blockquote-border-color = set_default_value(Blockquote-border-color,#eeeeee)
 
 	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
 	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
@@ -2922,6 +2928,10 @@ if Fast-Font-load
 			color: UserNotification-active-color !important
 		.left-menu-container:has(>.menu:hover) > .active-menu:not(:hover)
 			color: Text-color !important
+
+	// Blockquote 样式应用
+	blockquote,.casket.cs-main blockquote
+		border-color: Blockquote-border-color !important
 
 	// 各种小 bug 的修复
 	.load-more
