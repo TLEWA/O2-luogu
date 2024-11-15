@@ -598,22 +598,6 @@
 本样式仍处于早期版本，功能上欠缺良多。
 */
 
-/*
-开发待办事项：
-
-勾子颜色，名字颜色自定义
-普及 hover 动画
-图标 hover
-更改排行榜的 id 宽度
-
-阴影化 v2
-实现页首页尾自定义v2
-Tab 选中也可以 hover（不建议）
-私信框自定义背景
-确定键长按
-提交代码框 bug 修复
-*/
-
 // 字体处理
 
 if Fast-Font-load
@@ -703,7 +687,7 @@ if Fast-Font-load
 			return key
 	
 	use_img_bg_color(Color)
-		transform:translateX(-10000px) !important
+		transform: translateX(-10000px) !important
 		filter: drop-shadow(10000px 0px 0px Color) !important
 
 	blue_button_patch(Padding-width,Padding-height)
@@ -1646,6 +1630,7 @@ if Fast-Font-load
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
 	body
 		use_mainly_background()
+	
 	if Smooth-scroll
 		body,html
 			scroll-behavior: smooth
@@ -2944,16 +2929,6 @@ if Fast-Font-load
 	// 各种小 bug 的修复
 	.load-more
 		border-bottom: 0 !important if bug-fix1
-
-	// 此 bug 因为更换新前端似乎已被修复
-	//if bug-fix2
-	//	.reply-container .dropdown
-	//		display: flex !important
-
-	//	.reply-container .dropdown:not(.shown) // 短小的 bug 修复，bug 成因找了我 3h
-	//		&,& *
-	//			height: 0 !important
-	//			min-height: 0 !important
 
 	if bug-fix2
 		.shown .arrow
