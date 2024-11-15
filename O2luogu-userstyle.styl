@@ -1591,7 +1591,7 @@ if Fast-Font-load
 		UserNotification-active-color = set_default_value(UserNotification-active-color,#5e72e4)
 	UserNotification-ani = set_default_value(UserNotification-ani,.4s ease)
 	
-//	Problem-sol-icon-act-color = set_default_value(Problem-sol-icon-act-color,)
+	Problem-sol-icon-act-color = set_default_value(Problem-sol-icon-act-color,#e07090)
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -1628,10 +1628,10 @@ if Fast-Font-load
 
 // 全局样式
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
-	body
+	body // 应用全局背景
 		use_mainly_background()
 	
-	if Smooth-scroll
+	if Smooth-scroll // 平滑滚动自定义项
 		body,html
 			scroll-behavior: smooth
 	
@@ -1679,31 +1679,30 @@ if Fast-Font-load
 					animation: Input-active Input-active-anim !important
 	input[type="password"]
 		font-family:  -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif !important
-	
-	// #409eff
 
-	.mp-dialog-input>input:focus-visible,.cs-dialog-item-content:focus-visible // 这个 outline 太魔怔了
+	.mp-dialog-input>input:focus-visible,.cs-dialog-item-content:focus-visible // MarkDown 编辑器 outline 消除（这个 outline 太魔怔了）
 			outline: 0 !important
 	
-	section>.block>button.block-item
+	section>.block>button.block-item // 题库 “算法来源” 按钮
 		use_depend_list(background-color,(Input-bg-color Card-bg-color-L1),1)
 		color: Input-placeholder-color !important
 
-	.block.filter-tags .combo-wrapper>.text>span
+	.block.filter-tags .combo-wrapper>.text>span // 题目难度选择框为统一观感特殊处理成统一颜色
 		color: Input-placeholder-color !important
 
+	// 普通多项选择框文字样式
 	.combo-wrapper>.text>span,div.combo-wrapper>.text
 		color: Combowrapper-text-color !important
 
-	// 洛谷的顶栏样式修改
+	// 洛谷的顶栏（老前端，404，私信）样式修改
 	.wrapper.wrapped.lfe-body.header-layout.tiny,.header:has(>.max)
 		use_depend_list(background,(Navbar-bg-color Card-bg-color-L1),1)
 
 	// 洛谷右上悬浮卡图标样式修改
-	.header > .user-nav a.icon > svg > path,.header > .user-nav a.icon-btn > svg > path
+	.header > .user-nav a.icon > svg > path,.header > .user-nav a.icon-btn > svg > path // 悬浮卡片样式
 		fill: Card-icon-color !important
 	
-	.user-nav 
+	.user-nav
 		& a:has(>svg)
 			& > svg > path
 				transition: fill Usernav-icon-hover-ani !important
@@ -1715,7 +1714,7 @@ if Fast-Font-load
 				fill: Usernav-icon-hover-color !important
 
 	// 更好的个人信息框
-	if Better-User-nav
+	if Better-User-nav // 移植 exlg 样式
 		Hover_card_float+=",.center>.ops>a.color-none"
 		.dropdown>.center>.ops>a.color-none
 			width: auto !important
@@ -3069,7 +3068,7 @@ if Fast-Font-load
 						float: left if Better-Usernav-box
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/problem/solution.*$")
-	if Better-prob-card
+	if Better-prob-card // 应用边栏
 		.sidebar-container.layout
 			&>.side
 				margin-right: 0 !important
@@ -3088,8 +3087,12 @@ if Fast-Font-load
 					margin-right: 0 !important
 				display: inline-block
 				width: 100%
-
-
+	
+	// 点赞按钮
+	.operations > .thumb-up.enable
+		& path
+			fill: Problem-sol-icon-act-color !important
+		color: Problem-sol-icon-act-color !important
 
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/discuss?(.*))")
 	use_discuss_side()
