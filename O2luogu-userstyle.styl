@@ -1827,7 +1827,7 @@ if Fast-Font-load
 	{Introduce}
 		color: Introduce-color !important
 
-	// 洛谷左上目录超链接样式
+	// 洛谷左上目录超链接（面包屑导航）样式
 	.bread-crumb *
 		color: Directory-a-color !important
 	.bread-crumb .link
@@ -1835,7 +1835,7 @@ if Fast-Font-load
 		&:hover
 			color: Directory-a-hover-color !important
 	
-	// 洛谷右上图标样式
+	// 洛谷大部分图标样式
 	{Other_Icon}
 		fill: Other-icon-color !important
 	
@@ -1870,10 +1870,10 @@ if Fast-Font-load
 				use_img_bg_color(Sidebar-luogu-icon-color)
 
 	// 标签样式修改
-	{ColorfulLabel}
+	{ColorfulLabel} // 彩色标签
 		color: ColorfulLabel-text-color !important
 		border-radius: Label-border-radius !important
-	{GrayLabel}
+	{GrayLabel} // 灰度标签
 		& , &>span
 			color: GrayLabel-text-color !important
 		border-color: GrayLabel-border-color !important
@@ -1887,7 +1887,7 @@ if Fast-Font-load
 		border-radius: Badge-border-radius !important
 	
 	// 新前端应用样式
-	.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span
+	.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span // 用户 tag
 		transition: all Usertag-color-ani !important
 		&[style*=": rgb(191\, 191\, 191);"]
 			background-color: Usertag-color-1 !important
@@ -1932,7 +1932,7 @@ if Fast-Font-load
 				background-color: Usertag-hover-color-7 !important
 				border-color: Usertag-hover-color-7 !important
 	
-	.svg-inline--fa.fa-badge-check
+	.svg-inline--fa.fa-badge-check // 用户勾子样式
 		& path.fa-secondary,& path.fa-primary
 			transition: fill Usersvg-hover-ani !important
 
@@ -1957,7 +1957,7 @@ if Fast-Font-load
 			& path.fa-primary
 				fill: Usersvg-mid-hover-color !important
 	
-	if A-hover-line
+	if A-hover-line // 禁用勾子 hover line
 		a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag']
 			anti_hover_line()
 
@@ -1974,7 +1974,6 @@ if Fast-Font-load
 			background: Discuss-hd-color !important
 
 	// Markdown 编辑器
-
 	.CodeMirror-gutters,.cm-gutters
 		background: Markdown-gutter-color !important
 		color: Markdown-linenumber-color !important
@@ -2109,6 +2108,7 @@ if Fast-Font-load
 		else
 			font-family: Code-block-fontstack !important
 	
+	// 代码块
 	{Code-block}
 		background: Code-block-bg-color !important
 		border: Code-block-border !important
@@ -2681,8 +2681,6 @@ if Fast-Font-load
 					color: Problem-select-bar-active-text-color !important
 
 	// 卡片选择条
-	// Card-select-bar-hover-ani = 
-	// Card-select-bar-select-color
 
 	.menu > .items .entry
 		&.selected
