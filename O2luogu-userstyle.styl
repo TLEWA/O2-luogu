@@ -587,6 +587,8 @@
 @var	checkbox bug-fix18 "[bug-fix] 搜索框组件未居中" 1
 @var	checkbox bug-fix19 "[bug-fix] 主页 tag 文字居中情况异常" 1
 
+@var	text UserStyle "用户自定义样式" '("Card-L1-radius" 10px) ("bbb" 3)'
+
 ==/UserStyle== */
 
 /*
@@ -887,7 +889,7 @@ if Fast-Font-load
 // 全局变量定义
 	// 默认值定义
 
-	Card-L1-radius = set_default_value(Card-L1-radius,4px)
+	Card-L1-radius = set_default_value(Card-L1-radius,10px)
 	Card-L2-radius = set_default_value(Card-L2-radius,4px)
 	Card-float-radius = set_default_value(Card-L2-radius,5px) 
 	Inputbox-radius = set_default_value(Inputbox-radius,4px)
@@ -1599,6 +1601,10 @@ if Fast-Font-load
 	
 	Problem-sol-icon-act-color = set_default_value(Problem-sol-icon-act-color,#e07090)
 
+	// 用户样式解析
+	for i in UserStyle
+		define(i[0],i[1])
+
 	// 全局背景
 		// 根据有无背景图片设置背景模式
 		Background = get_depend_list((CustomBackground Background-color))
@@ -1749,17 +1755,19 @@ if Fast-Font-load
 	// 一级 Card 样式修改
 	{Card_L1}
 		background: Card-bg-color-L1 !important
-		border-radius: Card-L1-radius if Custom-Card
+		border-radius: Card-L1-radius !important if Custom-Card
 		box-shadow: Card-L1-shadow !important
 		transition: box-shadow Card-L1-hover-transition !important
 
 		&:hover
 			box-shadow: Card-L1-hover-shadow !important
-	
+	.float-bottom
+		border-radius: 0 !important
+
 	// 二级 Card 样式修改
 	{Card_L2}
 		background: Card-bg-color-L2 !important
-		border-radius: Card-L2-radius if Custom-Card
+		border-radius: Card-L2-radius !important if Custom-Card
 		border-color: L2-Card-border !important
 	
 	// 悬浮 Card 样式修改
@@ -1977,6 +1985,7 @@ if Fast-Font-load
 		& > :nth-child(1)
 			border-bottom-left-radius: 0 !important
 			border-bottom-right-radius: 0 !important
+			border-radius: Card-L1-radius !important
 			background: Discuss-hd-color !important
 
 	// Markdown 编辑器
