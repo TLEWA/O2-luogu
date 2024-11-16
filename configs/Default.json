@@ -1,1 +1,18 @@
-
+{
+  "Card-L1-radius": "4px",
+  "Card-L2-radius": "4px",
+  "Card-float-radius": "5px",
+  "Inputbox-radius": "4px",
+  "Benben-radius": "get_depend_list(Card-L2-radius, 4px)",
+  "InLine-code-block-radius": "3px",
+  "Code-block-radius": "5px",
+  "InLine-code-block-border": "Check(InLine-code-block-border-del,none,1px solid)",
+  "Code-block-border": "Check(Code-block-border-del,none,1px solid)",
+  "Luogu-discuss-color-2": "#14558f",
+  "Luogu-discuss-color-3": "#f39c11",
+  "Luogu-discuss-color-4": "#9d3dcf",
+  "Luogu-discuss-color-5": "#52c41a",
+  "Luogu-discuss-color-6": "#2949b4",
+  "Header-bg-color": "Check(CustomBackground!=None,none,unset)",
+  "Footer-bg-color": "Check(CustomBackground!=None,none,unset)"
+}
