@@ -1297,11 +1297,12 @@ if Fast-Font-load
 	}
 
 	for key, value in DefaultStyle
-		if substr(value,0,1)=='^'
-			val = "%s%s"%(convert(slice(value,1)) ())
-		else
-			val = convert(value)
-		define(key,val)
+		if lookup(key)==Default
+			if substr(value,0,1)=='^'
+				val = "%s%s"%(convert(slice(value,1)) ())
+			else
+				val = convert(value)
+			define(key,val)
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
