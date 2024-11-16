@@ -902,7 +902,11 @@ if Fast-Font-load
 	// 用户样式解析
 	if UserStyle!=None
 		for key, value in UserStyle
-			define(key,convert(value))
+			if substr(value,0,1)=='^'
+				val = "%s%s"%(convert(slice(value,1)) ())
+			else
+				val = convert(value)
+			define(key,val)
 
 //	if DefaultStyle!=None
 //		for i in DefaultStyle
