@@ -883,7 +883,7 @@ if Fast-Font-load
 			return b
 	
 	// 基于伪元素的亚克力实现，不会造成层叠混乱
-	acrylic-a(acr-bgcolor,blur-radius=10px)
+	acrylic_a(acr-bgcolor,blur-radius=10px)
 		background: none !important
 		&:before
 			background: acr-bgcolor !important
@@ -900,9 +900,19 @@ if Fast-Font-load
 	
 	// https://stackoverflow.com/questions/44522299/css-only-acrylic-material-from-fluent-design-system
 	// 直接修改背景的亚克力实现，不需要修改 z-index，不会对 border-radius 造成影响，但可能造成层叠混乱
-	acrylic-b(acr-bgcolor,blur-radius=10px)
+	acrylic_b(acr-bgcolor,blur-radius=10px)
 		background: acr-bgcolor !important
 		backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
+	
+	analysis_string(str) // 解析字符串
+		if str==""
+			return ""
+		if substr(value,0,1)=='^'
+			return "%s%s"%(convert(slice(value,1)) ())
+		else if substr(value,0,1)=='$'
+			return slice(value,1)
+		else
+			return convert(value)
 	
 // 兼容性选项
 	if exlg-compatible
@@ -926,12 +936,8 @@ if Fast-Font-load
 		for key, value in UserStyle
 			if typeof(value)!="string"
 				val = value
-			else if substr(value,0,1)=='^'
-				val = "%s%s"%(convert(slice(value,1)) ())
-			else if substr(value,0,1)=='$'
-				val = slice(value,1)
 			else
-				val = convert(value)
+				val = analysis_string(value)
 			define(key,val)
 
 	DefaultStyle = {
@@ -1322,12 +1328,13 @@ if Fast-Font-load
 		"Problem-sol-icon-act-color": "#e07090"
 	}
 
+	undefined_code = lookup("undefined_code")
 	for key, value in DefaultStyle
-		if lookup(key)==Default
-			if substr(value,0,1)=='^'
-				val = "%s%s"%(convert(slice(value,1)) ())
+		if lookup(key)==Default || lookup(key)==undefined_code
+			if typeof(value)!="string"
+				val = value
 			else
-				val = convert(value)
+				val = analysis_string(value)
 			define(key,val)
 
 	// 全局背景
