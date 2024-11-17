@@ -902,15 +902,15 @@ if Fast-Font-load
 	// 用户样式解析
 	if UserStyle!=None
 		for key, value in UserStyle
-			if substr(value,0,1)=='^'
+			if typeof(value)!="string"
+				val = value
+			else if substr(value,0,1)=='^'
 				val = "%s%s"%(convert(slice(value,1)) ())
+			else if substr(value,0,1)=='$'
+				val = slice(value,1)
 			else
 				val = convert(value)
 			define(key,val)
-
-//	if DefaultStyle!=None
-//		for i in DefaultStyle
-//			define(i[0],i[1])
 
 	DefaultStyle = {
 		"Card-L1-radius": "4px",
