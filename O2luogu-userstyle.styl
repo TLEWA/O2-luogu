@@ -882,6 +882,28 @@ if Fast-Font-load
 		else
 			return b
 	
+	// 基于伪元素的亚克力实现，不会造成层叠混乱
+	acrylic-a(acr-bgcolor,blur-radius=10px)
+		background: none !important
+		&:before
+			background: acr-bgcolor !important
+			backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
+			content: ""
+			border-radius: @border-radius if @border-radius
+			position: absolute
+			pointer-events: none
+			z-index: -1
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+	
+	// https://stackoverflow.com/questions/44522299/css-only-acrylic-material-from-fluent-design-system
+	// 直接修改背景的亚克力实现，不需要修改 z-index，不会对 border-radius 造成影响，但可能造成层叠混乱
+	acrylic-b(acr-bgcolor,blur-radius=10px)
+		background: acr-bgcolor !important
+		backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
+	
 // 兼容性选项
 	if exlg-compatible
 		Card_L2 += ",.exlg-emo-btn"
