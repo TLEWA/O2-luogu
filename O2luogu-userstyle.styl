@@ -905,6 +905,8 @@ if Fast-Font-load
 		backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
 	
 	analysis_string(str) // 解析字符串
+		if typeof(value)!="string"
+			return str
 		if str==""
 			return ""
 		if substr(value,0,1)=='^'
@@ -934,10 +936,7 @@ if Fast-Font-load
 	// 用户样式解析
 	if UserStyle!=None
 		for key, value in UserStyle
-			if typeof(value)!="string"
-				val = value
-			else
-				val = analysis_string(value)
+			val = analysis_string(value)
 			define(key,val)
 
 	DefaultStyle = {
@@ -1331,10 +1330,7 @@ if Fast-Font-load
 	undefined_code = lookup("undefined_code")
 	for key, value in DefaultStyle
 		if lookup(key)==Default || lookup(key)==undefined_code
-			if typeof(value)!="string"
-				val = value
-			else
-				val = analysis_string(value)
+			val = analysis_string(value)
 			define(key,val)
 
 	// 全局背景
