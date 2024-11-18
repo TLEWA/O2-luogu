@@ -651,13 +651,16 @@ if Fast-Font-load
 
 // 全局工具函数
 
-	// 使用全局背景
-	use_mainly_background(background-val = Background) 
-		background: background-val !important
+	use_stable_bg() // 设置背景相关参数
 		background-repeat no-repeat !important
 		background-size cover !important
 		background-position center !important
 		background-attachment fixed !important
+	
+	// 使用全局背景
+	use_mainly_background(background-val = Background) 
+		background: background-val !important
+		use_stable_bg()
 	
 	use_new_bar() // 我们洛谷的新前端，太美丽
 		// 专栏顶栏样式修改
@@ -903,24 +906,39 @@ if Fast-Font-load
 	acrylic_b(acr-bgcolor,blur-radius=10px)
 		background: acr-bgcolor !important
 		backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
-	
+
+	to_s() // 将值转换为对应字符串
+		return "%s%s"%((arguments) ())
+
 	analysis_string(str) // 解析字符串
 		if typeof(str)!="string"
 			return str
 		if str==""
 			return ""
 		if substr(str,0,1)=='^'
-			return "%s%s"%(convert(slice(str,1)) ())
+			return to_s(convert(slice(str,1)))
 		else if substr(str,0,1)=='$'
 			return slice(str,1)
 		else
 			return convert(str)
 	
-	analysis_background()
-		if typeof(arguments)!="string"
-			background: arguments
+	analysis_user_string(str) // 转义直接在配置页面输入的字符串
+		if typeof(str)!="string"
+			return str
+		else if substr(str,0,1)=='$'
+			return slice(str,1)
+		else 
+			return str
+
+	background()
+		if substr(to_s(arguments),0,6)=='imgurl'
+			use_stable_bg()
+			val=slice(arguments,6)
+			background: val
+		if typeof(arguments)=='rgba'
+			background-color: arguments
 		else
-			analysis_string(arguments[0])
+			background: arguments
 	
 // 兼容性选项
 	if exlg-compatible
@@ -1331,9 +1349,9 @@ if Fast-Font-load
 		"Problem-sol-icon-act-color": "#e07090"
 	}
 
-	undefined_code = lookup("undefined_code")
+	null_key = lookup("null_key")
 	for key, value in DefaultStyle
-		if lookup(key)==Default || lookup(key)==undefined_code
+		if (typeof(lookup(key))=="string" && lookup(key)==Default)
 			val = analysis_string(value)
 			define(key,val)
 
@@ -1386,13 +1404,13 @@ if Fast-Font-load
 			height: 10px
 			
 		::-webkit-scrollbar-track
-			background-color: Scrollbar-track-color
+			background: Scrollbar-track-color
 		
 		::-webkit-scrollbar-thumb
-			background-color: Scrollbar-thumb-color
+			background: Scrollbar-thumb-color
 
 			&:hover
-				background-color: Scrollbar-hover-color
+				background: Scrollbar-hover-color
 	
 	// 输入框样式修改
 	{Main_Inputbox}
@@ -1611,7 +1629,7 @@ if Fast-Font-load
 				color: Sidebar-btn-color !important if !Anti-HeaderFooter
 		
 		&>div:nth-child(1)
-			background-color: Sidebar-luogu-bg-color !important if !Anti-HeaderFooter
+			background: Sidebar-luogu-bg-color !important if !Anti-HeaderFooter
 			&>a>img
 				use_img_bg_color(Sidebar-luogu-icon-color)
 
@@ -1636,46 +1654,46 @@ if Fast-Font-load
 	.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span // 用户 tag
 		transition: all Usertag-color-ani !important
 		&[style*=": rgb(191\, 191\, 191);"]
-			background-color: Usertag-color-1 !important
+			background: Usertag-color-1 !important
 			border-color: Usertag-color-1 !important
 			&:hover
-				background-color: Usertag-hover-color-1 !important
+				background: Usertag-hover-color-1 !important
 				border-color: Usertag-hover-color-1 !important
 		&[style*=": rgb(52\, 152\, 219);"]
-			background-color: Usertag-color-2 !important
+			background: Usertag-color-2 !important
 			border-color: Usertag-color-2 !important
 			&:hover
-				background-color: Usertag-hover-color-2 !important
+				background: Usertag-hover-color-2 !important
 				border-color: Usertag-hover-color-2 !important
 		&[style*=": rgb(82\, 196\, 26);"]
-			background-color: Usertag-color-3 !important
+			background: Usertag-color-3 !important
 			border-color: Usertag-color-3 !important
 			&:hover
-				background-color: Usertag-hover-color-3 !important
+				background: Usertag-hover-color-3 !important
 				border-color: Usertag-hover-color-3 !important
 		&[style*=": rgb(243\, 156\, 17);"]
-			background-color: Usertag-color-4 !important
+			background: Usertag-color-4 !important
 			border-color: Usertag-color-4 !important
 			&:hover
-				background-color: Usertag-hover-color-4 !important
+				background: Usertag-hover-color-4 !important
 				border-color: Usertag-hover-color-4 !important
 		&[style*=": rgb(254\, 76\, 97);"]
-			background-color: Usertag-color-5 !important
+			background: Usertag-color-5 !important
 			border-color: Usertag-color-5 !important
 			&:hover
-				background-color: Usertag-hover-color-5 !important
+				background: Usertag-hover-color-5 !important
 				border-color: Usertag-hover-color-5 !important
 		&[style*=": rgb(157\, 61\, 207);"],&[style*=": rgb(156\, 61\, 207);"]
-			background-color: Usertag-color-6 !important
+			background: Usertag-color-6 !important
 			border-color: Usertag-color-6 !important
 			&:hover
-				background-color: Usertag-hover-color-6 !important
+				background: Usertag-hover-color-6 !important
 				border-color: Usertag-hover-color-6 !important
 		&[style*=": rgb(173\, 139\, 0);"]
-			background-color: Usertag-color-7 !important
+			background: Usertag-color-7 !important
 			border-color: Usertag-color-7 !important
 			&:hover
-				background-color: Usertag-hover-color-7 !important
+				background: Usertag-hover-color-7 !important
 				border-color: Usertag-hover-color-7 !important
 	
 	.svg-inline--fa.fa-badge-check // 用户勾子样式
@@ -1737,7 +1755,7 @@ if Fast-Font-load
 		border-color: transparent !important
 
 	.cm-activeLine::selection,.cm-activeLine ::selection,.CodeMirror-line::selection, .CodeMirror-line>span::selection, .CodeMirror-line>span>span::selection
-		background-color: Markdown-text-selection-color !important
+		background: Markdown-text-selection-color !important
 	.cm-selectionBackground,.CodeMirror-selected
 		background: Markdown-text-selection-color !important
 
@@ -1847,7 +1865,7 @@ if Fast-Font-load
 		color: Code-block-text-color !important
 
 		&::selection, & *::selection
-			background-color: Codeblock-text-selection-color !important
+			background: Codeblock-text-selection-color !important
 
 		if Better-font
 			font-family: "FontWithASyntaxHighlighter",Code-block-fontstack !important
@@ -1869,7 +1887,7 @@ if Fast-Font-load
 				border-top-right-radius: 0 !important
 		
 		&::selection, & *::selection
-			background-color: Codeblock-text-selection-color !important
+			background: Codeblock-text-selection-color !important
 
 		& code
 			background: Code-block-bg-color !important
@@ -2000,17 +2018,17 @@ if Fast-Font-load
 
 				// 对通过颜色进行一个修改
 				.test-case[style*='rgb(82']
-					background-color: Test-case-color-AC !important
+					background: Test-case-color-AC !important
 				.test-case[style*='rgb(231']
-					background-color: Test-case-color-WA !important
+					background: Test-case-color-WA !important
 				.test-case[style*='rgb(157']
-					background-color: Test-case-color-RE !important
+					background: Test-case-color-RE !important
 				.test-case[style*='rgb(5']
-					background-color: Test-case-color-TLE !important
+					background: Test-case-color-TLE !important
 				.test-case[style*='rgb(14']
-					background-color: Test-case-color-UKE !important
+					background: Test-case-color-UKE !important
 				.test-case[style*="rgb(20"]
-					background-color: Test-case-color-QUE !important
+					background: Test-case-color-QUE !important
 				if Hide-testcase-load
 					.test-case:not([style*="rgb"])
 						display: none !important
@@ -2020,7 +2038,7 @@ if Fast-Font-load
 
 				// 不知道干嘛的，先注释起来
 				//.test-case[style*='rgb(20']
-				//	background-color #3498db !important 
+				//	background #3498db !important 
 
 		if Better-test-case-2
 			MLE-size = (Test-case-size - 45.5px) / 2
@@ -2039,7 +2057,7 @@ if Fast-Font-load
 
 			@keyframes test-case-check
 				from,to
-					background-color: Test-case-color-MLE;
+					background: Test-case-color-MLE;
 					border-radius: Test-case-border-radius
 
 	// 页首修改
@@ -2133,7 +2151,7 @@ if Fast-Font-load
 		background: Progressframe-bg-color !important
 
 	.progress-frame div[style*="background-color: rgb(52\, 152\, 219);"]
-		background-color: Progressframe-color !important
+		background: Progressframe-color !important
 	
 	if Better-problem-toolip
 		@import url('https://fonts.googleapis.com/css2?family=Open+Sans')
@@ -2223,21 +2241,19 @@ if Fast-Font-load
 
 	.card.max[style*="background-image: url('gg1.svg')"]
 		background-image: url('gg1.svg') !important
-		background-repeat: no-repeat !important
-		background-size: cover !important
-		background-position: center !important
+		use_stable_bg()
 
 	*::selection
-		background-color: Text-selection-color
+		background: Text-selection-color
 	*::-moz-selection
-		background-color: Text-selection-color
+		background: Text-selection-color
 	*::-webkit-selection
-		background-color: Text-selection-color
+		background: Text-selection-color
 
 	// exlg 兼容
 	if exlg-compatible
 		.exlg-code-title.exlg-beautified-cbex
-			background-color: Exlg-Codeheader-bg-color !important
+			background: Exlg-Codeheader-bg-color !important
 			color: Post-heading-color !important
 	
 	if Hide-AD
@@ -2433,7 +2449,7 @@ if Fast-Font-load
 		&.selected
 			color: Card-select-bar-select-color !important
 			&::before
-				background-color: Card-select-bar-select-color !important
+				background: Card-select-bar-select-color !important
 		&,&::before
 			transition: all Card-select-bar-hover-ani !important
 		if Better-Card-select-bar
@@ -2976,7 +2992,7 @@ if Fast-Font-load
 				background: none !important
 
 			& div[style*="background-color: rgb(255\, 255\, 255);"]
-				background-color: Article-text-bg-color !important
+				background: Article-text-bg-color !important
 	
 	.user-nav.rside.show.nav-scrollbar // 朋友要用，做的紧急修改，TODO
 		width: Article-rside-width !important
@@ -3099,7 +3115,7 @@ if Fast-Font-load
 		font-weight: 500
 		transition: all .15s ease !important
 		color: Benben-tab-text-color
-		background-color: Benben-tab-bg-color
+		background: Benben-tab-bg-color
 		box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08) if Better-Benben-Tab && !DarkMode // TODO：变量化
 		border-radius: Card-L2-radius !important
 		height: Benben-tab-height
@@ -3107,7 +3123,7 @@ if Fast-Font-load
 		padding: 0 !important
 
 	.feed-selector > a:hover
-		background-color: Benben-tab-hover-color !important
+		background: Benben-tab-hover-color !important
 
 	.feed-selector.am-active > a
 		color: Benben-tab-focus-text-color
@@ -3189,10 +3205,10 @@ if Fast-Font-load
 			opacity: 1 !important
 			width: AD-font-bg-width !important
 			height: AD-font-bg-height !important
-			background-color: AD-font-bg-color !important
+			background: AD-font-bg-color !important
 			transform: translateY(-50%) !important
 			margin: 0 !important
-			transition: background-color AD-font-bg-ani !important
+			transition: background AD-font-bg-ani !important
 			&:before
 				color: AD-font-color !important
 				height: AD-font-bg-height !important
@@ -3200,9 +3216,9 @@ if Fast-Font-load
 				font-size: AD-font-size !important
 				text-align: center !important
 		.am-slider-default:hover .am-next:hover,.am-slider-default:hover .am-prev:hover
-			background-color: AD-font-bg-hover-color !important
+			background: AD-font-bg-hover-color !important
 		.am-slider-default:hover .am-next,.am-slider-default:hover .am-prev
-			background-color: AD-font-bg-hoverimg-color !important
+			background: AD-font-bg-hoverimg-color !important
 		
 	if Better-Smooth-scroll
 		body,html
@@ -3212,52 +3228,52 @@ if Fast-Font-load
 	.lg-inline-up>.lg-small:not(:last-child),.feed-username
 		& .lg-bg-gray
 			transition: all Usertag-color-ani !important
-			background-color: Usertag-color-1 !important
+			background: Usertag-color-1 !important
 			border-color: Usertag-color-1 !important
 			&:hover
-				background-color: Usertag-hover-color-1 !important
+				background: Usertag-hover-color-1 !important
 				border-color: Usertag-hover-color-1 !important
 		& .lg-bg-bluelight
 			transition: all Usertag-color-ani !important
-			background-color: Usertag-color-2 !important
+			background: Usertag-color-2 !important
 			border-color: Usertag-color-2 !important
 			&:hover
-				background-color: Usertag-hover-color-2 !important
+				background: Usertag-hover-color-2 !important
 				border-color: Usertag-hover-color-2 !important
 		& .lg-bg-green
 			transition: all Usertag-color-ani !important
-			background-color: Usertag-color-3 !important
+			background: Usertag-color-3 !important
 			border-color: Usertag-color-3 !important
 			&:hover
-				background-color: Usertag-hover-color-3 !important
+				background: Usertag-hover-color-3 !important
 				border-color: Usertag-hover-color-3 !important
 		& .lg-bg-orange
 			transition: all Usertag-color-ani !important
-			background-color: Usertag-color-4 !important
+			background: Usertag-color-4 !important
 			border-color: Usertag-color-4 !important
 			&:hover
-				background-color: Usertag-hover-color-4 !important
+				background: Usertag-hover-color-4 !important
 				border-color: Usertag-hover-color-4 !important
 		& .lg-bg-red
 			transition: all Usertag-color-ani !important
-			background-color: Usertag-color-5 !important
+			background: Usertag-color-5 !important
 			border-color: Usertag-color-5 !important
 			&:hover
-				background-color: Usertag-hover-color-5 !important
+				background: Usertag-hover-color-5 !important
 				border-color: Usertag-hover-color-5 !important
 		& .lg-bg-purple
 			transition: all Usertag-color-ani !important
-			background-color: Usertag-color-6 !important
+			background: Usertag-color-6 !important
 			border-color: Usertag-color-6 !important
 			&:hover
-				background-color: Usertag-hover-color-6 !important
+				background: Usertag-hover-color-6 !important
 				border-color: Usertag-hover-color-6 !important
 		& .lg-bg-brown
 			transition: all Usertag-color-ani !important
-			background-color: Usertag-color-7 !important
+			background: Usertag-color-7 !important
 			border-color: Usertag-color-7 !important
 			&:hover
-				background-color: Usertag-hover-color-7 !important
+				background: Usertag-hover-color-7 !important
 				border-color: Usertag-hover-color-7 !important
 	
 	a.sb_amazeui > svg
