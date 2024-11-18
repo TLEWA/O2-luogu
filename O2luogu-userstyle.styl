@@ -65,6 +65,7 @@
 @var	checkbox Better-UserNotification-ani "更好的通知中心列表动画" 1
 @var	checkbox Article-Discuss "文章广场应用讨论区布局" 1
 @var	checkbox More-Header-Ani "标题栏在更多场景展示动画" 1
+@var	checkbox Better-zindex "接管洛谷页面层叠布局" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -885,9 +886,12 @@ if Fast-Font-load
 		else
 			return b
 	
+	// 亚克力基本实现转自氩洛谷 RE2024。
+
 	// 基于伪元素的亚克力实现，不会造成层叠混乱
 	acrylic_a(acr-bgcolor,blur-radius=10px)
 		background: none !important
+		position: relative
 		&:before
 			background: acr-bgcolor !important
 			backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
@@ -926,16 +930,19 @@ if Fast-Font-load
 		if typeof(str)!="string"
 			return str
 		else if substr(str,0,1)=='$'
-			return slice(str,1)
+			return analysis_string(slice(str,1))
 		else 
 			return str
 
 	background()
 		if substr(to_s(arguments),0,6)=='imgurl'
 			use_stable_bg()
-			val=slice(arguments,6)
-			background: val
-		if typeof(arguments)=='rgba'
+			val=slice(to_s(arguments),3)
+			background: convert(val)
+		else if substr(to_s(arguments),0,7)=='Acrylic'
+			val='a'+slice(to_s(arguments),1)
+			convert(val)
+		else if typeof(arguments)=='rgba'
 			background-color: arguments
 		else
 			background: arguments
@@ -1354,6 +1361,20 @@ if Fast-Font-load
 		if (typeof(lookup(key))=="string" && lookup(key)==Default)
 			val = analysis_string(value)
 			define(key,val)
+		else if typeof(lookup(key))=="string"
+			val = analysis_user_string(value)
+			define(key,val)
+
+	// 卡片化判断
+	if Better-article-card=="auto"
+		if CustomBackground!=None
+			Better-article-card = "on"
+		else
+			Better-article-card = "off"
+	
+	if Better-article-card=="on"
+		Card_L1 += ",.main-container.lside-bar>main.lcolor-bg-grey-1"
+		Card_L2 += ",.article-comment.columba-content-wrap.wrapper>.l-card"
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -1414,7 +1435,7 @@ if Fast-Font-load
 	
 	// 输入框样式修改
 	{Main_Inputbox}
-		use_depend_list(background-color,(Input-bg-color Card-bg-color-L1),1) // 设置背景色
+		use_depend_list(background,(Input-bg-color Card-bg-color-L1),1) // 设置背景色
 		use_depend_list(color,(Input-text-color),1);
 		use_depend_list(border-color,(Input-border-color Input-text-color),1)
 		border-radius: Inputbox-radius !important if Custom-Inputbox
