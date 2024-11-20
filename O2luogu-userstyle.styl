@@ -890,6 +890,8 @@ if Fast-Font-load
 	// 基于伪元素的亚克力实现，不会造成层叠混乱
 	acrylic_a(acr-bgcolor,blur-radius=10px)
 		background: none !important
+		backdrop-filter: none !important
+		filter: none !important
 		@layer
 			&
 				position: relative
