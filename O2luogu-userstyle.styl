@@ -65,7 +65,6 @@
 @var	checkbox Better-UserNotification-ani "更好的通知中心列表动画" 1
 @var	checkbox Article-Discuss "文章广场应用讨论区布局" 1
 @var	checkbox More-Header-Ani "标题栏在更多场景展示动画" 1
-@var	checkbox Better-zindex "接管洛谷页面层叠布局" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -891,7 +890,9 @@ if Fast-Font-load
 	// 基于伪元素的亚克力实现，不会造成层叠混乱
 	acrylic_a(acr-bgcolor,blur-radius=10px)
 		background: none !important
-		position: relative
+		@layer
+			&
+				position: relative
 		&:before
 			background: acr-bgcolor !important
 			backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
@@ -899,11 +900,11 @@ if Fast-Font-load
 			border-radius: @border-radius if @border-radius
 			position: absolute
 			pointer-events: none
-			z-index: -1
 			top: 0
 			left: 0
 			right: 0
 			bottom: 0
+			z-index: -1 !important
 	
 	// https://stackoverflow.com/questions/44522299/css-only-acrylic-material-from-fluent-design-system
 	// 直接修改背景的亚克力实现，不需要修改 z-index，不会对 border-radius 造成影响，但可能造成层叠混乱
@@ -942,6 +943,10 @@ if Fast-Font-load
 		else if substr(to_s(arguments),0,7)=='Acrylic'
 			val='a'+slice(to_s(arguments),1)
 			convert(val)
+		else if to_s(arguments)=="transparent" || to_s(arguments)=="transparent !important"
+			background: arguments
+			&:before
+				display: none !important
 		else if typeof(arguments)=='rgba'
 			background-color: arguments
 		else
@@ -2283,7 +2288,7 @@ if Fast-Font-load
 
 	// 全局字体
 	body,.lfe-body,.cs-editor
-		font-family: Font-Stack, -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif
+		font-family: Font-Stack, -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif !important
 
 	// 提交代码框颜色系统
 	.ace_editor
@@ -3152,13 +3157,13 @@ if Fast-Font-load
 
 	if Better-Benben-Tab
 		.lg-index-benben div:nth-of-type(4) 
-				background: transparent !important
-				box-shadow: none !important
-				padding-left: 0
-				padding-right: 0
+			background: transparent !important
+			box-shadow: none !important
+			padding-left: 0
+			padding-right: 0
 
 		.lg-index-benben div:nth-of-type(4) #home-center-nav
-				background: transparent
+			background: transparent !important
 	
 	// 主页题目通过条
 	if Better-highcharts
