@@ -65,6 +65,7 @@
 @var	checkbox Better-UserNotification-ani "更好的通知中心列表动画" 1
 @var	checkbox Article-Discuss "文章广场应用讨论区布局" 1
 @var	checkbox More-Header-Ani "标题栏在更多场景展示动画" 1
+@var	checkbox Canvas-fix "比赛情况栏在亚克力下正常显示" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -2717,6 +2718,18 @@ if Fast-Font-load
 	// Blockquote 样式应用
 	blockquote,.casket.cs-main blockquote,.lfe-marked blockquote
 		border-color: Blockquote-border-color !important
+
+	if Canvas-fix
+		canvas+.tooltip
+			position: fixed !important
+			@keyframes Canvas-fix-ani
+				from
+					transform: translateY(0)
+				to
+					transform: translateY(-10000px)
+			animation: Canvas-fix-ani 3s linear !important
+			animation-timeline: scroll(root) !important
+			animation-range: 0vh 10000px !important
 
 	// 各种小 bug 的修复
 	.load-more
