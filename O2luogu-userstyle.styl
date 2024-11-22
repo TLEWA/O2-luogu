@@ -568,6 +568,12 @@
 
 @var	text Blockquote-border-color "块引用边框色" "Default"
 
+@var	text Main-title-size "主标题字体大小" "Default"
+@var	text Navbar-height "旧前端菜单栏高度" "Default"
+@var	text Header-narrow-height "旧前端无按钮标题栏高度" "Default"
+@var	text Header-normal-height "旧前端标题栏高度" "Default"
+@var	text Header-new-height "新前端标题栏高度" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -1361,7 +1367,12 @@ if Fast-Font-load
 		"Article-sidebar-card-hover-ani": "^0.17s ease-out",
 		"UserNotification-active-color": "DarkMode_check(#5e72e4,#3498db)",
 		"UserNotification-ani": "^.4s ease",
-		"Problem-sol-icon-act-color": "#e07090"
+		"Problem-sol-icon-act-color": "#e07090",
+		"Main-title-size": "1.75em",
+		"Navbar-height": "4em",
+		"Header-narrow-height": "8em",
+		"Header-normal-height": "10em",
+		"Header-new-height": "120px"
 	}
 
 	null_key = lookup("null_key")
@@ -1488,6 +1499,7 @@ if Fast-Font-load
 	// 洛谷的顶栏（老前端，404，私信）样式修改
 	.wrapper.wrapped.lfe-body.header-layout.tiny,.header:has(>.max)
 		use_depend_list(background,(Navbar-bg-color Card-bg-color-L1),1)
+		height: Navbar-height !important
 
 	// 洛谷右上悬浮卡图标样式修改
 	.header > .user-nav a.icon > svg > path,.header > .user-nav a.icon-btn > svg > path // 悬浮卡片样式
@@ -2608,6 +2620,11 @@ if Fast-Font-load
 					margin-top: 0 !important
 					margin-bottom: 0 !important
 					line-height: calc(120% + 1em)
+		
+	.main-container > .wrapper.wrapped.lfe-body:has(>.background),.main-container > header.theme-bg
+		& .lfe-h1
+			font-size: Main-title-size !important
+		
 	
 	if Usernav-float
 		.user-nav:has(>nav)
@@ -2730,6 +2747,16 @@ if Fast-Font-load
 			animation: Canvas-fix-ani 3s linear !important
 			animation-timeline: scroll(root) !important
 			animation-range: 0vh 10000px !important
+	
+	// 旧前端顶部 header 高度
+	.header-layout
+		&.narrow
+			height: Header-narrow-height !important
+		&.normal
+			height: Header-normal-height !important
+	// 新前端
+	.main-container > header.theme-bg
+		height: Header-new-height !important
 
 	// 各种小 bug 的修复
 	.load-more
