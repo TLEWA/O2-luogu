@@ -1581,8 +1581,8 @@ if Fast-Font-load
 
 	// 一级 Card 样式修改
 	{Card_L1}
-		background: Card-bg-color-L1 !important
 		border-radius: Card-L1-radius !important if Custom-Card
+		background: Card-bg-color-L1 !important
 		box-shadow: Card-L1-shadow !important
 		transition: box-shadow Card-L1-hover-transition \, all Card-hover-bg-color-L1-ani !important
 		&:hover
@@ -1594,8 +1594,8 @@ if Fast-Font-load
 
 	// 二级 Card 样式修改
 	{Card_L2}
-		background: Card-bg-color-L2 !important
 		border-radius: Card-L2-radius !important if Custom-Card
+		background: Card-bg-color-L2 !important
 		border-color: L2-Card-border !important
 		transition: all Card-hover-bg-color-L2-ani !important
 		&:hover
@@ -1723,8 +1723,8 @@ if Fast-Font-load
 		& , &>span
 			color: GrayLabel-text-color !important
 		border-color: GrayLabel-border-color !important
-		background: GrayLabel-bg-color !important
 		border-radius: Label-border-radius !important
+		background: GrayLabel-bg-color !important
 	
 	// Badge 样式修改
 	{Badge}
@@ -1940,10 +1940,10 @@ if Fast-Font-load
 
 	// 行内代码块
 	{InLine-code-block}
+		border-radius: InLine-code-block-radius !important
 		background: InLine-code-block-bg-color !important
 		border: InLine-code-block-border !important
 		border-color: InLine-code-block-border-color !important
-		border-radius: InLine-code-block-radius !important
 		color: Code-block-text-color !important
 
 		&::selection, & *::selection
@@ -1957,10 +1957,10 @@ if Fast-Font-load
 	
 	// 代码块
 	{Code-block}
+		border-radius: Code-block-radius !important
 		background: Code-block-bg-color !important
 		border: Code-block-border !important
 		border-color: Code-block-border-color !important
-		border-radius: Code-block-radius !important
 		color: Code-block-text-color !important
 
 		if exlg-compatible
@@ -2134,13 +2134,13 @@ if Fast-Font-load
 
 			.test-case-wrap .content
 				overflow: hidden
-				animation: test-case-check 1s;
-				animation-timeline: scroll(x self);
+				animation: test-case-check 1s
+				animation-timeline: scroll(x self)
 
 			@keyframes test-case-check
 				from,to
-					background: Test-case-color-MLE;
 					border-radius: Test-case-border-radius
+					background: Test-case-color-MLE
 
 	// 页首修改
 	.main-container > .wrapper.wrapped.lfe-body:has(>.background+.header) > .background,.main-container > header.theme-bg
@@ -2319,8 +2319,8 @@ if Fast-Font-load
 			anti_hover_line()
 
 	.expand > .expand
-		background: Expand-shadow !important
 		border-radius: Expand-radius !important
+		background: Expand-shadow !important
 
 	.card.max[style*="background-image: url('gg1.svg')"]
 		background-image: url('gg1.svg') !important
@@ -2450,6 +2450,7 @@ if Fast-Font-load
 		display: inline-block
 		&::after
 			content: "猫猫"
+			user-select: none !important
 			font-size: 90%
 			line-height: 1.5
 			font-weight: 400
@@ -3306,9 +3307,9 @@ if Fast-Font-load
 		font-weight: 500
 		transition: all .15s ease !important
 		color: Benben-tab-text-color
+		border-radius: Card-L2-radius !important
 		background: Benben-tab-bg-color
 		box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08) if Better-Benben-Tab && !DarkMode // TODO：变量化
-		border-radius: Card-L2-radius !important
 		height: Benben-tab-height
 		line-height: Benben-tab-height
 		padding: 0 !important
