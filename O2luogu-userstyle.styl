@@ -2445,6 +2445,19 @@ if Fast-Font-load
 				color: Username-hover-color-7 !important
 	a.color-none[href*='/user/'][target='_blank'],a.name[href*='/user/'][style*='font-weight: bold;']
 		anti_hover_line() if A-hover-line && Anti-Username-hover-line
+	
+	a.color-none[href*='/user/515129'][target='_blank'],a.name[href*='/user/515129'][style*='font-weight: bold;']
+		&::after
+			content: "猫猫"
+			font-size: 0.85em
+			line-height: 1.5
+			font-weight: 400
+			padding: 0 8px
+			box-sizing: border-box
+			border-radius: 2px !important
+			display: inline-block
+			color: #fff
+			background: rgb(254, 76, 97) !important
 
 	// Header 出现动画
 	if Better-Header-ani
@@ -3368,12 +3381,16 @@ if Fast-Font-load
 			border-bottom-right-radius: AD-font-bg-radius !important
 			&:before
 				content: "\f053" !important
+				position: unset !important
+				background: none !important
 		.am-slider-default .am-direction-nav .am-nav-next a
 			right: 0 !important
 			border-top-left-radius: AD-font-bg-radius !important
 			border-bottom-left-radius: AD-font-bg-radius !important
 			&:before
 				content: "\f054" !important
+				position: unset !important
+				background: none !important
 		.am-slider-default .am-direction-nav a
 			opacity: 1 !important
 			width: AD-font-bg-width !important
