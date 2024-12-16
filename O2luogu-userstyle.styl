@@ -648,7 +648,7 @@ if Fast-Font-load
 
 	// 选择器
 		Main_Inputbox = "input[type=text],input[type=password],textarea#feed-content,.input-wrap,.combo-wrapper>.text,textarea,.mp-dialog-input>input,select,.refined-input.text,.input-group>input,textarea.lfe-form-sz-middle" // 主流样式的输入框
-		Card_L1 = ".lg-article, .lg-article-sub, .lg-article-nctrl, .card, .float-bottom,.l-card" // 一级卡片
+		Card_L1 = ".lg-article, .lg-article-sub, .lg-article-nctrl, .card:not(.float-card), .float-bottom,.l-card" // 一级卡片
 		Card_L2 = ".am-panel,.inner-card,.discuss-container .discuss,.swal2-validation-message" // 二级卡片
 		Card_float = "#app > nav.lfe-body .popup,.user-nav .center,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog,.l-card.container" // 悬浮卡片
 		Hover_card_float = "#app > nav.lfe-body .popup a,.dropdown-operations li,.dropdown li,.candidates li,.am-modal-footer"
@@ -662,7 +662,7 @@ if Fast-Font-load
 		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.user-nav>a.login,.cs-footer-right > .cs-footer-button,.message-block>.delete,.user-nav>.text" // 操作文字
 		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.am-modal-btn,.user-nav>a.login,.cs-footer-right > .cs-footer-button,.message-block>.delete,.user-nav>.text" // 可选中操作文字
 		Hover-A = ".action>a,.center>footer>a,.am-panel-primary .am-panel-title a" // 选中超链接
-		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a,span.C.G,.row.title>a,.row div>a,.bar-item,.filter-wrapper a,.form-item.form-check>a,.form-bottom>a,.reply > .info-item" // 强制超链接
+		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a,span.C.G,.row.title>a,.row div>a,.bar-item,.filter-wrapper a,.form-item.form-check>a,.form-bottom>a,.reply > .info-item,.last-link>a,.l-flex-info-row a" // 强制超链接
 		ColorfulLabel = ".difficulty a.color-default[colorscheme='default']>span,.box>span.lfe-caption,span.lfe-caption.tag,a.tag.color-none>span,.difficulty-tags>.row>span.lfe-caption,.difficulty>span.lfe-caption,a.status-link>span.lfe-caption,.lfe-caption.tag>span,.author-margin>.lfe-caption,.team-authority,.inner-card span.lfe-caption[style*='color:'],.status>.lfe-caption" // 标签
 		GrayLabel = '.card.info-card.center.padding-default .tags>span.tag[style*="rgb(232"]:not(.selected),.inner-card>.row>div>span.lfe-caption,.card.log.padding-default li span.lfe-caption,.row.info>span' // 灰度标签
 		Topic-type-Label = ".tags-wrap.multiline>a>span,.card.info-card.center.padding-default .tag-select-area .tags>span.tag,.block-item.tag" // 题目类型标签
@@ -778,7 +778,7 @@ if Fast-Font-load
 	use_hover_line(Hover-line-ani,Hover-line-color,Hover-line-height)
 		position: relative
 		overflow: unset !important
-		&::after
+		&::before
 			content: ""
 			width: 0
 			height: Hover-line-height !important
@@ -787,11 +787,11 @@ if Fast-Font-load
 			top: 100%
 			left: 50%
 			transition: all Hover-line-ani
-		&:hover::after
+		&:hover::before
 			left: 0%
 			width: 100%
 	anti_hover_line()
-		&::after
+		&::before
 			opacity: 0 !important
 
 	// TODO：v2.0
