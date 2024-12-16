@@ -2141,13 +2141,14 @@ if Fast-Font-load
 					border-radius: Test-case-border-radius
 
 	// 页首修改
-	.main-container > .wrapper.wrapped.lfe-body:has(>.background) > .background,.main-container > header.theme-bg
+	.main-container > .wrapper.wrapped.lfe-body:has(>.background+.header) > .background,.main-container > header.theme-bg
 		background: Header-bg-color !important if !Anti-HeaderFooter
 	
 	// 页尾修改
 	.main-container > .wrapper.wrapped.lfe-body:has(>.footer),.main-container > footer.theme-bg
-		&,& .background
-			background: Footer-bg-color !important if !Anti-HeaderFooter
+		background: Footer-bg-color !important if !Anti-HeaderFooter
+		& .background
+			background: none !important
 		& .info,& .links
 			&>p,& a
 				color: Footer-text-color !important
@@ -2555,7 +2556,7 @@ if Fast-Font-load
 
 	if Smart-SideBar // Smart-Luogu 式侧栏
 		// 顶栏适配
-		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:has(>.background),.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
+		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:has(>.background+.header),.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
 			position: relative !important
 			right: 60px !important
 			padding-left: 75.2px !important
@@ -2652,7 +2653,7 @@ if Fast-Font-load
 			.main-container > .wrapper.wrapped.lfe-body>.header:not([pageloading*="true"])>.user-nav
 				animation: Show-Usernav-box Usernav-box-ani
 		
-		.main-container > .wrapper.wrapped.lfe-body:has(>.background),.main-container > header.theme-bg
+		.main-container > .wrapper.wrapped.lfe-body:has(>.background+.header),.main-container > header.theme-bg
 			& .functional
 				width: 100% !important
 				float: left
@@ -2662,7 +2663,7 @@ if Fast-Font-load
 					margin-bottom: 0 !important
 					line-height: calc(120% + 1em)
 		
-	.main-container > .wrapper.wrapped.lfe-body:has(>.background),.main-container > header.theme-bg
+	.main-container > .wrapper.wrapped.lfe-body:has(>.background+.header),.main-container > header.theme-bg
 		& .lfe-h1
 			font-size: Main-title-size !important
 		
