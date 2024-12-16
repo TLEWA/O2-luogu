@@ -2447,9 +2447,10 @@ if Fast-Font-load
 		anti_hover_line() if A-hover-line && Anti-Username-hover-line
 	
 	a.color-none[href*='/user/515129'][target='_blank'],a.name[href*='/user/515129'][style*='font-weight: bold;']
+		display: inline-block
 		&::after
 			content: "猫猫"
-			font-size: 0.85em
+			font-size: 90%
 			line-height: 1.5
 			font-weight: 400
 			padding: 0 8px
@@ -2458,6 +2459,10 @@ if Fast-Font-load
 			display: inline-block
 			color: #fff
 			background: rgb(254, 76, 97) !important
+	a.name[href*='/user/515129'][style*='font-weight: bold;']
+		&::after
+			margin-left: 4px
+			padding: 0 .5em !important
 
 	// Header 出现动画
 	if Better-Header-ani
