@@ -1533,6 +1533,8 @@ if Fast-Font-load
 	// 洛谷的顶栏（老前端，404，私信）样式修改
 	.wrapper.wrapped.lfe-body.header-layout.tiny,.header:has(>.max)
 		use_depend_list(background,(Navbar-bg-color Card-bg-color-L1),1)
+		& .background
+			background: none !important
 		height: Navbar-height !important
 
 	// 洛谷右上悬浮卡图标样式修改
@@ -2148,7 +2150,7 @@ if Fast-Font-load
 	.main-container > .wrapper.wrapped.lfe-body:has(>.footer),.main-container > footer.theme-bg
 		background: Footer-bg-color !important if !Anti-HeaderFooter
 		& .background
-			background: none !important
+			background: none !im
 		& .info,& .links
 			&>p,& a
 				color: Footer-text-color !important
@@ -2556,7 +2558,7 @@ if Fast-Font-load
 
 	if Smart-SideBar // Smart-Luogu 式侧栏
 		// 顶栏适配
-		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:has(>.background+.header),.main-container > .wrapper.wrapped.lfe-body:has(>.background+.container),.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
+		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:has(>.background+.header),.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
 			position: relative !important
 			right: 60px !important
 			padding-left: 75.2px !important
