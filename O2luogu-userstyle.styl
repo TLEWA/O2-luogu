@@ -589,6 +589,8 @@
 
 @var	text Card-hover-bg-color-L1 "一级卡片 hover 背景色" "Default"
 @var	text Card-hover-bg-color-L2 "二级卡片 hover 背景色" "Default"
+@var	text Card-hover-bg-color-L1-ani "一级卡片 hover 背景色动画效果" "Default"
+@var	text Card-hover-bg-color-L2-ani "二级卡片 hover 背景色动画效果" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -654,7 +656,7 @@ if Fast-Font-load
 		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I" // 标题文字
 		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner,.row>.content,.feed-comment,.mp-preview-content" // 正文文字
 		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name,.collection-info" // 陈述文字
-		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption,.colored-link-selector .name,div.row.row-space-between.top > .content-right > a > .name,.l-flex-info-row>span,.reply-editor-top" // 介绍文字
+		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption,.colored-link-selector .name,div.row.row-space-between.top > .content-right > a > .name,.l-flex-info-row>span,.reply-editor>div:first-child" // 介绍文字
 		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.stat>.field,.difficulty-tags,.difficulty-tags>.row,.full-container[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
 		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.cs-close-container,.container .close path,.dropdown>.float-card>.user-info span>span>span path,.stick-top path,.cs-toolbar-tool path" // 杂项图标
 		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.user-nav>a.login,.cs-footer-right > .cs-footer-button,.message-block>.delete,.user-nav>.text" // 操作文字
@@ -911,7 +913,6 @@ if Fast-Font-load
 			return b
 	
 	// 亚克力基本实现转自氩洛谷 RE2024。
-
 	// 基于伪元素的亚克力实现，不会造成层叠混乱
 	acrylic_a(acr-bgcolor,blur-radius=10px)
 		background: none !important
@@ -975,7 +976,7 @@ if Fast-Font-load
 			&:before
 				display: none !important
 		else if typeof(arguments)=='rgba'
-			background-color: arguments
+			background: arguments
 		else
 			background: arguments
 	
@@ -1404,6 +1405,8 @@ if Fast-Font-load
 		"Markdown-a-color": "#2fb170",
 		"Card-hover-bg-color-L1": "None",
 		"Card-hover-bg-color-L2": "None",
+		"Card-hover-bg-color-ani-L1": "0.5s ease",
+		"Card-hover-bg-color-ani-L2": "0.5s ease"
 	}
 
 	null_key = lookup("null_key")
@@ -1580,7 +1583,6 @@ if Fast-Font-load
 		border-radius: Card-L1-radius !important if Custom-Card
 		box-shadow: Card-L1-shadow !important
 		transition: box-shadow Card-L1-hover-transition !important
-
 		&:hover
 			box-shadow: Card-L1-hover-shadow !important
 			background: Card-hover-bg-color-L1 !important if Card-hover-bg-color-L1!=None
@@ -2316,7 +2318,9 @@ if Fast-Font-load
 
 	.card.max[style*="background-image: url('gg1.svg')"]
 		background-image: url('gg1.svg') !important
-		use_stable_bg()
+		background-repeat no-repeat !important
+		background-size cover !important
+		background-position center !important
 
 	*::selection
 		background: Text-selection-color
