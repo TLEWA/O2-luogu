@@ -1405,8 +1405,8 @@ if Fast-Font-load
 		"Markdown-a-color": "#2fb170",
 		"Card-hover-bg-color-L1": "None",
 		"Card-hover-bg-color-L2": "None",
-		"Card-hover-bg-color-ani-L1": "0.5s ease",
-		"Card-hover-bg-color-ani-L2": "0.5s ease"
+		"Card-hover-bg-color-L1-ani": "0.5s ease",
+		"Card-hover-bg-color-L2-ani": "0.5s ease"
 	}
 
 	null_key = lookup("null_key")
@@ -1582,10 +1582,11 @@ if Fast-Font-load
 		background: Card-bg-color-L1 !important
 		border-radius: Card-L1-radius !important if Custom-Card
 		box-shadow: Card-L1-shadow !important
-		transition: box-shadow Card-L1-hover-transition !important
+		transition: box-shadow Card-L1-hover-transition \, all Card-hover-bg-color-L1-ani !important
 		&:hover
 			box-shadow: Card-L1-hover-shadow !important
 			background: Card-hover-bg-color-L1 !important if Card-hover-bg-color-L1!=None
+			
 	.float-bottom
 		border-radius: 0 !important
 
@@ -1594,8 +1595,10 @@ if Fast-Font-load
 		background: Card-bg-color-L2 !important
 		border-radius: Card-L2-radius !important if Custom-Card
 		border-color: L2-Card-border !important
-		if Card-hover-bg-color-L2!=None
-			background: Card-hover-bg-color-L2 !important if Card-hover-bg-color-L1!=None
+		transition: all Card-hover-bg-color-L2-ani !important
+		&:hover
+			box-shadow: Card-L2-hover-shadow !important
+			background: Card-hover-bg-color-L2 !important if Card-hover-bg-color-L2!=None
 	
 	// 悬浮 Card 样式修改
 	{Card_float}
