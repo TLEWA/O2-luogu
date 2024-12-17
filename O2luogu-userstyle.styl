@@ -984,7 +984,7 @@ if Fast-Font-load
 			background: arguments
 	
 	User_badge(uid, radius, bgc, textc, content_text)
-		a[href*=\'{s("/user/%s",uid)}\'][target='_blank'],a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;']
+		a[href*=\'{s("/user/%s",uid)}\'][target='_blank'],a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;'], .user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child
 			overflow: visible
 			&::after
 				margin: 0 auto
@@ -1000,9 +1000,12 @@ if Fast-Font-load
 				background: bgc !important
 				white-space: nowrap
 				margin-left: 3px
-		a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;']
+		a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;'], .user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child
 			&::after
 				padding: 0 .5em !important
+		.user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child
+			&::after
+				font-size: 70% !important
 	
 // 兼容性选项
 	if exlg-compatible
@@ -1489,8 +1492,6 @@ if Fast-Font-load
 
 // 全局样式
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
-	//User_badge(515129, 2px, #fe4c61, #fff, "猫猫")
-
 	body // 应用全局背景
 		use_mainly_background()
 	
@@ -1498,8 +1499,6 @@ if Fast-Font-load
 	if UserTag!="None"
 		for usertag in UserTag
 			User_badge(usertag["uid"], usertag["border-radius"], usertag["background"], usertag["color"], usertag["content"])
-
-	
 
 	if Smooth-scroll // 平滑滚动自定义项
 		body,html
