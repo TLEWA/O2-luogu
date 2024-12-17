@@ -982,6 +982,27 @@ if Fast-Font-load
 		else
 			background: arguments
 	
+	User_badge(uid, radius, bgc, textc, content_text)
+		a[href*=\'{s("/user/%s",uid)}\'][target='_blank'],a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;']
+			overflow: visible
+			&::after
+				margin: 0 auto
+				content: content_text
+				font-size: 90%
+				line-height: 1.5
+				font-weight: 400
+				padding: 0 8px
+				box-sizing: border-box
+				border-radius: radius !important
+				display: inline-block
+				color: textc
+				background: bgc !important
+				white-space: nowrap
+				margin-left: 4px
+		a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;']
+			&::after
+				padding: 0 .5em !important
+	
 // 兼容性选项
 	if exlg-compatible
 		Card_L2 += ",.exlg-emo-btn"
@@ -1409,7 +1430,7 @@ if Fast-Font-load
 		"Card-hover-bg-color-L2": "None",
 		"Card-hover-bg-color-L1-ani": "0.5s ease",
 		"Card-hover-bg-color-L2-ani": "0.5s ease",
-		"Float-bar-ani": "0.8s cubic-bezier(0.5, 1)"
+		"Float-bar-ani": "0.6s cubic-bezier(0.5, 1)"
 	}
 
 	null_key = lookup("null_key")
@@ -1467,6 +1488,8 @@ if Fast-Font-load
 
 // 全局样式
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
+	User_badge(515129, 2px, #fe4c61, #fff, "猫猫")
+
 	body // 应用全局背景
 		use_mainly_background()
 	
@@ -1595,6 +1618,8 @@ if Fast-Font-load
 	div.float-bottom,div.float.operations
 		border-radius: 0 !important
 		transition: box-shadow Card-L1-hover-transition !important
+		&::before
+			border-radius: 0 !important
 
 		@keyframes Float-bar-anim
 			from
@@ -2456,25 +2481,6 @@ if Fast-Font-load
 				color: Username-hover-color-7 !important
 	a.color-none[href*='/user/'][target='_blank'],a.name[href*='/user/'][style*='font-weight: bold;']
 		anti_hover_line() if A-hover-line && Anti-Username-hover-line
-	
-	a.color-none[href*='/user/515129'][target='_blank'],a.name[href*='/user/515129'][style*='font-weight: bold;']
-		display: inline-block
-		&::after
-			content: "猫猫"
-			user-select: none !important
-			font-size: 90%
-			line-height: 1.5
-			font-weight: 400
-			padding: 0 8px
-			box-sizing: border-box
-			border-radius: 2px !important
-			display: inline-block
-			color: #fff
-			background: rgb(254, 76, 97) !important
-	a.name[href*='/user/515129'][style*='font-weight: bold;']
-		&::after
-			margin-left: 4px
-			padding: 0 .5em !important
 
 	// Header 出现动画
 	if Better-Header-ani
@@ -2774,6 +2780,8 @@ if Fast-Font-load
 				&:hover
 					animation: Avatar-hover Avatar-hover-ani !important
 
+	.row > .tags > .tags-wrap.multiline
+			overflow: visible !important // 不裁剪阴影
 	if Problem-tag-center
 		.row > .tags > .tags-wrap.multiline
 			if Better-Problem-tag-margin
