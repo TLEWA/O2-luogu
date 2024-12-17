@@ -592,6 +592,8 @@
 @var	text Card-hover-bg-color-L1-ani "一级卡片 hover 背景色动画效果" "Default"
 @var	text Card-hover-bg-color-L2-ani "二级卡片 hover 背景色动画效果" "Default"
 
+@var	text Float-bar-ani "底部悬浮栏渐现动画" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -1406,7 +1408,8 @@ if Fast-Font-load
 		"Card-hover-bg-color-L1": "None",
 		"Card-hover-bg-color-L2": "None",
 		"Card-hover-bg-color-L1-ani": "0.5s ease",
-		"Card-hover-bg-color-L2-ani": "0.5s ease"
+		"Card-hover-bg-color-L2-ani": "0.5s ease",
+		"Float-bar-ani": "0.8s cubic-bezier(0.5, 1)"
 	}
 
 	null_key = lookup("null_key")
@@ -1589,8 +1592,16 @@ if Fast-Font-load
 			box-shadow: Card-L1-hover-shadow !important
 			background: Card-hover-bg-color-L1 !important if Card-hover-bg-color-L1!=None
 			
-	.float-bottom
+	div.float-bottom,div.float.operations
 		border-radius: 0 !important
+		transition: box-shadow Card-L1-hover-transition !important
+
+		@keyframes Float-bar-anim
+			from
+				opacity: 0
+			to
+				opacity: 1
+		animation: Float-bar-ani Float-bar-anim !important
 
 	// 二级 Card 样式修改
 	{Card_L2}
