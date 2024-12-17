@@ -2432,7 +2432,7 @@ if Fast-Font-load
 			&[style*="color"]
 				border-radius: Problem-tag-radius !important
 				padding: Problem-tag-padding
-				transition: all Problem-tag-ani
+				transition: all Problem-tag-ani \, background 0s // 虽然是 bug，但是呈现效果意外还行，回头研究下
 				line-height: 1.5
 				&:hover
 					transform: translateY(- Problem-tag-hover-trans);
@@ -2780,8 +2780,8 @@ if Fast-Font-load
 				&:hover
 					animation: Avatar-hover Avatar-hover-ani !important
 
-	.row > .tags > .tags-wrap.multiline
-			overflow: visible !important // 不裁剪阴影
+	.tags-wrap
+		overflow: visible !important // 不裁剪阴影
 	if Problem-tag-center
 		.row > .tags > .tags-wrap.multiline
 			if Better-Problem-tag-margin
