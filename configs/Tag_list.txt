@@ -1,1 +1,11 @@
+(
+{
+		"uid": 515129,
+		"border-radius": 2px,
+		"background": #fe4c61,
+		"color": #fff,
+		"content": "猫猫"
+}
 
+{}
+)
