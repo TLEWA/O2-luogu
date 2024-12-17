@@ -7,5 +7,11 @@
 		"content": "猫猫"
 }
 
-{}
+{
+		"uid": 8457,
+		"border-radius": 2px,
+		"background": #8e44ad,
+		"color": #fff,
+		"content": "胖猫猫"
+}
 )
