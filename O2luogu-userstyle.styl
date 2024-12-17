@@ -617,6 +617,7 @@
 @var	checkbox bug-fix21 "[bug-fix] 主页翻页按钮层叠错误" 1
 
 @var	text UserStyle "用户自定义样式" "None"
+@var	text UserTag "用户自定义 Tag" "None"
 
 ==/UserStyle== */
 
@@ -998,7 +999,7 @@ if Fast-Font-load
 				color: textc
 				background: bgc !important
 				white-space: nowrap
-				margin-left: 4px
+				margin-left: 3px
 		a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;']
 			&::after
 				padding: 0 .5em !important
@@ -1488,11 +1489,18 @@ if Fast-Font-load
 
 // 全局样式
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
-	User_badge(515129, 2px, #fe4c61, #fff, "猫猫")
+	//User_badge(515129, 2px, #fe4c61, #fff, "猫猫")
 
 	body // 应用全局背景
 		use_mainly_background()
 	
+	// Tag 系统
+	if UserTag!="None"
+		for usertag in UserTag
+			User_badge(usertag["uid"], usertag["border-radius"], usertag["background"], usertag["color"], usertag["content"])
+
+	
+
 	if Smooth-scroll // 平滑滚动自定义项
 		body,html
 			scroll-behavior: smooth
