@@ -606,6 +606,9 @@
 @var	text Usernav-hover-bg-color "悬浮卡片 hover 背景色" "Default"
 @var	text Usernav-hover-ani "悬浮卡片 hover 动画" "Default"
 
+@var	text Benben-bd-hover-color "犇犇下半 hover 背景色" "Default"
+@var	text Benben-bd-hover-ani "犇犇下半 hover 背景色渐变动画" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -937,6 +940,8 @@ if Fast-Font-load
 			&
 				position: relative
 		&:before
+			height: auto !important
+			width: auto !important
 			transform: translate3d(0px, 0px, 0px) if Use-GPU
 			background: acr-bgcolor !important
 			backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
@@ -1457,7 +1462,9 @@ if Fast-Font-load
 		"Discuss-bd-hover-color": "Discuss-bd-color",
 		"Discuss-hover-color-ani": "0.5s ease",
 		"Usernav-hover-bg-color": "Card-bg-color-float", 
-		"Usernav-hover-ani": ".3s ease"
+		"Usernav-hover-ani": ".3s ease",
+		"Benben-bd-hover-color": "Benben-bd-color",
+		"Benben-bd-hover-ani": "0.5s eas"
 	}
 
 	null_key = lookup("null_key")
@@ -3363,16 +3370,17 @@ if Winter-Tag
 			&:hover
 				box-shadow: Benben-hover-shadow !important
 
-			.am-comment-hd,.am-comment-bd
-				border-radius: Benben-radius
 			.am-comment-hd
-				border-bottom-left-radius: 0
-				border-bottom-right-radius: 0
+				border-radius: Benben-radius Benben-radius 0 0
 				background: Benben-hd-color
 			.am-comment-bd
-				border-top-left-radius: 0
-				border-top-right-radius: 0
+				border-radius: 0 0 Benben-radius Benben-radius
+				transition: all Benben-bd-hover-ani !important
 				background: Benben-bd-color
+			&:hover .am-comment-bd
+				border-radius: 0 0 Benben-radius Benben-radius
+				transition: all Benben-bd-hover-ani !important
+				background: Benben-bd-hover-color !important
 
 			&:after
 				border-right-color: Benben-hd-color
