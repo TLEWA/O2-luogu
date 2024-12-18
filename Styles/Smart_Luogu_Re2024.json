@@ -1,1 +1,15 @@
-
+{
+    "Card-L1-radius": "20px",
+    "Card-L2-radius": "10px",
+    "Card-float-radius": "10px",
+    "CustomBackground": "url(https://cdn.jsdelivr.net/gh/Acerkaio/ImageHost/test/6301896a16f2c2beb1299954.jpg)",
+    "Card-bg-color-L1": "Acrylic_a(rgba(255, 255, 255, .8), 0px)",
+    "Card-hover-bg-color-L1": "Acrylic_a(rgba(255, 255, 255, .85), 2px)",
+    "Card-L1-shadow": "^0px 0px 0px #8f8f8f",
+    "Card-L1-hover-shadow": "^3px 3px 20px #1f1f1f",
+    "Card-L1-hover-transition": ".5s ease",
+    "Usernav-box-radius": "20px",
+    "A-hover-line": "1",
+    "A-hover-line-height": "4px",
+    "Navbar-bg-color": "Acrylic_a(#ffffff4a, 20px)"
+}
