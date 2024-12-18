@@ -2,7 +2,7 @@
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
 @version      2.2.0.0
-@description  正式发布版
+@description  2.2 pre2 版本
 @author       TLEWA
 @license      GPL v3
 @preprocessor stylus
@@ -595,6 +595,13 @@
 
 @var	text Float-bar-ani "底部悬浮栏渐现动画" "Default"
 
+@var	text Discuss-shadow "讨论区评论块阴影" "Default"
+@var	text Discuss-hover-shadow "讨论区评论块 hover 阴影" "Default"
+@var	text Discuss-hover-shadow-ani "讨论区评论块 hover 阴影渐现动画效果" "Default"
+@var	text Discuss-hd-hover-color "讨论区评论上半颜色" "Default"
+@var	text Discuss-bd-hover-color "讨论区评论下半颜色" "Default"
+@var	text Discuss-hover-color-ani "讨论区评论块 hover 颜色渐变动画效果" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -673,7 +680,7 @@ if Fast-Font-load
 		Topic-difficulty-Label = ".difficulty a span.lfe-caption,.difficulty span.lfe-caption,.difficulty-tags span.lfe-caption,.block-item.tag" // 题目难度标签
 		InLine-code-block = "[class*='marked'] code,.am-comment-bd p>code" // 行内代码块
 		Code-block = "pre:not([mp-editor-container],.CodeMirror-line)" // 代码块
-		Discuss = ".row-wrap > .card.comment.padding-default, .log,.article-comment .l-card.reply-item,.l-card.comment" // 讨论区评论
+		Discuss = ".row-wrap > .card.comment.padding-default, .card.log,.article-comment .l-card.reply-item,.l-card.comment" // 讨论区评论
 		Badge = ".am-badge,.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span" // 用户 Tag
 		Button = ".lfe-form-sz-middle,.am-btn,.lform-size-middle,.lform-sz-middle,a[href*='http']>#go" // 中型按钮
 		Small-Button = ".lfe-form-sz-small,.lform-sz-small,.lform-size-small,.copy-btn,.copy-btn.lfe-form-sz-middle" // 小型按钮
@@ -781,16 +788,16 @@ if Fast-Font-load
 
 	use_hover_line(Hover-line-ani,Hover-line-color,Hover-line-height)
 		position: relative
-		overflow: unset !important
+		overflow: visible !important
 		&::before
 			content: ""
 			width: 0
 			height: Hover-line-height !important
+			transition: all Hover-line-ani
 			background: Hover-line-color
 			position: absolute
 			top: 100%
 			left: 50%
-			transition: all Hover-line-ani
 		&:hover::before
 			left: 0%
 			width: 100%
@@ -930,6 +937,7 @@ if Fast-Font-load
 			backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
 			content: ""
 			border-radius: @border-radius if @border-radius
+			transition: @transition if @transition
 			position: absolute
 			pointer-events: none
 			top: 0
@@ -988,6 +996,7 @@ if Fast-Font-load
 		a[href*=\'{s("/user/%s",uid)}\'][target='_blank'],a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;'], .user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child
 			overflow: visible
 			&::after
+				overflow: visible !important
 				margin: 0 auto
 				content: content_text
 				font-size: 90%
@@ -1435,7 +1444,13 @@ if Fast-Font-load
 		"Card-hover-bg-color-L2": "None",
 		"Card-hover-bg-color-L1-ani": "0.5s ease",
 		"Card-hover-bg-color-L2-ani": "0.5s ease",
-		"Float-bar-ani": "0.6s cubic-bezier(0.5, 1)"
+		"Float-bar-ani": "0.6s cubic-bezier(0.5, 1)",
+		"Discuss-shadow": "^DarkMode_check(none, 0 5px 15px rgba(50,50,93,.1)\,0 5px 8px rgba(0,0,0,.07))",
+		"Discuss-hover-shadow": "^DarkMode_check(none, 0 10px 30px rgba(50,50,93,.1)\,0 5px 15px rgba(0,0,0,.07))",
+		"Discuss-hover-shadow-ani": "0.15s",
+		"Discuss-hd-hover-color": "Discuss-hd-color",
+		"Discuss-bd-hover-color": "Discuss-bd-color",
+		"Discuss-hover-color-ani": "0.5s ease"
 	}
 
 	null_key = lookup("null_key")
@@ -1526,11 +1541,11 @@ if Winter-Tag
 	
 	// 输入框样式修改
 	{Main_Inputbox}
+		transition: border-color Input-active-ani,box-shadow Input-active-ani !important
 		use_depend_list(background,(Input-bg-color Card-bg-color-L1),1) // 设置背景色
 		use_depend_list(color,(Input-text-color),1);
 		use_depend_list(border-color,(Input-border-color Input-text-color),1)
 		border-radius: Inputbox-radius !important if Custom-Inputbox
-		transition: border-color Input-active-ani,box-shadow Input-active-ani !important
 		&:focus
 			use_depend_list(background-color,(Input-focus-bg-color Card-bg-color-L2),1)
 		&::placeholder
@@ -1620,18 +1635,21 @@ if Winter-Tag
 	// 一级 Card 样式修改
 	{Card_L1}
 		border-radius: Card-L1-radius !important if Custom-Card
+		transition: box-shadow Card-L1-hover-transition \, all Card-hover-bg-color-L1-ani !important
 		background: Card-bg-color-L1 !important
 		box-shadow: Card-L1-shadow !important
-		transition: box-shadow Card-L1-hover-transition \, all Card-hover-bg-color-L1-ani !important
 		&:hover
 			box-shadow: Card-L1-hover-shadow !important
+			transition: box-shadow Card-L1-hover-transition \, all Card-hover-bg-color-L1-ani !important
 			background: Card-hover-bg-color-L1 !important if Card-hover-bg-color-L1!=None
 			
 	div.float-bottom,div.float.operations
-		border-radius: 0 !important
-		transition: box-shadow Card-L1-hover-transition !important
-		&::before
+		&,&:hover
 			border-radius: 0 !important
+			&::before
+				border-radius: 0 !important
+		transition: box-shadow Card-L1-hover-transition !important
+		
 
 		@keyframes Float-bar-anim
 			from
@@ -1643,9 +1661,9 @@ if Winter-Tag
 	// 二级 Card 样式修改
 	{Card_L2}
 		border-radius: Card-L2-radius !important if Custom-Card
+		transition: all Card-hover-bg-color-L2-ani !important
 		background: Card-bg-color-L2 !important
 		border-color: L2-Card-border !important
-		transition: all Card-hover-bg-color-L2-ani !important
 		&:hover
 			box-shadow: Card-L2-hover-shadow !important
 			background: Card-hover-bg-color-L2 !important if Card-hover-bg-color-L2!=None
@@ -1661,8 +1679,8 @@ if Winter-Tag
 		anti_hover_line() if A-hover-line && Anti-Float-hover-line
 		transition: background Float-card-hover-ani !important
 		&:hover //,&:focus
-			background: Card-hover-color-float !important
 			transition: background Float-card-hover-ani !important
+			background: Card-hover-color-float !important
 	
 	{Shadow_card_float}
 		box-shadow: Float-Card-shadow !important
@@ -1862,10 +1880,15 @@ if Winter-Tag
 	// 讨论区评论
 	{Discuss}
 		background: Discuss-bd-color !important
+		box-shadow: Discuss-shadow !important
+		transition: Discuss-hover-shadow-ani !important
+		&:hover
+			box-shadow: Discuss-hover-shadow !important
+			background: Discuss-bd-hover-color !important
+			& > :nth-child(1)
+				background: Discuss-hd-hover-color !important
 		& > :nth-child(1)
-			border-bottom-left-radius: 0 !important
-			border-bottom-right-radius: 0 !important
-			border-radius: Card-L1-radius !important
+			border-radius: Card-L1-radius Card-L1-radius 0 0 !important
 			background: Discuss-hd-color !important
 
 	// Markdown 编辑器
@@ -2579,12 +2602,12 @@ if Winter-Tag
 	// 卡片选择条
 
 	.menu > .items .entry
+		&,&::before
+			transition: all Card-select-bar-hover-ani !important
 		&.selected
 			color: Card-select-bar-select-color !important
 			&::before
 				background: Card-select-bar-select-color !important
-		&,&::before
-			transition: all Card-select-bar-hover-ani !important
 		if Better-Card-select-bar
 			@keyframes Card-select-bar-ani
 				from
@@ -3437,10 +3460,10 @@ if Winter-Tag
 			opacity: 1 !important
 			width: AD-font-bg-width !important
 			height: AD-font-bg-height !important
+			transition: background AD-font-bg-ani !important
 			background: AD-font-bg-color !important
 			transform: translateY(-50%) !important
 			margin: 0 !important
-			transition: background AD-font-bg-ani !important
 			&:before
 				color: AD-font-color !important
 				height: AD-font-bg-height !important
@@ -3534,26 +3557,32 @@ if Winter-Tag
 			&:hover
 				color: Username-hover-color-1 !important
 		&.lg-fg-bluelight
+			transition: color Username-color-ani !important
 			color: Username-color-2 !important
 			&:hover
 				color: Username-hover-color-2 !important
 		&.lg-fg-green
+			transition: color Username-color-ani !important
 			color: Username-color-3 !important
 			&:hover
 				color: Username-hover-color-3 !important
 		&.lg-fg-orange
+			transition: color Username-color-ani !important
 			color: Username-color-4 !important
 			&:hover
 				color: Username-hover-color-4 !important
 		&.lg-fg-red
+			transition: color Username-color-ani !important
 			color: Username-color-5 !important
 			&:hover
 				color: Username-hover-color-5 !important
 		&.lg-fg-purple
+			transition: color Username-color-ani !important
 			color: Username-color-6 !important
 			&:hover
 				color: Username-hover-color-6 !important
 		&.lg-fg-brown
+			transition: color Username-color-ani !important
 			color: Username-color-7 !important
 			&:hover
 				color: Username-hover-color-7 !important
