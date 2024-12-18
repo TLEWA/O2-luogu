@@ -68,6 +68,7 @@
 @var	checkbox Canvas-fix "比赛情况栏在亚克力下正常显示" 1
 @var	checkbox Better-Markdown-Edit "实验性 Markdown 编辑器渲染" 1
 @var	checkbox Winter-Tag "开启冬日绘版支持者 Tag 渲染" 1
+@var	checkbox Use-GPU "尝试使用 GPU 加速渲染" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -602,6 +603,9 @@
 @var	text Discuss-bd-hover-color "讨论区评论下半颜色" "Default"
 @var	text Discuss-hover-color-ani "讨论区评论块 hover 颜色渐变动画效果" "Default"
 
+@var	text Usernav-hover-bg-color "悬浮卡片 hover 背景色" "Default"
+@var	text Usernav-hover-ani "悬浮卡片 hover 动画" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -661,7 +665,7 @@ if Fast-Font-load
 		Main_Inputbox = "input[type=text],input[type=password],textarea#feed-content,.input-wrap,.combo-wrapper>.text,textarea,.mp-dialog-input>input,select,.refined-input.text,.input-group>input,textarea.lfe-form-sz-middle" // 主流样式的输入框
 		Card_L1 = ".lg-article, .lg-article-sub, .lg-article-nctrl, .card:not(.float-card), .float-bottom,.l-card" // 一级卡片
 		Card_L2 = ".am-panel,.inner-card,.discuss-container .discuss,.swal2-validation-message" // 二级卡片
-		Card_float = "#app > nav.lfe-body .popup,.user-nav .center,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog,.l-card.container,.dropdown>.float-card" // 悬浮卡片
+		Card_float = "#app > nav.lfe-body .popup,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog,.l-card.container,.dropdown>.float-card" // 悬浮卡片
 		Hover_card_float = "#app > nav.lfe-body .popup a,.dropdown-operations li,.dropdown li,.candidates li,.am-modal-footer"
 		Shadow_card_float = ".float-card,#app > nav.lfe-body .popup, .user-nav .center,.dropdown:not(:has(>.dropdown-operations,>.float-card))"
 		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I" // 标题文字
@@ -690,10 +694,10 @@ if Fast-Font-load
 // 全局工具函数
 
 	use_stable_bg() // 设置背景相关参数
-		background-repeat no-repeat !important
-		background-size cover !important
-		background-position center !important
-		background-attachment fixed !important
+		background-repeat: no-repeat !important
+		background-size: cover !important
+		background-position: center !important
+		background-attachment: fixed !important
 	
 	// 使用全局背景
 	use_mainly_background(background-val = Background)
@@ -933,10 +937,9 @@ if Fast-Font-load
 			&
 				position: relative
 		&:before
-			transform: translate3d(0px, 0px, 0px)
+			transform: translate3d(0px, 0px, 0px) if Use-GPU
 			background: acr-bgcolor !important
-			backdrop-filter: blur(blur-radius) !important // unless blur-radius == 0
-			display: block
+			backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
 			content: ""
 			border-radius: @border-radius if @border-radius
 			transition: @transition if @transition
@@ -979,9 +982,9 @@ if Fast-Font-load
 
 	background()
 		if substr(to_s(arguments),0,6)=='imgurl'
-			use_stable_bg()
 			val=slice(to_s(arguments),3)
 			background: convert(val)
+			use_stable_bg()
 		else if substr(to_s(arguments),0,7)=='Acrylic'
 			val='a'+slice(to_s(arguments),1)
 			convert(val)
@@ -1452,7 +1455,9 @@ if Fast-Font-load
 		"Discuss-hover-shadow-ani": "0.15s",
 		"Discuss-hd-hover-color": "Discuss-hd-color",
 		"Discuss-bd-hover-color": "Discuss-bd-color",
-		"Discuss-hover-color-ani": "0.5s ease"
+		"Discuss-hover-color-ani": "0.5s ease",
+		"Usernav-hover-bg-color": "Card-bg-color-float", 
+		"Usernav-hover-ani": ".3s ease"
 	}
 
 	null_key = lookup("null_key")
@@ -1635,6 +1640,13 @@ if Winter-Tag
 			height: auto !important
 			background: none !important
 			opacity: 1 !important
+	
+	.dropdown>.center
+		transition: all Usernav-hover-ani !important
+		border-radius: Card-float-radius !important if Custom-Card
+		background: Card-bg-color-float !important
+		&:hover
+			background: Usernav-hover-bg-color !important
 
 	// 一级 Card 样式修改
 	{Card_L1}
@@ -1675,15 +1687,15 @@ if Winter-Tag
 	// 悬浮 Card 样式修改
 	{Card_float}
 		border: none !important
-		background: Card-bg-color-float !important
 		border-radius: Card-float-radius !important if Custom-Card
+		background: Card-bg-color-float !important
 	
 	{Hover_card_float}
 		//border-radius: Card-float-radius if Custom-Card // TODO：分离
 		anti_hover_line() if A-hover-line && Anti-Float-hover-line
-		transition: background Float-card-hover-ani !important
+		transition: all Float-card-hover-ani !important
 		&:hover //,&:focus
-			transition: background Float-card-hover-ani !important
+			transition: all Float-card-hover-ani !important
 			background: Card-hover-color-float !important
 	
 	{Shadow_card_float}
@@ -2656,6 +2668,7 @@ if Winter-Tag
 			//backdrop-filter: blur(20px) !important
 			//-webkit-backdrop-filter: blur(20px) !important
 			border-radius: 0px 30px 30px 0px
+			background: Sidebar-bg-color !important if !Anti-HeaderFooter
 			margin-left: 0px
 			top: SideBar-position
 			transform: translateY(- SideBar-position)
@@ -2936,8 +2949,14 @@ if Winter-Tag
 	// 修个神秘 bug
 	#app
 		overflow: hidden
+	#app:has(.top-bar)
+		overflow: visible
 	.full-container .card
 		overflow: visible !important
+	
+	.user-header-top
+		border-top-left-radius: Card-L1-radius !important
+		border-top-right-radius: Card-L1-radius !important
 
 	// 各种小 bug 的修复
 	.load-more
