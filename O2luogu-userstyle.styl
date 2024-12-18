@@ -696,7 +696,7 @@ if Fast-Font-load
 		background-attachment fixed !important
 	
 	// 使用全局背景
-	use_mainly_background(background-val = Background) 
+	use_mainly_background(background-val = Background)
 		background: background-val !important
 		use_stable_bg()
 	
@@ -933,8 +933,10 @@ if Fast-Font-load
 			&
 				position: relative
 		&:before
+			transform: translate3d(0px, 0px, 0px)
 			background: acr-bgcolor !important
-			backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
+			backdrop-filter: blur(blur-radius) !important // unless blur-radius == 0
+			display: block
 			content: ""
 			border-radius: @border-radius if @border-radius
 			transition: @transition if @transition
@@ -1514,6 +1516,8 @@ if Winter-Tag
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
 	body // 应用全局背景
 		use_mainly_background()
+	html
+		background: unset !important
 	
 	// Tag 系统
 	if UserTag!="None"
