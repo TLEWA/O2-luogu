@@ -2,7 +2,7 @@
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
 @version      2.2.0.0
-@description  2.2 pre2 版本
+@description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
 @preprocessor stylus
@@ -608,6 +608,8 @@
 
 @var	text Benben-bd-hover-color "犇犇下半 hover 背景色" "Default"
 @var	text Benben-bd-hover-ani "犇犇下半 hover 背景色渐变动画" "Default"
+
+@var	text Privateletter-radius "私信圆角样式" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -1452,19 +1454,20 @@ if Fast-Font-load
 		"Markdown-a-color": "#2fb170",
 		"Card-hover-bg-color-L1": "None",
 		"Card-hover-bg-color-L2": "None",
-		"Card-hover-bg-color-L1-ani": "0.5s ease",
-		"Card-hover-bg-color-L2-ani": "0.5s ease",
+		"Card-hover-bg-color-L1-ani": "^0.5s ease",
+		"Card-hover-bg-color-L2-ani": "^0.5s ease",
 		"Float-bar-ani": "0.6s cubic-bezier(0.5, 1)",
 		"Discuss-shadow": "^DarkMode_check(none, 0 5px 15px rgba(50,50,93,.1)\,0 5px 8px rgba(0,0,0,.07))",
 		"Discuss-hover-shadow": "^DarkMode_check(none, 0 10px 30px rgba(50,50,93,.1)\,0 5px 15px rgba(0,0,0,.07))",
 		"Discuss-hover-shadow-ani": "0.15s",
 		"Discuss-hd-hover-color": "Discuss-hd-color",
 		"Discuss-bd-hover-color": "Discuss-bd-color",
-		"Discuss-hover-color-ani": "0.5s ease",
+		"Discuss-hover-color-ani": "^0.5s ease",
 		"Usernav-hover-bg-color": "Card-bg-color-float", 
-		"Usernav-hover-ani": ".3s ease",
+		"Usernav-hover-ani": "^.3s ease",
 		"Benben-bd-hover-color": "Benben-bd-color",
-		"Benben-bd-hover-ani": "0.5s eas"
+		"Benben-bd-hover-ani": "^0.5s ease",
+		"Privateletter-radius": "6px"
 	}
 
 	null_key = lookup("null_key")
@@ -1601,6 +1604,7 @@ if Winter-Tag
 
 	// 洛谷的顶栏（老前端，404，私信）样式修改
 	.wrapper.wrapped.lfe-body.header-layout.tiny,.header:has(>.max)
+		z-index: 4 !important
 		use_depend_list(background,(Navbar-bg-color Card-bg-color-L1),1)
 		& .background
 			background: none !important
@@ -2106,6 +2110,7 @@ if Winter-Tag
 
 	// 私信框
 	.message-block .message
+		border-radius: Privateletter-radius !important
 		background: Privateletter-bg-color !important
 		&:after
 			display: none if Privateletter-hide
