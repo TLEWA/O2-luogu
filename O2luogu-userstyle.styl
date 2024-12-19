@@ -69,6 +69,7 @@
 @var	checkbox Better-Markdown-Edit "实验性 Markdown 编辑器渲染" 1
 @var	checkbox Winter-Tag "开启冬日绘版支持者 Tag 渲染" 1
 @var	checkbox Use-GPU "尝试使用 GPU 加速渲染" 1
+@var	checkbox Ease-Load "尝试平滑过渡页面加载" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -98,7 +99,7 @@
 @var	text Inputbox-radius "输入框圆角大小" "Default"
 @var	text Benben-radius "犇犇圆角大小" "Default"
 @var	text InLine-code-block-radius "行内代码块圆角大小" "Default"
-@var	text Code-block-radius "行内代码块圆角大小" "Default"
+@var	text Code-block-radius "代码块圆角大小" "Default"
 
 @var	text Background-color "全局背景色" "Default"
 @var	text Card-bg-color-L1 "一级卡片背景色" "Default"
@@ -611,8 +612,11 @@
 
 @var	text Privateletter-radius "私信圆角样式" "Default"
 
-@var	text Button-radius "中型按钮圆角样式" "Default"
-@var	text Small-button-radius "小型按钮圆角样式" "Default"
+@var	text Button-shadow "中型按钮阴影样式" "Default"
+@var	text Small-button-shadow "小型按钮阴影样式" "Default"
+@var	text Button-hover-shadow "中型按钮 hover 阴影样式" "Default"
+@var	text Small-button-hover-shadow "小型按钮 hover 阴影样式" "Default"
+@var	text Button-shadow-ani "按钮 hover 阴影渐变动画" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -1479,7 +1483,12 @@ if Fast-Font-load
 		"Usernav-hover-ani": "^.3s ease",
 		"Benben-bd-hover-color": "Benben-bd-color",
 		"Benben-bd-hover-ani": "^0.5s ease",
-		"Privateletter-radius": "6px"
+		"Privateletter-radius": "6px",
+		"Button-shadow": "none"
+		"Small-button-shadow": "none"
+		"Button-hover-shadow": "none"
+		"Small-button-hover-shadow": "none"
+		"Button-shadow-ani": "^.15s ease"
 	}
 
 	null_key = lookup("null_key")
@@ -2427,6 +2436,8 @@ if Winter-Tag
 			anti_hover_line() if A-hover-line
 	{Small-Button}
 		border-radius: Small-button-radius !important
+		transition: box-shadow Button-shadow-ani !important
+		box-shadow: Small-button-shadow !important
 		use_button_style(Small-button-padding-width,Small-button-padding-height)
 		&:is(a),&>a
 			anti_hover_line() if A-hover-line
@@ -2990,6 +3001,9 @@ if Winter-Tag
 	.user-header-top
 		border-top-left-radius: Card-float-radius !important
 		border-top-right-radius: Card-float-radius !important
+
+	if Ease-Load
+		@view-transition { navigation: auto; }
 
 	// 各种小 bug 的修复
 	.load-more
