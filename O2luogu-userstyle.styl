@@ -947,7 +947,7 @@ if Fast-Font-load
 		&:before
 			height: auto !important
 			width: auto !important
-			//transform: translate3d(0px, 0px, 0px) if Use-GPU
+			transform: translate3d(0px, 0px, 0px) if Use-GPU
 			background: acr-bgcolor !important
 			backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
 			content: ""
@@ -1573,10 +1573,10 @@ if Winter-Tag
 	// 输入框样式修改
 	{Main_Inputbox}
 		transition: border-color Input-active-ani,box-shadow Input-active-ani !important
+		border-radius: Inputbox-radius !important if Custom-Inputbox
 		use_depend_list(background,(Input-bg-color Card-bg-color-L1),1) // 设置背景色
 		use_depend_list(color,(Input-text-color),1);
 		use_depend_list(border-color,(Input-border-color Input-text-color),1)
-		border-radius: Inputbox-radius !important if Custom-Inputbox
 		&:focus
 			use_depend_list(background-color,(Input-focus-bg-color Card-bg-color-L2),1)
 		&::placeholder
@@ -1601,10 +1601,14 @@ if Winter-Tag
 		font-family:  -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif !important
 
 	.mp-dialog-input>input:focus-visible,.cs-dialog-item-content:focus-visible // MarkDown 编辑器 outline 消除（这个 outline 太魔怔了）
-			outline: 0 !important
+		outline: 0 !important
+	.input-wrap > input,.refined-input > input
+		background: none !important
+		backdrop-filter: none !important
 	
 	section>.block>button.block-item // 题库 “算法来源” 按钮
-		use_depend_list(background-color,(Input-bg-color Card-bg-color-L1),1)
+		border-radius: Inputbox-radius !important if Custom-Inputbox
+		use_depend_list(background,(Input-bg-color Card-bg-color-L1),1)
 		color: Input-placeholder-color !important
 
 	.block.filter-tags .combo-wrapper>.text>span // 题目难度选择框为统一观感特殊处理成统一颜色
@@ -2979,9 +2983,13 @@ if Winter-Tag
 	.full-container .card
 		overflow: visible !important
 	
-	.user-header-top
+	.user-header-container > .user-header-top
 		border-top-left-radius: Card-L1-radius !important
 		border-top-right-radius: Card-L1-radius !important
+	
+	.user-header-top
+		border-top-left-radius: Card-float-radius !important
+		border-top-right-radius: Card-float-radius !important
 
 	// 各种小 bug 的修复
 	.load-more
@@ -2998,6 +3006,8 @@ if Winter-Tag
 			transform: scaleY(-1) !important
 			& *
 				transition-duration: .4s !important
+	.arrow
+		z-index: 0
 	
 	if bug-fix3
 		@css{
