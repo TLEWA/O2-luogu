@@ -1018,7 +1018,7 @@ if Fast-Font-load
 			background: arguments
 	
 	User_badge(uid, radius, bgc, textc, content_text)
-		a[href*=\'{s("/user/%s",uid)}\'][target='_blank'],a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;'], .user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child
+		a[href*=\'{s("/user/%s",uid)}\'][target='_blank'],a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;'], .user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child, .lfe-body:has(>.top-bar>.user-nav img[src*=\'{s("/usericon/%s",uid)}\']) > .user-nav.rside .luogu-username.username > .name
 			overflow: visible
 			&::after
 				overflow: visible !important
@@ -1694,7 +1694,6 @@ if Winter-Tag
 			&::before
 				border-radius: 0 !important
 		transition: box-shadow Card-L1-hover-transition !important
-		
 
 		@keyframes Float-bar-anim
 			from
@@ -3013,7 +3012,7 @@ if Winter-Tag
 	
 	if Use-GPU
 		main
-			transform: translate3d(0px, 0px, 0px)
+			transform: translateZ(0)
 
 	// 各种小 bug 的修复
 	.load-more
