@@ -612,6 +612,7 @@
 @var	text Benben-bd-hover-ani "犇犇下半 hover 背景色渐变动画" "Default"
 
 @var	text Privateletter-radius "私信圆角样式" "Default"
+@var	text Privateletter-list-radius "私信选择框圆角样式" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -1479,7 +1480,8 @@ if Fast-Font-load
 		"Usernav-hover-ani": "^.3s ease",
 		"Benben-bd-hover-color": "Benben-bd-color",
 		"Benben-bd-hover-ani": "^0.5s ease",
-		"Privateletter-radius": "6px"
+		"Privateletter-list-radius": "0",
+		"Privateitem-hover-text-color": "None"
 	}
 
 	null_key = lookup("null_key")
@@ -2143,9 +2145,14 @@ if Winter-Tag
 		border-left-color: Privateletter-right-bg-color !important
 	
 	.card.wrapper.padding-none > .side > .panel-content > .list > .item
-		transition: background Privateitem-hover-ani !important
+		transition: background Privateitem-hover-ani \, border-radius Privateitem-hover-ani !important
 		&:hover
+			border-radius: Privateletter-list-radius !important
 			background: Privateitem-hover-bg-color !important
+			& .lfe-caption
+				color: Privateitem-hover-text-color !important
+		& .lfe-caption
+			transition: color Privateitem-hover-ani !important
 
 	// 更好的评测详情色块
 	if Better-test-case
@@ -2260,7 +2267,7 @@ if Winter-Tag
 					background: Test-case-color-MLE
 
 	// 页首修改
-	.main-container > .wrapper.wrapped.lfe-body:first-child > .background,.main-container > header.theme-bg
+	.main-container > .wrapper.wrapped.lfe-body:not(.tiny):first-child > .background,.main-container > header.theme-bg
 		background: Header-bg-color !important if !Anti-HeaderFooter
 	
 	// 页尾修改
@@ -2678,7 +2685,7 @@ if Winter-Tag
 
 	if Smart-SideBar // Smart-Luogu 式侧栏
 		// 顶栏适配
-		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:first-child,.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
+		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:not(.tiny):first-child,.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
 			position: relative !important
 			right: 60px !important
 			padding-left: 75.2px !important
@@ -2776,7 +2783,7 @@ if Winter-Tag
 			.main-container > .wrapper.wrapped.lfe-body>.header:not([pageloading*="true"])>.user-nav
 				animation: Show-Usernav-box Usernav-box-ani
 		
-		.main-container > .wrapper.wrapped.lfe-body:first-child,.main-container > header.theme-bg
+		.main-container > .wrapper.wrapped.lfe-body:not(.tiny):first-child,.main-container > header.theme-bg
 			& .functional
 				width: 100% !important
 				float: left
@@ -2786,7 +2793,7 @@ if Winter-Tag
 					margin-bottom: 0 !important
 					line-height: calc(120% + 1em)
 		
-	.main-container > .wrapper.wrapped.lfe-body:first-child,.main-container > header.theme-bg
+	.main-container > .wrapper.wrapped.lfe-body:not(.tiny):first-child,.main-container > header.theme-bg
 		& .lfe-h1
 			font-size: Main-title-size !important
 		
