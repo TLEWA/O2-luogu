@@ -944,6 +944,7 @@ if Fast-Font-load
 			&
 				position: relative
 		&:before
+			content-visibility: auto if Content-Visibility
 			height: auto !important
 			width: auto !important
 			transform: translate3d(0px, 0px, 0px) if Use-GPU
@@ -2677,7 +2678,7 @@ if Winter-Tag
 
 	if Smart-SideBar // Smart-Luogu 式侧栏
 		// 顶栏适配
-		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:has(>.background+.header),.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
+		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:first-child,.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
 			position: relative !important
 			right: 60px !important
 			padding-left: 75.2px !important
@@ -2775,7 +2776,7 @@ if Winter-Tag
 			.main-container > .wrapper.wrapped.lfe-body>.header:not([pageloading*="true"])>.user-nav
 				animation: Show-Usernav-box Usernav-box-ani
 		
-		.main-container > .wrapper.wrapped.lfe-body:has(>.background+.header),.main-container > header.theme-bg
+		.main-container > .wrapper.wrapped.lfe-body:first-child,.main-container > header.theme-bg
 			& .functional
 				width: 100% !important
 				float: left
@@ -2785,7 +2786,7 @@ if Winter-Tag
 					margin-bottom: 0 !important
 					line-height: calc(120% + 1em)
 		
-	.main-container > .wrapper.wrapped.lfe-body:has(>.background+.header),.main-container > header.theme-bg
+	.main-container > .wrapper.wrapped.lfe-body:first-child,.main-container > header.theme-bg
 		& .lfe-h1
 			font-size: Main-title-size !important
 		
@@ -3002,6 +3003,10 @@ if Winter-Tag
 			content-visibility: auto
 		{Avatar}
 			content-visibility: auto
+	
+	if Use-GPU
+		main
+			transform: translate3d(0px, 0px, 0px)
 
 	// 各种小 bug 的修复
 	.load-more
