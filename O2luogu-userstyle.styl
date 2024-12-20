@@ -69,7 +69,8 @@
 @var	checkbox Better-Markdown-Edit "实验性 Markdown 编辑器渲染" 1
 @var	checkbox Winter-Tag "开启冬日绘版支持者 Tag 渲染" 1
 @var	checkbox Use-GPU "尝试使用 GPU 加速渲染" 1
-@var	checkbox Ease-Load "尝试平滑过渡页面加载" 1
+@var	checkbox Ease-Load "平滑过渡页面加载" 1
+@var	checkbox Content-Visibility "（实验性）尝试跳过渲染不可见内容以提升性能" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -611,12 +612,6 @@
 @var	text Benben-bd-hover-ani "犇犇下半 hover 背景色渐变动画" "Default"
 
 @var	text Privateletter-radius "私信圆角样式" "Default"
-
-@var	text Button-shadow "中型按钮阴影样式" "Default"
-@var	text Small-button-shadow "小型按钮阴影样式" "Default"
-@var	text Button-hover-shadow "中型按钮 hover 阴影样式" "Default"
-@var	text Small-button-hover-shadow "小型按钮 hover 阴影样式" "Default"
-@var	text Button-shadow-ani "按钮 hover 阴影渐变动画" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -1483,12 +1478,7 @@ if Fast-Font-load
 		"Usernav-hover-ani": "^.3s ease",
 		"Benben-bd-hover-color": "Benben-bd-color",
 		"Benben-bd-hover-ani": "^0.5s ease",
-		"Privateletter-radius": "6px",
-		"Button-shadow": "none"
-		"Small-button-shadow": "none"
-		"Button-hover-shadow": "none"
-		"Small-button-hover-shadow": "none"
-		"Button-shadow-ani": "^.15s ease"
+		"Privateletter-radius": "6px"
 	}
 
 	null_key = lookup("null_key")
@@ -1941,6 +1931,7 @@ if Winter-Tag
 			& > :nth-child(1)
 				background: Discuss-hd-hover-color !important
 		& > :nth-child(1)
+			//content-visibility: auto if Content-Visibility
 			border-radius: Card-L1-radius Card-L1-radius 0 0 !important
 			background: Discuss-hd-color !important
 
@@ -2268,7 +2259,7 @@ if Winter-Tag
 					background: Test-case-color-MLE
 
 	// 页首修改
-	.main-container > .wrapper.wrapped.lfe-body:has(>.background+.header) > .background,.main-container > header.theme-bg
+	.main-container > .wrapper.wrapped.lfe-body:first-child > .background,.main-container > header.theme-bg
 		background: Header-bg-color !important if !Anti-HeaderFooter
 	
 	// 页尾修改
@@ -2581,6 +2572,7 @@ if Winter-Tag
 			to 
 				padding-bottom: 0px
 		
+		//transform: translate3d(0px, 0px, 0px) if Use-GPU
 		if More-Header-Ani
 			.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
 				animation: Header-anim Header-ani
@@ -3004,6 +2996,12 @@ if Winter-Tag
 
 	if Ease-Load
 		@view-transition { navigation: auto; }
+	
+	if Content-Visibility
+		main,.status-name // 我也不知道为什么这么笼统的选择器就能提升性能，但是再往下细分就要有 bug 了（虽说已经产生了一些微妙的渲染差异）
+			content-visibility: auto
+		{Avatar}
+			content-visibility: auto
 
 	// 各种小 bug 的修复
 	.load-more
@@ -3412,6 +3410,7 @@ if Winter-Tag
 				box-shadow: Benben-hover-shadow !important
 
 			.am-comment-hd
+				content-visibility: auto if Content-Visibility
 				border-radius: Benben-radius Benben-radius 0 0
 				background: Benben-hd-color
 			.am-comment-bd
