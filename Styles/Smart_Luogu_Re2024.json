@@ -53,5 +53,9 @@
     "Code-block-bg-color": "#fdf7fc",
     "InLine-code-block-radius": "5px",
 	"Code-block-radius": "10px",
-    "Test-case-border-radius": "8px"
+    "Test-case-border-radius": "8px",
+    "Divider-color": "rgba(#333,0.2)",
+    "Privateitem-hover-bg-color": "#7a0ad9a6",
+    "Privateitem-hover-text-color": "#fff",
+    "Privateletter-list-radius": "10px"
 }
