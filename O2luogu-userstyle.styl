@@ -652,6 +652,8 @@
 本样式仍处于早期版本，功能上欠缺良多。
 */
 
+// url('https://cdn.jsdelivr.net/gh/TLEWA/O2-luogu@%E5%89%8D%E7%9E%BB%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/imgs/output1.webp')
+
 // 字体处理
 
 if Fast-Font-load
@@ -709,8 +711,19 @@ if Fast-Font-load
 	
 	// 使用全局背景
 	use_mainly_background(background-val = Background)
-		background: background-val !important
-		use_stable_bg()
+		will-change: background
+		&:before
+			will-change: transform
+			-webkit-transform: translate3d(0,0,0) if Use-GPU
+			content: ""
+			position: fixed
+			top: 0
+			left: 0
+			height: 100%
+			width: 100%
+			background: background-val !important
+			z-index: -1
+			use_stable_bg()
 	
 	use_new_bar() // 我们洛谷的新前端，太美丽
 		// 专栏顶栏样式修改
@@ -975,6 +988,10 @@ if Fast-Font-load
 	// 直接修改背景的亚克力实现，不需要修改 z-index，不会对 border-radius 造成影响，但可能造成层叠混乱
 	acrylic_b(acr-bgcolor,blur-radius=10px)
 		background: acr-bgcolor !important
+		if Use-GPU
+			@layer
+				&
+					transform: translateZ(0)
 		backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
 
 	to_s() // 将值转换为对应字符串
@@ -1004,6 +1021,7 @@ if Fast-Font-load
 		if substr(to_s(arguments),0,6)=='imgurl'
 			val=slice(to_s(arguments),3)
 			background: convert(val)
+			image-rendering: crisp-edges
 			use_stable_bg()
 		else if substr(to_s(arguments),0,7)=='Acrylic'
 			val='a'+slice(to_s(arguments),1)
@@ -2579,7 +2597,6 @@ if Winter-Tag
 			to 
 				padding-bottom: 0px
 		
-		//transform: translate3d(0px, 0px, 0px) if Use-GPU
 		if More-Header-Ani
 			.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
 				animation: Header-anim Header-ani
@@ -3145,7 +3162,7 @@ if Winter-Tag
 					padding-bottom: Header-ani-padding
 				to 
 					padding-bottom: 0px
-
+			
 			.main-container:has(.colored-link-selector>.active:nth-child({num})) > header.theme-bg
 				animation: Header-anim+num Header-ani !important
 	
