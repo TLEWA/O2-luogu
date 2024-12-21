@@ -8,6 +8,7 @@
 @preprocessor stylus
 
 @var	checkbox DarkMode "深色模式" 0
+@var	checkbox Anti-Userinput "禁用用户输入框自定义样式" 0
 @var	checkbox Custom-Scrollbar "更好的滚动条" 1
 @var	checkbox Custom-Inputbox "更一致的输入框圆角样式" 1
 @var	checkbox Custom-Card "更一致的卡片圆角样式" 1
@@ -651,8 +652,6 @@
 在高度原创性的基础上，我的样式借鉴了这些成熟样式的部分代码，感谢以上作者为洛谷美化做出的巨大贡献！
 本样式仍处于早期版本，功能上欠缺良多。
 */
-
-// url('https://cdn.jsdelivr.net/gh/TLEWA/O2-luogu@%E5%89%8D%E7%9E%BB%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/imgs/output1.webp')
 
 // 字体处理
 
@@ -1504,11 +1503,11 @@ if Fast-Font-load
 
 	null_key = lookup("null_key")
 	for key, value in DefaultStyle
-		if (typeof(lookup(key))=="string" && lookup(key)==Default)
+		if (typeof(lookup(key))=="string" && lookup(key)==Default) || Anti-Userinput
 			val = analysis_string(value)
 			define(key,val)
 		else if typeof(lookup(key))=="string"
-			val = analysis_user_string(value)
+			val = analysis_user_string(lookup(key))
 			define(key,val)
 
 	// 卡片化判断
