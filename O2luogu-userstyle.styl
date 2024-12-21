@@ -637,7 +637,12 @@
 @var	checkbox bug-fix20 "[bug-fix] 老 Markdown 编辑器预览框对齐错误" 1
 @var	checkbox bug-fix21 "[bug-fix] 主页翻页按钮层叠错误" 1
 
-@var	text UserStyle "用户自定义样式" "None"
+@var	text secondary_UserStyle "次要用户自定义样式 1" "None"
+@var	text secondary_UserStyle2 "次要用户自定义样式 2" "None"
+@var	text secondary_UserStyle3 "次要用户自定义样式 3" "None"
+@var	text UserStyle "用户自定义样式 1" "None"
+@var	text UserStyle2 "用户自定义样式 2" "None"
+@var	text UserStyle3 "用户自定义样式 3" "None"
 @var	text UserTag "用户自定义 Tag" "None"
 
 ==/UserStyle== */
@@ -1077,10 +1082,22 @@ if Fast-Font-load
 
 // 全局变量定义
 	// 用户样式解析
-	if UserStyle!=None
-		for key, value in UserStyle
-			val = analysis_string(value)
-			define(key,val)
+
+	for US in (secondary_UserStyle secondary_UserStyle2 secondary_UserStyle3)
+		if US!=None
+			for key, value in US
+				if (typeof(lookup(key))=="string" && lookup(key)==Default) || Anti-Userinput
+					val = analysis_string(value)
+					define(key,val)
+				else if typeof(lookup(key))=="string"
+					val = analysis_user_string(lookup(key))
+					define(key,val)
+	
+	for US in (UserStyle3 UserStyle2 UserStyle)
+		if US!=None
+			for key, value in US
+				val = analysis_string(value)
+				define(key,val)
 
 	DefaultStyle = {
 		"Card-L1-radius": "4px",
