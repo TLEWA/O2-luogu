@@ -620,6 +620,8 @@
 @var	text Article-max "开启动态渲染文章行数阈值" "Default"
 @var	text Use-card-radius "文字卡片背景圆角大小" "Default"
 
+@var	text Article-sidebar-card-radius "新前端侧栏卡片圆角样式" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -742,7 +744,9 @@ if Fast-Font-load
 			background: Article-sidebar-bg-color !important
 			& ul>li
 				transition: all Article-sidebar-card-hover-ani !important
+				border-radius: Article-sidebar-card-radius !important
 			& ul>li:hover
+				border-radius: Article-sidebar-card-radius !important
 				background: Article-sidebar-card-hover !important
 	
 	get_depend_list(args) // TODO：此处支持可能不够完备，如有更完善实现可能更改
@@ -1543,7 +1547,8 @@ if Fast-Font-load
 		"Privateletter-list-radius": "0",
 		"Privateitem-hover-text-color": "None",
 		"Article-max": "500",
-		"Use-card-radius": "Card-L1-radius"
+		"Use-card-radius": "Card-L1-radius",
+		"Article-sidebar-card-radius": "3px"
 	}
 
 	null_key = lookup("null_key")
