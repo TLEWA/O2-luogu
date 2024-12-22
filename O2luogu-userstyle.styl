@@ -3046,10 +3046,21 @@ if Winter-Tag
 			content-visibility: auto
 		{Avatar}
 			content-visibility: auto
+			contain: paint layout
+		.main > .list-wrap > .row-wrap > .row
+			contain: paint layout
+		{Discuss}
+			contain: paint layout
+		{Code-block}
+			contain: paint layout
+		{Inline-code-block}
+			contain: paint layout
 	
 	if Content-Visibility-Article
-		.article-content .lfe-marked-wrap > .lfe-marked:has(>:nth-child({Article-max})) > *
-			content-visibility: auto
+		.article-content .lfe-marked-wrap > .lfe-marked:has(>:nth-child({Article-max}))
+			&,&>*
+				content-visibility: auto !important
+				contain: layout
 	
 	if Use-GPU
 		main
