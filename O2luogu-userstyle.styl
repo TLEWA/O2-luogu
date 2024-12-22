@@ -2310,8 +2310,9 @@ if Winter-Tag
 	// 页尾修改
 	.main-container > .wrapper.wrapped.lfe-body:has(>.footer),.main-container > footer.theme-bg
 		background: Footer-bg-color !important if !Anti-HeaderFooter
-		& .background
-			background: none !important
+		if !Anti-HeaderFooter
+			& .background
+				background: none !important
 		& .info,& .links
 			&>p,& a
 				color: Footer-text-color !important
