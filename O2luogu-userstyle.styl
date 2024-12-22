@@ -741,7 +741,7 @@ if Fast-Font-load
 		body>div>nav.lside,body>div>div.rside
 			background: Article-sidebar-bg-color !important
 			& ul>li
-				transition: background Article-sidebar-card-hover-ani !important
+				transition: all Article-sidebar-card-hover-ani !important
 			& ul>li:hover
 				background: Article-sidebar-card-hover !important
 	
@@ -1069,6 +1069,21 @@ if Fast-Font-load
 			&::after
 				font-size: 70% !important
 	
+	is_acrylic()
+		if substr(to_s(arguments),0,7)=='Acrylic'
+			return 1
+		return 0
+	
+	sub_acrylic()
+		return convert('look_acrylic_value'+slice(to_s(arguments),9))
+
+	look_acrylic_value(acr-bgcolor,blur-radius=10px)
+		return acr-bgcolor
+
+	Ready_acrylic()
+		if is_acrylic(arguments)
+			background: Acrylic_a(rgba(rgb(sub_acrylic(arguments)),0),0)
+
 	//box-shadow()
 	//	if Use-GPU
 	//		filter: s("box-shadow(%s)",arguments)
