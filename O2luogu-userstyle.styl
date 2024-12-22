@@ -1717,6 +1717,7 @@ if Winter-Tag
 
 	// 一级 Card 样式修改
 	{Card_L1}
+		contain: layout if Content-Visibility
 		border-radius: Card-L1-radius !important if Custom-Card
 		transition: box-shadow Card-L1-hover-transition \, all Card-hover-bg-color-L1-ani !important
 		background: Card-bg-color-L1 !important
@@ -1742,6 +1743,7 @@ if Winter-Tag
 
 	// 二级 Card 样式修改
 	{Card_L2}
+		contain: paint layout if Content-Visibility
 		border-radius: Card-L2-radius !important if Custom-Card
 		transition: all Card-hover-bg-color-L2-ani !important
 		background: Card-bg-color-L2 !important
@@ -1752,6 +1754,7 @@ if Winter-Tag
 	
 	// 悬浮 Card 样式修改
 	{Card_float}
+		contain: paint layout if Content-Visibility
 		border: none !important
 		border-radius: Card-float-radius !important if Custom-Card
 		background: Card-bg-color-float !important
@@ -1961,6 +1964,7 @@ if Winter-Tag
 	
 	// 讨论区评论
 	{Discuss}
+		contain: paint layout if Content-Visibility
 		border-radius: Card-L1-radius !important
 		background: Discuss-bd-color !important
 		box-shadow: Discuss-shadow !important
@@ -2095,6 +2099,7 @@ if Winter-Tag
 
 	// 行内代码块
 	{InLine-code-block}
+		contain: paint layout if Content-Visibility
 		border-radius: InLine-code-block-radius !important
 		background: InLine-code-block-bg-color !important
 		border: InLine-code-block-border !important
@@ -2112,6 +2117,7 @@ if Winter-Tag
 	
 	// 代码块
 	{Code-block}
+		contain: paint layout if Content-Visibility
 		border-radius: Code-block-radius !important
 		background: Code-block-bg-color !important
 		border: Code-block-border !important
@@ -3043,25 +3049,19 @@ if Winter-Tag
 		@view-transition { navigation: auto; }
 	
 	if Content-Visibility
-		main.lfe-body,main>.columba-content-wrap,.status-name // 我也不知道为什么这么笼统的选择器就能提升性能，但是再往下细分就要有 bug 了（虽说已经产生了一些微妙的渲染差异）
+		main>.columba-content-wrap,.status-name // 我也不知道为什么这么笼统的选择器就能提升性能，但是再往下细分就要有 bug 了（虽说已经产生了一些微妙的渲染差异）
 			content-visibility: auto
 		{Avatar}
 			content-visibility: auto
 			contain: paint layout
 		.main > .list-wrap > .row-wrap > .row
 			contain: paint layout
-		{Discuss}
-			contain: paint layout
-		{Code-block}
-			contain: paint layout
-		{Inline-code-block}
-			contain: paint layout
 	
 	if Content-Visibility-Article
 		.article-content .lfe-marked-wrap > .lfe-marked:has(>:nth-child({Article-max}))
 			&,&>*
 				content-visibility: auto !important
-				contain: layout
+				contain: paint layout
 	
 	if Use-GPU
 		main
