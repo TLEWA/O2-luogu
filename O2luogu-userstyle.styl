@@ -72,7 +72,7 @@
 @var	checkbox Use-GPU "尝试使用 GPU 加速渲染" 1
 @var	checkbox Ease-Load "平滑过渡页面加载" 1
 @var	checkbox Content-Visibility "（实验性）尝试跳过渲染不可见内容以提升性能" 1
-@var	checkbox Content-Visibility-Article "在渲染长文章时进行一些更改以提升阅读流畅性" 1
+@var	checkbox Content-Visibility-Article "在渲染长文章时进行动态加载以提升阅读流畅性" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
@@ -721,7 +721,7 @@ if Fast-Font-load
 		will-change: background
 		&:before
 			will-change: transform
-			-webkit-transform: translate3d(0,0,0) if Use-GPU
+			transform: translate3d(0,0,0) if Use-GPU
 			content: ""
 			position: fixed
 			top: 0
@@ -966,9 +966,9 @@ if Fast-Font-load
 				position: relative
 		&:before
 			content-visibility: auto if Content-Visibility
+			transform: translate3d(0px, 0px, 0px) if Use-GPU
 			height: auto !important
 			width: auto !important
-			transform: translate3d(0px, 0px, 0px) if Use-GPU
 			background: acr-bgcolor !important
 			backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
 			content: ""
@@ -1066,6 +1066,12 @@ if Fast-Font-load
 		.user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child
 			&::after
 				font-size: 70% !important
+	
+	//box-shadow()
+	//	if Use-GPU
+	//		filter: drop-shadow(arguments)
+	//	else
+	//		box-shadow: arguments
 	
 // 兼容性选项
 	if exlg-compatible
@@ -1754,7 +1760,7 @@ if Winter-Tag
 	
 	// 悬浮 Card 样式修改
 	{Card_float}
-		contain: paint layout if Content-Visibility
+		contain: layout if Content-Visibility
 		border: none !important
 		border-radius: Card-float-radius !important if Custom-Card
 		background: Card-bg-color-float !important
@@ -3054,18 +3060,15 @@ if Winter-Tag
 		{Avatar}
 			content-visibility: auto
 			contain: paint layout
-		.main > .list-wrap > .row-wrap > .row
+		.main > .list-wrap > .row-wrap > .row,.lfe-marked .katex-display,.marked katex
 			contain: paint layout
+		.lfe-marked > *,.marked > *
+			contain: layout
 	
 	if Content-Visibility-Article
 		.article-content .lfe-marked-wrap > .lfe-marked:has(>:nth-child({Article-max}))
 			&,&>*
 				content-visibility: auto !important
-				contain: paint layout
-	
-	if Use-GPU
-		main
-			transform: translateZ(0)
 
 	// 各种小 bug 的修复
 	.load-more
