@@ -971,7 +971,7 @@ if Fast-Font-load
 		@layer
 			&
 				position: relative
-		&:before
+		&::before
 			content-visibility: auto if Content-Visibility
 			transform: translate3d(0px, 0px, 0px) if Use-GPU
 			height: auto !important
@@ -2701,14 +2701,13 @@ if Winter-Tag
 		
 		if Header-Optimize && Content-Visibility
 			if More-Header-Ani
-				my_body = ".main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*='true'])),.main-container:has(>header.theme-bg)"
+				my_body = ".main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*='true'])),.main-container>header"
 			else
-				my_body = ".main-container > .wrapper.wrapped.lfe-body,.main-container:has(>header.theme-bg)"
+				my_body = ".main-container > .wrapper.wrapped.lfe-body,.main-container>header"
 			.main-container > .wrapper.wrapped.lfe-body
 				&>.background
 					contain: style paint layout size
 					will-change: transform
-					backface-visiblity: hidden
 			.main-container > header.theme-bg
 				position: relative
 				background: none !important
@@ -3144,8 +3143,16 @@ if Winter-Tag
 			contain: paint layout
 		.main > .list-wrap > .row-wrap > .row,.lfe-marked .katex-display,.marked katex
 			contain: style paint layout
-		.lfe-marked > *,.marked > *
-			contain: layout
+		.lfe-marked,.marked > *
+			contain: style paint layout !important
+		.sidebar.lside.bar.hide.nav-scrollbar
+			contain: strict
+		.main-container > .lcolor-bg-grey-1
+			contain: style paint layout !important
+	
+	if Use-GPU
+		.sidebar.lside.bar.hide.nav-scrollbar
+			transform: translate3d(0,0,0)
 	
 	if Content-Visibility-Article
 		.article-content .lfe-marked-wrap > .lfe-marked:has(>:nth-child({Article-max}))
