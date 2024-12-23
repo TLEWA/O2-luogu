@@ -1117,7 +1117,7 @@ if Fast-Font-load
 	for US in (secondary_UserStyle secondary_UserStyle2 secondary_UserStyle3)
 		if US!=None
 			for key, value in US
-				if (typeof(lookup(key))=="string" && lookup(key)==Default) || Anti-Userinput
+				if (typeof(lookup(key))=="string" && lookup(key)==Default)
 					val = analysis_string(value)
 					define(key,val)
 				else if typeof(lookup(key))=="string"
@@ -2699,12 +2699,12 @@ if Winter-Tag
 				@keyframes Optimize-Header-anim
 					from
 						transform: s("translate3d(0,%s,0)", -(Header-ani-padding/2))
-						clip-path: s("inset(0 0 %s 0)", Header-ani-padding/2)	
+						clip-path: s("inset(%s 0 %s 0)",Header-ani-padding/2, Header-ani-padding/2)	
 						padding-bottom: Header-ani-padding
 						padding-top: Header-ani-padding
 					to
 						transform: s("translate3d(0,%s,0)", - (Header-ani-padding))
-						clip-path: s("inset(0 0 %s 0)", Header-ani-padding)
+						clip-path: s("inset(%s 0 %s 0)",(Header-ani-padding), Header-ani-padding)
 						padding-bottom: Header-ani-padding
 						padding-top: Header-ani-padding
 				animation: Optimize-Header-anim Header-ani !important
@@ -3321,12 +3321,12 @@ if Winter-Tag
 					@keyframes Optimize-Header-anim{num}
 						from
 							transform: s("translate3d(0,%s,0)", -(Header-ani-padding/2))
-							clip-path: s("inset(0 0 %s 0)", Header-ani-padding/2)	
+							clip-path: s("inset(%s 0 %s 0)",Header-ani-padding/2, Header-ani-padding/2)	
 							padding-bottom: Header-ani-padding
 							padding-top: Header-ani-padding
 						to
 							transform: s("translate3d(0,%s,0)", - (Header-ani-padding))
-							clip-path: s("inset(0 0 %s 0)", Header-ani-padding)
+							clip-path: s("inset(%s 0 %s 0)",(Header-ani-padding), Header-ani-padding)
 							padding-bottom: Header-ani-padding
 							padding-top: Header-ani-padding
 					animation: Optimize-Header-anim+num Header-ani !important
