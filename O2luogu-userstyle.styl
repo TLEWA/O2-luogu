@@ -2719,7 +2719,7 @@ if Winter-Tag
 							transform: s("translateY(%s)", Header-ani-padding)
 						to
 							transform: translateY(0)
-					animation: Optimize-Body-anim Header-ani !important
+					animation: Optimize-Body-anim Header-ani forwards !important
 
 
 	if Better-Header-text-ani
@@ -3317,7 +3317,7 @@ if Winter-Tag
 								transform: s("translateY(%s)", Header-ani-padding)
 							to
 								transform: translateY(0)
-						animation: Optimize-Body-anim+num Header-ani !important
+						animation: Optimize-Body-anim+num Header-ani forwards !important
 			else
 				@keyframes Header-anim{num}
 					from
@@ -3333,10 +3333,10 @@ if Winter-Tag
 			@keyframes ShowTop{num}
 				from
 					opacity: 0
-					margin-left: - Header-text-ani-padding
+					transform: translateX(- Header-text-ani-padding)
 				to 
 					opacity: 1
-					margin-left: 0px
+					transform: translateX(0px)
 			.main-container:has(.colored-link-selector>.active:nth-child({num})) > header.theme-bg
 				& .lfe-h1
 					animation: ShowTop+num Header-text-ani
