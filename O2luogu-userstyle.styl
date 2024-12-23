@@ -1579,7 +1579,7 @@ if Fast-Font-load
 		Card_L2 += ",.article-comment.columba-content-wrap.wrapper>.l-card"
 	
 	if Use-card-background=="on"
-		Card_L1 += ",.full-container > div > .bottom .page-bar,.row.reply-info"
+		Card_L1 += ",.main > div:not(.card) > .bottom-wrap,.full-container > div > .bottom .page-bar,.row.reply-info"
 	if Anti-HeaderFooter
 		Header-Optimize = 0
 
@@ -1768,7 +1768,14 @@ if Winter-Tag
 			transition: box-shadow Card-L1-hover-transition \, all Card-hover-bg-color-L1-ani !important
 			background: Card-hover-bg-color-L1 !important if Card-hover-bg-color-L1!=None
 			
+	// 修一个粘性定位的 bug
+	.full-container > section + div
+		&, &>div
+			overflow: visible !important
+
 	div.float-bottom,div.float.operations
+		position: sticky !important
+		max-width: unset !important
 		&,&:hover
 			border-radius: 0 !important
 			&::before
@@ -1781,6 +1788,9 @@ if Winter-Tag
 			to
 				opacity: 1
 		animation: Float-bar-ani Float-bar-anim !important
+
+	div.float-bottom
+		width: calc(100% + 12px) !important
 
 	// 二级 Card 样式修改
 	{Card_L2}
@@ -3118,8 +3128,8 @@ if Winter-Tag
 			color: Markdown-atext-color !important
 	
 	// 修个神秘 bug
-	#app
-		overflow: hidden
+	//#app
+	//	overflow: hidden
 	#app:has(.top-bar)
 		overflow: visible
 	.full-container .card
@@ -3161,13 +3171,15 @@ if Winter-Tag
 				content-visibility: auto !important
 
 	if Use-card-background=="on"
-		.full-container > div > .bottom .page-bar,.row.reply-info
+		.main > div:not(.card) > .bottom-wrap,.full-container > div > .bottom .page-bar,.row.reply-info
 			&,&:hover
 				&,&::before
 					border-radius: Use-card-radius !important
 			padding: 5pt
 		.row.reply-info > *
 			padding: 0 5pt 0 5pt
+		.main > .reply-info+div
+			margin-bottom: 0.75em
 
 	// 各种小 bug 的修复
 	.load-more
