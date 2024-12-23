@@ -1784,7 +1784,7 @@ if Winter-Tag
 
 	// 二级 Card 样式修改
 	{Card_L2}
-		contain: style layout if Content-Visibility
+		contain: style if Content-Visibility
 		border-radius: Card-L2-radius !important if Custom-Card
 		transition: all Card-hover-bg-color-L2-ani !important
 		background: Card-bg-color-L2 !important
@@ -2699,27 +2699,28 @@ if Winter-Tag
 						padding-top: Header-ani-padding
 				animation: Optimize-Header-anim Header-ani !important
 		
-		if Header-Optimize && Content-Visibility
+		if Header-Optimize
 			if More-Header-Ani
 				my_body = ".main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*='true'])),.main-container>header"
 			else
 				my_body = ".main-container > .wrapper.wrapped.lfe-body,.main-container>header"
 			.main-container > .wrapper.wrapped.lfe-body
 				&>.background
-					contain: style paint layout size
+					contain: style paint layout size if Content-Visibility
 					will-change: transform
 			.main-container > header.theme-bg
 				position: relative
 				background: none !important
 			{my_body}
-				&+main
-					@keyframes Optimize-Body-anim
+				@keyframes Optimize-Body-anim
 						from
 							transform: s("translateY(%s)", Header-ani-padding)
 						to
 							transform: translateY(0)
+				&+main,&+main+*
 					animation: Optimize-Body-anim Header-ani forwards !important
-
+				&+main
+					z-index: 3
 
 	if Better-Header-text-ani
 		@keyframes ShowTop
@@ -3318,13 +3319,15 @@ if Winter-Tag
 							padding-top: Header-ani-padding
 					animation: Optimize-Header-anim+num Header-ani !important
 				.main-container:has(.colored-link-selector>.active:nth-child({num})) > header.theme-bg
-					&+main
-						@keyframes Optimize-Body-anim{num}
-							from
-								transform: s("translateY(%s)", Header-ani-padding)
-							to
-								transform: translateY(0)
+					@keyframes Optimize-Body-anim{num}
+						from
+							transform: s("translateY(%s)", Header-ani-padding)
+						to
+							transform: translateY(0)
+					&+main,&+main+*
 						animation: Optimize-Body-anim+num Header-ani forwards !important
+					&+main
+						z-index: 3
 			else
 				@keyframes Header-anim{num}
 					from
