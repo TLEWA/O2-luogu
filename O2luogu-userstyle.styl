@@ -73,6 +73,7 @@
 @var	checkbox Ease-Load "平滑过渡页面加载" 1
 @var	checkbox Content-Visibility "（实验性）尝试跳过渲染不可见内容以提升性能" 1
 @var	checkbox Content-Visibility-Article "在渲染长文章时进行动态加载以提升阅读流畅性" 1
+@var	checkbox Header-Optimize "（实验性）使用不触发重排的方式进行 Header 动画" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Use-card-background "使用卡片背景防止文字在背景图下不清晰" ["auto","on","off"]
@@ -718,7 +719,6 @@ if Fast-Font-load
 		background-repeat: no-repeat !important
 		background-size: cover !important
 		background-position: center !important
-		background-attachment: fixed !important
 	
 	// 使用全局背景
 	use_mainly_background(background-val = Background)
@@ -733,6 +733,7 @@ if Fast-Font-load
 			height: 100%
 			width: 100%
 			background: background-val !important
+			background-attachment: fixed !important
 			z-index: -1
 			use_stable_bg()
 	
@@ -1578,7 +1579,9 @@ if Fast-Font-load
 		Card_L2 += ",.article-comment.columba-content-wrap.wrapper>.l-card"
 	
 	if Use-card-background=="on"
-		Card_L1 += ",.page-bar:first-child,.row.reply-info"
+		Card_L1 += ",.full-container > div > .bottom .page-bar,.row.reply-info"
+	if !Anti-HeaderFooter
+		Header-Optimize = 0
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -2656,27 +2659,77 @@ if Winter-Tag
 
 	// Header 出现动画
 	if Better-Header-ani
-		@keyframes Header-anim
-			from
-				padding-bottom: Header-ani-padding
-			to 
-				padding-bottom: 0px
-		
 		if More-Header-Ani
-			.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
-				animation: Header-anim Header-ani
+			my_header = ".main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*='true'])),.main-container > header.theme-bg"
+			if Header-Optimize
+				my_header = ".main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*='true'])) > .background,.main-container > header.theme-bg::before"
 		else
-			.main-container > .wrapper.wrapped.lfe-body,.main-container > header.theme-bg
+			my_header = ".main-container > .wrapper.wrapped.lfe-body,.main-container > header.theme-bg"
+			if Header-Optimize
+				my_header = ".main-container > .wrapper.wrapped.lfe-body > .background,.main-container > header.theme-bg::before"
+		
+		{my_header}
+			if !Header-Optimize
+				@keyframes Header-anim
+					from
+						padding-bottom: Header-ani-padding
+					to 
+						padding-bottom: 0px
 				animation: Header-anim Header-ani
+			else
+				content: ""
+				position: absolute
+				left: 0
+				right: 0
+				display: block
+				width: 100%
+				height: 100%
+				z-index: -1
+				background: Header-bg-color !important
+				@keyframes Optimize-Header-anim
+					from
+						transform: s("translate3d(0,%s,0)", -(Header-ani-padding/2))
+						clip-path: s("inset(0 0 %s 0)", Header-ani-padding/2)	
+						padding-bottom: Header-ani-padding
+						padding-top: Header-ani-padding
+					to
+						transform: s("translate3d(0,%s,0)", - (Header-ani-padding))
+						clip-path: s("inset(0 0 %s 0)", Header-ani-padding)
+						padding-bottom: Header-ani-padding
+						padding-top: Header-ani-padding
+				animation: Optimize-Header-anim Header-ani !important
+		
+		if Header-Optimize && Content-Visibility
+			if More-Header-Ani
+				my_body = ".main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*='true'])),.main-container:has(>header.theme-bg)"
+			else
+				my_body = ".main-container > .wrapper.wrapped.lfe-body,.main-container:has(>header.theme-bg)"
+			.main-container > .wrapper.wrapped.lfe-body
+				&>.background
+					contain: style paint layout size
+					will-change: transform
+					backface-visiblity: hidden
+			.main-container > header.theme-bg
+				position: relative
+				background: none !important
+			{my_body}
+				&+main
+					@keyframes Optimize-Body-anim
+						from
+							transform: s("translateY(%s)", Header-ani-padding)
+						to
+							transform: translateY(0)
+					animation: Optimize-Body-anim Header-ani !important
+
 
 	if Better-Header-text-ani
 		@keyframes ShowTop
 			from
 				opacity: 0
-				margin-left: - Header-text-ani-padding
+				transform: translateX(- Header-text-ani-padding)
 			to 
 				opacity: 1
-				margin-left: 0px
+				transform: translateX(0px)
 		if More-Header-Ani
 			.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
 				& .lfe-h1
@@ -2779,9 +2832,9 @@ if Winter-Tag
 		
 		@keyframes Sidebar-out
 			from
-				left: -50px
+				transform: translate(-50px,- SideBar-position)
 			to
-				left: 0px
+				transform: translate(0px,- SideBar-position)
 		
 		//More-Sidebar-Ani
 		#app > .lfe-body
@@ -2849,16 +2902,13 @@ if Winter-Tag
 		@keyframes Show-Usernav-box
 			0%
 				opacity: 0
-				margin-top: Usernav-box-ani-margin
-
+				transform: s("translateY(%s)",(Usernav-box-ani-margin - Usernav-box-margin))
 			100%
 				opacity: 1
-				margin-top: Usernav-box-margin
 		
 		.user-nav:has(>nav)
 			margin-top: Usernav-box-margin
 			animation: Show-Usernav-box Usernav-box-ani if !More-Usernav-box-Ani
-		
 		
 		if More-Usernav-box-Ani
 			.main-container > .wrapper.wrapped.lfe-body>.header:not([pageloading*="true"])>.user-nav
@@ -3095,7 +3145,7 @@ if Winter-Tag
 		.main > .list-wrap > .row-wrap > .row,.lfe-marked .katex-display,.marked katex
 			contain: style paint layout
 		.lfe-marked > *,.marked > *
-			contain: style layout
+			contain: layout
 	
 	if Content-Visibility-Article
 		.article-content .lfe-marked-wrap > .lfe-marked:has(>:nth-child({Article-max}))
@@ -3103,7 +3153,7 @@ if Winter-Tag
 				content-visibility: auto !important
 
 	if Use-card-background=="on"
-		.page-bar:first-child,.row.reply-info
+		.full-container > div > .bottom .page-bar,.row.reply-info
 			&,&:hover
 				&,&::before
 					border-radius: Use-card-radius !important
