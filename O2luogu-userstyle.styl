@@ -1580,7 +1580,7 @@ if Fast-Font-load
 	
 	if Use-card-background=="on"
 		Card_L1 += ",.full-container > div > .bottom .page-bar,.row.reply-info"
-	if !Anti-HeaderFooter
+	if Anti-HeaderFooter
 		Header-Optimize = 0
 
 	// 全局背景
@@ -2676,7 +2676,7 @@ if Winter-Tag
 					to 
 						padding-bottom: 0px
 				animation: Header-anim Header-ani
-			else
+			else if Header-bg-color!=none
 				content: ""
 				position: absolute
 				left: 0
@@ -3287,14 +3287,46 @@ if Winter-Tag
 	// 动画效果适配新前端
 	if Better-Header-ani && More-Header-Ani
 		for num in (1..7)
-			@keyframes Header-anim{num}
-				from
-					padding-bottom: Header-ani-padding
-				to 
-					padding-bottom: 0px
+			if Header-Optimize
+				.main-container:has(.colored-link-selector>.active:nth-child({num})) > header.theme-bg::before
+					content: ""
+					position: absolute
+					left: 0
+					right: 0
+					display: block
+					width: 100%
+					height: 100%
+					z-index: -1
+					background: Header-bg-color !important
+					@keyframes Optimize-Header-anim{num}
+						from
+							transform: s("translate3d(0,%s,0)", -(Header-ani-padding/2))
+							clip-path: s("inset(0 0 %s 0)", Header-ani-padding/2)	
+							padding-bottom: Header-ani-padding
+							padding-top: Header-ani-padding
+						to
+							transform: s("translate3d(0,%s,0)", - (Header-ani-padding))
+							clip-path: s("inset(0 0 %s 0)", Header-ani-padding)
+							padding-bottom: Header-ani-padding
+							padding-top: Header-ani-padding
+					animation: Optimize-Header-anim+num Header-ani !important
+				.main-container:has(.colored-link-selector>.active:nth-child({num})) > header.theme-bg
+					&+main
+						@keyframes Optimize-Body-anim{num}
+							from
+								transform: s("translateY(%s)", Header-ani-padding)
+							to
+								transform: translateY(0)
+						animation: Optimize-Body-anim+num Header-ani !important
+			else
+				@keyframes Header-anim{num}
+					from
+						padding-bottom: Header-ani-padding
+					to 
+						padding-bottom: 0px
 			
-			.main-container:has(.colored-link-selector>.active:nth-child({num})) > header.theme-bg
-				animation: Header-anim+num Header-ani !important
+				.main-container:has(.colored-link-selector>.active:nth-child({num})) > header.theme-bg
+					animation: Header-anim+num Header-ani !important
 	
 	if Better-Header-text-ani && More-Header-Ani
 		for num in (1..7)
