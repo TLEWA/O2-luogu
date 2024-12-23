@@ -2,8 +2,8 @@
     "Card-L1-radius": "20px",
     "Card-L2-radius": "10px",
     "Card-float-radius": "10px",
+    "CustomBackground": "url('https://cdn.jsdelivr.net/gh/TLEWA/O2-luogu@%E5%89%8D%E7%9E%BB%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/imgs/1080p30.avif')",
     "CustomBackground": "url(https://cdn.jsdelivr.net/gh/Acerkaio/ImageHost/test/6301896a16f2c2beb1299954.jpg)",
-    "CustomBackground": "url('https://cdn.jsdelivr.net/gh/TLEWA/O2-luogu@%E5%89%8D%E7%9E%BB%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/imgs/1080p.avif')",
     "Card-bg-color-L1": "Acrylic_a(rgba(255, 255, 255, .8), 0)",
     "Card-hover-bg-color-L1": "Acrylic_a(rgba(255, 255, 255, .85), 2px)",
     "Card-L1-shadow": "^0px 0px 0px #8f8f8f",
@@ -25,8 +25,8 @@
     "Scrollbar-thumb-color": "rgba(137, 81, 234, .99)",
     "Scrollbar-track-color": "rgba(0, 0, 0, .12)",
     "Scrollbar-hover-color": "#5e72e4",
-    "Card-bg-color-float": "Acrylic_a(rgba(255, 255, 255, .7), 10px)",
-    "Usernav-hover-bg-color": "Acrylic_a(rgba(255, 255, 255, .9), 10px)",
+    "Card-bg-color-float": "Acrylic_a(rgba(255, 255, 255, .5), 10px)",
+    "Usernav-hover-bg-color": "Acrylic_a(rgba(255, 255, 255, .7), 10px)",
     "Card-hover-color-float": "Acrylic_b(rgba(200, 200, 200, .6), 10px)",
     "Sidebar-bg-color":"Acrylic_a(#ffffff3b, 20px)",
     "Sidebar-icon-color": "#61eee9f5",
@@ -58,5 +58,9 @@
     "Divider-color": "rgba(#333,0.2)",
     "Privateitem-hover-bg-color": "#7a0ad9a6",
     "Privateitem-hover-text-color": "#fff",
-    "Privateletter-list-radius": "10px"
+    "Privateletter-list-radius": "10px",
+    "Use-card-radius": "5px",
+    "Article-sidebar-card-hover": "rgba(122,10,217,0.5)",
+    "Article-sidebar-card-hover-ani": "^0.3s",
+    "Article-sidebar-card-radius": "5px"
 }
