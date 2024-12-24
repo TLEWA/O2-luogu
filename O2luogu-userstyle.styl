@@ -652,6 +652,7 @@
 @var	text UserStyle2 "用户自定义样式 2" "None"
 @var	text UserStyle3 "用户自定义样式 3" "None"
 @var	text UserTag "用户自定义 Tag" "None"
+@var	text User-Name-color "用户自定义名字颜色" "None"
 
 ==/UserStyle== */
 
@@ -725,6 +726,7 @@ if Fast-Font-load
 		will-change: background
 		&:before
 			will-change: transform
+			contain: strict if Content-Visibility
 			transform: translate3d(0,0,0) if Use-GPU
 			content: ""
 			position: fixed
@@ -973,13 +975,17 @@ if Fast-Font-load
 				position: relative
 		&::before
 			content-visibility: auto if Content-Visibility
+			contain: strict if Content-Visibility
 			transform: translate3d(0px, 0px, 0px) if Use-GPU
 			height: auto !important
 			width: auto !important
 			background: acr-bgcolor !important
 			backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
 			content: ""
-			border-radius: @border-radius if @border-radius
+			if @border-radius
+				border-radius: @border-radius
+			else
+				border-radius: inherit
 			transition: @transition if @transition
 			position: absolute
 			pointer-events: none
@@ -1579,7 +1585,7 @@ if Fast-Font-load
 		Card_L2 += ",.article-comment.columba-content-wrap.wrapper>.l-card"
 	
 	if Use-card-background=="on"
-		Card_L1 += ",.main > div:not(.card) > .bottom-wrap,.full-container > div > .bottom .page-bar,.row.reply-info"
+		Card_L1 += ",.main > div:not(.card) > :not(.table)+.bottom-wrap:has(>.page-bar),.full-container > div > .bottom .page-bar,.row.reply-info"
 	if Anti-HeaderFooter
 		Header-Optimize = 0
 
@@ -1623,9 +1629,12 @@ if Winter-Tag
 // 全局样式
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
 	body // 应用全局背景
+		background: none
 		use_mainly_background()
 	html
 		background: unset !important
+
+	User_Name
 	
 	// Tag 系统
 	if UserTag!="None"
@@ -1774,8 +1783,6 @@ if Winter-Tag
 			overflow: visible !important
 
 	div.float-bottom,div.float.operations
-		position: sticky !important
-		max-width: unset !important
 		&,&:hover
 			border-radius: 0 !important
 			&::before
@@ -2520,7 +2527,9 @@ if Winter-Tag
 			border-bottom-left-radius: 0 !important
 
 	.dropdown.shown:has(.dropdown-operations)
-		background: none !important
+		&,&::before
+			background: none !important
+			backdrop-filter: none !important
 
 	// 按钮系统
 	{Button}
@@ -2723,12 +2732,12 @@ if Winter-Tag
 				background: none !important
 			{my_body}
 				@keyframes Optimize-Body-anim
-						from
-							transform: s("translateY(%s)", Header-ani-padding)
-						to
-							transform: translateY(0)
+					from
+						transform: s("translateY(%s)", Header-ani-padding)
+					to
+						transform: translateY(0)
 				&+main,&+main+*
-					animation: Optimize-Body-anim Header-ani forwards !important
+					animation: Optimize-Body-anim Header-ani !important
 				&+main
 					z-index: 3
 
@@ -3158,8 +3167,6 @@ if Winter-Tag
 			contain: style paint layout !important
 		.sidebar.lside.bar.hide.nav-scrollbar
 			contain: strict
-		.main-container > .lcolor-bg-grey-1
-			contain: style paint layout !important
 	
 	if Use-GPU
 		.sidebar.lside.bar.hide.nav-scrollbar
@@ -3171,7 +3178,7 @@ if Winter-Tag
 				content-visibility: auto !important
 
 	if Use-card-background=="on"
-		.main > div:not(.card) > .bottom-wrap,.full-container > div > .bottom .page-bar,.row.reply-info
+		.main > div:not(.card) > :not(.table)+.bottom-wrap:has(>.page-bar),.full-container > div > .bottom .page-bar,.row.reply-info
 			&,&:hover
 				&,&::before
 					border-radius: Use-card-radius !important
@@ -3337,7 +3344,7 @@ if Winter-Tag
 						to
 							transform: translateY(0)
 					&+main,&+main+*
-						animation: Optimize-Body-anim+num Header-ani forwards !important
+						animation: Optimize-Body-anim+num Header-ani !important
 					&+main
 						z-index: 3
 			else
