@@ -1080,6 +1080,12 @@ if Fast-Font-load
 			&::after
 				font-size: 70% !important
 	
+	User_Name(uid,user_color,user_hover_color)
+		a.color-none[href*=\'{s("/user/%s",uid)}\'][target='_blank'] > span[style*="color:"],.panel-content .item > img[src*="515129."]+span > span[slot="trigger"],a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;'], .user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child, .lfe-body:has(>.top-bar>.user-nav img[src*=\'{s("/usericon/%s",uid)}\']) > .user-nav.rside .luogu-username.username > .name
+			color: user_color !important
+			&:hover
+				color: user_hover_color !important
+	
 	is_acrylic()
 		if substr(to_s(arguments),0,7)=='Acrylic'
 			return 1
@@ -1633,13 +1639,6 @@ if Winter-Tag
 		use_mainly_background()
 	html
 		background: unset !important
-
-	User_Name
-	
-	// Tag 系统
-	if UserTag!="None"
-		for usertag in UserTag
-			User_badge(usertag["uid"], usertag["border-radius"], usertag["background"], usertag["color"], usertag["content"])
 
 	if Smooth-scroll // 平滑滚动自定义项
 		body,html
@@ -3163,8 +3162,9 @@ if Winter-Tag
 			contain: paint layout
 		.main > .list-wrap > .row-wrap > .row,.lfe-marked .katex-display,.marked katex
 			contain: style paint layout
-		.lfe-marked,.marked > *
-			contain: style paint layout !important
+		.lfe-marked,.marked
+			& > *
+				contain: layout inline-size !important
 		.sidebar.lside.bar.hide.nav-scrollbar
 			contain: strict
 	
@@ -3187,6 +3187,17 @@ if Winter-Tag
 			padding: 0 5pt 0 5pt
 		.main > .reply-info+div
 			margin-bottom: 0.75em
+
+	User_Name(515129,green,blue)
+	// 名字颜色系统
+	if User-Name-color!=None
+		for usernamecolor in UserTag
+			User_Name(usernamecolor["uid"],usernamecolor["color"],usernamecolor["hover_color"])
+	
+	// Tag 系统
+	if UserTag!="None"
+		for usertag in UserTag
+			User_badge(usertag["uid"], usertag["border-radius"], usertag["background"], usertag["color"], usertag["content"])
 
 	// 各种小 bug 的修复
 	.load-more
