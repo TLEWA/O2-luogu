@@ -1595,7 +1595,7 @@ if Fast-Font-load
 		Card_L2 += ",.article-comment.columba-content-wrap.wrapper>.l-card"
 	
 	if Use-card-background=="on"
-		Card_L1 += ",.main > div:not(.card) > :not(.table)+.bottom-wrap:has(>.page-bar),.full-container > div > .bottom .page-bar,.row.reply-info"
+		Card_L1 += ",.main > div:not(.card) > :not(.table)+.bottom-wrap:has(>.page-bar),.full-container > div > .bottom .page-bar,.row.reply-info,.toc.with-top"
 	if Anti-HeaderFooter
 		Header-Optimize = 0
 
@@ -3189,8 +3189,10 @@ if Winter-Tag
 			padding: 0 5pt 0 5pt
 		.main > .reply-info+div
 			margin-bottom: 0.75em
+		.toc.with-top
+			top: 68px !important
+			padding: 1em
 
-	//User_Name(515129,green,blue)
 	// 名字颜色系统
 	if User-Name-color!=None
 		for usernamecolor in UserTag
