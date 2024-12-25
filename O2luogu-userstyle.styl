@@ -74,6 +74,8 @@
 @var	checkbox Content-Visibility "（实验性）尝试跳过渲染不可见内容以提升性能" 1
 @var	checkbox Content-Visibility-Article "在渲染长文章时进行动态加载以提升阅读流畅性" 1
 @var	checkbox Header-Optimize "（实验性）使用不触发重排的方式进行 Header 动画" 1
+@var	checkbox Better-Time-show "在动态使用确切时间显示" 0
+@var	checkbox Better-discuss-Time-show "在讨论区使用确切时间显示" 0
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Use-card-background "使用卡片背景防止文字在背景图下不清晰" ["auto","on","off"]
@@ -3200,13 +3202,23 @@ if Winter-Tag
 			User_badge(usertag["uid"], usertag["border-radius"], usertag["background"], usertag["color"], usertag["content"])
 
 	// 显示具体时间系统
-	.feed .meta span[title],.time > time[title]
-		visibility: hidden
-		font-size: 0
-		&:before
-			font-size: 14px
-			visibility: visible
-			content: attr(title) " "
+	if Better-Time-show
+		.feed .meta span[title]
+			visibility: hidden
+			font-size: 0
+			&:before
+				font-size: 14px
+				visibility: visible
+				content: attr(title) " "
+
+	if Better-discuss-Time-show
+		.time > time[title]
+			visibility: hidden
+			font-size: 0
+			&:before
+				font-size: 14px
+				visibility: visible
+				content: attr(title) " "
 
 	// 各种小 bug 的修复
 	.load-more
