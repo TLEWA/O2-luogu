@@ -2,9 +2,9 @@
     "Card-L1-radius": "20px",
     "Card-L2-radius": "10px",
     "Card-float-radius": "10px",
-    "CustomBackground": "url(https://cdn.jsdelivr.net/gh/Acerkaio/ImageHost/test/6301896a16f2c2beb1299954.jpg)",
     "CustomBackground": "url('https://cdn.jsdelivr.net/gh/TLEWA/O2-luogu@%E5%89%8D%E7%9E%BB%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/imgs/1080p30.avif')",
-    "Card-bg-color-L1": "Acrylic_a(rgba(255, 255, 255, .8), 0)",
+    "CustomBackground": "url(https://cdn.jsdelivr.net/gh/Acerkaio/ImageHost/test/6301896a16f2c2beb1299954.jpg)",
+    "Card-bg-color-L1": "Acrylic_a(rgba(255, 255, 255, .8), 0px)",
     "Card-hover-bg-color-L1": "Acrylic_a(rgba(255, 255, 255, .85), 2px)",
     "Card-L1-shadow": "^0px 0px 0px #8f8f8f",
     "Card-L1-hover-shadow": "^3px 3px 20px #1f1f1f",
@@ -62,5 +62,8 @@
     "Use-card-radius": "5px",
     "Article-sidebar-card-hover": "rgba(122,10,217,0.5)",
     "Article-sidebar-card-hover-ani": "^0.3s",
-    "Article-sidebar-card-radius": "5px"
+    "Article-sidebar-card-radius": "5px",
+    "Blockquote-border-color": "Divider-color",
+    "Table-color": "Divider-color",
+    "Table-radius": "10px"
 }
