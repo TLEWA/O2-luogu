@@ -622,6 +622,7 @@
 @var	text Use-card-radius "文字卡片背景圆角大小" "Default"
 
 @var	text Article-sidebar-card-radius "新前端侧栏卡片圆角样式" "Default"
+@var	text Ease-Load-ani "新旧前端过渡动画效果" "Default"
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
@@ -1561,7 +1562,8 @@ if Fast-Font-load
 		"Privateitem-hover-text-color": "None",
 		"Article-max": "500",
 		"Use-card-radius": "Card-L1-radius",
-		"Article-sidebar-card-radius": "3px"
+		"Article-sidebar-card-radius": "3px",
+		"Ease-Load-ani": "0.5s"
 	}
 
 	null_key = lookup("null_key")
@@ -3150,6 +3152,9 @@ if Winter-Tag
 
 	if Ease-Load
 		@view-transition { navigation: auto; }
+		html::view-transition-group(*)
+			animation-duration: Ease-Load-ani
+			animation-fill-mode: both
 	
 	if Content-Visibility
 		{Avatar}
