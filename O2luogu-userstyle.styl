@@ -3188,7 +3188,7 @@ if Winter-Tag
 		.main > .reply-info+div
 			margin-bottom: 0.75em
 
-	User_Name(515129,green,blue)
+	//User_Name(515129,green,blue)
 	// 名字颜色系统
 	if User-Name-color!=None
 		for usernamecolor in UserTag
@@ -3198,6 +3198,15 @@ if Winter-Tag
 	if UserTag!="None"
 		for usertag in UserTag
 			User_badge(usertag["uid"], usertag["border-radius"], usertag["background"], usertag["color"], usertag["content"])
+
+	// 显示具体时间系统
+	.feed .meta span[title],.time > time[title]
+		visibility: hidden
+		font-size: 0
+		&:before
+			font-size: 14px
+			visibility: visible
+			content: attr(title) " "
 
 	// 各种小 bug 的修复
 	.load-more
