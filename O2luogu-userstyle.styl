@@ -1795,9 +1795,6 @@ if Winter-Tag
 				opacity: 1
 		animation: Float-bar-ani Float-bar-anim !important
 
-	div.float-bottom
-		width: calc(100% + 12px) !important
-
 	// 二级 Card 样式修改
 	{Card_L2}
 		contain: style if Content-Visibility
@@ -3155,8 +3152,6 @@ if Winter-Tag
 		@view-transition { navigation: auto; }
 	
 	if Content-Visibility
-		main>.columba-content-wrap,.status-name // 我也不知道为什么这么笼统的选择器就能提升性能，但是再往下细分就要有 bug 了（虽说已经产生了一些微妙的渲染差异）
-			content-visibility: auto
 		{Avatar}
 			content-visibility: auto
 			contain: paint layout
