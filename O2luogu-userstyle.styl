@@ -976,6 +976,7 @@ if Fast-Font-load
 		@layer
 			&
 				position: relative
+
 		&::before
 			content-visibility: auto if Content-Visibility
 			contain: strict if Content-Visibility
@@ -1084,7 +1085,7 @@ if Fast-Font-load
 				font-size: 70% !important
 	
 	User_Name(uid,user_color,user_hover_color)
-		a.color-none[href*=\'{s("/user/%s",uid)}\'][target='_blank'] > span[style*="color:"],.panel-content .item > img[src*="515129."]+span > span[slot="trigger"],a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;'], .user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child, .lfe-body:has(>.top-bar>.user-nav img[src*=\'{s("/usericon/%s",uid)}\']) > .user-nav.rside .luogu-username.username > .name
+		a.color-none[href*=\'{s("/user/%s",uid)}\'][target='_blank'] > span[style*="color:"],.panel-content .item > img[src*=\'{s("%s.",uid)}\']+span > span[slot="trigger"],a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;'], .user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child, .lfe-body:has(>.top-bar>.user-nav img[src*=\'{s("/usericon/%s",uid)}\']) > .user-nav.rside .luogu-username.username > .name
 			color: user_color !important
 			&:hover
 				color: user_hover_color !important
@@ -3195,6 +3196,7 @@ if Winter-Tag
 			& ul
 				padding: 1em
 
+	User_Name(515129,blue,green)
 	// 名字颜色系统
 	if User-Name-color!=None
 		for usernamecolor in UserTag
