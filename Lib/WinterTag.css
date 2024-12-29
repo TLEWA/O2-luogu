@@ -1,0 +1,58 @@
+a[href*='/user/515129'][target='_blank'],
+a.name[href*='/user/515129'][style*='font-weight: bold;'],
+.user-header-top > img[src*='/usericon/515129']+.user-info .user-name > span:first-child {
+  overflow: visible;
+}
+a[href*='/user/515129'][target='_blank']::after,
+a.name[href*='/user/515129'][style*='font-weight: bold;']::after,
+.user-header-top > img[src*='/usericon/515129']+.user-info .user-name > span:first-child::after {
+  margin: 0 auto;
+  content: "冬日绘版幕后黑手";
+  font-size: 90%;
+  line-height: 1.5;
+  font-weight: 400;
+  padding: 0 8px;
+  box-sizing: border-box;
+  border-radius: 5px !important;
+  display: inline-block;
+  color: #fff;
+  background: linear-gradient(135deg, #f0c, #fc0, #0fc, #f06) !important;
+  white-space: nowrap;
+  margin-left: 3px;
+}
+a.name[href*='/user/515129'][style*='font-weight: bold;']::after,
+.user-header-top > img[src*='/usericon/515129']+.user-info .user-name > span:first-child::after {
+  padding: 0 0.5em !important;
+}
+.user-header-top > img[src*='/usericon/515129']+.user-info .user-name > span:first-child::after {
+  font-size: 70% !important;
+}
+a[href*='/user/226449'][target='_blank'],
+a.name[href*='/user/226449'][style*='font-weight: bold;'],
+.user-header-top > img[src*='/usericon/226449']+.user-info .user-name > span:first-child {
+  overflow: visible;
+}
+a[href*='/user/226449'][target='_blank']::after,
+a.name[href*='/user/226449'][style*='font-weight: bold;']::after,
+.user-header-top > img[src*='/usericon/226449']+.user-info .user-name > span:first-child::after {
+  margin: 0 auto;
+  content: "象牙塔计划领袖";
+  font-size: 90%;
+  line-height: 1.5;
+  font-weight: 400;
+  padding: 0 8px;
+  box-sizing: border-box;
+  border-radius: 5px !important;
+  display: inline-block;
+  color: #fff;
+  background: linear-gradient(135deg, #f0c, #fc0, #0fc, #f06) !important;
+  white-space: nowrap;
+  margin-left: 3px;
+}
+a.name[href*='/user/226449'][style*='font-weight: bold;']::after,
+.user-header-top > img[src*='/usericon/226449']+.user-info .user-name > span:first-child::after {
+  padding: 0 0.5em !important;
+}
+.user-header-top > img[src*='/usericon/226449']+.user-info .user-name > span:first-child::after {
+  font-size: 70% !important;
+}

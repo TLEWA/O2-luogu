@@ -1,0 +1,29 @@
+User_badge(uid, radius, bgc, textc, content_text)
+	a[href*=\'{s("/user/%s",uid)}\'][target='_blank'],a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;'], .user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child
+		overflow: visible
+		&::after
+			margin: 0 auto
+			content: content_text
+			font-size: 90%
+			line-height: 1.5
+			font-weight: 400
+			padding: 0 8px
+			box-sizing: border-box
+			border-radius: radius !important
+			display: inline-block
+			color: textc
+			background: bgc !important
+			white-space: nowrap
+			margin-left: 3px
+	a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;'], .user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child
+		&::after
+			padding: 0 .5em !important
+	.user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child
+		&::after
+			font-size: 70% !important
+
+WinterTag = ({"uid": 515129,"border-radius": 5px,"background": linear-gradient(135deg, #ff00cc, #ffcc00, #00ffcc, #ff0066),"color": #fff,"content": "冬日绘版幕后黑手"} {"uid": 226449,"border-radius": 5px,"background": linear-gradient(135deg, #ff00cc, #ffcc00, #00ffcc, #ff0066),"color": #fff,"content": "象牙塔计划领袖"})
+
+if WinterTag!="None"
+	for usertag in WinterTag
+		User_badge(usertag["uid"], usertag["border-radius"], usertag["background"], usertag["color"], usertag["content"])

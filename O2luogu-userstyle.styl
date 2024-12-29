@@ -1,13 +1,14 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.1.4.1
-@description  正式发布版
+@version      2.2.0.0
+@description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
 @preprocessor stylus
 
 @var	checkbox DarkMode "深色模式" 0
+@var	checkbox Anti-Userinput "禁用用户输入框自定义样式" 0
 @var	checkbox Custom-Scrollbar "更好的滚动条" 1
 @var	checkbox Custom-Inputbox "更一致的输入框圆角样式" 1
 @var	checkbox Custom-Card "更一致的卡片圆角样式" 1
@@ -41,7 +42,7 @@
 @var	checkbox Better-problem-bar "更好的题库选择条" 1
 @var	checkbox Better-Card-select-bar "更好的 Card 选择条" 1
 @var	checkbox Better-InputGroup "更统一的 InputGroup 样式" 1
-@var	checkbox Smart-SideBar "(实验性) Smart-Luogu 式侧栏" 1
+@var	checkbox Smart-SideBar "Smart-Luogu 式侧栏" 1
 @var	checkbox Discuss-Sidebar-right "讨论区边栏右置" 1
 @var	checkbox More-Sidebar-Ani "侧栏在更多场景展示动画" 1
 @var	checkbox No-btn-outline "去除主页按钮 outline" 1
@@ -65,8 +66,19 @@
 @var	checkbox Better-UserNotification-ani "更好的通知中心列表动画" 1
 @var	checkbox Article-Discuss "文章广场应用讨论区布局" 1
 @var	checkbox More-Header-Ani "标题栏在更多场景展示动画" 1
+@var	checkbox Canvas-fix "比赛情况栏在亚克力下正常显示" 1
+@var	checkbox Better-Markdown-Edit "实验性 Markdown 编辑器渲染" 1
+@var	checkbox Winter-Tag "开启冬日绘版支持者 Tag 渲染" 1
+@var	checkbox Use-GPU "尝试使用 GPU 加速渲染" 1
+@var	checkbox Ease-Load "平滑过渡页面加载" 1
+@var	checkbox Content-Visibility "（实验性）尝试跳过渲染不可见内容以提升性能" 1
+@var	checkbox Content-Visibility-Article "在渲染长文章时进行动态加载以提升阅读流畅性" 1
+@var	checkbox Header-Optimize "（实验性）使用不触发重排的方式进行 Header 动画" 1
+@var	checkbox Better-Time-show "在动态使用确切时间显示" 0
+@var	checkbox Better-discuss-Time-show "在讨论区使用确切时间显示" 0
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
+@var	select Use-card-background "使用卡片背景防止文字在背景图下不清晰" ["auto","on","off"]
 @var	select Button-ani-select "按钮点击动画选择" ["jelly","contract","off"]
 @var	select Input-ani-select "输入框点击动画选择" ["contract","jelly","off"]
 @var	select Avatar-ani-select "用户头像 hover 动画选择" ["bigger","slime","off"]
@@ -94,7 +106,7 @@
 @var	text Inputbox-radius "输入框圆角大小" "Default"
 @var	text Benben-radius "犇犇圆角大小" "Default"
 @var	text InLine-code-block-radius "行内代码块圆角大小" "Default"
-@var	text Code-block-radius "行内代码块圆角大小" "Default"
+@var	text Code-block-radius "代码块圆角大小" "Default"
 
 @var	text Background-color "全局背景色" "Default"
 @var	text Card-bg-color-L1 "一级卡片背景色" "Default"
@@ -567,6 +579,53 @@
 
 @var	text Blockquote-border-color "块引用边框色" "Default"
 
+@var	text Main-title-size "主标题字体大小" "Default"
+@var	text Navbar-height "旧前端菜单栏高度" "Default"
+@var	text Header-narrow-height "旧前端无按钮标题栏高度" "Default"
+@var	text Header-normal-height "旧前端标题栏高度" "Default"
+@var	text Header-new-narrow-height "新前端无按钮标题栏高度" "Default"
+@var	text Header-new-normal-height "新前端标题栏高度" "Default"
+
+@var	text Markdown-text-color "Markdown 编辑器文字色" "Default"
+@var	text Markdown-text-delete-color "Markdown 编辑器文字删除线颜色" "Default"
+@var	text Markdown-text-strong-color "Markdown 编辑器文字加粗文字颜色" "Default"
+@var	text Markdown-text-italic-color "Markdown 编辑器文字斜体颜色" "Default"
+@var	text Markdown-text-variable-color "Markdown 编辑器列表颜色" "Default"
+@var	text Markdown-text-title-color "Markdown 编辑器标题色" "Default"
+@var	text Markdown-text-codetag-color "Markdown 编辑器代码标识串色" "Default"
+@var	text Markdown-text-codename-color "Markdown 编辑器代码语言标识色" "Default"
+@var	text Markdown-atext-color "Markdown 编辑器超链接显示文字色" "Default"
+@var	text Markdown-a-color "Markdown 编辑器超链接色" "Default"
+
+@var	text Card-hover-bg-color-L1 "一级卡片 hover 背景色" "Default"
+@var	text Card-hover-bg-color-L2 "二级卡片 hover 背景色" "Default"
+@var	text Card-hover-bg-color-L1-ani "一级卡片 hover 背景色动画效果" "Default"
+@var	text Card-hover-bg-color-L2-ani "二级卡片 hover 背景色动画效果" "Default"
+
+@var	text Float-bar-ani "底部悬浮栏渐现动画" "Default"
+
+@var	text Discuss-shadow "讨论区评论块阴影" "Default"
+@var	text Discuss-hover-shadow "讨论区评论块 hover 阴影" "Default"
+@var	text Discuss-hover-shadow-ani "讨论区评论块 hover 阴影渐现动画效果" "Default"
+@var	text Discuss-hd-hover-color "讨论区评论上半颜色" "Default"
+@var	text Discuss-bd-hover-color "讨论区评论下半颜色" "Default"
+@var	text Discuss-hover-color-ani "讨论区评论块 hover 颜色渐变动画效果" "Default"
+
+@var	text Usernav-hover-bg-color "悬浮卡片 hover 背景色" "Default"
+@var	text Usernav-hover-ani "悬浮卡片 hover 动画" "Default"
+
+@var	text Benben-bd-hover-color "犇犇下半 hover 背景色" "Default"
+@var	text Benben-bd-hover-ani "犇犇下半 hover 背景色渐变动画" "Default"
+
+@var	text Privateletter-radius "私信圆角样式" "Default"
+@var	text Privateletter-list-radius "私信选择框圆角样式" "Default"
+
+@var	text Article-max "开启动态渲染文章行数阈值" "Default"
+@var	text Use-card-radius "文字卡片背景圆角大小" "Default"
+
+@var	text Article-sidebar-card-radius "新前端侧栏卡片圆角样式" "Default"
+@var	text Ease-Load-ani "新旧前端过渡动画效果" "Default"
+
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
 @var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
@@ -586,6 +645,17 @@
 @var	checkbox bug-fix17 "[bug-fix] 用户信息栏展开图标未居中" 1
 @var	checkbox bug-fix18 "[bug-fix] 搜索框组件未居中" 1
 @var	checkbox bug-fix19 "[bug-fix] 主页 tag 文字居中情况异常" 1
+@var	checkbox bug-fix20 "[bug-fix] 老 Markdown 编辑器预览框对齐错误" 1
+@var	checkbox bug-fix21 "[bug-fix] 主页翻页按钮层叠错误" 1
+
+@var	text secondary_UserStyle "次要用户自定义样式 1" "None"
+@var	text secondary_UserStyle2 "次要用户自定义样式 2" "None"
+@var	text secondary_UserStyle3 "次要用户自定义样式 3" "None"
+@var	text UserStyle "用户自定义样式 1" "None"
+@var	text UserStyle2 "用户自定义样式 2" "None"
+@var	text UserStyle3 "用户自定义样式 3" "None"
+@var	text UserTag "用户自定义 Tag" "None"
+@var	text User-Name-color "用户自定义名字颜色" "None"
 
 ==/UserStyle== */
 
@@ -618,44 +688,59 @@ if Fast-Font-load
 	False = "False"
 
 	// 选择器
-		Main_Inputbox = "input[type=text],input[type=password],textarea#feed-content,.input-wrap,.combo-wrapper>.text,.CodeMirror-code pre.CodeMirror-line,textarea,.mp-dialog-input>input,select,.refined-input.text,.input-group>input,textarea.lfe-form-sz-middle" // 主流样式的输入框
-		Card_L1 = ".lg-article, .lg-article-sub, .lg-article-nctrl, .card, .float-bottom,.l-card" // 一级卡片
+		Main_Inputbox = "input[type=text],input[type=password],textarea#feed-content,.input-wrap,.combo-wrapper>.text,textarea,.mp-dialog-input>input,select,.refined-input.text,.input-group>input,textarea.lfe-form-sz-middle" // 主流样式的输入框
+		Card_L1 = ".lg-article, .lg-article-sub, .lg-article-nctrl, .card:not(.float-card), .float-bottom,.l-card" // 一级卡片
 		Card_L2 = ".am-panel,.inner-card,.discuss-container .discuss,.swal2-validation-message" // 二级卡片
-		Card_float = "#app > nav.lfe-body .popup,.user-nav .center,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog" // 悬浮卡片
+		Card_float = "#app > nav.lfe-body .popup,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog,.l-card.container,.dropdown>.float-card,.filters" // 悬浮卡片
 		Hover_card_float = "#app > nav.lfe-body .popup a,.dropdown-operations li,.dropdown li,.candidates li,.am-modal-footer"
 		Shadow_card_float = ".float-card,#app > nav.lfe-body .popup, .user-nav .center,.dropdown:not(:has(>.dropdown-operations,>.float-card))"
 		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I" // 标题文字
-		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner,.row>.content,.feed-comment" // 正文文字
+		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner,.row>.content,.feed-comment,.mp-preview-content" // 正文文字
 		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name,.collection-info" // 陈述文字
-		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption,.colored-link-selector .name,div.row.row-space-between.top > .content-right > a > .name,.l-flex-info-row>span,.reply-editor-top" // 介绍文字
+		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption,.colored-link-selector .name,div.row.row-space-between.top > .content-right > a > .name,.l-flex-info-row>span,.reply-editor>div:first-child" // 介绍文字
 		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.stat>.field,.difficulty-tags,.difficulty-tags>.row,.full-container[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
-		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.cs-close-container,.container .close path,.dropdown>.float-card>.user-info span>span>span path,.stick-top path" // 杂项图标
-		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.user-nav>a.login,.cs-footer-right > .cs-footer-button" // 操作文字
-		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.am-modal-btn,.user-nav>a.login,.cs-footer-right > .cs-footer-button" // 可选中操作文字
+		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.cs-close-container,.container .close path,.dropdown>.float-card>.user-info span>span>span path,.stick-top path,.cs-toolbar-tool path" // 杂项图标
+		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.user-nav>a.login,.cs-footer-right > .cs-footer-button,.message-block>.delete,.user-nav>.text" // 操作文字
+		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.am-modal-btn,.user-nav>a.login,.cs-footer-right > .cs-footer-button,.message-block>.delete,.user-nav>.text" // 可选中操作文字
 		Hover-A = ".action>a,.center>footer>a,.am-panel-primary .am-panel-title a" // 选中超链接
-		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a,span.C.G,.row.title>a,.row div>a,.bar-item,.filter-wrapper a,.form-item.form-check>a,.form-bottom>a,.reply > .info-item" // 强制超链接
+		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a,span.C.G,.row.title>a,.row div>a,.bar-item,.filter-wrapper a,.form-item.form-check>a,.form-bottom>a,.reply > .info-item,.last-link>a,.l-flex-info-row a" // 强制超链接
 		ColorfulLabel = ".difficulty a.color-default[colorscheme='default']>span,.box>span.lfe-caption,span.lfe-caption.tag,a.tag.color-none>span,.difficulty-tags>.row>span.lfe-caption,.difficulty>span.lfe-caption,a.status-link>span.lfe-caption,.lfe-caption.tag>span,.author-margin>.lfe-caption,.team-authority,.inner-card span.lfe-caption[style*='color:'],.status>.lfe-caption" // 标签
 		GrayLabel = '.card.info-card.center.padding-default .tags>span.tag[style*="rgb(232"]:not(.selected),.inner-card>.row>div>span.lfe-caption,.card.log.padding-default li span.lfe-caption,.row.info>span' // 灰度标签
 		Topic-type-Label = ".tags-wrap.multiline>a>span,.card.info-card.center.padding-default .tag-select-area .tags>span.tag,.block-item.tag" // 题目类型标签
 		Topic-difficulty-Label = ".difficulty a span.lfe-caption,.difficulty span.lfe-caption,.difficulty-tags span.lfe-caption,.block-item.tag" // 题目难度标签
 		InLine-code-block = "[class*='marked'] code,.am-comment-bd p>code" // 行内代码块
 		Code-block = "pre:not([mp-editor-container],.CodeMirror-line)" // 代码块
-		Discuss = ".row-wrap > .card.comment.padding-default, .log,.article-comment .l-card.reply-item,.l-card.comment" // 讨论区评论
+		Discuss = ".row-wrap > .card.comment.padding-default, .card.log,.article-comment .l-card.reply-item,.l-card.comment" // 讨论区评论
 		Badge = ".am-badge,.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span" // 用户 Tag
 		Button = ".lfe-form-sz-middle,.am-btn,.lform-size-middle,.lform-sz-middle,a[href*='http']>#go" // 中型按钮
 		Small-Button = ".lfe-form-sz-small,.lform-sz-small,.lform-size-small,.copy-btn,.copy-btn.lfe-form-sz-middle" // 小型按钮
-		Username = "a.color-none[href*='/user/'][target='_blank']>span,.name[style*='font-weight: bold;']" // 用户 id
+		Username = "a.color-none[href*='/user/'][target='_blank']>span,.name[style*='font-weight: bold;'],.item span>span[slot='trigger']" // 用户 id
 		Avatar = "img.avatar,img.am-comment-avatar,.luogu-username>img,.message-block>img,.avatar>img" // 用户头像
 
 // 全局工具函数
 
+	use_stable_bg() // 设置背景相关参数
+		background-repeat: no-repeat !important
+		background-size: cover !important
+		background-position: center !important
+	
 	// 使用全局背景
-	use_mainly_background(background-val = Background) 
-		background: background-val !important
-		background-repeat no-repeat !important
-		background-size cover !important
-		background-position center !important
-		background-attachment fixed !important
+	use_mainly_background(background-val = Background)
+		will-change: background
+		&:before
+			will-change: transform
+			contain: strict if Content-Visibility
+			transform: translate3d(0,0,0) if Use-GPU
+			content: ""
+			position: fixed
+			top: 0
+			left: 0
+			height: 100%
+			width: 100%
+			background: background-val !important
+			background-attachment: fixed !important
+			z-index: -1
+			use_stable_bg()
 	
 	use_new_bar() // 我们洛谷的新前端，太美丽
 		// 专栏顶栏样式修改
@@ -664,8 +749,10 @@ if Fast-Font-load
 		body>div>nav.lside,body>div>div.rside
 			background: Article-sidebar-bg-color !important
 			& ul>li
-				transition: background Article-sidebar-card-hover-ani !important
+				transition: all Article-sidebar-card-hover-ani !important
+				border-radius: Article-sidebar-card-radius !important
 			& ul>li:hover
+				border-radius: Article-sidebar-card-radius !important
 				background: Article-sidebar-card-hover !important
 	
 	get_depend_list(args) // TODO：此处支持可能不够完备，如有更完善实现可能更改
@@ -745,21 +832,21 @@ if Fast-Font-load
 
 	use_hover_line(Hover-line-ani,Hover-line-color,Hover-line-height)
 		position: relative
-		overflow: unset !important
-		&::after
+		overflow: visible !important
+		&::before
 			content: ""
 			width: 0
 			height: Hover-line-height !important
+			transition: all Hover-line-ani
 			background: Hover-line-color
 			position: absolute
 			top: 100%
 			left: 50%
-			transition: all Hover-line-ani
-		&:hover::after
+		&:hover::before
 			left: 0%
 			width: 100%
 	anti_hover_line()
-		&::after
+		&::before
 			opacity: 0 !important
 
 	// TODO：v2.0
@@ -868,6 +955,162 @@ if Fast-Font-load
 				display: inline-block if Discuss-Sidebar-right
 				width: 100%
 	
+	DarkMode_check(a,b)
+		if DarkMode
+			return a
+		else
+			return b
+
+	Check(c,a,b)
+		if c
+			return a
+		else
+			return b
+	
+	// 亚克力基本实现转自氩洛谷 RE2024。
+	// 基于伪元素的亚克力实现，不会造成层叠混乱
+	acrylic_a(acr-bgcolor,blur-radius=10px)
+		background: none !important
+		backdrop-filter: none !important
+		filter: none !important
+		@layer
+			&
+				position: relative
+
+		&::before
+			content-visibility: auto if Content-Visibility
+			contain: strict if Content-Visibility
+			transform: translate3d(0px, 0px, 0px) if Use-GPU
+			height: auto !important
+			width: auto !important
+			background: acr-bgcolor !important
+			backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
+			content: ""
+			if @border-radius
+				border-radius: @border-radius
+			else
+				border-radius: inherit
+			transition: @transition if @transition
+			position: absolute
+			pointer-events: none
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			z-index: -1 !important
+			
+			
+			//https://stackoverflow.com/questions/74085350/backdrop-filter-doesnt-apply-if-parents-opacity-is-less-than-1
+			/*
+			很遗憾，这不起作用
+			transform: translateZ(0)
+			backface-visibility: hidden
+			*/
+			
+	
+	// https://stackoverflow.com/questions/44522299/css-only-acrylic-material-from-fluent-design-system
+	// 直接修改背景的亚克力实现，不需要修改 z-index，不会对 border-radius 造成影响，但可能造成层叠混乱
+	acrylic_b(acr-bgcolor,blur-radius=10px)
+		if Use-GPU
+			@layer
+				&
+					transform: translateZ(0)
+		background: acr-bgcolor !important
+		backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
+
+	to_s() // 将值转换为对应字符串
+		return "%s%s"%((arguments) ())
+
+	analysis_string(str) // 解析字符串
+		if typeof(str)!="string"
+			return str
+		if str==""
+			return ""
+		if substr(str,0,1)=='^'
+			return to_s(convert(slice(str,1)))
+		else if substr(str,0,1)=='$'
+			return slice(str,1)
+		else
+			return convert(str)
+	
+	analysis_user_string(str) // 转义直接在配置页面输入的字符串
+		if typeof(str)!="string"
+			return str
+		else if substr(str,0,1)=='$'
+			return analysis_string(slice(str,1))
+		else 
+			return str
+
+	background()
+		if substr(to_s(arguments),0,6)=='imgurl'
+			val=slice(to_s(arguments),3)
+			background: convert(val)
+			image-rendering: crisp-edges
+			use_stable_bg()
+		else if substr(to_s(arguments),0,7)=='Acrylic'
+			val='a'+slice(to_s(arguments),1)
+			convert(val)
+		else if to_s(arguments)=="transparent" || to_s(arguments)=="transparent !important"
+			background: arguments
+			&:before
+				display: none !important
+		else if typeof(arguments)=='rgba'
+			background: arguments
+		else
+			background: arguments
+	
+	User_badge(uid, radius, bgc, textc, content_text)
+		a[href*=\'{s("/user/%s",uid)}\'][target='_blank'],a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;'], .user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child, .lfe-body:has(>.top-bar>.user-nav img[src*=\'{s("/usericon/%s",uid)}\']) > .user-nav.rside .luogu-username.username > .name
+			overflow: visible
+			&::after
+				overflow: visible !important
+				margin: 0 auto
+				content: content_text
+				font-size: 90%
+				line-height: 1.5
+				font-weight: 400
+				padding: 0 8px
+				box-sizing: border-box
+				border-radius: radius !important
+				display: inline-block
+				color: textc
+				background: bgc !important
+				white-space: nowrap
+				margin-left: 3px
+		a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;'], .user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child
+			&::after
+				padding: 0 .5em !important
+		.user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child
+			&::after
+				font-size: 70% !important
+	
+	User_Name(uid,user_color,user_hover_color)
+		a.color-none[href*=\'{s("/user/%s",uid)}\'][target='_blank'] > span[style*="color:"],.panel-content .item > img[src*=\'{s("%s.",uid)}\']+span > span[slot="trigger"],a.name[href*=\'{s("/user/%s",uid)}\'][style*='font-weight: bold;'], .user-header-top > img[src*=\'{s("/usericon/%s",uid)}\']+.user-info .user-name > span:first-child, .lfe-body:has(>.top-bar>.user-nav img[src*=\'{s("/usericon/%s",uid)}\']) > .user-nav.rside .luogu-username.username > .name
+			color: user_color !important
+			&:hover
+				color: user_hover_color !important
+	
+	is_acrylic()
+		if substr(to_s(arguments),0,7)=='Acrylic'
+			return 1
+		return 0
+	
+	sub_acrylic()
+		return convert('look_acrylic_value'+slice(to_s(arguments),9))
+
+	look_acrylic_value(acr-bgcolor,blur-radius=10px)
+		return acr-bgcolor
+
+	Ready_acrylic()
+		if is_acrylic(arguments)
+			background: Acrylic_a(rgba(rgb(sub_acrylic(arguments)),0),0)
+
+	//box-shadow()
+	//	if Use-GPU
+	//		filter: s("box-shadow(%s)",arguments)
+	//	else
+	//		box-shadow: arguments
+	
 // 兼容性选项
 	if exlg-compatible
 		Card_L2 += ",.exlg-emo-btn"
@@ -885,719 +1128,477 @@ if Fast-Font-load
 			Exlg-Codeheader-bg-color = set_default_value(Exlg-Codeheader-bg-color,#eee)
 
 // 全局变量定义
-	// 默认值定义
+	// 用户样式解析
 
-	Card-L1-radius = set_default_value(Card-L1-radius,4px)
-	Card-L2-radius = set_default_value(Card-L2-radius,4px)
-	Card-float-radius = set_default_value(Card-L2-radius,5px) 
-	Inputbox-radius = set_default_value(Inputbox-radius,4px)
-	Benben-radius = set_default_value(Inputbox-radius,get_depend_list(Card-L2-radius, 4px))
-	InLine-code-block-radius = set_default_value(InLine-code-block-radius,3px)
-	Code-block-radius = set_default_value(Code-block-radius,5px)
-
-	if InLine-code-block-border-del 
-		InLine-code-block-border = set_default_value(InLine-code-block-border,none)
-	else
-		InLine-code-block-border = set_default_value(InLine-code-block-border,1px solid)
-
-	if Code-block-border-del
-		Code-block-border = set_default_value(Code-block-border,none)
-	else
-		Code-block-border = set_default_value(Code-block-border,1px solid)
-
-	// 一些原则上的东西：颜色不由优化样式的个性配置影响
-	// 使用默认配置时，可能会有一些细节上没有体现在配置中的小优化
-	// 全局颜色定义
-
-	Luogu-discuss-color-2 = set_default_value(Luogu-discuss-color-2,#14558f)
-	Luogu-discuss-color-3 = set_default_value(Luogu-discuss-color-3,#f39c11)
-	Luogu-discuss-color-4 = set_default_value(Luogu-discuss-color-4,#9d3dcf)
-	Luogu-discuss-color-5 = set_default_value(Luogu-discuss-color-5,#52c41a)
-	Luogu-discuss-color-6 = set_default_value(Luogu-discuss-color-6,#2949b4)
-
-	if CustomBackground!=None
-		Header-bg-color = set_default_value(Header-bg-color,none)
-		Footer-bg-color = set_default_value(Footer-bg-color,none)
+	for US in (secondary_UserStyle secondary_UserStyle2 secondary_UserStyle3)
+		if US!=None
+			for key, value in US
+				if (typeof(lookup(key))=="string" && lookup(key)==Default)
+					val = analysis_string(value)
+					define(key,val)
+				else if typeof(lookup(key))=="string"
+					val = analysis_user_string(lookup(key))
+					define(key,val)
 	
+	for US in (UserStyle3 UserStyle2 UserStyle)
+		if US!=None
+			for key, value in US
+				val = analysis_string(value)
+				define(key,val)
+
+	DefaultStyle = {
+		"Card-L1-radius": "4px",
+		"Card-L2-radius": "4px",
+		"Card-float-radius": "5px",
+		"Inputbox-radius": "4px",
+		"Benben-radius": "get_depend_list(Card-L2-radius, 4px)",
+		"InLine-code-block-radius": "3px",
+		"Code-block-radius": "5px",
+		"InLine-code-block-border": "^Check(InLine-code-block-border-del,none,1px solid)",
+		"Code-block-border": "^Check(Code-block-border-del,none,1px solid)",
+		"Luogu-discuss-color-2": "#14558f",
+		"Luogu-discuss-color-3": "#f39c11",
+		"Luogu-discuss-color-4": "#9d3dcf",
+		"Luogu-discuss-color-5": "#52c41a",
+		"Luogu-discuss-color-6": "#2949b4",
+		"Background-color": "DarkMode_check(#141725, #efefef)",
+		"Card-bg-color-L1": "DarkMode_check(#252d38, #fcfcfc)",
+		"Card-bg-color-L2": "DarkMode_check(#2f3741, #fff)",
+		"Header-bg-color": "Check(CustomBackground!=None,none,DarkMode_check(linear-gradient(90deg,#282828,#1a1a1a), linear-gradient(90deg, rgb(35, 37, 38), rgb(65, 67, 69))))",
+		"Footer-bg-color": "Check(CustomBackground!=None,none,DarkMode_check(#1a1a1a, linear-gradient(150deg,#708090 15%,#2F4F4F 70%,#000000 94%)))",
+		"Card-bg-color-float": "DarkMode_check(#242C38, #fff)",
+		"Card-hover-color-float": "DarkMode_check(#3e4752, #e5e5e5)",
+		"Text-color": "DarkMode_check(#c4c6c9, rgba(0,0,0,.75))",
+		"State-color": "DarkMode_check(rgba(255,255,255,0.45), rgba(0,0,0,0.45))",
+		"Introduce-color": "DarkMode_check(#c4c6c9, rgba(0,0,0,.75))",
+		"Operate-color": "DarkMode_check(#999999, #999999)",
+		"Operate-hover-color": "DarkMode_check(#dcdcdc, #3f3f3f)",
+		"Topic-text-color": "DarkMode_check(#fff, #fff)",
+		"ColorfulLabel-text-color": "DarkMode_check(#fff, #fff)",
+		"GrayLabel-text-color": "DarkMode_check(#dddddd, #3a3a3a)",
+		"GrayLabel-border-color": "DarkMode_check(#3f6b91, #bebebe)",
+		"GrayLabel-bg-color": "DarkMode_check(#162430, #e8e8e8)",
+		"A-color": "DarkMode_check(#5e72e4, #3498db)",
+		"A-hover-color": "DarkMode_check(#0056b3, #095f8a)",
+		"Scrollbar-track-color": "DarkMode_check(#161926, rgba(0, 0, 0, 0.05))",
+		"Scrollbar-thumb-color": "DarkMode_check(#57626f, rgba(0, 0, 0, 0.2))",
+		"Scrollbar-hover-color": "DarkMode_check(#5e72e4, #808080)",
+		"Navbar-bg-color": "DarkMode_check(#1f3144, #fff)",
+		"Input-bg-color": "DarkMode_check(#2f3741, #fff)",
+		"Input-focus-bg-color": "DarkMode_check(Input-bg-color, Input-bg-color)",
+		"Input-border-color": "DarkMode_check(#a7a9ad, #bfbfbf)",
+		"Input-focus-border-color": "DarkMode_check(#3498db, #409eff)",
+		"Input-text-color": "DarkMode_check(#dcdcdc, #000)",
+		"Input-placeholder-color": "DarkMode_check(#c4c6c9, rgba(0,0,0,.5))",
+		"Sidebar-bg-color": "DarkMode_check(#162430, #34495E)",
+		"Sidebar-icon-color": "DarkMode_check(#dddddd, #dddddd)",
+		"Sidebar-btn-color": "DarkMode_check(#dddddd, #dddddd)",
+		"Sidebar-luogu-bg-color": "DarkMode_check(#4682b4, #3498db)",
+		"Sidebar-luogu-icon-color": "DarkMode_check(#fffaf0, #fff)",
+		"L2-Card-border": "DarkMode_check(#435266, #e8e8e8)",
+		"Post-heading-color": "DarkMode_check(#c4c6c9, rgba(0,0,0,.75))",
+		"Benben-hd-color": "DarkMode_check(get_depend_list(Card-bg-color-L2), #f8f8f8)",
+		"Benben-bd-color": "DarkMode_check(get_depend_list(Card-bg-color-L1), #fff)",
+		"Discuss-hd-color": "DarkMode_check(get_depend_list(Card-bg-color-L2), #f8f8f8)",
+		"Discuss-bd-color": "DarkMode_check(get_depend_list(Card-bg-color-L1), #fff)",
+		"Homepage-a-green": "DarkMode_check(#5eb95e, #5eb95e)",
+		"Homepage-a-red": "DarkMode_check(#dd514c, #dd514c)",
+		"Divider-color": "DarkMode_check(#435266, #e8e8e8)",
+		"Directory-a-color": "DarkMode_check(rgba(255,255,255,.75), rgba(255,255,255,.75))",
+		"Other-icon-color": "DarkMode_check(#c4c6c9, #333333)",
+		"Card-icon-color": "DarkMode_check(#333, #333)",
+		"Luogu-discuss-color-1": "DarkMode_check(#fff, #272727)",
+		"Main-post-heading-color": "DarkMode_check(#fff, #fff)",
+		"Topic-type-Label-not-select": "DarkMode_check(#3f3f3f, #e8e8e8)",
+		"InLine-code-block-bg-color": "DarkMode_check(#3e4752, #f8f8f8)",
+		"Code-block-bg-color": "DarkMode_check(#0d1117, #f8f8f8)",
+		"InLine-code-block-border-color": "DarkMode_check(#3e4752, #e8e8e8)",
+		"Code-block-border-color": "DarkMode_check(#0d1117, #eeeeee)",
+		"Code-block-text-color": "DarkMode_check(#b6b8c2, #36464e)",
+		"Code-block-quote-color": "DarkMode_check(#5c6370, #707070)",
+		"Code-block-meta-color": "DarkMode_check(#f06090, #f06090)",
+		"Code-block-meta-string-color": "DarkMode_check(#2fb170, #2fb170)",
+		"Code-block-string-color": "DarkMode_check(#2fb170, #2fb170)",
+		"Code-block-keyword-color": "DarkMode_check(#6791e0, #6791e0)",
+		"Code-block-title-color": "DarkMode_check(#c973d9, #c973d9)",
+		"Code-block-number-color": "DarkMode_check(#e6695b, #e6695b)",
+		"Code-block-params-color": "DarkMode_check(#da70d6, #da70d6)",
+		"Article-bg-color": "DarkMode_check(#1e2334, #fafafa)",
+		"Article-text-bg-color": "DarkMode_check(#252d38, #ffffff)",
+		"Article-sidebar-bg-color": "DarkMode_check(#1f3144, #fff)",
+		"Article-icon-color": "DarkMode_check(#c4c6c9, #333)",
+		"Privateletter-bg-color": "DarkMode_check(#12161c, #e8e8e8)",
+		"Benben-tab-bg-color": "DarkMode_check(#252d38, #fff)",
+		"Benben-tab-hover-color": "DarkMode_check(#2f3741, #eee)",
+		"Benben-tab-text-color": "DarkMode_check(#5e72e4, #3498db)",
+		"Benben-tab-focus-bg-color": "DarkMode_check(#0056b3, #48D1CC)",
+		"Benben-tab-focus-text-color": "DarkMode_check(#fff, #fff)",
+		"Spinner-dark-color": "DarkMode_check(#fff, #333)",
+		"Markdown-button-hover-bg-color": "DarkMode_check(#2f3741, #fff)",
+		"Markdown-button-hover-border": "^DarkMode_check(1px solid #2f3741, 1px solid #fff)",
+		"Markdown-button-hover-text-color": "DarkMode_check(#0056b3, #095f8a)",
+		"Highcharts-bg-color": "DarkMode_check(#5e72e426, #5e72e426)",
+		"Highcharts-line-color": "DarkMode_check(#871F78, '')",
+		"Highcharts-point-color": "DarkMode_check(#5e72e4, #87CEEB)",
+		"Highcharts-hover-point-color": "DarkMode_check(#0056b3, '')",
+		"Highcharts-hover-point-border-color": "DarkMode_check(#fff, '')",
+		"Highcharts-hover-bigpoint-color": "DarkMode_check(#7cb5ec,'')",
+		"Highcharts-strip-color": "DarkMode_check(rgba(61,89,171,0.55), rgba(61,89,171,0.55))",
+		"Highcharts-strip-border-color": "DarkMode_check(#d49ee6ad, #d49ee6ad)",
+		"Highcharts-strip-hover-color": "DarkMode_check(rgba(61,89,171,0.75), rgba(61,89,171,0.65))",
+		"Highcharts-text-color": "DarkMode_check(#c4c6c9, '')",
+		"Highcharts-text-bg-color": "DarkMode_check(rgba(18,22,28,0.75), '')",
+		"Highcharts-text-border-color": "DarkMode_check(#8e44ad, '')",
+		"Highcharts-text-point-color-1": "DarkMode_check(#7cb5ec, '')",
+		"Highcharts-text-point-color-2": "DarkMode_check(#c4c6c9, '')",
+		"Progressframe-color": "DarkMode_check(#5e72e4, #3498db)",
+		"Progressframe-bg-color": "DarkMode_check(#141725, #e8e8e8)",
+		"Big-button-bg-color": "DarkMode_check(#2f3741, #fafafa)",
+		"Big-button-border": "^DarkMode_check(1px solid #435266, 1px solid #e8e8e8)",
+		"Big-button-border-hover": "^DarkMode_check(1px solid #0056b3, 1px solid #89d1f5)",
+		"Small-button-bg-color": "DarkMode_check(#2f3741, #fff)",
+		"Small-button-select-bg-color": "DarkMode_check(#5e72e4, #3498db)",
+		"Small-button-border": "^DarkMode_check(1px solid #435266, 1px solid #bfbfbf)",
+		"Small-button-border-hover": "^DarkMode_check(1px solid #0056b3, 1px solid #3498db)",
+		"Small-button-text-select-color": "DarkMode_check(#fff, #fff)",
+		"Footer-bigtext-color": "DarkMode_check(#fffaf0, #fff)",
+		"Footer-img-color": "DarkMode_check(#fffaf0, #fff)",
+		"Card-L1-shadow": "^DarkMode_check(none, 0 5px 15px rgba(50,50,93,.1)\,0 5px 8px rgba(0,0,0,.07))",
+		"Card-L1-hover-shadow": "^DarkMode_check(none, 0 10px 30px rgba(50,50,93,.1)\,0 5px 15px rgba(0,0,0,.07))",
+		"Benben-shadow": "^DarkMode_check(none, 0 3px 5px rgba(50,50,93,.1)\, 0 2px 3px rgba(0,0,0,.08))",
+		"Benben-hover-shadow": "^DarkMode_check(none, 0 7px 14px rgba(50,50,93,.1)\, 0 3px 6px rgba(0,0,0,.08))",
+		"Benben-hover-ani": "^DarkMode_check(none, .15s ease)",
+		"Privateitem-hover-bg-color": "DarkMode_check(#3e4752, #e8e8e8)",
+		"Combowrapper-text-color": "DarkMode_check(#dcdcdc, rgba(0, 0, 0, 0.75))",
+		"Expand-shadow": "^DarkMode_check(linear-gradient(rgba(255,255,255,0), rgba(128,128,128,0.5)), linear-gradient(rgba(255, 255, 255, 0), #fff))",
+		"Article-sidebar-card-hover": "DarkMode_check(#3e4752, #e5e5e5)",
+		"Markdown-gutter-color": "DarkMode_check(#242c38, #f7f7f7)",
+		"Markdown-gutter-active-color": "DarkMode_check(#3e4752, #e2f2ff)",
+		"Markdown-line-active-color": "DarkMode_check(#cceeff44, #cceeff44)",
+		"Markdown-bg-color": "DarkMode_check(#2f3741, #fff)",
+		"Text-selection-color": "DarkMode_check(#474c63, #afeeee)",
+		"Codeblock-text-selection-color": "DarkMode_check(#264f78, #d6d6d6)",
+		"Markdown-text-selection-color": "DarkMode_check(#264f78, #d6d6d6)",
+		"Control-nav-bg-color": "DarkMode_check(#a7a9ad, #c4c6c9)",
+		"Control-nav-active-bg-color": "DarkMode_check(#5e72e4, #3498db)",
+		"UpdEditer-gutter-color": "DarkMode_check(#242c38, #ebebeb)",
+		"UpdEditer-gutter-active-color": "DarkMode_check(#3e4752, #dcdcdc)",
+		"UpdEditer-line-active-color": "DarkMode_check(#596874, #fffbd1)",
+		"UpdEditer-linenumber-color": "DarkMode_check(#999999, #999999)",
+		"UpdEditer-bg-color": "DarkMode_check(#2f3741, #fff)",
+		"Select-button-hover-bg-color": "DarkMode_check(#3e4752, #f6f6f6)",
+		"Privateletter-right-bg-color": "DarkMode_check(#4682b4, #3498db)",
+		"Privateletter-right-text-color": "DarkMode_check(#f2faff, #f2faff)",
+		"Top-progress-color": "DarkMode_check(#5e72e4, #3498db)",
+		"Table-color": "DarkMode_check(#c4c6c9, #ddd)",
+		"Article-progress-color": "DarkMode_check(#5e72e4, #3498db)",
+		"Checkin-Time-color": "DarkMode_check(#1aae6f, #396a42)",
+		"Swal-shadow": "^DarkMode_check(none, 0 0 .625em #d9d9d9)",
+		"Blockquote-border-color": "DarkMode_check(#354a83, #eeeeee)",
+		"Topic-type-Label-algorithm": "#2949b4",
+		"Topic-type-Label-source": "#13c2c2",
+		"Topic-type-Label-time": "#3498db",
+		"Topic-type-Label-area": "#52c41a",
+		"Topic-type-Label-special": "#f39c11",
+		"Homepage-L2-Card-green": "rgba(94,185,94,.15)",
+		"Homepage-L2-Card-green-border": "DarkMode_check(rgba(42,97,42,.7),darken(Homepage-L2-Card-green,30%))",
+		"Homepage-L2-Card-red": "rgba(221,81,76,.15)",
+		"Homepage-L2-Card-red-border": "DarkMode_check(rgba(125,27,24,0.5),darken(Homepage-L2-Card-red,30%))",
+		"Homepage-L2-Card-blue-border": "DarkMode_check(rgba(70, 130, 180,.7),rgba(135,206,235,.7))",
+		"Topic-difficulty-Label-1": "#bfbfbf",
+		"Topic-difficulty-Label-2": "#fe4c61",
+		"Topic-difficulty-Label-3": "#f39c11",
+		"Topic-difficulty-Label-4": "#ffc116",
+		"Topic-difficulty-Label-5": "#52c41a",
+		"Topic-difficulty-Label-6": "#3498db",
+		"Topic-difficulty-Label-7": "#9d3dcf",
+		"Topic-difficulty-Label-8": "DarkMode_check(#000,#0e1d69)",
+		"Test-case-margin-right": "10px",
+		"Test-case-margin-bottom": "12px",
+		"Test-case-margin-top": "25px",
+		"Test-case-size": "96px",
+		"Test-case-ani": "^.2s ease",
+		"Test-case-shadow": "^0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08)",
+		"Test-case-border-radius": "3px",
+		"Test-case-translate": "3px",
+		"Test-case-hover-shadow": "^0 10px 30px rgba(50,50,93,0.1),0 5px 15px rgba(0,0,0,0.07)",
+		"Test-case-message-ani": "^.45s ease",
+		"Test-case-message-shadow": "^0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08)",
+		"Test-case-message-color": "#fff",
+		"Test-case-background": "rgba(23,43,77,0.8)",
+		"Test-case-color-AC": "#52c41a",
+		"Test-case-color-WA": "#fb6340",
+		"Test-case-color-RE": "#8e44ad",
+		"Test-case-color-TLE": "#001277",
+		"Test-case-color-MLE": "#000000",
+		"Test-case-color-OLE": "TLE",
+		"Test-case-color-UKE": "#34495e",
+		"Test-case-text-color": "#fff",
+		"article-icon-1-color": "#fea706",
+		"article-icon-2-color": "#e07090",
+		"article-icon-3-color": "DarkMode_check(#ac3725,#fa0000)",
+		"article-icon-4-color": "#3498db",
+		"Sidebar-popup-padding": "10px",
+		"Sidebar-popup-ani": "^fade 0.2s ease",
+		"Float-card-hover-ani": ".3s",
+		"Highcharts-hover-bigpoint-op": "0.25",
+		"Userpage-text-color": "#fff",
+		"Badge-text-color": "#fff",
+		"Badge-border-radius": "2px",
+		"Label-border-radius": "2px",
+		"Footer-text-color": "rgba(255,255,255,.75)",
+		"Footer-text-hover-color": "#fff",
+		"Card-L1-hover-transition": ".15s ease",
+		"Operate-hover-ani": "^.4s ease",
+		"Privateitem-hover-ani": ".3s",
+		"Discuss-button-ani": ".3s",
+		"Article-rside-width": "240px",
+		"Button-bg-color-blue": "#3498db",
+		"Button-bg-color-black": "#121212",
+		"Button-bg-color-red": "#e74c3c",
+		"Button-bg-color-special-red": "transparent",
+		"Button-bg-color-special-blue": "transparent",
+		"Button-bg-color-green": "#52c41a",
+		"Button-hover-bg-color-blue": "#0c79b1",
+		"Button-hover-bg-color-black": "#1f3144",
+		"Button-hover-bg-color-red": "#d4483a",
+		"Button-hover-bg-color-special-red": "rgba(231,76,60,0.1)",
+		"Button-hover-bg-color-special-blue": "rgba(52,152,219,0.1)",
+		"Button-hover-bg-color-green": "#4aaa4a",
+		"Button-active-bg-color-blue": "#0a6c9e",
+		"Button-active-bg-color-black": "#1f364e",
+		"Button-active-bg-color-red": "#bc4033",
+		"Button-active-bg-color-special-red": "rgba(231,76,60,0.14)",
+		"Button-active-bg-color-special-blue": "rgba(52,152,219,0.14)",
+		"Button-active-bg-color-green": "#398339",
+		"Button-border-color-black": "#7b7c7c",
+		"Button-border-color-special-red": "#e74c3c",
+		"Button-border-color-special-blue": "#3498db",
+		"Button-border-size-blue": "1px",
+		"Button-border-size-black": "1px",
+		"Button-border-size-red": "1px",
+		"Button-border-size-special-red": "1px",
+		"Button-border-size-special-blue": "1px",
+		"Button-border-size-green": "1px",
+		"Button-radius": "3px",
+		"Small-button-radius": "3px",
+		"Button-padding-width": "15px",
+		"Button-padding-height": "5.382px",
+		"Small-button-padding-width": "8px",
+		"Small-button-padding-height": "2.75px",
+		"Button-hover-ani": "^.3s ease-out",
+		"Expand-radius": "5px",
+		"Homepage-L2-Card-blue-text-color": "#fff",
+		"Control-nav-ani": "^0.5s ease",
+		"Font-Stack": "^Noto Sans SC",
+		"Code-block-fontstack": "^JetBrains Mono",
+		"Markdown-linenumber-color": "#6c6c6c",
+		"Test-case-color-QUE": "#14558f",
+		"UpdEditer-text-color": "DarkMode_check(#bcbec4,#000)",
+		"UpdEditer-operator-color": "DarkMode_check(#bcbec4,#000)",
+		"UpdEditer-punctuation-color": "DarkMode_check(#bcbec4,#000)",
+		"UpdEditer-paren-color": "DarkMode_check(#bcbec4,#000)",
+		"UpdEditer-quote-color": "#7e7f84",
+		"UpdEditer-string-color": "#6aab73",
+		"UpdEditer-keyword-color": "#cf8e6d",
+		"UpdEditer-number-color": "#2aacb8",
+		"UpdEditer-type-color": "#8888c6",
+		"UpdEditer-func-color": "#8888c6",
+		"Difficulty-text-color-1": "Topic-difficulty-Label-1",
+		"Difficulty-text-color-2": "Topic-difficulty-Label-2",
+		"Difficulty-text-color-3": "Topic-difficulty-Label-3",
+		"Difficulty-text-color-4": "Topic-difficulty-Label-4",
+		"Difficulty-text-color-5": "Topic-difficulty-Label-5",
+		"Difficulty-text-color-6": "Topic-difficulty-Label-6",
+		"Difficulty-text-color-7": "Topic-difficulty-Label-7",
+		"Difficulty-text-color-8": "Topic-difficulty-Label-8",
+		"Problem-tag-radius": "5px",
+		"Problem-tag-padding": "^0.5px 9px",
+		"Problem-tag-ani": "^0.15s ease-out",
+		"Problem-tag-hover-trans": "1px",
+		"Problem-tag-hover-shadow": "^DarkMode_check(none,0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08))",
+		"Benben-tab-height": "Check(Better-Benben-Tab,50px,36.8px)",
+		"A-hover-ani": "^0.15s ease-out",
+		"Button-default-color": "#fff",
+		"Username-color-1": "#bfbfbf",
+		"Username-color-2": "#3498db",
+		"Username-color-3": "#52c41a",
+		"Username-color-4": "#f39c11",
+		"Username-color-5": "#fe4c61",
+		"Username-color-6": "#8e44ad",
+		"Username-color-7": "#ad8b00",
+		"Input-active-ani": "^0.3s ease-out",
+		"Header-ani-padding": "30px",
+		"Header-ani": "^0.75s ease",
+		"Header-text-ani-padding": "100px",
+		"Header-text-ani": "^0.75s ease",
+		"Problem-select-bar-bg-color": "#e0f7ff",
+		"Problem-select-bar-active-bg-color": "#3498db",
+		"Problem-select-bar-text-color": "Introduce-color",
+		"Problem-select-bar-hbg-text-color": "#3498db",
+		"Problem-select-bar-active-text-color": "#fff",
+		"Problem-select-bar-hbg-text-hover-color": "#0056b3",
+		"Problem-select-bar-text-hover-color": "DarkMode_check(#fff,#000)",
+		"Problem-select-bar-text-hover-ani": "^0.6s ease",
+		"Problem-select-bar-bg-hover-ani": "^0.6s ease",
+		"Input-active-shadow": "^inset 0 1px 1px rgba(0,0,0,.075),0 0 5px rgba(59,180,242,.3)",
+		"Card-select-bar-hover-ani": "^.3s ease",
+		"Card-select-bar-select-color": "#3498db",
+		"Card-select-bar-out-ani": "^.6s ease",
+		"SideBar-shadow": "^Check(Smart-SideBar&&!DarkMode,4px 5px 15px rgba(91, 91, 91, .5),none)",
+		"SideBar-position": "50%",
+		"SideBar-ani": "^0.75s ease",
+		"Button-active-scale": "0.05",
+		"Button-active-ani": "^0.2s ease-out",
+		"Discuss-Sidebar-width": "Check(Discuss-Sidebar-right,calc(25% - 1em),calc(20% - 1em))",
+		"Discuss-Main-width": "Check(Discuss-Sidebar-right,calc(75%),calc(80% - 5em))",
+		"Discuss-Sidebar-margin": "1em",
+		"Markdown-fontstack": "'Fira Code', 'Source Code Pro', 'Noto Sans SC'",
+		"Input-active-scale": "0.005",
+		"Input-active-anim": "^0.4s ease-out",
+		"A-hover-line-ani": ".3s",
+		"A-hover-line-color": "rgba(255, 0, 0, .575)",
+		"A-hover-line-height": "1.5px",
+		"Usernav-box-margin": "10px",
+		"Usernav-box-ani-margin": "-50px",
+		"Usernav-box-ani": "^0.75s ease",
+		"Usernav-box-radius": "Check(Better-Usernav-box,10px,5px)",
+		"Prob-lcard-width": "calc(66.67% - .5em)",
+		"Prob-side-width": "calc(33.33% - .5em)",
+		"Float-Card-shadow": "^DarkMode_check(none,0 0.5rem 2rem 0 rgba(0, 0, 0, .2))",
+		"Table-radius": "4px",
+		"Avatar-hover-scale": "0.07",
+		"Avatar-hover-ani": "^Check(Avatar-ani-select=='bigger',.26s ease-out,.6s ease-out)",
+		"Article-progress-bg-color": "transparent",
+		"Article-progress-height": "5px",
+		"Article-progress-ani": "^5s linear",
+		"Usernav-icon-hover-color": "DarkMode_check(#5e72e4,#4682b4)",
+		"Usernav-navbar-icon-hover-color": "DarkMode_check(#5e72e4,#3498db)",
+		"Usernav-icon-hover-ani": "^.4s ease",
+		"Article-icon-hover-ani": "^.5s ease",
+		"AD-font-color": "#fff",
+		"AD-font-bg-color": "rgba(51,51,51,0.45)",
+		"AD-font-size": "20px",
+		"AD-font-bg-width": "24px",
+		"AD-font-bg-height": "48px",
+		"AD-font-bg-radius": "5px",
+		"AD-font-bg-hoverimg-color": "rgba(51,51,51,0.7)",
+		"AD-font-bg-hover-color": "rgba(51,51,51,1)",
+		"AD-font-bg-ani": "^.3s ease",
+		"Luogu-article-color-1": "DarkMode_check(#fff,#272727)",
+		"Luogu-article-color-2": "#3498db",
+		"Luogu-article-color-3": "#f39c11",
+		"Luogu-article-color-4": "#9d3dcf",
+		"Luogu-article-color-5": "#70ad47",
+		"Luogu-article-color-6": "#2949b4",
+		"Luogu-article-color-7": "#fe4c61",
+		"Directory-a-hover-color": "#fff",
+		"Directory-a-hover-ani": "^.4s ease",
+		"Usertag-color-1": "#bfbfbf",
+		"Usertag-color-2": "#3498db",
+		"Usertag-color-3": "#52c41a",
+		"Usertag-color-4": "#f39c11",
+		"Usertag-color-5": "#fe4c61",
+		"Usertag-color-6": "#8e44ad",
+		"Usertag-color-7": "#ad8b00",
+		"Usersvg-color-1": "#52c41a",
+		"Usersvg-color-2": "#3498db",
+		"Usersvg-color-3": "#ffc116",
+		"Username-color-ani": "^.2s ease",
+		"Username-hover-color-1": "#8e8e8e",
+		"Username-hover-color-2": "#095f8a",
+		"Username-hover-color-3": "#338809",
+		"Username-hover-color-4": "#b4820a",
+		"Username-hover-color-5": "#cf3346",
+		"Username-hover-color-6": "#611d7d",
+		"Username-hover-color-7": "#9f8416",
+		"Usertag-hover-color-1": "#8e8e8e",
+		"Usertag-hover-color-2": "#095f8a",
+		"Usertag-hover-color-3": "#338809",
+		"Usertag-hover-color-4": "#b4820a",
+		"Usertag-hover-color-5": "#cf3346",
+		"Usertag-hover-color-6": "#611d7d",
+		"Usertag-hover-color-7": "#9f8416",
+		"Usertag-color-ani": "^.4s ease",
+		"Usersvg-mid-color": "#fff",
+		"Usersvg-mid-hover-color": "#fff",
+		"Usersvg-hover-color-1": "#338809",
+		"Usersvg-hover-color-2": "#095f8a",
+		"Usersvg-hover-color-3": "#d4a423",
+		"Usersvg-hover-ani": "^.4s ease",
+		"Article-sidebar-card-hover-ani": "^0.17s ease-out",
+		"UserNotification-active-color": "DarkMode_check(#5e72e4,#3498db)",
+		"UserNotification-ani": "^.4s ease",
+		"Problem-sol-icon-act-color": "#e07090",
+		"Main-title-size": "1.75em",
+		"Navbar-height": "4em",
+		"Header-narrow-height": "8em",
+		"Header-normal-height": "10em",
+		"Header-new-narrow-height": "120px",
+		"Header-new-normal-height": "120px",
+		"Markdown-text-color": "DarkMode_check(#dcdcdc, #000)",
+		"Markdown-text-delete-color": "#e74c3c",
+		"Markdown-text-strong-color": "Markdown-text-color",
+		"Markdown-text-italic-color": "#cc7832",
+		"Markdown-text-variable-color": "#05a",
+		"Markdown-text-title-color": "DarkMode_check(#5e72e4, #3498db)",
+		"Markdown-text-codetag-color": "#2fb170",
+		"Markdown-text-codename-color": "#2fb170",
+		"Markdown-atext-color": "#cc7832",
+		"Markdown-a-color": "#2fb170",
+		"Card-hover-bg-color-L1": "None",
+		"Card-hover-bg-color-L2": "None",
+		"Card-hover-bg-color-L1-ani": "^0.5s ease",
+		"Card-hover-bg-color-L2-ani": "^0.5s ease",
+		"Float-bar-ani": "0.6s cubic-bezier(0.5, 1)",
+		"Discuss-shadow": "^DarkMode_check(none, 0 5px 15px rgba(50,50,93,.1)\,0 5px 8px rgba(0,0,0,.07))",
+		"Discuss-hover-shadow": "^DarkMode_check(none, 0 10px 30px rgba(50,50,93,.1)\,0 5px 15px rgba(0,0,0,.07))",
+		"Discuss-hover-shadow-ani": "0.15s",
+		"Discuss-hd-hover-color": "Discuss-hd-color",
+		"Discuss-bd-hover-color": "Discuss-bd-color",
+		"Discuss-hover-color-ani": "^0.5s ease",
+		"Usernav-hover-bg-color": "Card-bg-color-float", 
+		"Usernav-hover-ani": "^.3s ease",
+		"Benben-bd-hover-color": "Benben-bd-color",
+		"Benben-bd-hover-ani": "^0.5s ease",
+		"Privateletter-list-radius": "0",
+		"Privateitem-hover-text-color": "None",
+		"Article-max": "500",
+		"Use-card-radius": "Card-L1-radius",
+		"Article-sidebar-card-radius": "3px",
+		"Ease-Load-ani": "0.5s"
+	}
+
+	null_key = lookup("null_key")
+	for key, value in DefaultStyle
+		if (typeof(lookup(key))=="string" && lookup(key)==Default) || Anti-Userinput
+			val = analysis_string(value)
+			define(key,val)
+		else if typeof(lookup(key))=="string"
+			val = analysis_user_string(lookup(key))
+			define(key,val)
+
+	// 卡片化判断
 	if Better-article-card=="auto"
 		if CustomBackground!=None
 			Better-article-card = "on"
 		else
 			Better-article-card = "off"
 	
+	if Use-card-background=="auto"
+		if CustomBackground!=None
+			Use-card-background = "on"
+		else
+			Use-card-background = "off"
+	
 	if Better-article-card=="on"
 		Card_L1 += ",.main-container.lside-bar>main.lcolor-bg-grey-1"
 		Card_L2 += ",.article-comment.columba-content-wrap.wrapper>.l-card"
-
-	if DarkMode
-		Background-color = set_default_value(Background-color,#141725)                            // 全局背景色
-		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#252d38)                            // 一级卡片背景色
-		Card-bg-color-L2 = set_default_value(Card-bg-color-L2,#2f3741)                            // 二级卡片背景色
-		Header-bg-color = set_default_value(Header-bg-color,linear-gradient(90deg,#282828,#1a1a1a))// 页首背景色
-		Footer-bg-color = set_default_value(Footer-bg-color,#1a1a1a)                              // 页尾背景色
-		Card-bg-color-float = set_default_value(Card-bg-color-float,#242C38)                      // 悬浮卡片背景色
-		Card-hover-color-float = set_default_value(Card-hover-color-float,#3e4752)                // 悬浮卡片选中背景色
-		Text-color = set_default_value(Text-color,#c4c6c9)                                        // 正文文字色
-		State-color = set_default_value(State-color,rgba(255,255,255,0.45))                       // 陈述文字色
-		Introduce-color = set_default_value(Introduce-color,#c4c6c9)                              // 介绍文字色
-		Operate-color = set_default_value(Operate-color,#999999)                                  // 操作文字色
-		Operate-hover-color = set_default_value(Operate-hover-color,#dcdcdc)                      // 部分操作选中色
-		Topic-text-color = set_default_value(Topic-text-color,#fff)                               // 题目限定条件文字选中色
-		ColorfulLabel-text-color = set_default_value(ColorfulLabel-text-color,#fff)               // 标签卡片文字色
-		GrayLabel-text-color = set_default_value(GrayLabel-text-color,#dddddd)
-		GrayLabel-border-color = set_default_value(GrayLabel-border-color,#3f6b91)
-		GrayLabel-bg-color = set_default_value(GrayLabel-bg-color,#162430)
-		A-color = set_default_value(A-color,#5e72e4)                                              // 超链接颜色
-		A-hover-color = set_default_value(A-hover-color,#0056b3)                                  // 超链接选中色
-		Scrollbar-track-color = set_default_value(Scrollbar-track-color,#161926)    // 滚动槽颜色
-		Scrollbar-thumb-color = set_default_value(Scrollbar-thumb-color,#57626f) // 滚动条颜色
-		Scrollbar-hover-color = set_default_value(Scrollbar-hover-color,#5e72e4)                  // 滚动条选中色
-		Navbar-bg-color = set_default_value(Navbar-bg-color,#1f3144)                              // 菜单栏背景色
-		Input-bg-color = set_default_value(Input-bg-color,#2f3741)                                // 输入框背景色
-		Input-focus-bg-color = set_default_value(Input-focus-bg-color,Input-bg-color)             // 输入框选中背景色
-		Input-border-color = set_default_value(Input-border-color,#a7a9ad)                        // 输入框边框色
-		Input-focus-border-color = set_default_value(Input-focus-border-color,#3498db)            // 输入框选中边框色
-		Input-text-color = set_default_value(Input-text-color,#dcdcdc)                            // 输入框文字色
-		Input-placeholder-color = set_default_value(Input-placeholder-color,#c4c6c9)              // 输入框提示文字色
-		Sidebar-bg-color = set_default_value(Sidebar-bg-color,#162430)                            // 侧栏背景色
-		Sidebar-icon-color = set_default_value(Sidebar-icon-color,#dddddd)                        // 侧栏主体图标色
-		Sidebar-btn-color = set_default_value(Sidebar-btn-color,#dddddd)                          // 侧栏'应用'按钮色
-		Sidebar-luogu-bg-color = set_default_value(Sidebar-luogu-bg-color,#4682b4)                // 侧栏洛谷图标背景色
-		Sidebar-luogu-icon-color = set_default_value(Sidebar-luogu-icon-color,#fffaf0)            // 侧栏洛谷图标色
-		L2-Card-border = set_default_value(L2-Card-border,#435266)                                // 二级卡片默认边框色
-		Homepage-L2-Card-green-border = set_default_value(Homepage-L2-Card-green-border,rgba(42,97,42,.7))
-		Homepage-L2-Card-red-border = set_default_value(Homepage-L2-Card-red-border,rgba(125,27,24,0.5))
-		Homepage-L2-Card-blue-border = set_default_value(Homepage-L2-Card-blue-border,rgba(70, 130, 180,.7))
-		Post-heading-color = set_default_value(Post-heading-color,#c4c6c9)                        // 标题文字色
-		Benben-hd-color = set_default_value(Benben-hd-color,get_depend_list(Card-bg-color-L2))
-		Benben-bd-color = set_default_value(Benben-bd-color,get_depend_list(Card-bg-color-L1))
-		Discuss-hd-color = set_default_value(Benben-hd-color,get_depend_list(Card-bg-color-L2))
-		Discuss-bd-color = set_default_value(Benben-bd-color,get_depend_list(Card-bg-color-L1))
-		Homepage-a-green = set_default_value(Homepage-a-green,#5eb95e)                            // 主页超链接绿色
-		Homepage-a-red = set_default_value(Homepage-a-red,#dd514c)                                // 主页超链接红色
-		Divider-color = set_default_value(Divider-color,#435266)                                  // 分割线颜色
-		Directory-a-color = set_default_value(Directory-a-color,rgba(255,255,255,.75))            // 洛谷左上目录超链接颜色
-		Other-icon-color = set_default_value(Other-icon-color,#c4c6c9)                            // 杂项图标颜色
-		Card-icon-color = set_default_value(Card-icon-color,#333)                                 // 右上悬浮卡图标颜色
-		Luogu-discuss-color-1 = set_default_value(Luogu-discuss-color-1,#fff)                     // 洛谷讨论区图标色
-		Main-post-heading-color = set_default_value(Main-post-heading-color,#fff)                 // 主标题文字色
-		Topic-type-Label-not-select = set_default_value(Topic-type-Label-not-select,#3f3f3f)      // 题目类型标签-未选择色
-		InLine-code-block-bg-color = set_default_value(InLine-code-block-bg-color,#3e4752)        // 行内代码块背景色
-		Code-block-bg-color = set_default_value(Code-block-bg-color,#0d1117)                      // 代码块背景色
-		InLine-code-block-border-color = set_default_value(InLine-code-block-border-color,#3e4752)// 行内代码块边框色
-		Code-block-border-color = set_default_value(Code-block-border-color,#0d1117)              // 代码块边框色
-		Code-block-text-color = set_default_value(Code-block-text-color,#b6b8c2)                  // 代码块文字色
-		Code-block-quote-color = set_default_value(Code-block-quote-color,#5c6370)                // 代码块注释色
-		Code-block-meta-color = set_default_value(Code-block-meta-color,#f06090)                  // 代码块 meta 色
-		Code-block-meta-string-color = set_default_value(Code-block-meta-string-color,#2fb170)    // 代码块 meta-string 色
-		Code-block-string-color = set_default_value(Code-block-string-color,#2fb170)              // 代码块字符串色
-		Code-block-keyword-color = set_default_value(Code-block-keyword-color,#6791e0)            // 代码块关键字色
-		Code-block-title-color = set_default_value(Code-block-title-color,#c973d9)                // 代码块函数名颜色
-		Code-block-number-color = set_default_value(Code-block-number-color,#e6695b)              // 代码块数字颜色
-		Code-block-params-color = set_default_value(Code-block-params-color,#da70d6)              // 代码块函数后括号颜色
-
-		Article-bg-color = set_default_value(Article-bg-color,#1e2334)                            // 专栏背景色
-		Article-text-bg-color = set_default_value(Article-text-bg-color,#252d38)                  // 专栏文章框背景色
-		Article-sidebar-bg-color = set_default_value(Article-sidebar-bg-color,#1f3144)            // 专栏侧栏背景色
-		Article-icon-color = set_default_value(Article-icon-color,#c4c6c9)                        // 专栏文章底部图标色
-
-		Privateletter-bg-color = set_default_value(Privateletter-bg-color,#12161c)                // 私信信息背景色
-
-		Topic-difficulty-Label-8 = set_default_value(Topic-difficulty-Label-8,#000)               // 黑题特殊处理
-
-		Benben-tab-bg-color = set_default_value(Benben-tab-bg-color,#252d38)
-		Benben-tab-hover-color = set_default_value(Benben-tab-hover-color,#2f3741)
-		Benben-tab-text-color = set_default_value(Benben-tab-text-color,#5e72e4)
-		Benben-tab-focus-bg-color = set_default_value(Benben-tab-focus-bg-color,#0056b3)
-		Benben-tab-focus-text-color = set_default_value(Benben-tab-focus-text-color, #fff)
-
-		Spinner-dark-color = set_default_value(Spinner-dark-color,#fff)
-
-		Markdown-button-hover-bg-color = set_default_value(Markdown-button-hover-bg-color,#2f3741)
-		Markdown-button-hover-border = set_default_value(Markdown-button-hover-border,1px solid #2f3741)
-		Markdown-button-hover-text-color = set_default_value(Markdown-button-hover-text-color,#0056b3)
-
-		Highcharts-bg-color = set_default_value(Highcharts-bg-color,#5e72e426)
-		Highcharts-line-color = set_default_value(Highcharts-line-color,#871F78)
-		Highcharts-point-color = set_default_value(Highcharts-point-color,#5e72e4)
-		Highcharts-hover-point-color = set_default_value(Highcharts-hover-point-color,#0056b3)
-		Highcharts-hover-point-border-color = set_default_value(Highcharts-hover-point-border-color,#fff)
-		Highcharts-hover-bigpoint-color = set_default_value(Highcharts-hover-bigpoint-color,#7cb5ec)
-		Highcharts-strip-color = set_default_value(Highcharts-strip-color,rgba(61,89,171,0.55))
-		Highcharts-strip-border-color = set_default_value(Highcharts-strip-border-color,#d49ee6ad)
-		Highcharts-strip-hover-color  = set_default_value(Highcharts-strip-hover-color ,rgba(61,89,171,0.75))
-		Highcharts-text-color  = set_default_value(Highcharts-text-color,#c4c6c9)
-		Highcharts-text-bg-color = set_default_value(Highcharts-text-bg-color,rgba(18,22,28,0.75))
-		Highcharts-text-border-color  = set_default_value(Highcharts-text-border-color,#8e44ad)
-		Highcharts-text-point-color-1 = set_default_value(Highcharts-text-point-color-1,#7cb5ec)
-		Highcharts-text-point-color-2 = set_default_value(Highcharts-text-point-color-2,#c4c6c9)
-
-		Progressframe-color = set_default_value(Progressframe-color,#5e72e4)
-		Progressframe-bg-color = set_default_value(Progressframe-bg-color,#141725)
-
-		Big-button-bg-color = set_default_value(Big-button-bg-color,#2f3741)
-		Big-button-border = set_default_value(Big-button-border,1px solid #435266)
-		Big-button-border-hover = set_default_value(Big-button-border-hover,1px solid #0056b3)
-
-		Small-button-bg-color = set_default_value(Small-button-bg-color,#2f3741)
-		Small-button-select-bg-color = set_default_value(Small-button-select-bg-color,#5e72e4)
-		Small-button-border = set_default_value(Small-button-border,1px solid #435266)
-		Small-button-border-hover = set_default_value(Small-button-border-hover,1px solid #0056b3)
-		Small-button-text-select-color = set_default_value(Small-button-text-select-color,#fff)
-
-		Footer-bigtext-color = set_default_value(Footer-bigtext-color,#fffaf0)
-		Footer-img-color = set_default_value(Footer-img-color,#fffaf0)
-
-		Card-L1-shadow = set_default_value(Card-L1-shadow,none)
-		Card-L1-hover-shadow = set_default_value(Card-L1-hover-shadow,none)
-
-		Benben-shadow = set_default_value(Benben-shadow,none)
-		Benben-hover-shadow = set_default_value(Benben-hover-shadow,none)
-		Benben-hover-ani = set_default_value(Benben-hover-ani,none)
-
-		Privateitem-hover-bg-color = set_default_value(Privateitem-hover-bg-color,#3e4752)
-		
-		Combowrapper-text-color = set_default_value(Combowrapper-text-color,#dcdcdc)
-
-		Expand-shadow = set_default_value(Expand-shadow,linear-gradient(rgba(255,255,255,0), rgba(128,128,128,0.5)))
-
-		Article-sidebar-card-hover = set_default_value(Article-sidebar-card-hover,#3e4752)
-
-		Markdown-gutter-color = set_default_value(Markdown-gutter-color,#242c38)
-		Markdown-gutter-active-color = set_default_value(Markdown-gutter-active-color,#3e4752)
-		Markdown-line-active-color = set_default_value(Markdown-line-active-color,#cceeff44)
-		Markdown-bg-color = set_default_value(Markdown-bg-color,#2f3741)
-
-		Text-selection-color = set_default_value(Text-selection-color,#474c63)
-		Codeblock-text-selection-color = set_default_value(Codeblock-text-selection-color,#264f78)
-		Markdown-text-selection-color = set_default_value(Markdown-text-selection-color,#264f78)
-
-		Control-nav-bg-color = set_default_value(Control-nav-bg-color,#a7a9ad)
-		Control-nav-active-bg-color = set_default_value(Control-nav-active-bg-color,#5e72e4)
-
-		UpdEditer-gutter-color = set_default_value(UpdEditer-gutter-color,#242c38)
-		UpdEditer-gutter-active-color = set_default_value(UpdEditer-gutter-active-color,#3e4752)
-		UpdEditer-line-active-color = set_default_value(UpdEditer-line-active-color,#596874)
-		UpdEditer-linenumber-color = set_default_value(UpdEditer-linenumber-color,#999999)
-		UpdEditer-bg-color = set_default_value(UpdEditer-bg-color,#2f3741)
-
-		Select-button-hover-bg-color = set_default_value(Select-button-hover-bg-color,#3e4752)
-
-		Privateletter-right-bg-color = set_default_value(Privateletter-right-bg-color,#4682b4)
-		Privateletter-right-text-color = set_default_value(Privateletter-right-text-color,#f2faff)
-
-		Top-progress-color = set_default_value(Top-progress-color,#5e72e4)
-
-		Table-color = set_default_value(Table-color,#c4c6c9)
-
-		Article-progress-color = set_default_value(Article-progress-color,#5e72e4)
-
-		Checkin-Time-color = set_default_value(Checkin-Time-color,#1aae6f)
-
-		Swal-shadow = set_default_value(Swal-shadow,none)
-
-		Blockquote-border-color = set_default_value(Blockquote-border-color,#354a83)
-	else
-		Background-color = set_default_value(Background-color,#efefef)
-		Card-bg-color-L1 = set_default_value(Card-bg-color-L1,#fcfcfc)
-		Card-bg-color-L2 = set_default_value(Card-bg-color-L2,#fff)
-		Header-bg-color = set_default_value(Header-bg-color,linear-gradient(90deg, rgb(35, 37, 38), rgb(65, 67, 69)))
-		Footer-bg-color = set_default_value(Footer-bg-color,linear-gradient(150deg,#708090 15%,#2F4F4F 70%,#000000 94%))
-		Card-bg-color-float = set_default_value(Card-bg-color-float,#fff)
-		Card-hover-color-float = set_default_value(Card-hover-color-float,#e5e5e5)
-		Text-color = set_default_value(Text-color,rgba(0,0,0,.75))
-		State-color = set_default_value(State-color,rgba(0, 0, 0, 0.45))
-		Introduce-color = set_default_value(Introduce-color,rgba(0, 0, 0, .75))
-		Operate-color = set_default_value(Operate-color,#999999)
-		Operate-hover-color = set_default_value(Operate-hover-color,#3f3f3f)
-		Topic-text-color = set_default_value(Topic-text-color,#fff)
-		ColorfulLabel-text-color = set_default_value(ColorfulLabel-text-color,#fff)
-		GrayLabel-text-color = set_default_value(GrayLabel-text-color,#3a3a3a)
-		GrayLabel-border-color = set_default_value(GrayLabel-border-color,#bebebe)
-		GrayLabel-bg-color = set_default_value(GrayLabel-bg-color,#e8e8e8)
-		A-color = set_default_value(A-color,#3498db)
-		A-hover-color = set_default_value(A-hover-color,#095f8a)
-		Scrollbar-track-color = set_default_value(Scrollbar-track-color,rgba(0, 0, 0, 0.05))
-		Scrollbar-thumb-color = set_default_value(Scrollbar-thumb-color,rgba(0, 0, 0, 0.2))
-		Scrollbar-hover-color = set_default_value(Scrollbar-hover-color,#808080)
-		Navbar-bg-color = set_default_value(Navbar-bg-color,#fff)
-		Input-bg-color = set_default_value(Input-bg-color,#fff)
-		Input-focus-bg-color = set_default_value(Input-focus-bg-color,Input-bg-color)
-		Input-border-color = set_default_value(Input-border-color,#bfbfbf)
-		Input-focus-border-color = set_default_value(Input-focus-border-color,#409eff)
-		Input-text-color = set_default_value(Input-text-color,#000)
-		Input-placeholder-color = set_default_value(Input-placeholder-color,rgba(0,0,0,.5))
-		Sidebar-bg-color = set_default_value(Sidebar-bg-color,#34495E)
-		Sidebar-icon-color = set_default_value(Sidebar-icon-color,#dddddd)
-		Sidebar-btn-color = set_default_value(Sidebar-btn-color,#dddddd)
-		Sidebar-luogu-bg-color = set_default_value(Sidebar-luogu-bg-color,#3498db)
-		Sidebar-luogu-icon-color = set_default_value(Sidebar-luogu-icon-color,#fff)
-		L2-Card-border = set_default_value(L2-Card-border,#e8e8e8)
-		Post-heading-color = set_default_value(Post-heading-color,rgba(0,0,0,.75))
-		Benben-hd-color = set_default_value(Benben-hd-color,#f8f8f8)
-		Benben-bd-color = set_default_value(Benben-bd-color,#fff)
-		Discuss-hd-color = set_default_value(Benben-hd-color,#f8f8f8)
-		Discuss-bd-color = set_default_value(Benben-bd-color,#fff)
-		Homepage-a-green = set_default_value(Homepage-a-green,#5eb95e)
-		Homepage-a-red = set_default_value(Homepage-a-red,#dd514c)
-		Divider-color = set_default_value(Divider-color,#e8e8e8)
-		Directory-a-color = set_default_value(Directory-a-color,rgba(255,255,255,.75))
-		Other-icon-color = set_default_value(Other-icon-color,#333333)
-		Card-icon-color = set_default_value(Card-icon-color,#333)
-		Luogu-discuss-color-1 = set_default_value(Luogu-discuss-color-1,#272727)
-		Main-post-heading-color = set_default_value(Main-post-heading-color,#fff)
-		Topic-type-Label-not-select = set_default_value(Topic-type-Label-not-select,#e8e8e8)
-		InLine-code-block-bg-color = set_default_value(InLine-code-block-bg-color,#f8f8f8)
-		Code-block-bg-color = set_default_value(Code-block-bg-color,#f8f8f8)
-		InLine-code-block-border-color = set_default_value(InLine-code-block-border-color,#e8e8e8)
-		Code-block-border-color = set_default_value(Code-block-border-color,#eeeeee)
-		Code-block-text-color = set_default_value(Code-block-text-color,#36464e)
-		Code-block-quote-color = set_default_value(Code-block-quote-color,#707070)
-		Code-block-meta-color = set_default_value(Code-block-meta-color,#f06090)
-		Code-block-meta-string-color = set_default_value(Code-block-meta-string-color,#2fb170)
-		Code-block-string-color = set_default_value(Code-block-string-color,#2fb170)
-		Code-block-keyword-color = set_default_value(Code-block-keyword-color,#6791e0)
-		Code-block-title-color = set_default_value(Code-block-title-color,#c973d9)
-		Code-block-number-color = set_default_value(Code-block-number-color,#e6695b)
-		Code-block-params-color = set_default_value(Code-block-params-color,#da70d6)
-
-		Article-bg-color = set_default_value(Article-bg-color,#fafafa)
-		Article-text-bg-color = set_default_value(Article-text-bg-color,#ffffff)
-		Article-sidebar-bg-color = set_default_value(Article-sidebar-bg-color,#fff)
-		Article-icon-color = set_default_value(Article-icon-color,#333)
-
-		Privateletter-bg-color = set_default_value(Privateletter-bg-color,#e8e8e8)
-
-		Benben-tab-bg-color = set_default_value(Benben-tab-bg-color,#fff)
-		Benben-tab-hover-color = set_default_value(Benben-tab-hover-color,#eee)
-		Benben-tab-text-color = set_default_value(Benben-tab-text-color,#3498db)
-		Benben-tab-focus-bg-color = set_default_value(Benben-tab-focus-bg-color,#48D1CC)
-		Benben-tab-focus-text-color = set_default_value(Benben-tab-focus-text-color, #fff)
-
-		Spinner-dark-color = set_default_value(Spinner-dark-color,#333)
-
-		Markdown-button-hover-bg-color = set_default_value(Markdown-button-hover-bg-color,#fff)
-		Markdown-button-hover-border = set_default_value(Markdown-button-hover-border,1px solid #fff)
-		Markdown-button-hover-text-color = set_default_value(Markdown-button-hover-text-color,#095f8a)
-
-		Highcharts-bg-color = set_default_value(Highcharts-bg-color,#5e72e426)
-		//Highcharts-line-color = set_default_value(Highcharts-line-color,)
-		Highcharts-point-color = set_default_value(Highcharts-point-color,#87CEEB)
-		Highcharts-strip-color = set_default_value(Highcharts-strip-color,rgba(61,89,171,0.55))
-		Highcharts-strip-border-color = set_default_value(Highcharts-strip-border-color,#d49ee6ad)
-		Highcharts-strip-hover-color  = set_default_value(Highcharts-strip-hover-color ,rgba(61,89,171,0.65))
-
-		Progressframe-color = set_default_value(Progressframe-color,#3498db)
-		Progressframe-bg-color = set_default_value(Progressframe-bg-color,#e8e8e8)
-
-		Big-button-bg-color = set_default_value(Big-button-bg-color,#fafafa)
-		Big-button-border = set_default_value(Big-button-border,1px solid #e8e8e8)
-		Big-button-border-hover = set_default_value(Big-button-border-hover,1px solid #89d1f5)
-
-		Small-button-bg-color = set_default_value(Small-button-bg-color,#fff)
-		Small-button-select-bg-color = set_default_value(Small-button-select-bg-color,#3498db)
-		Small-button-border = set_default_value(Small-button-border,1px solid #bfbfbf)
-		Small-button-border-hover = set_default_value(Small-button-border-hover,1px solid #3498db)
-		Small-button-text-select-color = set_default_value(Small-button-text-select-color,#fff)
-
-		Footer-bigtext-color = set_default_value(Footer-bigtext-color,#fff)
-		Footer-img-color = set_default_value(Footer-img-color,#fff)
-
-		Card-L1-shadow = set_default_value(Card-L1-shadow,0 5px 15px rgba(50,50,93,.1)\,0 5px 8px rgba(0,0,0,.07))
-		Card-L1-hover-shadow = set_default_value(Card-L1-hover-shadow,0 10px 30px rgba(50,50,93,.1)\,0 5px 15px rgba(0,0,0,.07))
-
-		article-icon-3-color = set_default_value(article-icon-3-color,#fa0000)
-
-		Benben-shadow = set_default_value(Benben-shadow,0 3px 5px rgba(50,50,93,.1), 0 2px 3px rgba(0,0,0,.08))
-		Benben-hover-shadow = set_default_value(Benben-hover-shadow,0 7px 14px rgba(50,50,93,.1), 0 3px 6px rgba(0,0,0,.08))
-		Benben-hover-ani = set_default_value(Benben-hover-ani,.15s ease)
-
-		Privateitem-hover-bg-color = set_default_value(Privateitem-hover-bg-color,#e8e8e8)
-
-		Combowrapper-text-color = set_default_value(Combowrapper-text-color,rgba(0, 0, 0, 0.75))
-
-		Expand-shadow = set_default_value(Expand-shadow,linear-gradient(rgba(255, 255, 255, 0), #fff))
-
-		Article-sidebar-card-hover = set_default_value(Article-sidebar-card-hover,#e5e5e5)
-
-		Markdown-gutter-color = set_default_value(Markdown-gutter-color,#f7f7f7)
-		Markdown-gutter-active-color = set_default_value(Markdown-gutter-active-color,#e2f2ff)
-		Markdown-line-active-color = set_default_value(Markdown-line-active-color,#cceeff44)
-		Markdown-bg-color = set_default_value(Markdown-bg-color,#fff)
-
-		Text-selection-color = set_default_value(Text-selection-color,#afeeee)
-		Codeblock-text-selection-color = set_default_value(Codeblock-text-selection-color,#d6d6d6)
-		Markdown-text-selection-color = set_default_value(Markdown-text-selection-color,#d6d6d6)
-
-		Control-nav-bg-color = set_default_value(Control-nav-bg-color,#c4c6c9)
-		Control-nav-active-bg-color = set_default_value(Control-nav-active-bg-color,#3498db)
-
-		UpdEditer-gutter-color = set_default_value(UpdEditer-gutter-color,#ebebeb)
-		UpdEditer-gutter-active-color = set_default_value(UpdEditer-gutter-active-color,#dcdcdc)
-		UpdEditer-line-active-color = set_default_value(UpdEditer-line-active-color,#fffbd1)
-		UpdEditer-linenumber-color = set_default_value(UpdEditer-linenumber-color,#999999)
-		UpdEditer-bg-color = set_default_value(UpdEditer-bg-color,#fff)
-
-		Select-button-hover-bg-color = set_default_value(Select-button-hover-bg-color,#f6f6f6)
-
-		Privateletter-right-bg-color = set_default_value(Privateletter-right-bg-color,#3498db)
-		Privateletter-right-text-color = set_default_value(Privateletter-right-text-color,#f2faff)
-
-		Top-progress-color = set_default_value(Top-progress-color,#3498db)
-
-		Table-color = set_default_value(Table-color,#ddd)
-		
-		Article-progress-color = set_default_value(Article-progress-color,#3498db)
-
-		Checkin-Time-color = set_default_value(Checkin-Time-color,#396a42)
-
-		Swal-shadow = set_default_value(Swal-shadow,0 0 .625em #d9d9d9)
-
-		Blockquote-border-color = set_default_value(Blockquote-border-color,#eeeeee)
-
-	Topic-type-Label-algorithm = set_default_value(Topic-type-Label-algorithm,#2949b4)
-	Topic-type-Label-source = set_default_value(Topic-type-Label-source,#13c2c2)
-	Topic-type-Label-time = set_default_value(Topic-type-Label-time,#3498db)
-	Topic-type-Label-area = set_default_value(Topic-type-Label-area,#52c41a)
-	Topic-type-Label-special = set_default_value(Topic-type-Label-special,#f39c11)
-
-	Homepage-L2-Card-green = set_default_value(Homepage-L2-Card-green,rgba(94,185,94,.15))
-	Homepage-L2-Card-green-border = set_default_value(Homepage-L2-Card-green-border,darken(Homepage-L2-Card-green,30%))
-	Homepage-L2-Card-red = set_default_value(Homepage-L2-Card-red,rgba(221,81,76,.15))
-	Homepage-L2-Card-red-border = set_default_value(Homepage-L2-Card-red-border,darken(Homepage-L2-Card-red,30%))
-	Homepage-L2-Card-blue-border = set_default_value(Homepage-L2-Card-blue-border,rgba(135,206,235,.7))
-
-	Topic-difficulty-Label-1 = set_default_value(Topic-difficulty-Label-1,#bfbfbf)
-	Topic-difficulty-Label-2 = set_default_value(Topic-difficulty-Label-2,#fe4c61)
-	Topic-difficulty-Label-3 = set_default_value(Topic-difficulty-Label-3,#f39c11)
-	Topic-difficulty-Label-4 = set_default_value(Topic-difficulty-Label-4,#ffc116)
-	Topic-difficulty-Label-5 = set_default_value(Topic-difficulty-Label-5,#52c41a)
-	Topic-difficulty-Label-6 = set_default_value(Topic-difficulty-Label-6,#3498db)
-	Topic-difficulty-Label-7 = set_default_value(Topic-difficulty-Label-7,#9d3dcf)
-	Topic-difficulty-Label-8 = set_default_value(Topic-difficulty-Label-8,#0e1d69)
-
-	Test-case-margin-right = set_default_value(Test-case-margin-right,10px)
-	Test-case-margin-bottom = set_default_value(Test-case-margin-bottom,12px)
-	Test-case-margin-top = set_default_value(Test-case-margin-top,25px)
-	Test-case-size = set_default_value(Test-case-size,96px)
-	Test-case-ani = set_default_value(Test-case-ani,.2s ease)
-	Test-case-shadow = set_default_value(Test-case-shadow,0 4px 6px rgba(50,50,93,.11) \, 0 1px 3px rgba(0,0,0,.08))
-	Test-case-border-radius = set_default_value(Test-case-border-radius,3px)
-	Test-case-translate = set_default_value(Test-case-translate,3px)
-	Test-case-hover-shadow = set_default_value(Test-case-hover-shadow,0 10px 30px rgba(50, 50, 93, 0.1)\,0 5px 15px rgba(0, 0, 0, 0.07))
-	Test-case-message-ani = set_default_value(Test-case-message-ani,.45s ease)
-	Test-case-message-shadow = set_default_value(Test-case-message-shadow,0 4px 6px rgba(50,50,93,.11)\, 0 1px 3px rgba(0,0,0,.08))
-	Test-case-message-color = set_default_value(Test-case-message-color,#fff)
-	Test-case-background = set_default_value(Test-case-background,rgba(23, 43, 77, 0.8))
-
-	Test-case-color-AC = set_default_value(Test-case-color-AC,#52c41a)
-	Test-case-color-WA = set_default_value(Test-case-color-WA,#fb6340)
-	Test-case-color-RE = set_default_value(Test-case-color-RE,#8e44ad)
-	Test-case-color-TLE = set_default_value(Test-case-color-TLE,#001277)
-	Test-case-color-MLE = set_default_value(Test-case-color-MLE,#000000)
-	Test-case-color-OLE = set_default_value(Test-case-color-OLE,TLE)
-	Test-case-color-UKE = set_default_value(Test-case-color-UKE,#34495e)
-	Test-case-text-color = set_default_value(Test-case-text-color,#fff)
-
-	article-icon-1-color = set_default_value(article-icon-1-color,#fea706)
-	article-icon-2-color = set_default_value(article-icon-2-color,#e07090)
-	article-icon-3-color = set_default_value(article-icon-3-color,#ac3725)
-	article-icon-4-color = set_default_value(article-icon-4-color,#3498db)
-
-	Sidebar-popup-padding = set_default_value(Sidebar-popup-padding,10px)
-	Sidebar-popup-ani = set_default_value(Sidebar-popup-ani,fade 0.2s ease)
-
-	Float-card-hover-ani = set_default_value(Float-card-hover-ani,.3s)
-
-	Highcharts-hover-bigpoint-op = set_default_value(Highcharts-hover-bigpoint-op,0.25)
-
-	Userpage-text-color = set_default_value(Userpage-text-color,#fff)
-
-	Badge-text-color = set_default_value(Badge-text-color,#fff)
-
-	Badge-border-radius = set_default_value(Badge-border-radius,2px)
-	Label-border-radius = set_default_value(Label-border-radius,2px)
-
-	Footer-text-color = set_default_value(Footer-text-color,rgba(255, 255, 255, .75))
-	Footer-text-hover-color = set_default_value(Footer-text-hover-color,#fff)
-
-	Card-L1-hover-transition = set_default_value(Card-L1-hover-transition,.15s ease)
-	Operate-hover-ani = set_default_value(Operate-hover-ani,.4s ease)
-
-	Privateitem-hover-ani = set_default_value(Privateitem-hover-ani,.3s)
-
-	Discuss-button-ani = set_default_value(Discuss-button-ani,.3s)
-
-	Article-rside-width = set_default_value(Article-rside-width,240px)
-
-	Button-bg-color-blue = set_default_value(Button-bg-color-blue,#3498db)
-	Button-bg-color-black = set_default_value(Button-bg-color-black,#121212)
-	Button-bg-color-red = set_default_value(Button-bg-color-red,#e74c3c)
-	Button-bg-color-special-red = set_default_value(Button-bg-color-special-red,transparent)
-	Button-bg-color-special-blue = set_default_value(Button-bg-color-special-blue,transparent)
-	Button-bg-color-green = set_default_value(Button-bg-color-green,#52c41a)
-
-	Button-hover-bg-color-blue = set_default_value(Button-hover-bg-color-blue,#0c79b1)
-	Button-hover-bg-color-black = set_default_value(Button-hover-bg-color-black,#1f3144)
-	Button-hover-bg-color-red = set_default_value(Button-hover-bg-color-red,#d4483a)
-	Button-hover-bg-color-special-red = set_default_value(Button-hover-bg-color-special-red,rgba(231, 76, 60, 0.1))
-	Button-hover-bg-color-special-blue = set_default_value(Button-hover-bg-color-special-blue,rgba(52, 152, 219, 0.1))
-	Button-hover-bg-color-green = set_default_value(Button-hover-bg-color-green,#4aaa4a)
-
-	Button-active-bg-color-blue = set_default_value(Button-active-bg-color-blue,#0a6c9e)
-	Button-active-bg-color-black = set_default_value(Button-active-bg-color-black,#1f364e)
-	Button-active-bg-color-red = set_default_value(Button-active-bg-color-red,#bc4033)
-	Button-active-bg-color-special-red = set_default_value(Button-active-bg-color-special-red,rgba(231, 76, 60, 0.14))
-	Button-active-bg-color-special-blue = set_default_value(Button-active-bg-color-special-blue,rgba(52, 152, 219, 0.14))
-	Button-active-bg-color-green = set_default_value(Button-active-bg-color-green,#398339)
-
-	Button-border-color-black = set_default_value(Button-border-color-black,#7b7c7c)
-	Button-border-color-special-red = set_default_value(Button-border-color-special-red,#e74c3c)
-	Button-border-color-special-blue = set_default_value(Button-border-color-special-blue,#3498db)
-
-	Button-border-size-blue = set_default_value(Button-border-size-blue,1px)
-	Button-border-size-black = set_default_value(Button-border-size-black,1px)
-	Button-border-size-red = set_default_value(Button-border-size-red,1px)
-	Button-border-size-special-red = set_default_value(Button-border-size-special-red,1px)
-	Button-border-size-special-blue = set_default_value(Button-border-size-special-blue,1px)
-	Button-border-size-green = set_default_value(Button-border-size-green,1px)
-
-	Button-radius = set_default_value(Button-radius,3px)
-	Small-button-radius = set_default_value(Small-button-radius,3px)
-
-	Button-padding-width = set_default_value(Button-padding-width,15px)
-	Button-padding-height = set_default_value(Button-padding-height,5.382px)
-	Small-button-padding-width = set_default_value(Small-button-padding-width,8px)
-	Small-button-padding-height = set_default_value(Small-button-padding-height,2.75px)
-
-	Button-hover-ani = set_default_value(Button-hover-ani,.3s ease-out)
-
-	Expand-radius = set_default_value(Expand-radius,5px)
-
-	Homepage-L2-Card-blue-text-color = set_default_value(Homepage-L2-Card-blue-text-color,#fff)
-
-	Control-nav-ani = set_default_value(Control-nav-ani,0.5s ease)
-
-	Font-Stack = set_default_value(Font-Stack,"Noto Sans SC")
-	Code-block-fontstack = set_default_value(Code-block-fontstack,"JetBrains Mono")
-
-	Markdown-linenumber-color = set_default_value(Markdown-linenumber-color,#6c6c6c)
-
-	Test-case-color-QUE = set_default_value(Test-case-color-QUE,#14558f)
-
-	if !DarkMode
-		UpdEditer-text-color = set_default_value(UpdEditer-text-color,#000)	
-		UpdEditer-operator-color = set_default_value(UpdEditer-operator-color,#000)
-		UpdEditer-punctuation-color = set_default_value(UpdEditer-punctuation-color,#000)
-		UpdEditer-paren-color = set_default_value(UpdEditer-paren-color,#000)
-	UpdEditer-text-color = set_default_value(UpdEditer-text-color,#bcbec4)
-	UpdEditer-quote-color = set_default_value(UpdEditer-quote-color,#7e7f84)
-	UpdEditer-string-color = set_default_value(UpdEditer-string-color,#6aab73)
-	UpdEditer-keyword-color = set_default_value(UpdEditer-keyword-color,#cf8e6d)
-	UpdEditer-number-color = set_default_value(UpdEditer-number-color,#2aacb8)
-	UpdEditer-operator-color = set_default_value(UpdEditer-operator-color,#bcbec4)
-	UpdEditer-punctuation-color = set_default_value(UpdEditer-punctuation-color,#bcbec4)
-	UpdEditer-paren-color = set_default_value(UpdEditer-paren-color,#bcbec4)
-	UpdEditer-type-color = set_default_value(UpdEditer-type-color,#8888c6)
-	UpdEditer-func-color = set_default_value(UpdEditer-func-color,#8888c6)
-
-	Difficulty-text-color-1 = set_default_value(Difficulty-text-color-1,Topic-difficulty-Label-1)
-	Difficulty-text-color-2 = set_default_value(Difficulty-text-color-2,Topic-difficulty-Label-2)
-	Difficulty-text-color-3 = set_default_value(Difficulty-text-color-3,Topic-difficulty-Label-3)
-	Difficulty-text-color-4 = set_default_value(Difficulty-text-color-4,Topic-difficulty-Label-4)
-	Difficulty-text-color-5 = set_default_value(Difficulty-text-color-5,Topic-difficulty-Label-5)
-	Difficulty-text-color-6 = set_default_value(Difficulty-text-color-6,Topic-difficulty-Label-6)
-	Difficulty-text-color-7 = set_default_value(Difficulty-text-color-7,Topic-difficulty-Label-7)
-	Difficulty-text-color-8 = set_default_value(Difficulty-text-color-8,Topic-difficulty-Label-8)
-
-	Problem-tag-radius = set_default_value(Problem-tag-radius,5px)
-	Problem-tag-padding = set_default_value(Problem-tag-padding,0.5px 9px)
-	Problem-tag-ani = set_default_value(Problem-tag-ani,0.15s ease-out)
-	Problem-tag-hover-trans = set_default_value(Problem-tag-hover-trans,1px)
-	if DarkMode
-		Problem-tag-hover-shadow = set_default_value(Problem-tag-hover-shadow,none)
-	Problem-tag-hover-shadow = set_default_value(Problem-tag-hover-shadow,0 4px 6px rgba(50,50,93,.11)\, 0 1px 3px rgba(0,0,0,.08))
-
-	if Better-Benben-Tab
-		Benben-tab-height = set_default_value(Benben-tab-height,50px)
-	else
-		Benben-tab-height = set_default_value(Benben-tab-height,36.8px)
 	
-	A-hover-ani = set_default_value(A-hover-ani,0.15s ease-out)
-
-	Button-default-color = set_default_value(Button-default-color,#fff)
-
-	Username-color-1 = set_default_value(Username-color-1,#bfbfbf)
-	Username-color-2 = set_default_value(Username-color-2,#3498db)
-	Username-color-3 = set_default_value(Username-color-3,#52c41a)
-	Username-color-4 = set_default_value(Username-color-4,#f39c11)
-	Username-color-5 = set_default_value(Username-color-5,#fe4c61)
-	Username-color-6 = set_default_value(Username-color-6,#8e44ad)
-	Username-color-7 = set_default_value(Username-color-7,#ad8b00)
-
-	Input-active-ani = set_default_value(Input-active-ani,0.3s ease-out)
-	Header-ani-padding = set_default_value(Header-ani-padding,30px)
-	Header-ani = set_default_value(Header-ani,0.75s ease)
-	Header-text-ani-padding = set_default_value(Header-text-ani-padding,100px)
-	Header-text-ani = set_default_value(Header-text-ani,0.75s ease)
-
-	Problem-select-bar-bg-color = set_default_value(Problem-select-bar-bg-color,#e0f7ff)
-	Problem-select-bar-active-bg-color = set_default_value(Problem-select-bar-active-bg-color,#3498db)
-	Problem-select-bar-text-color = set_default_value(Problem-select-bar-text-color,Introduce-color)
-	Problem-select-bar-hbg-text-color = set_default_value(Problem-select-bar-hbg-text-color,#3498db)
-	Problem-select-bar-active-text-color = set_default_value(Problem-select-bar-active-text-color,#fff)
-	Problem-select-bar-hbg-text-hover-color = set_default_value(Problem-select-bar-hbg-text-hover-color,#0056b3)
-	if DarkMode
-		Problem-select-bar-text-hover-color = set_default_value(Problem-select-bar-text-hover-color,#fff)
-	else
-		Problem-select-bar-text-hover-color = set_default_value(Problem-select-bar-text-hover-color,#000)
-	Problem-select-bar-text-hover-ani = set_default_value(Problem-select-bar-text-hover-ani,0.6s ease)
-	Problem-select-bar-bg-hover-ani = set_default_value(Problem-select-bar-bg-hover-ani,0.6s ease)
-
-	Input-active-shadow = set_default_value(Input-active-shadow,inset 0 1px 1px rgba(0,0,0,.075)\,0 0 5px rgba(59,180,242,.3))
-
-	Card-select-bar-hover-ani = set_default_value(Card-select-bar-hover-ani,.3s ease)
-	Card-select-bar-select-color = set_default_value(Card-select-bar-select-color,#3498db)
-	Card-select-bar-out-ani = set_default_value(Card-select-bar-out-ani,.6s ease)
-
-	if Smart-SideBar && !DarkMode
-		SideBar-shadow = set_default_value(SideBar-shadow, 4px 5px 15px rgba(91, 91, 91, .5)\, 2px 5px 8px rgba(121, 121, 121, .56))
-	SideBar-shadow = set_default_value(SideBar-shadow, none)
-	SideBar-position = set_default_value(SideBar-position, 50%)
-	SideBar-ani = set_default_value(SideBar-ani,0.75s ease)
-
-	Button-active-scale = set_default_value(Button-active-scale,0.05)
-	Button-active-ani = set_default_value(Button-active-ani,0.2s ease-out)
-
-	if Discuss-Sidebar-right
-		Discuss-Sidebar-width = set_default_value(Discuss-Sidebar-width,calc(25% - 1em))
-		Discuss-Main-width = set_default_value(Discuss-Main-width,calc(75%))
-	else
-		Discuss-Sidebar-width = set_default_value(Discuss-Sidebar-width,calc(20% - 1em))
-		Discuss-Main-width = set_default_value(Discuss-Main-width,calc(80% - 5em))
-	Discuss-Sidebar-margin = set_default_value(Discuss-Sidebar-margin,1em)
-
-	Markdown-fontstack = set_default_value(Markdown-fontstack,'Fira Code'\, 'Source Code Pro'\, 'Noto Sans SC')
-
-	Input-active-scale = set_default_value(Input-active-scale,0.005)
-	Input-active-anim = set_default_value(Input-active-anim,0.4s ease-out)
-
-	A-hover-line-ani = set_default_value(A-hover-line-ani,.3s)
-	A-hover-line-color = set_default_value(A-hover-line-color,rgba(255, 0, 0, .575))
-	A-hover-line-height = set_default_value(A-hover-line-height,1.5px)
-
-	Usernav-box-margin = set_default_value(Usernav-box-margin,10px)
-	Usernav-box-ani-margin = set_default_value(Usernav-box-ani-margin,-50px)
-	Usernav-box-ani = set_default_value(Usernav-box-ani,0.75s ease)
-	if Better-Usernav-box
-		Usernav-box-radius = set_default_value(Usernav-box-radius,10px)
-	else
-		Usernav-box-radius = set_default_value(Usernav-box-radius,5px)
-	
-	Prob-lcard-width = set_default_value(Prob-lcard-width,calc(66.67% - .5em))
-	Prob-side-width = set_default_value(Prob-side-width,calc(33.33% - .5em))
-
-	if DarkMode
-		Float-Card-shadow = set_default_value(Float-Card-shadow,none)
-	else
-		Float-Card-shadow = set_default_value(Float-Card-shadow,0 0.5rem 2rem 0 rgba(0, 0, 0, .2))
-
-	Table-radius = set_default_value(Table-radius,4px)
-
-	Avatar-hover-scale = set_default_value(Avatar-hover-scale,0.07)
-	if Avatar-ani-select=="bigger"
-		Avatar-hover-ani = set_default_value(Avatar-hover-ani,.26s ease-out)
-	else 
-		Avatar-hover-ani = set_default_value(Avatar-hover-ani,.6s ease-out)
-	
-	Article-progress-bg-color = set_default_value(Article-progress-bg-color,transparent)
-	Article-progress-height = set_default_value(Article-progress-height,5px)
-
-	Article-progress-ani = set_default_value(Article-progress-ani,5s linear)
-
-	if DarkMode
-		Usernav-icon-hover-color = set_default_value(Usernav-icon-hover-color,#5e72e4)
-		Usernav-navbar-icon-hover-color = set_default_value(Usernav-navbar-icon-hover-color,#5e72e4)
-	else
-		Usernav-icon-hover-color = set_default_value(Usernav-icon-hover-color,#4682b4)
-		Usernav-navbar-icon-hover-color = set_default_value(Usernav-navbar-icon-hover-color,#3498db)
-	Usernav-icon-hover-ani = set_default_value(Usernav-icon-hover-ani,.4s ease)
-
-	Article-icon-hover-ani = set_default_value(Article-icon-hover-ani,.5s ease)
-
-	AD-font-color = set_default_value(AD-font-color,#fff)
-	AD-font-bg-color = set_default_value(AD-font-bg-color,rgba(51,51,51,0.45))
-	AD-font-size = set_default_value(AD-font-size,20px)
-	AD-font-bg-width = set_default_value(AD-font-bg-width,24px)
-	AD-font-bg-height = set_default_value(AD-font-bg-height,48px)
-	AD-font-bg-radius = set_default_value(AD-font-bg-radius,5px)
-	AD-font-bg-hoverimg-color = set_default_value(AD-font-bg-hoverimg-color,rgba(51,51,51,0.7))
-	AD-font-bg-hover-color = set_default_value(AD-font-bg-hover-color,rgba(51,51,51,1))
-	AD-font-bg-ani = set_default_value(AD-font-bg-ani,.3s ease)
-
-	if DarkMode
-		Luogu-article-color-1 = set_default_value(Luogu-article-color-1,#fff)
-	else
-		Luogu-article-color-1 = set_default_value(Luogu-article-color-1,#272727)
-	Luogu-article-color-2 = set_default_value(Luogu-article-color-2,#3498db)
-	Luogu-article-color-3 = set_default_value(Luogu-article-color-3,#f39c11)
-	Luogu-article-color-4 = set_default_value(Luogu-article-color-4,#9d3dcf)
-	Luogu-article-color-5 = set_default_value(Luogu-article-color-5,#70ad47)
-	Luogu-article-color-6 = set_default_value(Luogu-article-color-6,#2949b4)
-	Luogu-article-color-7 = set_default_value(Luogu-article-color-7,#fe4c61)
-
-	Directory-a-hover-color = set_default_value(Directory-a-hover-color,#fff)
-	Directory-a-hover-ani = set_default_value(Directory-a-hover-ani,.4s ease)
-
-	Usertag-color-1 = set_default_value(Usertag-color-1,#bfbfbf)
-	Usertag-color-2 = set_default_value(Usertag-color-2,#3498db)
-	Usertag-color-3 = set_default_value(Usertag-color-3,#52c41a)
-	Usertag-color-4 = set_default_value(Usertag-color-4,#f39c11)
-	Usertag-color-5 = set_default_value(Usertag-color-5,#fe4c61)
-	Usertag-color-6 = set_default_value(Usertag-color-6,#8e44ad)
-	Usertag-color-7 = set_default_value(Usertag-color-7,#ad8b00)
-
-	Usersvg-color-1 = set_default_value(Usersvg-color-1,#52c41a)
-	Usersvg-color-2 = set_default_value(Usersvg-color-2,#3498db)
-	Usersvg-color-3 = set_default_value(Usersvg-color-3,#ffc116)
-
-	Username-color-ani = set_default_value(Username-color-ani,.2s ease)
-
-	Username-hover-color-1 = set_default_value(Username-hover-color-1,#8e8e8e)
-	Username-hover-color-2 = set_default_value(Username-hover-color-2,#095f8a)
-	Username-hover-color-3 = set_default_value(Username-hover-color-3,#338809)
-	Username-hover-color-4 = set_default_value(Username-hover-color-4,#b4820a)
-	Username-hover-color-5 = set_default_value(Username-hover-color-5,#cf3346)
-	Username-hover-color-6 = set_default_value(Username-hover-color-6,#611d7d)
-	Username-hover-color-7 = set_default_value(Username-hover-color-7,#9f8416)
-
-	Usertag-hover-color-1 = set_default_value(Usertag-hover-color-1,#8e8e8e)
-	Usertag-hover-color-2 = set_default_value(Usertag-hover-color-2,#095f8a)
-	Usertag-hover-color-3 = set_default_value(Usertag-hover-color-3,#338809)
-	Usertag-hover-color-4 = set_default_value(Usertag-hover-color-4,#b4820a)
-	Usertag-hover-color-5 = set_default_value(Usertag-hover-color-5,#cf3346)
-	Usertag-hover-color-6 = set_default_value(Usertag-hover-color-6,#611d7d)
-	Usertag-hover-color-7 = set_default_value(Usertag-hover-color-7,#9f8416)
-
-	Usertag-color-ani = set_default_value(Usertag-color-ani,.4s ease)
-
-	Usersvg-mid-color = set_default_value(Usersvg-mid-color,#fff)
-	Usersvg-mid-hover-color = set_default_value(Usersvg-mid-hover-color,#fff)
-	Usersvg-hover-color-1 = set_default_value(Usersvg-hover-color-1,#338809)
-	Usersvg-hover-color-2 = set_default_value(Usersvg-hover-color-2,#095f8a)
-	Usersvg-hover-color-3 = set_default_value(Usersvg-hover-color-3,#d4a423)
-
-	Usersvg-hover-ani = set_default_value(Usersvg-hover-ani,.4s ease)
-
-	Article-sidebar-card-hover-ani = set_default_value(Article-sidebar-card-hover-ani,0.17s ease-out)
-
-	if !DarkMode
-		UserNotification-active-color = set_default_value(UserNotification-active-color,#3498db)
-	else
-		UserNotification-active-color = set_default_value(UserNotification-active-color,#5e72e4)
-	UserNotification-ani = set_default_value(UserNotification-ani,.4s ease)
-	
-	Problem-sol-icon-act-color = set_default_value(Problem-sol-icon-act-color,#e07090)
+	if Use-card-background=="on"
+		Card_L1 += ",.main > div:not(.card) > :not(.table)+.bottom-wrap:has(>.page-bar),.full-container > div > .bottom .page-bar,.row.reply-info,.toc.with-top ul"
+	if Anti-HeaderFooter
+		Header-Optimize = 0
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
@@ -1632,11 +1633,18 @@ if Fast-Font-load
 				4 Codeblock-better-color2, // 这个是 []()
 				8 Codeblock-better-color3; // 这个是 ;
 
+if Winter-Tag
+	@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
+		@import url('https://cdn.jsdelivr.net/gh/TLEWA/O2-luogu@%E5%89%8D%E7%9E%BB%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/Lib/WinterTag.css');
+
 // 全局样式
 @-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
 	body // 应用全局背景
+		background: none
 		use_mainly_background()
-	
+	html
+		background: unset !important
+
 	if Smooth-scroll // 平滑滚动自定义项
 		body,html
 			scroll-behavior: smooth
@@ -1648,21 +1656,21 @@ if Fast-Font-load
 			height: 10px
 			
 		::-webkit-scrollbar-track
-			background-color: Scrollbar-track-color
+			background: Scrollbar-track-color
 		
 		::-webkit-scrollbar-thumb
-			background-color: Scrollbar-thumb-color
+			background: Scrollbar-thumb-color
 
 			&:hover
-				background-color: Scrollbar-hover-color
+				background: Scrollbar-hover-color
 	
 	// 输入框样式修改
 	{Main_Inputbox}
-		use_depend_list(background-color,(Input-bg-color Card-bg-color-L1),1) // 设置背景色
+		transition: border-color Input-active-ani,box-shadow Input-active-ani !important
+		border-radius: Inputbox-radius !important if Custom-Inputbox
+		use_depend_list(background,(Input-bg-color Card-bg-color-L1),1) // 设置背景色
 		use_depend_list(color,(Input-text-color),1);
 		use_depend_list(border-color,(Input-border-color Input-text-color),1)
-		border-radius: Inputbox-radius !important if Custom-Inputbox
-		transition: border-color Input-active-ani,box-shadow Input-active-ani !important
 		&:focus
 			use_depend_list(background-color,(Input-focus-bg-color Card-bg-color-L2),1)
 		&::placeholder
@@ -1687,10 +1695,14 @@ if Fast-Font-load
 		font-family:  -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif !important
 
 	.mp-dialog-input>input:focus-visible,.cs-dialog-item-content:focus-visible // MarkDown 编辑器 outline 消除（这个 outline 太魔怔了）
-			outline: 0 !important
+		outline: 0 !important
+	.input-wrap > input,.refined-input > input
+		background: none !important
+		backdrop-filter: none !important
 	
 	section>.block>button.block-item // 题库 “算法来源” 按钮
-		use_depend_list(background-color,(Input-bg-color Card-bg-color-L1),1)
+		border-radius: Inputbox-radius !important if Custom-Inputbox
+		use_depend_list(background,(Input-bg-color Card-bg-color-L1),1)
 		color: Input-placeholder-color !important
 
 	.block.filter-tags .combo-wrapper>.text>span // 题目难度选择框为统一观感特殊处理成统一颜色
@@ -1702,7 +1714,11 @@ if Fast-Font-load
 
 	// 洛谷的顶栏（老前端，404，私信）样式修改
 	.wrapper.wrapped.lfe-body.header-layout.tiny,.header:has(>.max)
+		z-index: 4 !important
 		use_depend_list(background,(Navbar-bg-color Card-bg-color-L1),1)
+		& .background
+			background: none !important
+		height: Navbar-height !important
 
 	// 洛谷右上悬浮卡图标样式修改
 	.header > .user-nav a.icon > svg > path,.header > .user-nav a.icon-btn > svg > path // 悬浮卡片样式
@@ -1745,36 +1761,70 @@ if Fast-Font-load
 			height: auto !important
 			background: none !important
 			opacity: 1 !important
+	
+	.dropdown>.center
+		transition: all Usernav-hover-ani !important
+		border-radius: Card-float-radius !important if Custom-Card
+		background: Card-bg-color-float !important
+		&:hover
+			background: Usernav-hover-bg-color !important
 
 	// 一级 Card 样式修改
 	{Card_L1}
+		contain: style if Content-Visibility
+		border-radius: Card-L1-radius !important if Custom-Card
+		transition: box-shadow Card-L1-hover-transition \, all Card-hover-bg-color-L1-ani !important
 		background: Card-bg-color-L1 !important
-		border-radius: Card-L1-radius if Custom-Card
 		box-shadow: Card-L1-shadow !important
-		transition: box-shadow Card-L1-hover-transition !important
-
 		&:hover
 			box-shadow: Card-L1-hover-shadow !important
-	
+			transition: box-shadow Card-L1-hover-transition \, all Card-hover-bg-color-L1-ani !important
+			background: Card-hover-bg-color-L1 !important if Card-hover-bg-color-L1!=None
+			
+	// 修一个粘性定位的 bug
+	.full-container > section + div
+		&, &>div
+			overflow: visible !important
+
+	div.float-bottom,div.float.operations
+		&,&:hover
+			border-radius: 0 !important
+			&::before
+				border-radius: 0 !important
+		transition: box-shadow Card-L1-hover-transition !important
+
+		@keyframes Float-bar-anim
+			from
+				opacity: 0
+			to
+				opacity: 1
+		animation: Float-bar-ani Float-bar-anim !important
+
 	// 二级 Card 样式修改
 	{Card_L2}
+		contain: style if Content-Visibility
+		border-radius: Card-L2-radius !important if Custom-Card
+		transition: all Card-hover-bg-color-L2-ani !important
 		background: Card-bg-color-L2 !important
-		border-radius: Card-L2-radius if Custom-Card
 		border-color: L2-Card-border !important
+		&:hover
+			box-shadow: Card-L2-hover-shadow !important
+			background: Card-hover-bg-color-L2 !important if Card-hover-bg-color-L2!=None
 	
 	// 悬浮 Card 样式修改
 	{Card_float}
+		contain: style layout if Content-Visibility
 		border: none !important
+		border-radius: Card-float-radius !important if Custom-Card
 		background: Card-bg-color-float !important
-		border-radius: Card-float-radius if Custom-Card
 	
 	{Hover_card_float}
 		//border-radius: Card-float-radius if Custom-Card // TODO：分离
 		anti_hover_line() if A-hover-line && Anti-Float-hover-line
-		transition: background Float-card-hover-ani !important
+		transition: all Float-card-hover-ani !important
 		&:hover //,&:focus
+			transition: all Float-card-hover-ani !important
 			background: Card-hover-color-float !important
-			transition: background Float-card-hover-ani !important
 	
 	{Shadow_card_float}
 		box-shadow: Float-Card-shadow !important
@@ -1871,7 +1921,7 @@ if Fast-Font-load
 				color: Sidebar-btn-color !important if !Anti-HeaderFooter
 		
 		&>div:nth-child(1)
-			background-color: Sidebar-luogu-bg-color !important if !Anti-HeaderFooter
+			background: Sidebar-luogu-bg-color !important if !Anti-HeaderFooter
 			&>a>img
 				use_img_bg_color(Sidebar-luogu-icon-color)
 
@@ -1883,8 +1933,8 @@ if Fast-Font-load
 		& , &>span
 			color: GrayLabel-text-color !important
 		border-color: GrayLabel-border-color !important
-		background: GrayLabel-bg-color !important
 		border-radius: Label-border-radius !important
+		background: GrayLabel-bg-color !important
 	
 	// Badge 样式修改
 	{Badge}
@@ -1896,46 +1946,46 @@ if Fast-Font-load
 	.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span // 用户 tag
 		transition: all Usertag-color-ani !important
 		&[style*=": rgb(191\, 191\, 191);"]
-			background-color: Usertag-color-1 !important
+			background: Usertag-color-1 !important
 			border-color: Usertag-color-1 !important
 			&:hover
-				background-color: Usertag-hover-color-1 !important
+				background: Usertag-hover-color-1 !important
 				border-color: Usertag-hover-color-1 !important
 		&[style*=": rgb(52\, 152\, 219);"]
-			background-color: Usertag-color-2 !important
+			background: Usertag-color-2 !important
 			border-color: Usertag-color-2 !important
 			&:hover
-				background-color: Usertag-hover-color-2 !important
+				background: Usertag-hover-color-2 !important
 				border-color: Usertag-hover-color-2 !important
 		&[style*=": rgb(82\, 196\, 26);"]
-			background-color: Usertag-color-3 !important
+			background: Usertag-color-3 !important
 			border-color: Usertag-color-3 !important
 			&:hover
-				background-color: Usertag-hover-color-3 !important
+				background: Usertag-hover-color-3 !important
 				border-color: Usertag-hover-color-3 !important
 		&[style*=": rgb(243\, 156\, 17);"]
-			background-color: Usertag-color-4 !important
+			background: Usertag-color-4 !important
 			border-color: Usertag-color-4 !important
 			&:hover
-				background-color: Usertag-hover-color-4 !important
+				background: Usertag-hover-color-4 !important
 				border-color: Usertag-hover-color-4 !important
 		&[style*=": rgb(254\, 76\, 97);"]
-			background-color: Usertag-color-5 !important
+			background: Usertag-color-5 !important
 			border-color: Usertag-color-5 !important
 			&:hover
-				background-color: Usertag-hover-color-5 !important
+				background: Usertag-hover-color-5 !important
 				border-color: Usertag-hover-color-5 !important
 		&[style*=": rgb(157\, 61\, 207);"],&[style*=": rgb(156\, 61\, 207);"]
-			background-color: Usertag-color-6 !important
+			background: Usertag-color-6 !important
 			border-color: Usertag-color-6 !important
 			&:hover
-				background-color: Usertag-hover-color-6 !important
+				background: Usertag-hover-color-6 !important
 				border-color: Usertag-hover-color-6 !important
 		&[style*=": rgb(173\, 139\, 0);"]
-			background-color: Usertag-color-7 !important
+			background: Usertag-color-7 !important
 			border-color: Usertag-color-7 !important
 			&:hover
-				background-color: Usertag-hover-color-7 !important
+				background: Usertag-hover-color-7 !important
 				border-color: Usertag-hover-color-7 !important
 	
 	.svg-inline--fa.fa-badge-check // 用户勾子样式
@@ -1973,10 +2023,19 @@ if Fast-Font-load
 	
 	// 讨论区评论
 	{Discuss}
+		contain: style paint layout if Content-Visibility
+		border-radius: Card-L1-radius !important
 		background: Discuss-bd-color !important
+		box-shadow: Discuss-shadow !important
+		transition: Discuss-hover-shadow-ani !important
+		&:hover
+			box-shadow: Discuss-hover-shadow !important
+			background: Discuss-bd-hover-color !important
+			& > :nth-child(1)
+				background: Discuss-hd-hover-color !important
 		& > :nth-child(1)
-			border-bottom-left-radius: 0 !important
-			border-bottom-right-radius: 0 !important
+			//content-visibility: auto if Content-Visibility
+			border-radius: Card-L1-radius Card-L1-radius 0 0 !important
 			background: Discuss-hd-color !important
 
 	// Markdown 编辑器
@@ -1996,7 +2055,7 @@ if Fast-Font-load
 		border-color: transparent !important
 
 	.cm-activeLine::selection,.cm-activeLine ::selection,.CodeMirror-line::selection, .CodeMirror-line>span::selection, .CodeMirror-line>span>span::selection
-		background-color: Markdown-text-selection-color !important
+		background: Markdown-text-selection-color !important
 	.cm-selectionBackground,.CodeMirror-selected
 		background: Markdown-text-selection-color !important
 
@@ -2099,14 +2158,15 @@ if Fast-Font-load
 
 	// 行内代码块
 	{InLine-code-block}
+		contain: style paint layout if Content-Visibility
+		border-radius: InLine-code-block-radius !important
 		background: InLine-code-block-bg-color !important
 		border: InLine-code-block-border !important
 		border-color: InLine-code-block-border-color !important
-		border-radius: InLine-code-block-radius !important
 		color: Code-block-text-color !important
 
 		&::selection, & *::selection
-			background-color: Codeblock-text-selection-color !important
+			background: Codeblock-text-selection-color !important
 
 		if Better-font
 			font-family: "FontWithASyntaxHighlighter",Code-block-fontstack !important
@@ -2116,10 +2176,11 @@ if Fast-Font-load
 	
 	// 代码块
 	{Code-block}
+		contain: style paint layout if Content-Visibility
+		border-radius: Code-block-radius !important
 		background: Code-block-bg-color !important
 		border: Code-block-border !important
 		border-color: Code-block-border-color !important
-		border-radius: Code-block-radius !important
 		color: Code-block-text-color !important
 
 		if exlg-compatible
@@ -2128,7 +2189,7 @@ if Fast-Font-load
 				border-top-right-radius: 0 !important
 		
 		&::selection, & *::selection
-			background-color: Codeblock-text-selection-color !important
+			background: Codeblock-text-selection-color !important
 
 		& code
 			background: Code-block-bg-color !important
@@ -2170,6 +2231,7 @@ if Fast-Font-load
 
 	// 私信框
 	.message-block .message
+		border-radius: Privateletter-radius !important
 		background: Privateletter-bg-color !important
 		&:after
 			display: none if Privateletter-hide
@@ -2185,9 +2247,14 @@ if Fast-Font-load
 		border-left-color: Privateletter-right-bg-color !important
 	
 	.card.wrapper.padding-none > .side > .panel-content > .list > .item
-		transition: background Privateitem-hover-ani !important
+		transition: background Privateitem-hover-ani \, border-radius Privateitem-hover-ani !important
 		&:hover
+			border-radius: Privateletter-list-radius !important
 			background: Privateitem-hover-bg-color !important
+			& .lfe-caption
+				color: Privateitem-hover-text-color !important
+		& .lfe-caption
+			transition: color Privateitem-hover-ani !important
 
 	// 更好的评测详情色块
 	if Better-test-case
@@ -2259,17 +2326,17 @@ if Fast-Font-load
 
 				// 对通过颜色进行一个修改
 				.test-case[style*='rgb(82']
-					background-color: Test-case-color-AC !important
+					background: Test-case-color-AC !important
 				.test-case[style*='rgb(231']
-					background-color: Test-case-color-WA !important
+					background: Test-case-color-WA !important
 				.test-case[style*='rgb(157']
-					background-color: Test-case-color-RE !important
+					background: Test-case-color-RE !important
 				.test-case[style*='rgb(5']
-					background-color: Test-case-color-TLE !important
+					background: Test-case-color-TLE !important
 				.test-case[style*='rgb(14']
-					background-color: Test-case-color-UKE !important
+					background: Test-case-color-UKE !important
 				.test-case[style*="rgb(20"]
-					background-color: Test-case-color-QUE !important
+					background: Test-case-color-QUE !important
 				if Hide-testcase-load
 					.test-case:not([style*="rgb"])
 						display: none !important
@@ -2279,7 +2346,7 @@ if Fast-Font-load
 
 				// 不知道干嘛的，先注释起来
 				//.test-case[style*='rgb(20']
-				//	background-color #3498db !important 
+				//	background #3498db !important 
 
 		if Better-test-case-2
 			MLE-size = (Test-case-size - 45.5px) / 2
@@ -2293,22 +2360,24 @@ if Fast-Font-load
 
 			.test-case-wrap .content
 				overflow: hidden
-				animation: test-case-check 1s;
-				animation-timeline: scroll(x self);
+				animation: test-case-check 1s
+				animation-timeline: scroll(x self)
 
 			@keyframes test-case-check
 				from,to
-					background-color: Test-case-color-MLE;
 					border-radius: Test-case-border-radius
+					background: Test-case-color-MLE
 
 	// 页首修改
-	.main-container > .wrapper.wrapped.lfe-body:has(>.background) > .background,.main-container > header.theme-bg
+	.main-container > .wrapper.wrapped.lfe-body:not(.tiny):first-child > .background,.main-container > header.theme-bg
 		background: Header-bg-color !important if !Anti-HeaderFooter
 	
 	// 页尾修改
 	.main-container > .wrapper.wrapped.lfe-body:has(>.footer),.main-container > footer.theme-bg
-		&,& .background
-			background: Footer-bg-color !important if !Anti-HeaderFooter
+		background: Footer-bg-color !important if !Anti-HeaderFooter
+		if !Anti-HeaderFooter
+			& .background
+				background: none !important
 		& .info,& .links
 			&>p,& a
 				color: Footer-text-color !important
@@ -2392,7 +2461,7 @@ if Fast-Font-load
 		background: Progressframe-bg-color !important
 
 	.progress-frame div[style*="background-color: rgb(52\, 152\, 219);"]
-		background-color: Progressframe-color !important
+		background: Progressframe-color !important
 	
 	if Better-problem-toolip
 		@import url('https://fonts.googleapis.com/css2?family=Open+Sans')
@@ -2459,7 +2528,9 @@ if Fast-Font-load
 			border-bottom-left-radius: 0 !important
 
 	.dropdown.shown:has(.dropdown-operations)
-		background: none !important
+		&,&::before
+			background: none !important
+			backdrop-filter: none !important
 
 	// 按钮系统
 	{Button}
@@ -2469,6 +2540,8 @@ if Fast-Font-load
 			anti_hover_line() if A-hover-line
 	{Small-Button}
 		border-radius: Small-button-radius !important
+		transition: box-shadow Button-shadow-ani !important
+		box-shadow: Small-button-shadow !important
 		use_button_style(Small-button-padding-width,Small-button-padding-height)
 		&:is(a),&>a
 			anti_hover_line() if A-hover-line
@@ -2477,26 +2550,26 @@ if Fast-Font-load
 			anti_hover_line()
 
 	.expand > .expand
-		background: Expand-shadow !important
 		border-radius: Expand-radius !important
+		background: Expand-shadow !important
 
 	.card.max[style*="background-image: url('gg1.svg')"]
 		background-image: url('gg1.svg') !important
-		background-repeat: no-repeat !important
-		background-size: cover !important
-		background-position: center !important
+		background-repeat no-repeat !important
+		background-size cover !important
+		background-position center !important
 
 	*::selection
-		background-color: Text-selection-color
+		background: Text-selection-color
 	*::-moz-selection
-		background-color: Text-selection-color
+		background: Text-selection-color
 	*::-webkit-selection
-		background-color: Text-selection-color
+		background: Text-selection-color
 
 	// exlg 兼容
 	if exlg-compatible
 		.exlg-code-title.exlg-beautified-cbex
-			background-color: Exlg-Codeheader-bg-color !important
+			background: Exlg-Codeheader-bg-color !important
 			color: Post-heading-color !important
 	
 	if Hide-AD
@@ -2504,8 +2577,8 @@ if Fast-Font-load
 			display: none !important
 
 	// 全局字体
-	body,.lfe-body
-		font-family: Font-Stack, -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif
+	body,.lfe-body,.cs-editor
+		font-family: Font-Stack, -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif !important
 
 	// 提交代码框颜色系统
 	.ace_editor
@@ -2554,7 +2627,7 @@ if Fast-Font-load
 			&[style*="color"]
 				border-radius: Problem-tag-radius !important
 				padding: Problem-tag-padding
-				transition: all Problem-tag-ani
+				transition: all Problem-tag-ani \, background 0s // 虽然是 bug，但是呈现效果意外还行，回头研究下
 				line-height: 1.5
 				&:hover
 					transform: translateY(- Problem-tag-hover-trans);
@@ -2606,27 +2679,77 @@ if Fast-Font-load
 
 	// Header 出现动画
 	if Better-Header-ani
-		@keyframes Header-anim
-			from
-				padding-bottom: Header-ani-padding
-			to 
-				padding-bottom: 0px
-		
 		if More-Header-Ani
-			.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
-				animation: Header-anim Header-ani
+			my_header = ".main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*='true'])),.main-container > header.theme-bg"
+			if Header-Optimize
+				my_header = ".main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*='true'])) > .background,.main-container > header.theme-bg::before"
 		else
-			.main-container > .wrapper.wrapped.lfe-body,.main-container > header.theme-bg
+			my_header = ".main-container > .wrapper.wrapped.lfe-body,.main-container > header.theme-bg"
+			if Header-Optimize
+				my_header = ".main-container > .wrapper.wrapped.lfe-body > .background,.main-container > header.theme-bg::before"
+		
+		{my_header}
+			if !Header-Optimize
+				@keyframes Header-anim
+					from
+						padding-bottom: Header-ani-padding
+					to 
+						padding-bottom: 0px
 				animation: Header-anim Header-ani
+			else if Header-bg-color!=none
+				content: ""
+				position: absolute
+				left: 0
+				right: 0
+				display: block
+				width: 100%
+				height: 100%
+				z-index: -1
+				background: Header-bg-color !important
+				@keyframes Optimize-Header-anim
+					from
+						transform: s("translate3d(0,%s,0)", -(Header-ani-padding/2))
+						clip-path: s("inset(%s 0 %s 0)",Header-ani-padding/2, Header-ani-padding/2)	
+						padding-bottom: Header-ani-padding
+						padding-top: Header-ani-padding
+					to
+						transform: s("translate3d(0,%s,0)", - (Header-ani-padding))
+						clip-path: s("inset(%s 0 %s 0)",(Header-ani-padding), Header-ani-padding)
+						padding-bottom: Header-ani-padding
+						padding-top: Header-ani-padding
+				animation: Optimize-Header-anim Header-ani !important
+		
+		if Header-Optimize
+			if More-Header-Ani
+				my_body = ".main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*='true'])),.main-container>header"
+			else
+				my_body = ".main-container > .wrapper.wrapped.lfe-body,.main-container>header"
+			.main-container > .wrapper.wrapped.lfe-body
+				&>.background
+					contain: style paint layout size if Content-Visibility
+					will-change: transform
+			.main-container > header.theme-bg
+				position: relative
+				background: none !important
+			{my_body}
+				@keyframes Optimize-Body-anim
+					from
+						transform: s("translateY(%s)", Header-ani-padding)
+					to
+						transform: translateY(0)
+				&+main,&+main+*
+					animation: Optimize-Body-anim Header-ani !important
+				&+main
+					z-index: 3
 
 	if Better-Header-text-ani
 		@keyframes ShowTop
 			from
 				opacity: 0
-				margin-left: - Header-text-ani-padding
+				transform: translateX(- Header-text-ani-padding)
 			to 
 				opacity: 1
-				margin-left: 0px
+				transform: translateX(0px)
 		if More-Header-Ani
 			.main-container > .wrapper.wrapped.lfe-body:has(>.header:not([pageloading*="true"])),.main-container > header.theme-bg
 				& .lfe-h1
@@ -2689,12 +2812,12 @@ if Fast-Font-load
 	// 卡片选择条
 
 	.menu > .items .entry
+		&,&::before
+			transition: all Card-select-bar-hover-ani !important
 		&.selected
 			color: Card-select-bar-select-color !important
 			&::before
-				background-color: Card-select-bar-select-color !important
-		&,&::before
-			transition: all Card-select-bar-hover-ani !important
+				background: Card-select-bar-select-color !important
 		if Better-Card-select-bar
 			@keyframes Card-select-bar-ani
 				from
@@ -2716,7 +2839,7 @@ if Fast-Font-load
 
 	if Smart-SideBar // Smart-Luogu 式侧栏
 		// 顶栏适配
-		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:has(>.background),.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
+		.wrapper.wrapped.lfe-body.header-layout.tiny,.wrapper.wrapped.lfe-body.header-layout.tiny,.main-container > .wrapper.wrapped.lfe-body:not(.tiny):first-child,.main-container > .wrapper.wrapped.lfe-body:has(>.footer)
 			position: relative !important
 			right: 60px !important
 			padding-left: 75.2px !important
@@ -2729,9 +2852,9 @@ if Fast-Font-load
 		
 		@keyframes Sidebar-out
 			from
-				left: -50px
+				transform: translate(-50px,- SideBar-position)
 			to
-				left: 0px
+				transform: translate(0px,- SideBar-position)
 		
 		//More-Sidebar-Ani
 		#app > .lfe-body
@@ -2739,6 +2862,7 @@ if Fast-Font-load
 			//backdrop-filter: blur(20px) !important
 			//-webkit-backdrop-filter: blur(20px) !important
 			border-radius: 0px 30px 30px 0px
+			background: Sidebar-bg-color !important if !Anti-HeaderFooter
 			margin-left: 0px
 			top: SideBar-position
 			transform: translateY(- SideBar-position)
@@ -2798,22 +2922,19 @@ if Fast-Font-load
 		@keyframes Show-Usernav-box
 			0%
 				opacity: 0
-				margin-top: Usernav-box-ani-margin
-
+				transform: s("translateY(%s)",(Usernav-box-ani-margin - Usernav-box-margin))
 			100%
 				opacity: 1
-				margin-top: Usernav-box-margin
 		
 		.user-nav:has(>nav)
 			margin-top: Usernav-box-margin
 			animation: Show-Usernav-box Usernav-box-ani if !More-Usernav-box-Ani
 		
-		
 		if More-Usernav-box-Ani
 			.main-container > .wrapper.wrapped.lfe-body>.header:not([pageloading*="true"])>.user-nav
 				animation: Show-Usernav-box Usernav-box-ani
 		
-		.main-container > .wrapper.wrapped.lfe-body:has(>.background),.main-container > header.theme-bg
+		.main-container > .wrapper.wrapped.lfe-body:not(.tiny):first-child,.main-container > header.theme-bg
 			& .functional
 				width: 100% !important
 				float: left
@@ -2822,6 +2943,11 @@ if Fast-Font-load
 					margin-top: 0 !important
 					margin-bottom: 0 !important
 					line-height: calc(120% + 1em)
+		
+	.main-container > .wrapper.wrapped.lfe-body:not(.tiny):first-child,.main-container > header.theme-bg
+		& .lfe-h1
+			font-size: Main-title-size !important
+		
 	
 	if Usernav-float
 		.user-nav:has(>nav)
@@ -2897,6 +3023,8 @@ if Fast-Font-load
 				&:hover
 					animation: Avatar-hover Avatar-hover-ani !important
 
+	.tags-wrap
+		overflow: visible !important // 不裁剪阴影
 	if Problem-tag-center
 		.row > .tags > .tags-wrap.multiline
 			if Better-Problem-tag-margin
@@ -2933,6 +3061,170 @@ if Fast-Font-load
 	blockquote,.casket.cs-main blockquote,.lfe-marked blockquote
 		border-color: Blockquote-border-color !important
 
+	if Canvas-fix
+		canvas+.tooltip
+			position: fixed !important
+			@keyframes Canvas-fix-ani
+				from
+					transform: translateY(0)
+				to
+					transform: translateY(-10000px)
+			animation: Canvas-fix-ani 3s linear !important
+			animation-timeline: scroll(root) !important
+			animation-range: 0vh 10000px !important
+	
+	// 旧前端顶部 header 高度
+	.header-layout
+		&.narrow
+			height: Header-narrow-height !important
+		&.normal
+			height: Header-normal-height !important
+	// 新前端
+	.main-container > header.theme-bg:has( button)
+		min-height: Header-new-normal-height !important
+	.main-container > header.theme-bg:has( button)
+		min-height: Header-new-narrow-height !important
+
+	// Markdown 编辑器文字渲染修改
+	.casket.cs-main .cm-content *,.CodeMirror-code pre.CodeMirror-line
+		color: Markdown-text-color !important
+	
+	.CodeMirror-code
+		& .cm-strikethrough
+			color: Markdown-text-delete-color !important
+		& .cm-strong
+			color: Markdown-text-strong-color !important
+		& .cm-em
+			color: Markdown-text-italic-color !important
+		& .cm-variable-2
+			color: Markdown-text-variable-color !important
+		& .cm-header
+			color: Markdown-text-title-color !important
+		& .cm-comment
+			color: Markdown-text-codetag-color !important
+		& .cm-image
+			color: Markdown-atext-color !important
+		& .cm-string.cm-url
+			color: Markdown-a-color !important
+	
+	if Better-Markdown-Edit
+		.mp-editor-ground
+			.cm-meta
+				color: Code-block-meta-color !important
+			.cm-keyword,.cm-type
+				color: Code-block-keyword-color !important
+			.cm-def
+				color: Code-block-title-color !important
+			.cm-number
+				color: Code-block-number-color !important
+			.cm-string
+				color: Code-block-string-color !important
+			.mp-preview-content .cm-comment
+				color: Code-block-quote-color !important
+	
+	.cm-scroller
+		Markdown_Bracket = ":is(.ͼ6.ͼ5,.cm-matchingBracket>.ͼ6.ͼ5)"
+		.cm-line span.ͼa
+			color: Markdown-text-delete-color !important
+		.cm-line span.ͼ9
+			color: Markdown-text-strong-color !important
+		.cm-line span.ͼ7
+			color: Markdown-text-title-color !important
+		.cm-line span.ͼ8
+			color: Markdown-text-italic-color !important
+		.cm-line span.ͼc
+			color: Markdown-text-codename-color !important
+		.cm-line span.ͼ6
+			color: Markdown-atext-color !important
+	
+	// 修个神秘 bug
+	//#app
+	//	overflow: hidden
+	#app:has(.top-bar)
+		overflow: visible
+	.full-container .card
+		overflow: visible !important
+	
+	.user-header-container > .user-header-top
+		border-top-left-radius: Card-L1-radius !important
+		border-top-right-radius: Card-L1-radius !important
+	
+	.user-header-top
+		border-top-left-radius: Card-float-radius !important
+		border-top-right-radius: Card-float-radius !important
+
+	if Ease-Load
+		@view-transition { navigation: auto; }
+		html::view-transition-group(*)
+			animation-duration: Ease-Load-ani
+			animation-fill-mode: both
+	
+	if Content-Visibility
+		{Avatar}
+			content-visibility: auto
+			contain: paint layout
+		.main > .list-wrap > .row-wrap > .row,.lfe-marked .katex-display,.marked katex
+			contain: style paint layout
+		.lfe-marked,.marked
+			& > *
+				contain: layout !important
+		.sidebar.lside.bar.hide.nav-scrollbar
+			contain: strict
+	
+	if Use-GPU
+		.sidebar.lside.bar.hide.nav-scrollbar
+			transform: translate3d(0,0,0)
+	
+	if Content-Visibility-Article
+		.article-content .lfe-marked-wrap > .lfe-marked:has(>:nth-child({Article-max}))
+			&,&>*
+				content-visibility: auto !important
+
+	if Use-card-background=="on"
+		.main > div:not(.card) > :not(.table)+.bottom-wrap:has(>.page-bar),.full-container > div > .bottom .page-bar,.row.reply-info
+			&,&:hover
+				&,&::before
+					border-radius: Use-card-radius !important
+			padding: 5pt
+		.row.reply-info > *
+			padding: 0 5pt 0 5pt
+		.main > .reply-info+div
+			margin-bottom: 0.75em
+		.toc.with-top
+			top: 68px !important
+			overflow: visible !important
+			& ul
+				padding: 1em
+
+	// 名字颜色系统
+	if User-Name-color!=None
+		for usernamecolor in UserTag
+			User_Name(usernamecolor["uid"],usernamecolor["color"],usernamecolor["hover_color"])
+	
+	// Tag 系统
+	if UserTag!="None"
+		for usertag in UserTag
+			User_badge(usertag["uid"], usertag["border-radius"], usertag["background"], usertag["color"], usertag["content"])
+
+	// 显示具体时间系统
+	if Better-Time-show
+		.feed .meta span[title]
+			visibility: hidden
+			font-size: 0
+			&:before
+				font-size: 14px
+				visibility: visible
+				content: attr(title) " "
+
+	if Better-discuss-Time-show
+		.time > time[title]
+			visibility: hidden
+			font-size: 0
+			&:before
+				font-size: 14px
+				visibility: visible
+				content: attr(title) " "
+
 	// 各种小 bug 的修复
 	.load-more
 		border-bottom: 0 !important if bug-fix1
@@ -2948,6 +3240,8 @@ if Fast-Font-load
 			transform: scaleY(-1) !important
 			& *
 				transition-duration: .4s !important
+	.arrow
+		z-index: 0
 	
 	if bug-fix3
 		@css{
@@ -2958,7 +3252,7 @@ if Fast-Font-load
 		}
 	
 	if bug-fix4
-		.page-bar button 
+		.page-bar button,.page-area button
 			width: auto !important
 	
 	if bug-fix5
@@ -3036,6 +3330,12 @@ if Fast-Font-load
 				padding: 0 8px
 			else 
 				padding: 0 0.625em
+	
+	if bug-fix20
+		.mp-preview-content
+			padding: 0 20px !important
+		.mp-preview-zone
+			padding-bottom: 0 !important
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/solution|ranking|discuss).*$")
 	use_new_bar()
@@ -3051,24 +3351,58 @@ if Fast-Font-load
 	// 动画效果适配新前端
 	if Better-Header-ani && More-Header-Ani
 		for num in (1..7)
-			@keyframes Header-anim{num}
-				from
-					padding-bottom: Header-ani-padding
-				to 
-					padding-bottom: 0px
-
-			.main-container:has(.colored-link-selector>.active:nth-child({num})) > header.theme-bg
-				animation: Header-anim+num Header-ani !important
+			if Header-Optimize
+				.main-container:has(.colored-link-selector>.active:nth-child({num})) > header.theme-bg::before
+					content: ""
+					position: absolute
+					left: 0
+					right: 0
+					display: block
+					width: 100%
+					height: 100%
+					z-index: -1
+					background: Header-bg-color !important
+					@keyframes Optimize-Header-anim{num}
+						from
+							transform: s("translate3d(0,%s,0)", -(Header-ani-padding/2))
+							clip-path: s("inset(%s 0 %s 0)",Header-ani-padding/2, Header-ani-padding/2)	
+							padding-bottom: Header-ani-padding
+							padding-top: Header-ani-padding
+						to
+							transform: s("translate3d(0,%s,0)", - (Header-ani-padding))
+							clip-path: s("inset(%s 0 %s 0)",(Header-ani-padding), Header-ani-padding)
+							padding-bottom: Header-ani-padding
+							padding-top: Header-ani-padding
+					animation: Optimize-Header-anim+num Header-ani !important
+				.main-container:has(.colored-link-selector>.active:nth-child({num})) > header.theme-bg
+					@keyframes Optimize-Body-anim{num}
+						from
+							transform: s("translateY(%s)", Header-ani-padding)
+						to
+							transform: translateY(0)
+					&+main,&+main+*
+						animation: Optimize-Body-anim+num Header-ani !important
+					&+main
+						z-index: 3
+			else
+				@keyframes Header-anim{num}
+					from
+						padding-bottom: Header-ani-padding
+					to 
+						padding-bottom: 0px
+			
+				.main-container:has(.colored-link-selector>.active:nth-child({num})) > header.theme-bg
+					animation: Header-anim+num Header-ani !important
 	
 	if Better-Header-text-ani && More-Header-Ani
 		for num in (1..7)
 			@keyframes ShowTop{num}
 				from
 					opacity: 0
-					margin-left: - Header-text-ani-padding
+					transform: translateX(- Header-text-ani-padding)
 				to 
 					opacity: 1
-					margin-left: 0px
+					transform: translateX(0px)
 			.main-container:has(.colored-link-selector>.active:nth-child({num})) > header.theme-bg
 				& .lfe-h1
 					animation: ShowTop+num Header-text-ani
@@ -3217,6 +3551,7 @@ if Fast-Font-load
 			
 			// 特殊处理 TODO：单独变量化
 			& .l-card.reply-item
+				border-radius: Card-L1-radius !important
 				background: Card-bg-color-float !important
 		
 		.main-container.lside-bar:has(>.lcolor-bg-grey-1)>footer
@@ -3235,7 +3570,7 @@ if Fast-Font-load
 				background: none !important
 
 			& div[style*="background-color: rgb(255\, 255\, 255);"]
-				background-color: Article-text-bg-color !important
+				background: Article-text-bg-color !important
 	
 	.user-nav.rside.show.nav-scrollbar // 朋友要用，做的紧急修改，TODO
 		width: Article-rside-width !important
@@ -3330,16 +3665,18 @@ if Fast-Font-load
 			&:hover
 				box-shadow: Benben-hover-shadow !important
 
-			.am-comment-hd,.am-comment-bd
-				border-radius: Benben-radius
 			.am-comment-hd
-				border-bottom-left-radius: 0
-				border-bottom-right-radius: 0
+				content-visibility: auto if Content-Visibility
+				border-radius: Benben-radius Benben-radius 0 0
 				background: Benben-hd-color
 			.am-comment-bd
-				border-top-left-radius: 0
-				border-top-right-radius: 0
+				border-radius: 0 0 Benben-radius Benben-radius
+				transition: all Benben-bd-hover-ani !important
 				background: Benben-bd-color
+			&:hover .am-comment-bd
+				border-radius: 0 0 Benben-radius Benben-radius
+				transition: all Benben-bd-hover-ani !important
+				background: Benben-bd-hover-color !important
 
 			&:after
 				border-right-color: Benben-hd-color
@@ -3358,15 +3695,15 @@ if Fast-Font-load
 		font-weight: 500
 		transition: all .15s ease !important
 		color: Benben-tab-text-color
-		background-color: Benben-tab-bg-color
-		box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08) if Better-Benben-Tab && !DarkMode // TODO：变量化
 		border-radius: Card-L2-radius !important
+		background: Benben-tab-bg-color
+		box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08) if Better-Benben-Tab && !DarkMode // TODO：变量化
 		height: Benben-tab-height
 		line-height: Benben-tab-height
 		padding: 0 !important
 
 	.feed-selector > a:hover
-		background-color: Benben-tab-hover-color !important
+		background: Benben-tab-hover-color !important
 
 	.feed-selector.am-active > a
 		color: Benben-tab-focus-text-color
@@ -3374,13 +3711,13 @@ if Fast-Font-load
 
 	if Better-Benben-Tab
 		.lg-index-benben div:nth-of-type(4) 
-				background: transparent !important
-				box-shadow: none !important
-				padding-left: 0
-				padding-right: 0
+			background: transparent !important
+			box-shadow: none !important
+			padding-left: 0
+			padding-right: 0
 
 		.lg-index-benben div:nth-of-type(4) #home-center-nav
-				background: transparent
+			background: transparent !important
 	
 	// 主页题目通过条
 	if Better-highcharts
@@ -3438,20 +3775,24 @@ if Fast-Font-load
 			border-bottom-right-radius: AD-font-bg-radius !important
 			&:before
 				content: "\f053" !important
+				position: unset !important
+				background: none !important
 		.am-slider-default .am-direction-nav .am-nav-next a
 			right: 0 !important
 			border-top-left-radius: AD-font-bg-radius !important
 			border-bottom-left-radius: AD-font-bg-radius !important
 			&:before
 				content: "\f054" !important
+				position: unset !important
+				background: none !important
 		.am-slider-default .am-direction-nav a
 			opacity: 1 !important
 			width: AD-font-bg-width !important
 			height: AD-font-bg-height !important
-			background-color: AD-font-bg-color !important
+			transition: background AD-font-bg-ani !important
+			background: AD-font-bg-color !important
 			transform: translateY(-50%) !important
 			margin: 0 !important
-			transition: background-color AD-font-bg-ani !important
 			&:before
 				color: AD-font-color !important
 				height: AD-font-bg-height !important
@@ -3459,9 +3800,9 @@ if Fast-Font-load
 				font-size: AD-font-size !important
 				text-align: center !important
 		.am-slider-default:hover .am-next:hover,.am-slider-default:hover .am-prev:hover
-			background-color: AD-font-bg-hover-color !important
+			background: AD-font-bg-hover-color !important
 		.am-slider-default:hover .am-next,.am-slider-default:hover .am-prev
-			background-color: AD-font-bg-hoverimg-color !important
+			background: AD-font-bg-hoverimg-color !important
 		
 	if Better-Smooth-scroll
 		body,html
@@ -3471,52 +3812,52 @@ if Fast-Font-load
 	.lg-inline-up>.lg-small:not(:last-child),.feed-username
 		& .lg-bg-gray
 			transition: all Usertag-color-ani !important
-			background-color: Usertag-color-1 !important
+			background: Usertag-color-1 !important
 			border-color: Usertag-color-1 !important
 			&:hover
-				background-color: Usertag-hover-color-1 !important
+				background: Usertag-hover-color-1 !important
 				border-color: Usertag-hover-color-1 !important
 		& .lg-bg-bluelight
 			transition: all Usertag-color-ani !important
-			background-color: Usertag-color-2 !important
+			background: Usertag-color-2 !important
 			border-color: Usertag-color-2 !important
 			&:hover
-				background-color: Usertag-hover-color-2 !important
+				background: Usertag-hover-color-2 !important
 				border-color: Usertag-hover-color-2 !important
 		& .lg-bg-green
 			transition: all Usertag-color-ani !important
-			background-color: Usertag-color-3 !important
+			background: Usertag-color-3 !important
 			border-color: Usertag-color-3 !important
 			&:hover
-				background-color: Usertag-hover-color-3 !important
+				background: Usertag-hover-color-3 !important
 				border-color: Usertag-hover-color-3 !important
 		& .lg-bg-orange
 			transition: all Usertag-color-ani !important
-			background-color: Usertag-color-4 !important
+			background: Usertag-color-4 !important
 			border-color: Usertag-color-4 !important
 			&:hover
-				background-color: Usertag-hover-color-4 !important
+				background: Usertag-hover-color-4 !important
 				border-color: Usertag-hover-color-4 !important
 		& .lg-bg-red
 			transition: all Usertag-color-ani !important
-			background-color: Usertag-color-5 !important
+			background: Usertag-color-5 !important
 			border-color: Usertag-color-5 !important
 			&:hover
-				background-color: Usertag-hover-color-5 !important
+				background: Usertag-hover-color-5 !important
 				border-color: Usertag-hover-color-5 !important
 		& .lg-bg-purple
 			transition: all Usertag-color-ani !important
-			background-color: Usertag-color-6 !important
+			background: Usertag-color-6 !important
 			border-color: Usertag-color-6 !important
 			&:hover
-				background-color: Usertag-hover-color-6 !important
+				background: Usertag-hover-color-6 !important
 				border-color: Usertag-hover-color-6 !important
 		& .lg-bg-brown
 			transition: all Usertag-color-ani !important
-			background-color: Usertag-color-7 !important
+			background: Usertag-color-7 !important
 			border-color: Usertag-color-7 !important
 			&:hover
-				background-color: Usertag-hover-color-7 !important
+				background: Usertag-hover-color-7 !important
 				border-color: Usertag-hover-color-7 !important
 	
 	a.sb_amazeui > svg
@@ -3545,26 +3886,32 @@ if Fast-Font-load
 			&:hover
 				color: Username-hover-color-1 !important
 		&.lg-fg-bluelight
+			transition: color Username-color-ani !important
 			color: Username-color-2 !important
 			&:hover
 				color: Username-hover-color-2 !important
 		&.lg-fg-green
+			transition: color Username-color-ani !important
 			color: Username-color-3 !important
 			&:hover
 				color: Username-hover-color-3 !important
 		&.lg-fg-orange
+			transition: color Username-color-ani !important
 			color: Username-color-4 !important
 			&:hover
 				color: Username-hover-color-4 !important
 		&.lg-fg-red
+			transition: color Username-color-ani !important
 			color: Username-color-5 !important
 			&:hover
 				color: Username-hover-color-5 !important
 		&.lg-fg-purple
+			transition: color Username-color-ani !important
 			color: Username-color-6 !important
 			&:hover
 				color: Username-hover-color-6 !important
 		&.lg-fg-brown
+			transition: color Username-color-ani !important
 			color: Username-color-7 !important
 			&:hover
 				color: Username-hover-color-7 !important
@@ -3572,3 +3919,8 @@ if Fast-Font-load
 	if bug-fix11
 		.am-u-md-4.lg-punch.am-text-center > h2 svg
 			margin-bottom: 0 !important
+
+	if bug-fix21
+		.am-slider-default .am-direction-nav .am-nav-prev a,.am-slider-default .am-direction-nav .am-nav-next a
+			z-index: auto !important
+	
