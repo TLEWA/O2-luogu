@@ -967,47 +967,6 @@ if Fast-Font-load
 		else
 			return b
 	
-	// 亚克力基本实现转自氩洛谷 RE2024。
-	// 基于伪元素的亚克力实现，不会造成层叠混乱
-	acrylic_a(acr-bgcolor,blur-radius=10px)
-		background: none !important
-		backdrop-filter: none !important
-		filter: none !important
-		@layer
-			&
-				position: relative
-
-		&::before
-			content-visibility: auto if Content-Visibility
-			contain: strict if Content-Visibility
-			transform: translate3d(0px, 0px, 0px) if Use-GPU
-			height: auto !important
-			width: auto !important
-			background: acr-bgcolor !important
-			backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
-			content: ""
-			if @border-radius
-				border-radius: @border-radius
-			else
-				border-radius: inherit
-			transition: @transition if @transition
-			position: absolute
-			pointer-events: none
-			top: 0
-			left: 0
-			right: 0
-			bottom: 0
-			z-index: -1 !important
-			
-			
-			//https://stackoverflow.com/questions/74085350/backdrop-filter-doesnt-apply-if-parents-opacity-is-less-than-1
-			/*
-			很遗憾，这不起作用
-			transform: translateZ(0)
-			backface-visibility: hidden
-			*/
-			
-	
 	// https://stackoverflow.com/questions/44522299/css-only-acrylic-material-from-fluent-design-system
 	// 直接修改背景的亚克力实现，不需要修改 z-index，不会对 border-radius 造成影响，但可能造成层叠混乱
 	acrylic_b(acr-bgcolor,blur-radius=10px)
@@ -1017,6 +976,49 @@ if Fast-Font-load
 					transform: translateZ(0)
 		background: acr-bgcolor !important
 		backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
+
+	// 亚克力基本实现转自氩洛谷 RE2024。
+	// 基于伪元素的亚克力实现，不会造成层叠混乱
+	acrylic_a(acr-bgcolor,blur-radius=10px)
+		if match(":after",selector()) != null || match(":before",selector()) != null
+			acrylic_b(acr-bgcolor,blur-radius)
+		else
+			background: none !important
+			backdrop-filter: none !important
+			filter: none !important
+			@layer
+				&
+					position: relative
+	
+			&::before
+				content-visibility: auto if Content-Visibility
+				contain: strict if Content-Visibility
+				transform: translate3d(0px, 0px, 0px) if Use-GPU
+				height: auto !important
+				width: auto !important
+				background: acr-bgcolor !important
+				backdrop-filter: blur(blur-radius) !important unless blur-radius == 0
+				content: ""
+				if @border-radius
+					border-radius: @border-radius
+				else
+					border-radius: inherit
+				transition: @transition if @transition
+				position: absolute
+				pointer-events: none
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				z-index: -1 !important
+			
+			
+			//https://stackoverflow.com/questions/74085350/backdrop-filter-doesnt-apply-if-parents-opacity-is-less-than-1
+			/*
+			很遗憾，这不起作用
+			transform: translateZ(0)
+			backface-visibility: hidden
+			*/
 
 	to_s() // 将值转换为对应字符串
 		return "%s%s"%((arguments) ())
