@@ -3140,13 +3140,15 @@ if Winter-Tag
 			color: Markdown-atext-color !important
 	
 	// 修个神秘 bug
-	//#app
-	//	overflow: hidden
+	#app
+		overflow-y: hidden
 	#app:has(.top-bar)
 		overflow: visible
 	.full-container .card
 		overflow: visible !important
-	
+	main
+		position relative
+
 	.user-header-container > .user-header-top
 		border-top-left-radius: Card-L1-radius !important
 		border-top-right-radius: Card-L1-radius !important
