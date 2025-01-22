@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.2.0.1
+@version      2.2.0.2
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
@@ -30,6 +30,7 @@
 @var	checkbox Better-problem-toolip "更好的题库通过条信息样式" 1
 @var	checkbox Better-big-button "更好的巨型按钮排版" 1
 @var	checkbox exlg-compatible "exlg 兼容" 1
+@var	checkbox SearchAnywhere "LuoguSearchAnywhere 兼容" 1
 @var	checkbox oiso-compatible "(实验性)(不积极支持)oiso 兼容" 1
 @var	checkbox Better-control-nav "更好的主页广告翻页选择点" 1
 @var	checkbox Hide-AD "隐藏洛谷边栏广告" 0
@@ -925,7 +926,7 @@ if Fast-Font-load
 			clear: both
 	
 	use_discuss_side()
-		.sidebar-container.layout:has(.side+.main)
+		.sidebar-container.layout:not(.sidebar-container--reverse)
 			if Discuss-Sidebar-right
 				&>.side
 					margin-right: 0 !important
@@ -1601,6 +1602,9 @@ if Fast-Font-load
 		Card_L1 += ",.main > div:not(.card) > :not(.table)+.bottom-wrap:has(>.page-bar),.full-container > div > .bottom .page-bar,.row.reply-info,.toc.with-top ul"
 	if Anti-HeaderFooter
 		Header-Optimize = 0
+	
+	//if SearchAnywhere
+	//	Card_float += ",.searchAnywhereEntrance"
 
 	// 全局背景
 		// 根据有无背景图片设置背景模式
