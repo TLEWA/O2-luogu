@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.2.0.3
+@version      2.2.0.4
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
@@ -1595,7 +1595,7 @@ if Fast-Font-load
 			Use-card-background = "off"
 	
 	if Better-article-card=="on"
-		Card_L1 += ",.main-container.lside-bar>main.lcolor-bg-grey-1"
+		Card_L1 += ",.main-container>main.lcolor-bg-grey-1"
 		Card_L2 += ",.article-comment.columba-content-wrap.wrapper>.l-card"
 	
 	if Use-card-background=="on"
@@ -2485,7 +2485,7 @@ if Winter-Tag
 		.introduction.marked[style*="display: none;"]
 			display: block !important
 
-	.main-container.lside-bar > main,.main-container.lside-drawer > main
+	.main-container:is(.lside-bar,.lside-drawer) > main
 		background: none !important
 
 	// 优化巨型按钮渲染
@@ -3521,7 +3521,7 @@ if Winter-Tag
 	// 修一个小问题
 	.actions:has(>.button-2line)>a>.button-2line
 		margin: 0 1em !important
-	.actions:not(:has(>a>.button-2line))>a[disabled="false"]
+	.actions:not(:has(>a>.button-2line))>a[disabled="false"]:last-child
 		margin: 0 !important
 
 	article-icons = (article-icon-1-color article-icon-2-color article-icon-3-color article-icon-4-color)
@@ -3562,7 +3562,7 @@ if Winter-Tag
 				border-radius: Card-L1-radius !important
 				background: Card-bg-color-float !important
 		
-		.main-container.lside-bar:has(>.lcolor-bg-grey-1)>footer
+		.main-container:has(>.lcolor-bg-grey-1)>footer
 			background: none !important
 			&>hr
 				display: none !important
@@ -3571,7 +3571,7 @@ if Winter-Tag
 			right: -205px !important
 		
 	else
-		.main-container.lside-bar:has(>.lcolor-bg-grey-1)
+		.main-container:has(>.lcolor-bg-grey-1)
 			use_mainly_background(Article-Background)
 
 			&>*
