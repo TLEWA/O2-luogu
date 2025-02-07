@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.2.0.4
+@version      2.2.0.5
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
@@ -2485,9 +2485,6 @@ if Winter-Tag
 		.introduction.marked[style*="display: none;"]
 			display: block !important
 
-	.main-container:is(.lside-bar,.lside-drawer) > main
-		background: none !important
-
 	// 优化巨型按钮渲染
 	if Better-big-button
 		.drop > br
@@ -3570,6 +3567,9 @@ if Winter-Tag
 			right: -205px !important
 		
 	else
+		.main-container:is(.lside-bar,.lside-drawer) > main
+			background: none !important
+
 		.main-container:has(>.lcolor-bg-grey-1)
 			use_mainly_background(Article-Background)
 
