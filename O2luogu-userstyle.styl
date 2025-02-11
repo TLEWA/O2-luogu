@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.2.0.8
+@version      2.2.0.9
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
@@ -629,7 +629,7 @@
 
 @var	checkbox bug-fix1 "[bug-fix] '点击加载更多评论' 下存在分割线" 1
 @var	checkbox bug-fix2 "[bug-fix] 部分下拉栏样式错误" 1
-@var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常" 1
+@var	checkbox bug-fix3 "[bug-fix] 题库通过条渲染位置不正常(与其他功能无意中进行了重复修复，默认关闭)" 0
 @var	checkbox bug-fix4 "[bug-fix] 翻页按钮宽度计算错误" 1
 @var	checkbox bug-fix5 "[bug-fix] 私信 '加载更多' 文字位置异常" 1
 @var	checkbox bug-fix6 "[bug-fix] 查找记录输入框边框 focus 样式异常" 1
@@ -3345,7 +3345,7 @@ if Winter-Tag
 		.mp-preview-zone
 			padding-bottom: 0 !important
 
-@-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/solution|ranking|discuss).*$")
+@-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/(?!list$).|ranking|discuss).*$")
 	use_new_bar()
 	.solution-article .operations .button // 这又写得啥。。
 		opacity: 1 !important
