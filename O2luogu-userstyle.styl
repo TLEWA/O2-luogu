@@ -1,9 +1,9 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.2.0.10
+@version      2.3.0.0
 @description  高度可自定义的洛谷美化脚本
-@author       TLEWA
+@author       TLEWA & FlyHappily
 @license      GPL v3
 @preprocessor stylus
 
@@ -116,6 +116,28 @@
 @var	text Header-bg-color "页首背景色" "Default"
 @var	text Footer-bg-color "页尾背景色" "Default"
 
+@var	text School-Class-Card-Background "网校课程卡片背景" "Default"
+@var	text School-Class-Tag-Color "网校课程 tag 背景色" "Default"
+@var	text School-Class-Text-Color "网校课程 tag 文字色" "Default"
+@var	text School-User-Info-Background "网校个人介绍背景" "Default"
+@var	text School-User-Info-Text-Color "网校个人介绍文字色" "Default"
+@var	text School-Course-Container-Background "网校课程展示台背景" "Default"
+@var	text School-Item-Course-Container-Background "网校最近在学课程展示台背景" "Default"
+@var	text School-Video-Icon-Started "网校已开始课程视频图标" "Default"
+@var	text School-Video-Icon-Not-Started "网校未开始课程视频图标" "Default"
+@var	text School-Fix-Background "网校悬浮窗背景" "Default"
+
+@var	text Classroom-Side-Content-Background "直播间边栏背景" "Default"
+@var	text Classroom-Side-Content-Tab-Background "直播间边栏顶部背景" "Default"
+@var	text Classroom-Controller-Background "直播间控制栏背景" "Default"
+@var	text Classroom-Progress-Not-Watched-Color "直播间进度条未播放颜色" "Default"
+@var	text Classroom-Progress-Watched-Color "直播间进度条已播放颜色" "Default"
+@var	text Classroom-Progress-Dot-Background "直播间进度条点背景" "Default"
+@var	text Classroom-Progress-Dot-Border "直播间进度条点边框" "Default"
+@var	text Classroom-Controller-Icon-Color "直播间控制栏图标色" "Default"
+@var	text Classroom-Questions-Tab-Background "直播间问题 Tab 条背景" "Default"
+@var	text Classroom-Questions-Content-Background "直播间问题详情背景" "Default"
+
 @var	text Card-bg-color-float "悬浮卡片背景色" "Default"
 @var	text Card-hover-color-float "部分悬浮卡片选中背景色" "Default"
 @var	text Text-color "正文文字色" "Default"
@@ -134,6 +156,7 @@
 @var	text Label-border-radius "标签卡片圆角样式" "Default"
 @var	text A-color "超链接颜色" "Default"
 @var	text A-hover-color "超链接选中色" "Default"
+@var	text A-link-bottom-background "超链接外框背景" "Default"
 @var	text Scrollbar-track-color "滚动槽颜色" "Default"
 @var	text Scrollbar-thumb-color "滚动条颜色" "Default"
 @var	text Scrollbar-hover-color "滚动条选中色" "Default"
@@ -156,6 +179,16 @@
 @var	text Discuss-hd-color "讨论区评论上半颜色" "Default"
 @var	text Discuss-bd-color "讨论区评论下半颜色" "Default"
 @var	text Divider-color "分割线颜色" "Default"
+@var	text Table-Header-Background "表格头背景" "Default"
+@var	text Table-Body-Background "表格体背景" "Default"
+
+@var	text IDE-Panel-Divider-Color "IDE 分隔线色" "Default"
+@var	text IDE-Problem-Background "IDE 模式问题背景" "Default"
+@var	text IDE-Code-Background "IDE 代码背景" "Default"
+@var	text IDE-Code-Toolbar-Background "IDE 代码顶栏背景" "Default"
+@var	text IDE-Code-Gutters-Background "IDE 代码行号背景" "Default"
+@var	text IDE-Data-Background "IDE 数据背景" "Default"
+@var	text IDE-Data-Toolbar-Background "IDE 数据顶栏背景" "Default"
 
 @var	text InLine-code-block-bg-color "行内代码块背景色" "Default"
 @var	text Code-block-bg-color "代码块背景色" "Default"
@@ -274,7 +307,7 @@
 @var	text Highcharts-hover-point-color "主页题目通过情况栏折线图 hover 点色" "Default"
 @var	text Highcharts-hover-point-border-color "主页题目通过情况栏折线图 hover 点边框色" "Default"
 @var	text Highcharts-hover-bigpoint-color "主页题目通过情况栏折线图 hover 氛围环色" "Default"
-@var	text Highcharts-hover-bigpoint-op "主页题目通过情况栏折线图 hover 氛围环透明度"  "Default"
+@var	text Highcharts-hover-bigpoint-op "主页题目通过情况栏折线图 hover 氛围环透明度"	"Default"
 @var	text Highcharts-strip-color "主页题目通过情况栏折线图竖条色" "Default"
 @var	text Highcharts-strip-border-color "主页题目通过情况栏折线图竖条边框色" "Default"
 @var	text Highcharts-strip-hover-color "主页题目通过情况栏折线图竖条 hover 色" "Default"
@@ -676,7 +709,7 @@
 if Fast-Font-load
 	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=JetBrains+Mono&family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap')
 
-@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
+@-moz-document regexp("(^(http(s)?://www.luogu.com(.cn)?/(.*)))|(^(http(s)?://class.luogu.com(.cn)?/(.*)))")
 	if !Fast-Font-load
 		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&family=JetBrains+Mono&family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap')
 
@@ -719,6 +752,11 @@ if Fast-Font-load
 		Avatar = "img.avatar,img.am-comment-avatar,.luogu-username>img,.message-block>img,.avatar>img" // 用户头像
 
 // 全局工具函数
+	use_header_and_footer()
+		.header-layout
+			background: Header-bg-color !important
+		.wrapped[style="background-color: rgb\(51\, 51\, 51\)\;"]
+			background: Footer-bg-color !important
 
 	use_stable_bg() // 设置背景相关参数
 		background-repeat: no-repeat !important
@@ -1150,426 +1188,456 @@ if Fast-Font-load
 				define(key,val)
 
 	DefaultStyle = {
-		"Card-L1-radius": "4px",
-		"Card-L2-radius": "4px",
-		"Card-float-radius": "5px",
-		"Inputbox-radius": "4px",
-		"Benben-radius": "get_depend_list(Card-L2-radius, 4px)",
-		"InLine-code-block-radius": "3px",
-		"Code-block-radius": "5px",
-		"InLine-code-block-border": "^Check(InLine-code-block-border-del,none,1px solid)",
-		"Code-block-border": "^Check(Code-block-border-del,none,1px solid)",
-		"Luogu-discuss-color-2": "#14558f",
-		"Luogu-discuss-color-3": "#f39c11",
-		"Luogu-discuss-color-4": "#9d3dcf",
-		"Luogu-discuss-color-5": "#52c41a",
-		"Luogu-discuss-color-6": "#2949b4",
-		"Background-color": "DarkMode_check(#141725, #efefef)",
-		"Card-bg-color-L1": "DarkMode_check(#252d38, #fcfcfc)",
-		"Card-bg-color-L2": "DarkMode_check(#2f3741, #fff)",
-		"Header-bg-color": "Check(CustomBackground!=None,none,DarkMode_check(linear-gradient(90deg,#282828,#1a1a1a), linear-gradient(90deg, rgb(35, 37, 38), rgb(65, 67, 69))))",
-		"Footer-bg-color": "Check(CustomBackground!=None,none,DarkMode_check(#1a1a1a, linear-gradient(150deg,#708090 15%,#2F4F4F 70%,#000000 94%)))",
-		"Card-bg-color-float": "DarkMode_check(#242C38, #fff)",
-		"Card-hover-color-float": "DarkMode_check(#3e4752, #e5e5e5)",
-		"Text-color": "DarkMode_check(#c4c6c9, rgba(0,0,0,.75))",
-		"State-color": "DarkMode_check(rgba(255,255,255,0.45), rgba(0,0,0,0.45))",
-		"Introduce-color": "DarkMode_check(#c4c6c9, rgba(0,0,0,.75))",
-		"Operate-color": "DarkMode_check(#999999, #999999)",
-		"Operate-hover-color": "DarkMode_check(#dcdcdc, #3f3f3f)",
-		"Topic-text-color": "DarkMode_check(#fff, #fff)",
-		"ColorfulLabel-text-color": "DarkMode_check(#fff, #fff)",
-		"GrayLabel-text-color": "DarkMode_check(#dddddd, #3a3a3a)",
-		"GrayLabel-border-color": "DarkMode_check(#3f6b91, #bebebe)",
-		"GrayLabel-bg-color": "DarkMode_check(#162430, #e8e8e8)",
-		"A-color": "DarkMode_check(#5e72e4, #3498db)",
-		"A-hover-color": "DarkMode_check(#0056b3, #095f8a)",
-		"Scrollbar-track-color": "DarkMode_check(#161926, rgba(0, 0, 0, 0.05))",
-		"Scrollbar-thumb-color": "DarkMode_check(#57626f, rgba(0, 0, 0, 0.2))",
-		"Scrollbar-hover-color": "DarkMode_check(#5e72e4, #808080)",
-		"Navbar-bg-color": "DarkMode_check(#1f3144, #fff)",
-		"Input-bg-color": "DarkMode_check(#2f3741, #fff)",
-		"Input-focus-bg-color": "DarkMode_check(Input-bg-color, Input-bg-color)",
-		"Input-border-color": "DarkMode_check(#a7a9ad, #bfbfbf)",
-		"Input-focus-border-color": "DarkMode_check(#3498db, #409eff)",
-		"Input-text-color": "DarkMode_check(#dcdcdc, #000)",
-		"Input-placeholder-color": "DarkMode_check(#c4c6c9, rgba(0,0,0,.5))",
-		"Sidebar-bg-color": "DarkMode_check(#162430, #34495E)",
-		"Sidebar-icon-color": "DarkMode_check(#dddddd, #dddddd)",
-		"Sidebar-btn-color": "DarkMode_check(#dddddd, #dddddd)",
-		"Sidebar-luogu-bg-color": "DarkMode_check(#4682b4, #3498db)",
-		"Sidebar-luogu-icon-color": "DarkMode_check(#fffaf0, #fff)",
-		"L2-Card-border": "DarkMode_check(#435266, #e8e8e8)",
-		"Post-heading-color": "DarkMode_check(#c4c6c9, rgba(0,0,0,.75))",
-		"Benben-hd-color": "DarkMode_check(get_depend_list(Card-bg-color-L2), #f8f8f8)",
-		"Benben-bd-color": "DarkMode_check(get_depend_list(Card-bg-color-L1), #fff)",
-		"Discuss-hd-color": "DarkMode_check(get_depend_list(Card-bg-color-L2), #f8f8f8)",
-		"Discuss-bd-color": "DarkMode_check(get_depend_list(Card-bg-color-L1), #fff)",
-		"Homepage-a-green": "DarkMode_check(#5eb95e, #5eb95e)",
-		"Homepage-a-red": "DarkMode_check(#dd514c, #dd514c)",
-		"Divider-color": "DarkMode_check(#435266, #e8e8e8)",
-		"Directory-a-color": "DarkMode_check(rgba(255,255,255,.75), rgba(255,255,255,.75))",
-		"Other-icon-color": "DarkMode_check(#c4c6c9, #333333)",
-		"Card-icon-color": "DarkMode_check(#333, #333)",
-		"Luogu-discuss-color-1": "DarkMode_check(#fff, #272727)",
-		"Main-post-heading-color": "DarkMode_check(#fff, #fff)",
-		"Topic-type-Label-not-select": "DarkMode_check(#3f3f3f, #e8e8e8)",
-		"InLine-code-block-bg-color": "DarkMode_check(#3e4752, #f8f8f8)",
-		"Code-block-bg-color": "DarkMode_check(#0d1117, #f8f8f8)",
-		"InLine-code-block-border-color": "DarkMode_check(#3e4752, #e8e8e8)",
-		"Code-block-border-color": "DarkMode_check(#0d1117, #eeeeee)",
-		"Code-block-text-color": "DarkMode_check(#b6b8c2, #36464e)",
-		"Code-block-quote-color": "DarkMode_check(#5c6370, #707070)",
-		"Code-block-meta-color": "DarkMode_check(#f06090, #f06090)",
-		"Code-block-meta-string-color": "DarkMode_check(#2fb170, #2fb170)",
-		"Code-block-string-color": "DarkMode_check(#2fb170, #2fb170)",
-		"Code-block-keyword-color": "DarkMode_check(#6791e0, #6791e0)",
-		"Code-block-title-color": "DarkMode_check(#c973d9, #c973d9)",
-		"Code-block-number-color": "DarkMode_check(#e6695b, #e6695b)",
-		"Code-block-params-color": "DarkMode_check(#da70d6, #da70d6)",
-		"Article-bg-color": "DarkMode_check(#1e2334, #fafafa)",
-		"Article-text-bg-color": "DarkMode_check(#252d38, #ffffff)",
-		"Article-sidebar-bg-color": "DarkMode_check(#1f3144, #fff)",
-		"Article-icon-color": "DarkMode_check(#c4c6c9, #333)",
-		"Privateletter-bg-color": "DarkMode_check(#12161c, #e8e8e8)",
-		"Benben-tab-bg-color": "DarkMode_check(#252d38, #fff)",
-		"Benben-tab-hover-color": "DarkMode_check(#2f3741, #eee)",
-		"Benben-tab-text-color": "DarkMode_check(#5e72e4, #3498db)",
-		"Benben-tab-focus-bg-color": "DarkMode_check(#0056b3, #48D1CC)",
-		"Benben-tab-focus-text-color": "DarkMode_check(#fff, #fff)",
-		"Spinner-dark-color": "DarkMode_check(#fff, #333)",
-		"Markdown-button-hover-bg-color": "DarkMode_check(#2f3741, #fff)",
-		"Markdown-button-hover-border": "^DarkMode_check(1px solid #2f3741, 1px solid #fff)",
-		"Markdown-button-hover-text-color": "DarkMode_check(#0056b3, #095f8a)",
-		"Highcharts-bg-color": "DarkMode_check(#5e72e426, #5e72e426)",
-		"Highcharts-line-color": "DarkMode_check(#871F78, '')",
-		"Highcharts-point-color": "DarkMode_check(#5e72e4, #87CEEB)",
-		"Highcharts-hover-point-color": "DarkMode_check(#0056b3, '')",
-		"Highcharts-hover-point-border-color": "DarkMode_check(#fff, '')",
-		"Highcharts-hover-bigpoint-color": "DarkMode_check(#7cb5ec,'')",
-		"Highcharts-strip-color": "DarkMode_check(rgba(61,89,171,0.55), rgba(61,89,171,0.55))",
-		"Highcharts-strip-border-color": "DarkMode_check(#d49ee6ad, #d49ee6ad)",
-		"Highcharts-strip-hover-color": "DarkMode_check(rgba(61,89,171,0.75), rgba(61,89,171,0.65))",
-		"Highcharts-text-color": "DarkMode_check(#c4c6c9, '')",
-		"Highcharts-text-bg-color": "DarkMode_check(rgba(18,22,28,0.75), '')",
-		"Highcharts-text-border-color": "DarkMode_check(#8e44ad, '')",
-		"Highcharts-text-point-color-1": "DarkMode_check(#7cb5ec, '')",
-		"Highcharts-text-point-color-2": "DarkMode_check(#c4c6c9, '')",
-		"Progressframe-color": "DarkMode_check(#5e72e4, #3498db)",
-		"Progressframe-bg-color": "DarkMode_check(#141725, #e8e8e8)",
-		"Big-button-bg-color": "DarkMode_check(#2f3741, #fafafa)",
-		"Big-button-border": "^DarkMode_check(1px solid #435266, 1px solid #e8e8e8)",
-		"Big-button-border-hover": "^DarkMode_check(1px solid #0056b3, 1px solid #89d1f5)",
-		"Small-button-bg-color": "DarkMode_check(#2f3741, #fff)",
-		"Small-button-select-bg-color": "DarkMode_check(#5e72e4, #3498db)",
-		"Small-button-border": "^DarkMode_check(1px solid #435266, 1px solid #bfbfbf)",
-		"Small-button-border-hover": "^DarkMode_check(1px solid #0056b3, 1px solid #3498db)",
-		"Small-button-text-select-color": "DarkMode_check(#fff, #fff)",
-		"Footer-bigtext-color": "DarkMode_check(#fffaf0, #fff)",
-		"Footer-img-color": "DarkMode_check(#fffaf0, #fff)",
-		"Card-L1-shadow": "^DarkMode_check(none, 0 5px 15px rgba(50,50,93,.1)\,0 5px 8px rgba(0,0,0,.07))",
-		"Card-L1-hover-shadow": "^DarkMode_check(none, 0 10px 30px rgba(50,50,93,.1)\,0 5px 15px rgba(0,0,0,.07))",
-		"Benben-shadow": "^DarkMode_check(none, 0 3px 5px rgba(50,50,93,.1)\, 0 2px 3px rgba(0,0,0,.08))",
-		"Benben-hover-shadow": "^DarkMode_check(none, 0 7px 14px rgba(50,50,93,.1)\, 0 3px 6px rgba(0,0,0,.08))",
-		"Benben-hover-ani": "^DarkMode_check(none, .15s ease)",
-		"Privateitem-hover-bg-color": "DarkMode_check(#3e4752, #e8e8e8)",
-		"Combowrapper-text-color": "DarkMode_check(#dcdcdc, rgba(0, 0, 0, 0.75))",
-		"Expand-shadow": "^DarkMode_check(linear-gradient(rgba(255,255,255,0), rgba(128,128,128,0.5)), linear-gradient(rgba(255, 255, 255, 0), #fff))",
-		"Article-sidebar-card-hover": "DarkMode_check(#3e4752, #e5e5e5)",
-		"Markdown-gutter-color": "DarkMode_check(#242c38, #f7f7f7)",
-		"Markdown-gutter-active-color": "DarkMode_check(#3e4752, #e2f2ff)",
-		"Markdown-line-active-color": "DarkMode_check(#cceeff44, #cceeff44)",
-		"Markdown-bg-color": "DarkMode_check(#2f3741, #fff)",
-		"Text-selection-color": "DarkMode_check(#474c63, #afeeee)",
-		"Codeblock-text-selection-color": "DarkMode_check(#264f78, #d6d6d6)",
-		"Markdown-text-selection-color": "DarkMode_check(#264f78, #d6d6d6)",
-		"Control-nav-bg-color": "DarkMode_check(#a7a9ad, #c4c6c9)",
-		"Control-nav-active-bg-color": "DarkMode_check(#5e72e4, #3498db)",
-		"UpdEditer-gutter-color": "DarkMode_check(#242c38, #ebebeb)",
-		"UpdEditer-gutter-active-color": "DarkMode_check(#3e4752, #dcdcdc)",
-		"UpdEditer-line-active-color": "DarkMode_check(#596874, #fffbd1)",
-		"UpdEditer-linenumber-color": "DarkMode_check(#999999, #999999)",
-		"UpdEditer-bg-color": "DarkMode_check(#2f3741, #fff)",
-		"Select-button-hover-bg-color": "DarkMode_check(#3e4752, #f6f6f6)",
-		"Privateletter-right-bg-color": "DarkMode_check(#4682b4, #3498db)",
-		"Privateletter-right-text-color": "DarkMode_check(#f2faff, #f2faff)",
-		"Top-progress-color": "DarkMode_check(#5e72e4, #3498db)",
-		"Table-color": "DarkMode_check(#c4c6c9, #ddd)",
-		"Article-progress-color": "DarkMode_check(#5e72e4, #3498db)",
-		"Checkin-Time-color": "DarkMode_check(#1aae6f, #396a42)",
-		"Swal-shadow": "^DarkMode_check(none, 0 0 .625em #d9d9d9)",
-		"Blockquote-border-color": "DarkMode_check(#354a83, #eeeeee)",
-		"Topic-type-Label-algorithm": "#2949b4",
-		"Topic-type-Label-source": "#13c2c2",
-		"Topic-type-Label-time": "#3498db",
-		"Topic-type-Label-area": "#52c41a",
-		"Topic-type-Label-special": "#f39c11",
-		"Homepage-L2-Card-green": "rgba(94,185,94,.15)",
-		"Homepage-L2-Card-green-border": "DarkMode_check(rgba(42,97,42,.7),darken(Homepage-L2-Card-green,30%))",
-		"Homepage-L2-Card-red": "rgba(221,81,76,.15)",
-		"Homepage-L2-Card-red-border": "DarkMode_check(rgba(125,27,24,0.5),darken(Homepage-L2-Card-red,30%))",
-		"Homepage-L2-Card-blue-border": "DarkMode_check(rgba(70, 130, 180,.7),rgba(135,206,235,.7))",
-		"Topic-difficulty-Label-1": "#bfbfbf",
-		"Topic-difficulty-Label-2": "#fe4c61",
-		"Topic-difficulty-Label-3": "#f39c11",
-		"Topic-difficulty-Label-4": "#ffc116",
-		"Topic-difficulty-Label-5": "#52c41a",
-		"Topic-difficulty-Label-6": "#3498db",
-		"Topic-difficulty-Label-7": "#9d3dcf",
-		"Topic-difficulty-Label-8": "DarkMode_check(#000,#0e1d69)",
-		"Test-case-margin-right": "10px",
-		"Test-case-margin-bottom": "12px",
-		"Test-case-margin-top": "25px",
-		"Test-case-size": "96px",
-		"Test-case-ani": "^.2s ease",
-		"Test-case-shadow": "^0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08)",
-		"Test-case-border-radius": "3px",
-		"Test-case-translate": "3px",
-		"Test-case-hover-shadow": "^0 10px 30px rgba(50,50,93,0.1),0 5px 15px rgba(0,0,0,0.07)",
-		"Test-case-message-ani": "^.45s ease",
-		"Test-case-message-shadow": "^0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08)",
-		"Test-case-message-color": "#fff",
-		"Test-case-background": "rgba(23,43,77,0.8)",
-		"Test-case-color-AC": "#52c41a",
-		"Test-case-color-WA": "#fb6340",
-		"Test-case-color-RE": "#8e44ad",
-		"Test-case-color-TLE": "#001277",
-		"Test-case-color-MLE": "#000000",
-		"Test-case-color-OLE": "TLE",
-		"Test-case-color-UKE": "#34495e",
-		"Test-case-text-color": "#fff",
-		"article-icon-1-color": "#fea706",
-		"article-icon-2-color": "#e07090",
-		"article-icon-3-color": "DarkMode_check(#ac3725,#fa0000)",
-		"article-icon-4-color": "#3498db",
-		"Sidebar-popup-padding": "10px",
-		"Sidebar-popup-ani": "^fade 0.2s ease",
-		"Float-card-hover-ani": ".3s",
-		"Highcharts-hover-bigpoint-op": "0.25",
-		"Userpage-text-color": "#fff",
-		"Badge-text-color": "#fff",
-		"Badge-border-radius": "2px",
-		"Label-border-radius": "2px",
-		"Footer-text-color": "rgba(255,255,255,.75)",
-		"Footer-text-hover-color": "#fff",
-		"Card-L1-hover-transition": ".15s ease",
-		"Operate-hover-ani": "^.4s ease",
-		"Privateitem-hover-ani": ".3s",
-		"Discuss-button-ani": ".3s",
-		"Article-rside-width": "240px",
-		"Button-bg-color-blue": "#3498db",
-		"Button-bg-color-black": "#121212",
-		"Button-bg-color-red": "#e74c3c",
-		"Button-bg-color-special-red": "transparent",
-		"Button-bg-color-special-blue": "transparent",
-		"Button-bg-color-green": "#52c41a",
-		"Button-hover-bg-color-blue": "#0c79b1",
-		"Button-hover-bg-color-black": "#1f3144",
-		"Button-hover-bg-color-red": "#d4483a",
-		"Button-hover-bg-color-special-red": "rgba(231,76,60,0.1)",
-		"Button-hover-bg-color-special-blue": "rgba(52,152,219,0.1)",
-		"Button-hover-bg-color-green": "#4aaa4a",
-		"Button-active-bg-color-blue": "#0a6c9e",
-		"Button-active-bg-color-black": "#1f364e",
-		"Button-active-bg-color-red": "#bc4033",
-		"Button-active-bg-color-special-red": "rgba(231,76,60,0.14)",
-		"Button-active-bg-color-special-blue": "rgba(52,152,219,0.14)",
-		"Button-active-bg-color-green": "#398339",
-		"Button-border-color-black": "#7b7c7c",
-		"Button-border-color-special-red": "#e74c3c",
-		"Button-border-color-special-blue": "#3498db",
-		"Button-border-size-blue": "1px",
-		"Button-border-size-black": "1px",
-		"Button-border-size-red": "1px",
-		"Button-border-size-special-red": "1px",
-		"Button-border-size-special-blue": "1px",
-		"Button-border-size-green": "1px",
-		"Button-radius": "3px",
-		"Small-button-radius": "3px",
-		"Button-padding-width": "15px",
-		"Button-padding-height": "5.382px",
-		"Small-button-padding-width": "8px",
-		"Small-button-padding-height": "2.75px",
-		"Button-hover-ani": "^.3s ease-out",
-		"Expand-radius": "5px",
-		"Homepage-L2-Card-blue-text-color": "#fff",
-		"Control-nav-ani": "^0.5s ease",
-		"Font-Stack": "^Noto Sans SC",
-		"Code-block-fontstack": "^JetBrains Mono",
-		"Markdown-linenumber-color": "#6c6c6c",
-		"Test-case-color-QUE": "#14558f",
-		"UpdEditer-text-color": "DarkMode_check(#bcbec4,#000)",
-		"UpdEditer-operator-color": "DarkMode_check(#bcbec4,#000)",
-		"UpdEditer-punctuation-color": "DarkMode_check(#bcbec4,#000)",
-		"UpdEditer-paren-color": "DarkMode_check(#bcbec4,#000)",
-		"UpdEditer-quote-color": "#7e7f84",
-		"UpdEditer-string-color": "#6aab73",
-		"UpdEditer-keyword-color": "#cf8e6d",
-		"UpdEditer-number-color": "#2aacb8",
-		"UpdEditer-type-color": "#8888c6",
-		"UpdEditer-func-color": "#8888c6",
-		"Difficulty-text-color-1": "Topic-difficulty-Label-1",
-		"Difficulty-text-color-2": "Topic-difficulty-Label-2",
-		"Difficulty-text-color-3": "Topic-difficulty-Label-3",
-		"Difficulty-text-color-4": "Topic-difficulty-Label-4",
-		"Difficulty-text-color-5": "Topic-difficulty-Label-5",
-		"Difficulty-text-color-6": "Topic-difficulty-Label-6",
-		"Difficulty-text-color-7": "Topic-difficulty-Label-7",
-		"Difficulty-text-color-8": "Topic-difficulty-Label-8",
-		"Problem-tag-radius": "5px",
-		"Problem-tag-padding": "^0.5px 9px",
-		"Problem-tag-ani": "^0.15s ease-out",
-		"Problem-tag-hover-trans": "1px",
-		"Problem-tag-hover-shadow": "^DarkMode_check(none,0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08))",
-		"Benben-tab-height": "Check(Better-Benben-Tab,50px,36.8px)",
-		"A-hover-ani": "^0.15s ease-out",
-		"Button-default-color": "#fff",
-		"Username-color-1": "#bfbfbf",
-		"Username-color-2": "#3498db",
-		"Username-color-3": "#52c41a",
-		"Username-color-4": "#f39c11",
-		"Username-color-5": "#fe4c61",
-		"Username-color-6": "#8e44ad",
-		"Username-color-7": "#ad8b00",
-		"Input-active-ani": "^0.3s ease-out",
-		"Header-ani-padding": "30px",
-		"Header-ani": "^0.75s ease",
-		"Header-text-ani-padding": "100px",
-		"Header-text-ani": "^0.75s ease",
-		"Problem-select-bar-bg-color": "#e0f7ff",
-		"Problem-select-bar-active-bg-color": "#3498db",
-		"Problem-select-bar-text-color": "Introduce-color",
-		"Problem-select-bar-hbg-text-color": "#3498db",
-		"Problem-select-bar-active-text-color": "#fff",
-		"Problem-select-bar-hbg-text-hover-color": "#0056b3",
-		"Problem-select-bar-text-hover-color": "DarkMode_check(#fff,#000)",
-		"Problem-select-bar-text-hover-ani": "^0.6s ease",
-		"Problem-select-bar-bg-hover-ani": "^0.6s ease",
-		"Input-active-shadow": "^inset 0 1px 1px rgba(0,0,0,.075),0 0 5px rgba(59,180,242,.3)",
-		"Card-select-bar-hover-ani": "^.3s ease",
-		"Card-select-bar-select-color": "#3498db",
-		"Card-select-bar-out-ani": "^.6s ease",
-		"SideBar-shadow": "^Check(Smart-SideBar&&!DarkMode,4px 5px 15px rgba(91, 91, 91, .5),none)",
-		"SideBar-position": "50%",
-		"SideBar-ani": "^0.75s ease",
-		"Button-active-scale": "0.05",
-		"Button-active-ani": "^0.2s ease-out",
-		"Discuss-Sidebar-width": "Check(Discuss-Sidebar-right,calc(25% - 1em),calc(20% - 1em))",
-		"Discuss-Main-width": "Check(Discuss-Sidebar-right,calc(75%),calc(80% - 5em))",
-		"Discuss-Sidebar-margin": "1em",
-		"Markdown-fontstack": "'Fira Code', 'Source Code Pro', 'Noto Sans SC'",
-		"Input-active-scale": "0.005",
-		"Input-active-anim": "^0.4s ease-out",
-		"A-hover-line-ani": ".3s",
-		"A-hover-line-color": "rgba(255, 0, 0, .575)",
-		"A-hover-line-height": "1.5px",
-		"Usernav-box-margin": "10px",
-		"Usernav-box-ani-margin": "-50px",
-		"Usernav-box-ani": "^0.75s ease",
-		"Usernav-box-radius": "Check(Better-Usernav-box,10px,5px)",
-		"Prob-lcard-width": "calc(66.67% - .5em)",
-		"Prob-side-width": "calc(33.33% - .5em)",
-		"Float-Card-shadow": "^DarkMode_check(none,0 0.5rem 2rem 0 rgba(0, 0, 0, .2))",
-		"Table-radius": "4px",
-		"Avatar-hover-scale": "0.07",
-		"Avatar-hover-ani": "^Check(Avatar-ani-select=='bigger',.26s ease-out,.6s ease-out)",
-		"Article-progress-bg-color": "transparent",
-		"Article-progress-height": "5px",
-		"Article-progress-ani": "^5s linear",
-		"Usernav-icon-hover-color": "DarkMode_check(#5e72e4,#4682b4)",
-		"Usernav-navbar-icon-hover-color": "DarkMode_check(#5e72e4,#3498db)",
-		"Usernav-icon-hover-ani": "^.4s ease",
-		"Article-icon-hover-ani": "^.5s ease",
-		"AD-font-color": "#fff",
-		"AD-font-bg-color": "rgba(51,51,51,0.45)",
-		"AD-font-size": "20px",
-		"AD-font-bg-width": "24px",
-		"AD-font-bg-height": "48px",
-		"AD-font-bg-radius": "5px",
-		"AD-font-bg-hoverimg-color": "rgba(51,51,51,0.7)",
-		"AD-font-bg-hover-color": "rgba(51,51,51,1)",
-		"AD-font-bg-ani": "^.3s ease",
-		"Luogu-article-color-1": "DarkMode_check(#fff,#272727)",
-		"Luogu-article-color-2": "#3498db",
-		"Luogu-article-color-3": "#f39c11",
-		"Luogu-article-color-4": "#9d3dcf",
-		"Luogu-article-color-5": "#70ad47",
-		"Luogu-article-color-6": "#2949b4",
-		"Luogu-article-color-7": "#fe4c61",
-		"Directory-a-hover-color": "#fff",
-		"Directory-a-hover-ani": "^.4s ease",
-		"Usertag-color-1": "#bfbfbf",
-		"Usertag-color-2": "#3498db",
-		"Usertag-color-3": "#52c41a",
-		"Usertag-color-4": "#f39c11",
-		"Usertag-color-5": "#fe4c61",
-		"Usertag-color-6": "#8e44ad",
-		"Usertag-color-7": "#ad8b00",
-		"Usersvg-color-1": "#52c41a",
-		"Usersvg-color-2": "#3498db",
-		"Usersvg-color-3": "#ffc116",
-		"Username-color-ani": "^.2s ease",
-		"Username-hover-color-1": "#8e8e8e",
-		"Username-hover-color-2": "#095f8a",
-		"Username-hover-color-3": "#338809",
-		"Username-hover-color-4": "#b4820a",
-		"Username-hover-color-5": "#cf3346",
-		"Username-hover-color-6": "#611d7d",
-		"Username-hover-color-7": "#9f8416",
-		"Usertag-hover-color-1": "#8e8e8e",
-		"Usertag-hover-color-2": "#095f8a",
-		"Usertag-hover-color-3": "#338809",
-		"Usertag-hover-color-4": "#b4820a",
-		"Usertag-hover-color-5": "#cf3346",
-		"Usertag-hover-color-6": "#611d7d",
-		"Usertag-hover-color-7": "#9f8416",
-		"Usertag-color-ani": "^.4s ease",
-		"Usersvg-mid-color": "#fff",
-		"Usersvg-mid-hover-color": "#fff",
-		"Usersvg-hover-color-1": "#338809",
-		"Usersvg-hover-color-2": "#095f8a",
-		"Usersvg-hover-color-3": "#d4a423",
-		"Usersvg-hover-ani": "^.4s ease",
-		"Article-sidebar-card-hover-ani": "^0.17s ease-out",
-		"UserNotification-active-color": "DarkMode_check(#5e72e4,#3498db)",
-		"UserNotification-ani": "^.4s ease",
-		"Problem-sol-icon-act-color": "#e07090",
-		"Main-title-size": "1.75em",
-		"Navbar-height": "4em",
-		"Header-narrow-height": "8em",
-		"Header-normal-height": "10em",
-		"Header-new-narrow-height": "120px",
-		"Header-new-normal-height": "120px",
-		"Markdown-text-color": "DarkMode_check(#dcdcdc, #000)",
-		"Markdown-text-delete-color": "#e74c3c",
-		"Markdown-text-strong-color": "Markdown-text-color",
-		"Markdown-text-italic-color": "#cc7832",
-		"Markdown-text-variable-color": "#05a",
-		"Markdown-text-title-color": "DarkMode_check(#5e72e4, #3498db)",
-		"Markdown-text-codetag-color": "#2fb170",
-		"Markdown-text-codename-color": "#2fb170",
-		"Markdown-atext-color": "#cc7832",
-		"Markdown-a-color": "#2fb170",
-		"Card-hover-bg-color-L1": "None",
-		"Card-hover-bg-color-L2": "None",
-		"Card-hover-bg-color-L1-ani": "^0.5s ease",
-		"Card-hover-bg-color-L2-ani": "^0.5s ease",
-		"Float-bar-ani": "0.6s cubic-bezier(0.5, 1)",
-		"Discuss-shadow": "^DarkMode_check(none, 0 5px 15px rgba(50,50,93,.1)\,0 5px 8px rgba(0,0,0,.07))",
-		"Discuss-hover-shadow": "^DarkMode_check(none, 0 10px 30px rgba(50,50,93,.1)\,0 5px 15px rgba(0,0,0,.07))",
-		"Discuss-hover-shadow-ani": "0.15s",
-		"Discuss-hd-hover-color": "Discuss-hd-color",
-		"Discuss-bd-hover-color": "Discuss-bd-color",
-		"Discuss-hover-color-ani": "^0.5s ease",
+		"Card-L1-radius": "4px"
+		"Card-L2-radius": "4px"
+		"Card-float-radius": "5px"
+		"Inputbox-radius": "4px"
+		"Benben-radius": "get_depend_list(Card-L2-radius, 4px)"
+		"InLine-code-block-radius": "3px"
+		"Code-block-radius": "5px"
+		"InLine-code-block-border": "^Check(InLine-code-block-border-del,none,1px solid)"
+		"Code-block-border": "^Check(Code-block-border-del,none,1px solid)"
+		"Luogu-discuss-color-2": "#14558f"
+		"Luogu-discuss-color-3": "#f39c11"
+		"Luogu-discuss-color-4": "#9d3dcf"
+		"Luogu-discuss-color-5": "#52c41a"
+		"Luogu-discuss-color-6": "#2949b4"
+		"Background-color": "DarkMode_check(#141725, #efefef)"
+		"Card-bg-color-L1": "DarkMode_check(#252d38, #fcfcfc)"
+		"Card-bg-color-L2": "DarkMode_check(#2f3741, #fff)"
+		"Header-bg-color": "Check(CustomBackground!=None,none,DarkMode_check(linear-gradient(90deg,#282828,#1a1a1a), linear-gradient(90deg, rgb(35, 37, 38), rgb(65, 67, 69))))"
+		"Footer-bg-color": "Check(CustomBackground!=None,none,DarkMode_check(#1a1a1a, linear-gradient(150deg,#708090 15%,#2F4F4F 70%,#000000 94%)))"
+		"Card-bg-color-float": "DarkMode_check(#242C38, #fff)"
+		"Card-hover-color-float": "DarkMode_check(#3e4752, #e5e5e5)"
+		"Text-color": "DarkMode_check(#c4c6c9, rgba(0,0,0,.75))"
+		"State-color": "DarkMode_check(rgba(255,255,255,0.45), rgba(0,0,0,0.45))"
+		"Introduce-color": "DarkMode_check(#c4c6c9, rgba(0,0,0,.75))"
+		"Operate-color": "DarkMode_check(#999999, #999999)"
+		"Operate-hover-color": "DarkMode_check(#dcdcdc, #3f3f3f)"
+		"Topic-text-color": "DarkMode_check(#fff, #fff)"
+		"ColorfulLabel-text-color": "DarkMode_check(#fff, #fff)"
+		"GrayLabel-text-color": "DarkMode_check(#dddddd, #3a3a3a)"
+		"GrayLabel-border-color": "DarkMode_check(#3f6b91, #bebebe)"
+		"GrayLabel-bg-color": "DarkMode_check(#162430, #e8e8e8)"
+		"A-color": "DarkMode_check(#5e72e4, #3498db)"
+		"A-hover-color": "DarkMode_check(#0056b3, #095f8a)"
+		"Scrollbar-track-color": "DarkMode_check(#161926, rgba(0, 0, 0, 0.05))"
+		"Scrollbar-thumb-color": "DarkMode_check(#57626f, rgba(0, 0, 0, 0.2))"
+		"Scrollbar-hover-color": "DarkMode_check(#5e72e4, #808080)"
+		"Navbar-bg-color": "DarkMode_check(#1f3144, #fff)"
+		"Input-bg-color": "DarkMode_check(#2f3741, #fff)"
+		"Input-focus-bg-color": "DarkMode_check(Input-bg-color, Input-bg-color)"
+		"Input-border-color": "DarkMode_check(#a7a9ad, #bfbfbf)"
+		"Input-focus-border-color": "DarkMode_check(#3498db, #409eff)"
+		"Input-text-color": "DarkMode_check(#dcdcdc, #000)"
+		"Input-placeholder-color": "DarkMode_check(#c4c6c9, rgba(0,0,0,.5))"
+		"Sidebar-bg-color": "DarkMode_check(#162430, #34495E)"
+		"Sidebar-icon-color": "DarkMode_check(#dddddd, #dddddd)"
+		"Sidebar-btn-color": "DarkMode_check(#dddddd, #dddddd)"
+		"Sidebar-luogu-bg-color": "DarkMode_check(#4682b4, #3498db)"
+		"Sidebar-luogu-icon-color": "DarkMode_check(#fffaf0, #fff)"
+		"L2-Card-border": "DarkMode_check(#435266, #e8e8e8)"
+		"Post-heading-color": "DarkMode_check(#c4c6c9, rgba(0,0,0,.75))"
+		"Benben-hd-color": "DarkMode_check(get_depend_list(Card-bg-color-L2), #f8f8f8)"
+		"Benben-bd-color": "DarkMode_check(get_depend_list(Card-bg-color-L1), #fff)"
+		"Discuss-hd-color": "DarkMode_check(get_depend_list(Card-bg-color-L2), #f8f8f8)"
+		"Discuss-bd-color": "DarkMode_check(get_depend_list(Card-bg-color-L1), #fff)"
+		"Homepage-a-green": "DarkMode_check(#5eb95e, #5eb95e)"
+		"Homepage-a-red": "DarkMode_check(#dd514c, #dd514c)"
+		"Divider-color": "DarkMode_check(#435266, #e8e8e8)"
+		"Directory-a-color": "DarkMode_check(rgba(255,255,255,.75), rgba(255,255,255,.75))"
+		"Other-icon-color": "DarkMode_check(#c4c6c9, #333333)"
+		"Card-icon-color": "DarkMode_check(#333, #333)"
+		"Luogu-discuss-color-1": "DarkMode_check(#fff, #272727)"
+		"Main-post-heading-color": "DarkMode_check(#fff, #fff)"
+		"Topic-type-Label-not-select": "DarkMode_check(#3f3f3f, #e8e8e8)"
+		"InLine-code-block-bg-color": "DarkMode_check(#3e4752, #f8f8f8)"
+		"Code-block-bg-color": "DarkMode_check(#0d1117, #f8f8f8)"
+		"InLine-code-block-border-color": "DarkMode_check(#3e4752, #e8e8e8)"
+		"Code-block-border-color": "DarkMode_check(#0d1117, #eeeeee)"
+		"Code-block-text-color": "DarkMode_check(#b6b8c2, #36464e)"
+		"Code-block-quote-color": "DarkMode_check(#5c6370, #707070)"
+		"Code-block-meta-color": "DarkMode_check(#f06090, #f06090)"
+		"Code-block-meta-string-color": "DarkMode_check(#2fb170, #2fb170)"
+		"Code-block-string-color": "DarkMode_check(#2fb170, #2fb170)"
+		"Code-block-keyword-color": "DarkMode_check(#6791e0, #6791e0)"
+		"Code-block-title-color": "DarkMode_check(#c973d9, #c973d9)"
+		"Code-block-number-color": "DarkMode_check(#e6695b, #e6695b)"
+		"Code-block-params-color": "DarkMode_check(#da70d6, #da70d6)"
+		"Article-bg-color": "DarkMode_check(#1e2334, #fafafa)"
+		"Article-text-bg-color": "DarkMode_check(#252d38, #ffffff)"
+		"Article-sidebar-bg-color": "DarkMode_check(#1f3144, #fff)"
+		"Article-icon-color": "DarkMode_check(#c4c6c9, #333)"
+		"Privateletter-bg-color": "DarkMode_check(#12161c, #e8e8e8)"
+		"Benben-tab-bg-color": "DarkMode_check(#252d38, #fff)"
+		"Benben-tab-hover-color": "DarkMode_check(#2f3741, #eee)"
+		"Benben-tab-text-color": "DarkMode_check(#5e72e4, #3498db)"
+		"Benben-tab-focus-bg-color": "DarkMode_check(#0056b3, #48D1CC)"
+		"Benben-tab-focus-text-color": "DarkMode_check(#fff, #fff)"
+		"Spinner-dark-color": "DarkMode_check(#fff, #333)"
+		"Markdown-button-hover-bg-color": "DarkMode_check(#2f3741, #fff)"
+		"Markdown-button-hover-border": "^DarkMode_check(1px solid #2f3741, 1px solid #fff)"
+		"Markdown-button-hover-text-color": "DarkMode_check(#0056b3, #095f8a)"
+		"Highcharts-bg-color": "DarkMode_check(#5e72e426, #5e72e426)"
+		"Highcharts-line-color": "DarkMode_check(#871F78, '')"
+		"Highcharts-point-color": "DarkMode_check(#5e72e4, #87CEEB)"
+		"Highcharts-hover-point-color": "DarkMode_check(#0056b3, '')"
+		"Highcharts-hover-point-border-color": "DarkMode_check(#fff, '')"
+		"Highcharts-hover-bigpoint-color": "DarkMode_check(#7cb5ec,'')"
+		"Highcharts-strip-color": "DarkMode_check(rgba(61,89,171,0.55), rgba(61,89,171,0.55))"
+		"Highcharts-strip-border-color": "DarkMode_check(#d49ee6ad, #d49ee6ad)"
+		"Highcharts-strip-hover-color": "DarkMode_check(rgba(61,89,171,0.75), rgba(61,89,171,0.65))"
+		"Highcharts-text-color": "DarkMode_check(#c4c6c9, '')"
+		"Highcharts-text-bg-color": "DarkMode_check(rgba(18,22,28,0.75), '')"
+		"Highcharts-text-border-color": "DarkMode_check(#8e44ad, '')"
+		"Highcharts-text-point-color-1": "DarkMode_check(#7cb5ec, '')"
+		"Highcharts-text-point-color-2": "DarkMode_check(#c4c6c9, '')"
+		"Progressframe-color": "DarkMode_check(#5e72e4, #3498db)"
+		"Progressframe-bg-color": "DarkMode_check(#141725, #e8e8e8)"
+		"Big-button-bg-color": "DarkMode_check(#2f3741, #fafafa)"
+		"Big-button-border": "^DarkMode_check(1px solid #435266, 1px solid #e8e8e8)"
+		"Big-button-border-hover": "^DarkMode_check(1px solid #0056b3, 1px solid #89d1f5)"
+		"Small-button-bg-color": "DarkMode_check(#2f3741, #fff)"
+		"Small-button-select-bg-color": "DarkMode_check(#5e72e4, #3498db)"
+		"Small-button-border": "^DarkMode_check(1px solid #435266, 1px solid #bfbfbf)"
+		"Small-button-border-hover": "^DarkMode_check(1px solid #0056b3, 1px solid #3498db)"
+		"Small-button-text-select-color": "DarkMode_check(#fff, #fff)"
+		"Footer-bigtext-color": "DarkMode_check(#fffaf0, #fff)"
+		"Footer-img-color": "DarkMode_check(#fffaf0, #fff)"
+		"Card-L1-shadow": "^DarkMode_check(none, 0 5px 15px rgba(50,50,93,.1)\,0 5px 8px rgba(0,0,0,.07))"
+		"Card-L1-hover-shadow": "^DarkMode_check(none, 0 10px 30px rgba(50,50,93,.1)\,0 5px 15px rgba(0,0,0,.07))"
+		"Benben-shadow": "^DarkMode_check(none, 0 3px 5px rgba(50,50,93,.1)\, 0 2px 3px rgba(0,0,0,.08))"
+		"Benben-hover-shadow": "^DarkMode_check(none, 0 7px 14px rgba(50,50,93,.1)\, 0 3px 6px rgba(0,0,0,.08))"
+		"Benben-hover-ani": "^DarkMode_check(none, .15s ease)"
+		"Privateitem-hover-bg-color": "DarkMode_check(#3e4752, #e8e8e8)"
+		"Combowrapper-text-color": "DarkMode_check(#dcdcdc, rgba(0, 0, 0, 0.75))"
+		"Expand-shadow": "^DarkMode_check(linear-gradient(rgba(255,255,255,0), rgba(128,128,128,0.5)), linear-gradient(rgba(255, 255, 255, 0), #fff))"
+		"Article-sidebar-card-hover": "DarkMode_check(#3e4752, #e5e5e5)"
+		"Markdown-gutter-color": "DarkMode_check(#242c38, #f7f7f7)"
+		"Markdown-gutter-active-color": "DarkMode_check(#3e4752, #e2f2ff)"
+		"Markdown-line-active-color": "DarkMode_check(#cceeff44, #cceeff44)"
+		"Markdown-bg-color": "DarkMode_check(#2f3741, #fff)"
+		"Text-selection-color": "DarkMode_check(#474c63, #afeeee)"
+		"Codeblock-text-selection-color": "DarkMode_check(#264f78, #d6d6d6)"
+		"Markdown-text-selection-color": "DarkMode_check(#264f78, #d6d6d6)"
+		"Control-nav-bg-color": "DarkMode_check(#a7a9ad, #c4c6c9)"
+		"Control-nav-active-bg-color": "DarkMode_check(#5e72e4, #3498db)"
+		"UpdEditer-gutter-color": "DarkMode_check(#242c38, #ebebeb)"
+		"UpdEditer-gutter-active-color": "DarkMode_check(#3e4752, #dcdcdc)"
+		"UpdEditer-line-active-color": "DarkMode_check(#596874, #fffbd1)"
+		"UpdEditer-linenumber-color": "DarkMode_check(#999999, #999999)"
+		"UpdEditer-bg-color": "DarkMode_check(#2f3741, #fff)"
+		"Select-button-hover-bg-color": "DarkMode_check(#3e4752, #f6f6f6)"
+		"Privateletter-right-bg-color": "DarkMode_check(#4682b4, #3498db)"
+		"Privateletter-right-text-color": "DarkMode_check(#f2faff, #f2faff)"
+		"Top-progress-color": "DarkMode_check(#5e72e4, #3498db)"
+		"Table-color": "DarkMode_check(#c4c6c9, #ddd)"
+		"Article-progress-color": "DarkMode_check(#5e72e4, #3498db)"
+		"Checkin-Time-color": "DarkMode_check(#1aae6f, #396a42)"
+		"Swal-shadow": "^DarkMode_check(none, 0 0 .625em #d9d9d9)"
+		"Blockquote-border-color": "DarkMode_check(#354a83, #eeeeee)"
+		"Topic-type-Label-algorithm": "#2949b4"
+		"Topic-type-Label-source": "#13c2c2"
+		"Topic-type-Label-time": "#3498db"
+		"Topic-type-Label-area": "#52c41a"
+		"Topic-type-Label-special": "#f39c11"
+		"Homepage-L2-Card-green": "rgba(94,185,94,.15)"
+		"Homepage-L2-Card-green-border": "DarkMode_check(rgba(42,97,42,.7),darken(Homepage-L2-Card-green,30%))"
+		"Homepage-L2-Card-red": "rgba(221,81,76,.15)"
+		"Homepage-L2-Card-red-border": "DarkMode_check(rgba(125,27,24,0.5),darken(Homepage-L2-Card-red,30%))"
+		"Homepage-L2-Card-blue-border": "DarkMode_check(rgba(70, 130, 180,.7),rgba(135,206,235,.7))"
+		"Topic-difficulty-Label-1": "#bfbfbf"
+		"Topic-difficulty-Label-2": "#fe4c61"
+		"Topic-difficulty-Label-3": "#f39c11"
+		"Topic-difficulty-Label-4": "#ffc116"
+		"Topic-difficulty-Label-5": "#52c41a"
+		"Topic-difficulty-Label-6": "#3498db"
+		"Topic-difficulty-Label-7": "#9d3dcf"
+		"Topic-difficulty-Label-8": "DarkMode_check(#000,#0e1d69)"
+		"Test-case-margin-right": "10px"
+		"Test-case-margin-bottom": "12px"
+		"Test-case-margin-top": "25px"
+		"Test-case-size": "96px"
+		"Test-case-ani": "^.2s ease"
+		"Test-case-shadow": "^0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08)"
+		"Test-case-border-radius": "3px"
+		"Test-case-translate": "3px"
+		"Test-case-hover-shadow": "^0 10px 30px rgba(50,50,93,0.1),0 5px 15px rgba(0,0,0,0.07)"
+		"Test-case-message-ani": "^.45s ease"
+		"Test-case-message-shadow": "^0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08)"
+		"Test-case-message-color": "#fff"
+		"Test-case-background": "rgba(23,43,77,0.8)"
+		"Test-case-color-AC": "#52c41a"
+		"Test-case-color-WA": "#fb6340"
+		"Test-case-color-RE": "#8e44ad"
+		"Test-case-color-TLE": "#001277"
+		"Test-case-color-MLE": "#000000"
+		"Test-case-color-OLE": "TLE"
+		"Test-case-color-UKE": "#34495e"
+		"Test-case-text-color": "#fff"
+		"article-icon-1-color": "#fea706"
+		"article-icon-2-color": "#e07090"
+		"article-icon-3-color": "DarkMode_check(#ac3725,#fa0000)"
+		"article-icon-4-color": "#3498db"
+		"Sidebar-popup-padding": "10px"
+		"Sidebar-popup-ani": "^fade 0.2s ease"
+		"Float-card-hover-ani": ".3s"
+		"Highcharts-hover-bigpoint-op": "0.25"
+		"Userpage-text-color": "#fff"
+		"Badge-text-color": "#fff"
+		"Badge-border-radius": "2px"
+		"Label-border-radius": "2px"
+		"Footer-text-color": "rgba(255,255,255,.75)"
+		"Footer-text-hover-color": "#fff"
+		"Card-L1-hover-transition": ".15s ease"
+		"Operate-hover-ani": "^.4s ease"
+		"Privateitem-hover-ani": ".3s"
+		"Discuss-button-ani": ".3s"
+		"Article-rside-width": "240px"
+		"Button-bg-color-blue": "#3498db"
+		"Button-bg-color-black": "#121212"
+		"Button-bg-color-red": "#e74c3c"
+		"Button-bg-color-special-red": "transparent"
+		"Button-bg-color-special-blue": "transparent"
+		"Button-bg-color-green": "#52c41a"
+		"Button-hover-bg-color-blue": "#0c79b1"
+		"Button-hover-bg-color-black": "#1f3144"
+		"Button-hover-bg-color-red": "#d4483a"
+		"Button-hover-bg-color-special-red": "rgba(231,76,60,0.1)"
+		"Button-hover-bg-color-special-blue": "rgba(52,152,219,0.1)"
+		"Button-hover-bg-color-green": "#4aaa4a"
+		"Button-active-bg-color-blue": "#0a6c9e"
+		"Button-active-bg-color-black": "#1f364e"
+		"Button-active-bg-color-red": "#bc4033"
+		"Button-active-bg-color-special-red": "rgba(231,76,60,0.14)"
+		"Button-active-bg-color-special-blue": "rgba(52,152,219,0.14)"
+		"Button-active-bg-color-green": "#398339"
+		"Button-border-color-black": "#7b7c7c"
+		"Button-border-color-special-red": "#e74c3c"
+		"Button-border-color-special-blue": "#3498db"
+		"Button-border-size-blue": "1px"
+		"Button-border-size-black": "1px"
+		"Button-border-size-red": "1px"
+		"Button-border-size-special-red": "1px"
+		"Button-border-size-special-blue": "1px"
+		"Button-border-size-green": "1px"
+		"Button-radius": "3px"
+		"Small-button-radius": "3px"
+		"Button-padding-width": "15px"
+		"Button-padding-height": "5.382px"
+		"Small-button-padding-width": "8px"
+		"Small-button-padding-height": "2.75px"
+		"Button-hover-ani": "^.3s ease-out"
+		"Expand-radius": "5px"
+		"Homepage-L2-Card-blue-text-color": "#fff"
+		"Control-nav-ani": "^0.5s ease"
+		"Font-Stack": "^Noto Sans SC"
+		"Code-block-fontstack": "^JetBrains Mono"
+		"Markdown-linenumber-color": "#6c6c6c"
+		"Test-case-color-QUE": "#14558f"
+		"UpdEditer-text-color": "DarkMode_check(#bcbec4,#000)"
+		"UpdEditer-operator-color": "DarkMode_check(#bcbec4,#000)"
+		"UpdEditer-punctuation-color": "DarkMode_check(#bcbec4,#000)"
+		"UpdEditer-paren-color": "DarkMode_check(#bcbec4,#000)"
+		"UpdEditer-quote-color": "#7e7f84"
+		"UpdEditer-string-color": "#6aab73"
+		"UpdEditer-keyword-color": "#cf8e6d"
+		"UpdEditer-number-color": "#2aacb8"
+		"UpdEditer-type-color": "#8888c6"
+		"UpdEditer-func-color": "#8888c6"
+		"Difficulty-text-color-1": "Topic-difficulty-Label-1"
+		"Difficulty-text-color-2": "Topic-difficulty-Label-2"
+		"Difficulty-text-color-3": "Topic-difficulty-Label-3"
+		"Difficulty-text-color-4": "Topic-difficulty-Label-4"
+		"Difficulty-text-color-5": "Topic-difficulty-Label-5"
+		"Difficulty-text-color-6": "Topic-difficulty-Label-6"
+		"Difficulty-text-color-7": "Topic-difficulty-Label-7"
+		"Difficulty-text-color-8": "Topic-difficulty-Label-8"
+		"Problem-tag-radius": "5px"
+		"Problem-tag-padding": "^0.5px 9px"
+		"Problem-tag-ani": "^0.15s ease-out"
+		"Problem-tag-hover-trans": "1px"
+		"Problem-tag-hover-shadow": "^DarkMode_check(none,0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08))"
+		"Benben-tab-height": "Check(Better-Benben-Tab,50px,36.8px)"
+		"A-hover-ani": "^0.15s ease-out"
+		"Button-default-color": "#fff"
+		"Username-color-1": "#bfbfbf"
+		"Username-color-2": "#3498db"
+		"Username-color-3": "#52c41a"
+		"Username-color-4": "#f39c11"
+		"Username-color-5": "#fe4c61"
+		"Username-color-6": "#8e44ad"
+		"Username-color-7": "#ad8b00"
+		"Input-active-ani": "^0.3s ease-out"
+		"Header-ani-padding": "30px"
+		"Header-ani": "^0.75s ease"
+		"Header-text-ani-padding": "100px"
+		"Header-text-ani": "^0.75s ease"
+		"Problem-select-bar-bg-color": "#e0f7ff"
+		"Problem-select-bar-active-bg-color": "#3498db"
+		"Problem-select-bar-text-color": "Introduce-color"
+		"Problem-select-bar-hbg-text-color": "#3498db"
+		"Problem-select-bar-active-text-color": "#fff"
+		"Problem-select-bar-hbg-text-hover-color": "#0056b3"
+		"Problem-select-bar-text-hover-color": "DarkMode_check(#fff,#000)"
+		"Problem-select-bar-text-hover-ani": "^0.6s ease"
+		"Problem-select-bar-bg-hover-ani": "^0.6s ease"
+		"Input-active-shadow": "^inset 0 1px 1px rgba(0,0,0,.075),0 0 5px rgba(59,180,242,.3)"
+		"Card-select-bar-hover-ani": "^.3s ease"
+		"Card-select-bar-select-color": "#3498db"
+		"Card-select-bar-out-ani": "^.6s ease"
+		"SideBar-shadow": "^Check(Smart-SideBar&&!DarkMode,4px 5px 15px rgba(91, 91, 91, .5),none)"
+		"SideBar-position": "50%"
+		"SideBar-ani": "^0.75s ease"
+		"Button-active-scale": "0.05"
+		"Button-active-ani": "^0.2s ease-out"
+		"Discuss-Sidebar-width": "Check(Discuss-Sidebar-right,calc(25% - 1em),calc(20% - 1em))"
+		"Discuss-Main-width": "Check(Discuss-Sidebar-right,calc(75%),calc(80% - 5em))"
+		"Discuss-Sidebar-margin": "1em"
+		"Markdown-fontstack": "'Fira Code', 'Source Code Pro', 'Noto Sans SC'"
+		"Input-active-scale": "0.005"
+		"Input-active-anim": "^0.4s ease-out"
+		"A-hover-line-ani": ".3s"
+		"A-hover-line-color": "rgba(255, 0, 0, .575)"
+		"A-hover-line-height": "1.5px"
+		"Usernav-box-margin": "10px"
+		"Usernav-box-ani-margin": "-50px"
+		"Usernav-box-ani": "^0.75s ease"
+		"Usernav-box-radius": "Check(Better-Usernav-box,10px,5px)"
+		"Prob-lcard-width": "calc(66.67% - .5em)"
+		"Prob-side-width": "calc(33.33% - .5em)"
+		"Float-Card-shadow": "^DarkMode_check(none,0 0.5rem 2rem 0 rgba(0, 0, 0, .2))"
+		"Table-radius": "4px"
+		"Avatar-hover-scale": "0.07"
+		"Avatar-hover-ani": "^Check(Avatar-ani-select=='bigger',.26s ease-out,.6s ease-out)"
+		"Article-progress-bg-color": "transparent"
+		"Article-progress-height": "5px"
+		"Article-progress-ani": "^5s linear"
+		"Usernav-icon-hover-color": "DarkMode_check(#5e72e4,#4682b4)"
+		"Usernav-navbar-icon-hover-color": "DarkMode_check(#5e72e4,#3498db)"
+		"Usernav-icon-hover-ani": "^.4s ease"
+		"Article-icon-hover-ani": "^.5s ease"
+		"AD-font-color": "#fff"
+		"AD-font-bg-color": "rgba(51,51,51,0.45)"
+		"AD-font-size": "20px"
+		"AD-font-bg-width": "24px"
+		"AD-font-bg-height": "48px"
+		"AD-font-bg-radius": "5px"
+		"AD-font-bg-hoverimg-color": "rgba(51,51,51,0.7)"
+		"AD-font-bg-hover-color": "rgba(51,51,51,1)"
+		"AD-font-bg-ani": "^.3s ease"
+		"Luogu-article-color-1": "DarkMode_check(#fff,#272727)"
+		"Luogu-article-color-2": "#3498db"
+		"Luogu-article-color-3": "#f39c11"
+		"Luogu-article-color-4": "#9d3dcf"
+		"Luogu-article-color-5": "#70ad47"
+		"Luogu-article-color-6": "#2949b4"
+		"Luogu-article-color-7": "#fe4c61"
+		"Directory-a-hover-color": "#fff"
+		"Directory-a-hover-ani": "^.4s ease"
+		"Usertag-color-1": "#bfbfbf"
+		"Usertag-color-2": "#3498db"
+		"Usertag-color-3": "#52c41a"
+		"Usertag-color-4": "#f39c11"
+		"Usertag-color-5": "#fe4c61"
+		"Usertag-color-6": "#8e44ad"
+		"Usertag-color-7": "#ad8b00"
+		"Usersvg-color-1": "#52c41a"
+		"Usersvg-color-2": "#3498db"
+		"Usersvg-color-3": "#ffc116"
+		"Username-color-ani": "^.2s ease"
+		"Username-hover-color-1": "#8e8e8e"
+		"Username-hover-color-2": "#095f8a"
+		"Username-hover-color-3": "#338809"
+		"Username-hover-color-4": "#b4820a"
+		"Username-hover-color-5": "#cf3346"
+		"Username-hover-color-6": "#611d7d"
+		"Username-hover-color-7": "#9f8416"
+		"Usertag-hover-color-1": "#8e8e8e"
+		"Usertag-hover-color-2": "#095f8a"
+		"Usertag-hover-color-3": "#338809"
+		"Usertag-hover-color-4": "#b4820a"
+		"Usertag-hover-color-5": "#cf3346"
+		"Usertag-hover-color-6": "#611d7d"
+		"Usertag-hover-color-7": "#9f8416"
+		"Usertag-color-ani": "^.4s ease"
+		"Usersvg-mid-color": "#fff"
+		"Usersvg-mid-hover-color": "#fff"
+		"Usersvg-hover-color-1": "#338809"
+		"Usersvg-hover-color-2": "#095f8a"
+		"Usersvg-hover-color-3": "#d4a423"
+		"Usersvg-hover-ani": "^.4s ease"
+		"Article-sidebar-card-hover-ani": "^0.17s ease-out"
+		"UserNotification-active-color": "DarkMode_check(#5e72e4,#3498db)"
+		"UserNotification-ani": "^.4s ease"
+		"Problem-sol-icon-act-color": "#e07090"
+		"Main-title-size": "1.75em"
+		"Navbar-height": "4em"
+		"Header-narrow-height": "8em"
+		"Header-normal-height": "10em"
+		"Header-new-narrow-height": "120px"
+		"Header-new-normal-height": "120px"
+		"Markdown-text-color": "DarkMode_check(#dcdcdc, #000)"
+		"Markdown-text-delete-color": "#e74c3c"
+		"Markdown-text-strong-color": "Markdown-text-color"
+		"Markdown-text-italic-color": "#cc7832"
+		"Markdown-text-variable-color": "#05a"
+		"Markdown-text-title-color": "DarkMode_check(#5e72e4, #3498db)"
+		"Markdown-text-codetag-color": "#2fb170"
+		"Markdown-text-codename-color": "#2fb170"
+		"Markdown-atext-color": "#cc7832"
+		"Markdown-a-color": "#2fb170"
+		"Card-hover-bg-color-L1": "None"
+		"Card-hover-bg-color-L2": "None"
+		"Card-hover-bg-color-L1-ani": "^0.5s ease"
+		"Card-hover-bg-color-L2-ani": "^0.5s ease"
+		"Float-bar-ani": "0.6s cubic-bezier(0.5, 1)"
+		"Discuss-shadow": "^DarkMode_check(none, 0 5px 15px rgba(50,50,93,.1)\,0 5px 8px rgba(0,0,0,.07))"
+		"Discuss-hover-shadow": "^DarkMode_check(none, 0 10px 30px rgba(50,50,93,.1)\,0 5px 15px rgba(0,0,0,.07))"
+		"Discuss-hover-shadow-ani": "0.15s"
+		"Discuss-hd-hover-color": "Discuss-hd-color"
+		"Discuss-bd-hover-color": "Discuss-bd-color"
+		"Discuss-hover-color-ani": "^0.5s ease"
 		"Usernav-hover-bg-color": "Card-bg-color-float", 
-		"Usernav-hover-ani": "^.3s ease",
-		"Benben-bd-hover-color": "Benben-bd-color",
-		"Benben-bd-hover-ani": "^0.5s ease",
-		"Privateletter-list-radius": "0",
-		"Privateitem-hover-text-color": "None",
-		"Article-max": "500",
-		"Use-card-radius": "Card-L1-radius",
-		"Article-sidebar-card-radius": "3px",
+		"Usernav-hover-ani": "^.3s ease"
+		"Benben-bd-hover-color": "Benben-bd-color"
+		"Benben-bd-hover-ani": "^0.5s ease"
+		"Privateletter-list-radius": "0"
+		"Privateitem-hover-text-color": "None"
+		"Article-max": "500"
+		"Use-card-radius": "Card-L1-radius"
+		"Article-sidebar-card-radius": "3px"
 		"Ease-Load-ani": "0.5s"
+		"A-link-bottom-background": "DarkMode_check(#373737,#FAFAFA)"
+		"Table-Header-Background": "DarkMode_check(#373737,#FAFAFA)"
+		"Table-Body-Background": "DarkMode_check(#373737,#FAFAFA)"
+		"School-Class-Tag-Color": "#4ea751"
+		"School-Class-Text-Color": "#FFFFFF"
+		"School-Class-Card-Background": "DarkMode_check(#222222,#FFFFFF)"
+		"School-Class-User-Info-Background": "#00000000", 
+		"School-User-Info-Text-Color": "#4caf50", 
+		"School-Course-Container-Background": "DarkMode_check(#373737,#FFFFFF)", 
+		"School-Item-Course-Container-Background": "DarkMode_check(#373737,#FFFFFF)", 
+		"School-Video-Icon-Not-Started": "DarkMode_check(#FAFAFA77,#00000077)"
+		"School-Video-Icon-Started": "#4CAF50"
+		"Classroom-Side-Content-Background": "DarkMode_check(#3A3A3A,#F8F8F8)"
+		"Classroom-Side-Content-Tab-Background": "DarkMode_check(#202020,#FCFCFC)"
+		"Classroom-Controller-Background": "DarkMode_check(#202020,#FCFCFC)"
+		"Classroom-Progress-Not-Watched-Color": "DarkMode_check(#505050,#E8E8E8)"
+		"Classroom-Progress-Watched-Color": "#54B156"
+		"Classroom-Progress-Dot-Background": "DarkMode_check(#505050,#E8E8E8)"
+		"Classroom-Progress-Dot-Border": "#54B156"
+		"Classroom-Controller-Icon-Color": "DarkMode_check(#FFFFFF,#000000)"
+		"Classroom-Questions-Tab-Background": "DarkMode_check(get_depend_list(Card-bg-color-L2), #f8f8f8)", 
+		"Classroom-Questions-Content-Background": "DarkMode_check(get_depend_list(Card-bg-color-L1), #fff)", 
+		"School-Fix-Background": "Card-bg-color-L1"
+		"IDE-Panel-Divider-Color": "DarkMode_check(#000,#fff)"
+		"IDE-Problem-Background": "DarkMode_check(#222,#fff)"
+		"IDE-Code-Background": "DarkMode_check(#111,#fff)"
+		"IDE-Code-Toolbar-Background": "DarkMode_check(#0A0A0A,#fff)"
+		"IDE-Code-Gutters-Background": "#242C38"
+		"IDE-Data-Background": "DarkMode_check(#252525,#fff)"
+		"IDE-Data-Toolbar-Background": "DarkMode_check(#0A0A0A,#fff)"
 	}
 
 	null_key = lookup("null_key")
@@ -1611,7 +1679,35 @@ if Fast-Font-load
 		Background = get_depend_list((CustomBackground Background-color))
 		Article-Background = get_depend_list((CustomBackground Article-bg-color))
 
-@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))") // 二级自定义字体
+@-moz-document regexp("(^(http(s)?://www.luogu.com(.cn)?/(.*)))|(^(http(s)?://class.luogu.com(.cn)?/(.*)))") // 二级自定义字体
+	//设置字的颜色
+	.title
+		color: Post-heading-color !important
+	.tip
+		color: Text-color !important
+	span[class="tip"]
+		color: Text-color !important
+	span[class="title"]
+		color: Text-color !important
+	div[data-v-1a4393bd]
+		color: Text-color !important
+	a[data-v-0640126c][data-v-1a4393bd]
+		color: A-color !important
+	.color-title[data-v-0640126c]
+		color: Post-heading-color !important
+	.li
+		color: Text-color !important
+	.lg-article
+		color: Text-color !important
+
+	//设置超链接框背景
+	a[class="link-bottom color-default"]
+		background: A-link-bottom-background !important
+		
+	//去掉背景
+	main
+		background-color: #0000 !important
+
 	if Better-font
 		if DarkMode
 			Codeblock-better-color1 = set_default_value(Codeblock-better-color1,#ffd70a)
@@ -1639,12 +1735,14 @@ if Fast-Font-load
 				4 Codeblock-better-color2, // 这个是 []()
 				8 Codeblock-better-color3; // 这个是 ;
 
+	use_header_and_footer()
+
 if Winter-Tag
-	@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
+	@-moz-document regexp("(^(http(s)?://www.luogu.com(.cn)?/(.*)))|(^(http(s)?://class.luogu.com(.cn)?/(.*)))")
 		@import url('https://cdn.jsdelivr.net/gh/TLEWA/O2-luogu@%E5%89%8D%E7%9E%BB%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/Lib/WinterTag.css');
 
 // 全局样式
-@-moz-document regexp("^(http(s)?://www.luogu.com(.cn)?/(.*))")
+@-moz-document regexp("(^(http(s)?://www.luogu.com(.cn)?/(.*)))|(^(http(s)?://class.luogu.com(.cn)?/(.*)))")
 	body // 应用全局背景
 		background: none
 		use_mainly_background()
@@ -1653,22 +1751,27 @@ if Winter-Tag
 
 	if Smooth-scroll // 平滑滚动自定义项
 		body,html
-			scroll-behavior: smooth
-	
+			scroll-behavior: smooth !important
+
 	// 滚动条样式修改
 	if Custom-Scrollbar
 		::-webkit-scrollbar 
-			width: 6px
-			height: 10px
+			width: 6px !important
+			height: 10px !important
 			
 		::-webkit-scrollbar-track
-			background: Scrollbar-track-color
+			background: Scrollbar-track-color !important
 		
 		::-webkit-scrollbar-thumb
-			background: Scrollbar-thumb-color
+			background: Scrollbar-thumb-color !important
 
 			&:hover
-				background: Scrollbar-hover-color
+				background: Scrollbar-hover-color !important
+	
+	thead>tr
+		background: Table-Header-Background !important
+	tbody>tr
+		background: Table-Body-Background !important
 	
 	// 输入框样式修改
 	{Main_Inputbox}
@@ -1698,7 +1801,7 @@ if Winter-Tag
 				&:focus:not(:active)
 					animation: Input-active Input-active-anim !important
 	input[type="password"]
-		font-family:  -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif !important
+		font-family:	-apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", "Noto Sans", "Noto Sans CJK SC", "Noto Sans CJK", "Source Han Sans", "PingFang SC", "Segoe UI", "Microsoft YaHei", sans-serif !important
 
 	.mp-dialog-input>input:focus-visible,.cs-dialog-item-content:focus-visible // MarkDown 编辑器 outline 消除（这个 outline 太魔怔了）
 		outline: 0 !important
@@ -2081,7 +2184,7 @@ if Winter-Tag
 		&:not(:hover),&:not(:hover) *
 			border-color: Markdown-bg-color !important
 
-		&  svg > path
+		&	svg > path
 			fill: Other-icon-color !important
 		& i
 			color: Other-icon-color !important
@@ -2843,10 +2946,11 @@ if Winter-Tag
 				animation: Card-select-bar-ani Card-select-bar-out-ani !important
 
 	if Better-InputGroup // 更统一的 InputGroup 样式
-		.input-group>:not(:last-child) input
+		.input-group input:not(:last-child)
+			font-size: 75% !important
 			height: 25px !important
-			padding: 1.75px 14px 1.75px 14px !important
-		.input-group>button:last-child
+			padding: 1.75px 14px 1.75px 7px !important
+		.input-group button
 			height: 30px !important
 			padding: 4px 18px !important
 
@@ -2858,7 +2962,7 @@ if Winter-Tag
 			padding-left: 75.2px !important
 			padding-right: 16px !important
 			width: calc(100% - 31.2px) !important
-			&>.container,
+			&>.container
 				padding-left: 120px !important
 			&>.background
 				padding-left: 120px !important
@@ -3355,7 +3459,7 @@ if Winter-Tag
 		.mp-preview-zone
 			padding-bottom: 0 !important
 
-@-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/(?!list$).|ranking|discuss).*$")
+@-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/(?!list$).|problem|ranking|discuss).*$")
 	use_new_bar()
 	.solution-article .operations .button // 这又写得啥。。
 		opacity: 1 !important
@@ -3750,7 +3854,7 @@ if Winter-Tag
 			fill: Highcharts-hover-point-color !important
 			stroke: Highcharts-hover-point-border-color !important
 
-		path.highcharts-halo.highcharts-color-0  // 氛围环
+		path.highcharts-halo.highcharts-color-0	// 氛围环
 			fill: Highcharts-hover-bigpoint-color !important
 			fill-opacity: Highcharts-hover-bigpoint-op !important
 
@@ -3940,4 +4044,140 @@ if Winter-Tag
 	if bug-fix21
 		.am-slider-default .am-direction-nav .am-nav-prev a,.am-slider-default .am-direction-nav .am-nav-next a
 			z-index: auto !important
+
+@-moz-document regexp("^(https?://www.luogu.com(.cn)?/problem/(.*)#ide)") //要写死喵了
+	use_code_color() //TODO: 重写洛谷分类
+		color: Text-color !important
+	use_ide()
+		.ide-container
+			background: none !important
+			.panel-divider
+				background: IDE-Panel-Divider-Color !important
+			>.panel-a
+				background: none !important
+				>.problem
+					background: IDE-Problem-Background !important
+			>.panel-b
+				background: none !important
+				>div>.panel-a
+					background: IDE-Code-Background !important
+					>.ide-toolbar
+						background: IDE-Code-Toolbar-Background !important
+						border: 0 !important
+					.cm-editor>.cm-scroller
+						>.cm-gutters
+							background: IDE-Code-Gutters-Background !important
+						>.cm-content .cm-line
+							use_code_color()
+				>div>.panel-b
+					background: none !important
+					.ide-toolbar
+						background: IDE-Data-Toolbar-Background !important
+						border: 0 !important
+					textarea
+						background: IDE-Data-Background !important
+
+	use_ide()
+
+@-moz-document regexp("^(http(s)?://class.luogu.com(.cn)?/(.*))")
+// 洛谷网校课程卡片
+	div[class="card"]
+		>.brief
+			background: School-Class-Card-Background !important
+		&:not(:hover)>:not(.brief)
+			color: #0000 !important
+			background-color: #0000 !important
+			border-color: #0000 !important
+			*
+				color: #0000 !important
+				background: #0000 !important
+				border: #0000 !important
+
+	.wrapper.wrapped.lfe-body.header-layout.tiny,.header:has(>.max)
+		z-index: 4 !important
+		use_depend_list(background,(Navbar-bg-color Card-bg-color-L1),1)
+		& .background
+			background: none !important
+		height: Navbar-height !important
+
+	// 洛谷网校课程 Tag
+	.lfe-caption[data-v-71731098][data-v-574791fe]
+		background: School-Class-Tag-Color !important
+		color: School-Class-Text-Color !important
+
+	// 洛谷网校用户介绍
+	.user-info
+		background: School-User-Info-Background !important
+		color: School-User-Info-Text-Color !important
 	
+	// 洛谷网校课程展示台
+	.course-container
+		background: School-Course-Container-Background !important
+	.course
+		background: School-Item-Course-Container-Background !important
+
+	//洛谷网校悬浮窗
+	.app>.fix
+		background: /*School-Fix-Background*/ !important
+	
+	.header-layout.tiny[data-v-ad70ac82]
+		z-index: 4 !important
+		use_depend_list(background,(Navbar-bg-color Card-bg-color-L1),1) !important
+		& .background
+			background: none !important
+		height: Navbar-height !important
+
+@-moz-document regexp("^(http(s)?://class.luogu.com(.cn)?/((me#(.*))|(learn?(.*))|(course?(.*))))") //设置图标色
+	.row>span[class="icon started"]>svg>path
+		fill: School-Video-Icon-Started !important
+	.row>span[class="icon"]>svg>path
+		fill: School-Video-Icon-Not-Started !important
+	.row>span[class="index started"]
+		color: School-Video-Icon-Started !important
+	.row>span[class="index"]
+		color: School-Video-Icon-Not-Started !important
+
+@-moz-document regexp("^(http(s)?://class.luogu.com(.cn)?/classroom/(.*))") //设置教室
+	use_sidebar() //应用边栏
+		.side
+			background: none !important
+			>div
+				>div.tab
+					background: Classroom-Side-Content-Tab-Background !important
+				>div.side-content
+					background: Classroom-Side-Content-Background !important
+					>div.questions-wrap>div.questions>div.panel
+						background: #0000 !important
+						>header
+							background: Classroom-Questions-Tab-Background !important
+							border-left: 1px solid #eee7 !important
+							border-right: 1px solid #eee7 !important
+							border-top: 1px solid #eee7 !important
+							border-top-left-radius: 5px !important
+							border-top-right-radius: 5px !important
+						>div
+							background: Classroom-Questions-Content-Background !important
+							border-left: 1px solid #eee7 !important
+							border-right: 1px solid #eee7 !important
+							border-bottom: 1px solid #eee7 !important
+							border-bottom-left-radius: 5px !important
+							border-bottom-right-radius: 5px !important
+
+	use_controller() //应用控制栏
+		.controller
+			background: Classroom-Controller-Background !important
+			>.progress
+				background: Classroom-Progress-Not-Watched-Color !important
+				>.bar
+					background: Classroom-Progress-Watched-Color !important
+				>.dot:after
+					background: Classroom-Progress-Dot-Background !important
+					border-color: Classroom-Progress-Dot-Border !important
+			>.controls
+				span
+					color: Text-color !important
+				>button>svg>path
+					fill: Classroom-Controller-Icon-Color !important
+	
+	use_sidebar()
+	use_controller()
