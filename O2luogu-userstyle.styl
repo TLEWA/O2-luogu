@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.3.0.0
+@version      2.3.0.1
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA & FlyHappily
 @license      GPL v3
@@ -727,14 +727,14 @@ if Fast-Font-load
 		Card_L2 = ".am-panel,.inner-card,.discuss-container .discuss,.swal2-validation-message" // 二级卡片
 		Card_float = "#app > nav.lfe-body .popup,.dropdown-operations,.dropdown,.cover-upload,.btn-edit-reply,.operations.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog,.l-card.container,.dropdown>.float-card,.filters,.setting-dropdown" // 悬浮卡片
 		Hover_card_float = "#app > nav.lfe-body .popup a,.dropdown-operations li,.dropdown li,.candidates li,.am-modal-footer,.setting-dropdown"
-		Shadow_card_float = ".float-card,#app > nav.lfe-body .popup, .user-nav .center,.dropdown:not(:has(>.dropdown-operations,>.float-card))"
+		Shadow_card_float = ".float-card,#app > nav.lfe-body .popup, .user-nav .center,.dropdown:not(:has(>.dropdown-operations,>.float-card,>.setting-dropdown))"
 		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I,form>.row>span:first-child" // 标题文字
 		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner,.row>.content,.feed-comment,.mp-preview-content" // 正文文字
 		State = ".detail,.time,.create-time,.caption,.info-content,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name,.collection-info" // 陈述文字
 		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.remote>li,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption,.colored-link-selector .name,div.row.row-space-between.top > .content-right > a > .name,.l-flex-info-row>span,.reply-editor>div:first-child,label[for*='LCheck']" // 介绍文字
 		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.stat>.field,.difficulty-tags,.difficulty-tags>.row,.full-container[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
 		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.cs-close-container,.container .close path,.dropdown>.float-card>.user-info span>span>span path,.stick-top path,.cs-toolbar-tool path,.side-toggle path" // 杂项图标
-		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.user-nav>a.login,.cs-footer-right > .cs-footer-button,.message-block>.delete,.user-nav>.text" // 操作文字
+		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a:not(.l-button),.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.user-nav>a.login,.cs-footer-right > .cs-footer-button,.message-block>.delete,.user-nav>.text" // 操作文字
 		Operate_hover = ".expand-tip>span,.dropdown-operations,.header>.right>a,.load-more,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.am-modal-btn,.user-nav>a.login,.cs-footer-right > .cs-footer-button,.message-block>.delete,.user-nav>.text" // 可选中操作文字
 		Hover-A = ".action>a,.center>footer>a,.am-panel-primary .am-panel-title a" // 选中超链接
 		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a,span.C.G,.row.title>a,.row div>a,.bar-item,.filter-wrapper a,.form-item.form-check>a,.form-bottom>a,.reply > .info-item,.last-link>a,.l-flex-info-row a,.problem-block-actions>a" // 强制超链接
@@ -744,7 +744,7 @@ if Fast-Font-load
 		Topic-difficulty-Label = ".difficulty a span.lfe-caption,.difficulty span.lfe-caption,.difficulty-tags span.lfe-caption,.block-item.tag" // 题目难度标签
 		InLine-code-block = "[class*='marked'] code,.am-comment-bd p>code" // 行内代码块
 		Code-block = "pre:not([mp-editor-container],.CodeMirror-line)" // 代码块
-		Discuss = ".row-wrap > .card.comment.padding-default, .card.log,.article-comment .l-card.reply-item,.l-card.comment" // 讨论区评论
+		Discuss = ".row-wrap > .card.comment.padding-default, .card.log,.article-comment .l-card.reply-item,.l-card.comment,.l-card.log" // 讨论区评论
 		Badge = ".am-badge,.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span" // 用户 Tag
 		Button = ".lfe-form-sz-middle,.am-btn,.lform-size-middle,.lform-sz-middle,a[href*='http']>#go" // 中型按钮
 		Small-Button = ".lfe-form-sz-small,.lform-sz-small,.lform-size-small,.copy-btn,.copy-btn.lfe-form-sz-middle" // 小型按钮
@@ -1663,7 +1663,7 @@ if Fast-Font-load
 			Use-card-background = "off"
 	
 	if Better-article-card=="on"
-		Card_L1 += ",.main-container>main.lcolor-bg-grey-1"
+		Card_L1 += ",.main-container.lside-nav>main.lcolor-bg-grey-1"
 		Card_L2 += ",.article-comment.columba-content-wrap.wrapper>.l-card"
 	
 	if Use-card-background=="on"
@@ -3255,8 +3255,8 @@ if Winter-Tag
 			color: Markdown-atext-color !important
 	
 	// 修个神秘 bug
-	#app
-		overflow-y: hidden
+	//#app // 修法有问题
+	//	overflow-y: hidden
 	#app:has(.top-bar)
 		overflow: visible
 	.full-container .card
@@ -3459,7 +3459,7 @@ if Winter-Tag
 		.mp-preview-zone
 			padding-bottom: 0 !important
 
-@-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/(?!list$).|problem|ranking|discuss).*$")
+@-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/(?!list$).|problem|ranking|discus|judgement|ticket).*$")
 	use_new_bar()
 	.solution-article .operations .button // 这又写得啥。。
 		opacity: 1 !important
