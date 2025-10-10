@@ -2235,6 +2235,8 @@ if Winter-Tag
 	{InLine-code-block}
 		contain: style paint layout if Content-Visibility
 		border-radius: InLine-code-block-radius !important
+		box-decoration-break: clone
+		-webkit-box-decoration-break: clone
 		background: InLine-code-block-bg-color !important
 		border: InLine-code-block-border !important
 		border-color: InLine-code-block-border-color !important
@@ -2492,35 +2494,35 @@ if Winter-Tag
 		animation: Sidebar-popup-ani !important
 
 	if Better-Sidebar
-		#app > .lfe-body > .popup-button
+		#app > nav.lfe-body > .popup-button
 			margin-top: 8px
 		
-		#app > .lfe-body > a:first-of-type
+		#app > nav.lfe-body > a:first-of-type
 			margin-top: 10px
 		
-		#app > .lfe-body > a
+		#app > nav.lfe-body > a
 			height: 3.7em
 			margin-top: 3px
 			padding: 0 !important
 		
-		#app > .lfe-body > a > .icon
+		#app > nav.lfe-body > a > .icon
 			line-height: 2.4em
 			font-size: 18px
 			width: 100%
 			margin: 0 !important
 			transition: all 0.3s ease
 	
-		#app > .lfe-body > a > .text
+		#app > nav.lfe-body > a > .text
 			opacity:0
 			margin-top: -1em
 			display: block
 			transition: all 0.3s ease
 	
-		#app > .lfe-body > a:hover > .icon
+		#app > nav.lfe-body > a:hover > .icon
 			line-height: 1.5em
 			font-size: 17px
 	
-		#app > .lfe-body > a:hover > .text
+		#app > nav.lfe-body > a:hover > .text
 			opacity:1
 			margin-top: 0.2em
 
@@ -2940,7 +2942,7 @@ if Winter-Tag
 				transform: translate(0px,- SideBar-position)
 		
 		//More-Sidebar-Ani
-		#app > .lfe-body
+		#app > nav.lfe-body
 			animation: Sidebar-out SideBar-ani if !More-Sidebar-Ani
 			//backdrop-filter: blur(20px) !important
 			//-webkit-backdrop-filter: blur(20px) !important
@@ -2953,14 +2955,14 @@ if Winter-Tag
 			height: 30em
 		
 		if More-Sidebar-Ani
-			#app:has(>.main-container>.wrapper>.header:not([pageloading*="true"])) > .lfe-body,#app:not(:has(>.main-container>.wrapper>.header)) > .lfe-body
+			#app:has(>.main-container>.wrapper>.header:not([pageloading*="true"])) > nav.lfe-body,#app:not(:has(>.main-container>.wrapper>.header)) > nav.lfe-body
 				animation: Sidebar-out SideBar-ani !important
 	
-		#app > .lfe-body > div:first-child//:has(.logo-wrap)
+		#app > nav.lfe-body > div:first-child//:has(.logo-wrap)
 			border-top-right-radius: 30px
 		
 	
-	#app > .lfe-body 
+	#app > nav.lfe-body 
 		box-shadow: SideBar-shadow !important
 
 	.refined-input.input-wrap.frame:has(input+svg) > input
@@ -3700,7 +3702,7 @@ if Winter-Tag
 // 主站样式
 @-moz-document regexp("^(https?://www.luogu.com(.cn)?/)(?!article/[A-Za-z0-9]{8}$).*")
 	// 整体布局
-	main.lfe-body,.main-container>.theme-bg+main,.main-container>main:first-child // main 背景的 background 设成 none
+	main.lfe-body,.main-wrapper.lfe-body,.main-container>.theme-bg+main,.main-container>main:first-child // main 背景的 background 设成 none
 		background: none !important
 
 // 洛谷主页专属样式(万年屎山的尊贵待遇www)
