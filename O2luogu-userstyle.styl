@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.3.0.6
+@version      2.3.0.7
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
@@ -77,6 +77,8 @@
 @var	checkbox Header-Optimize "（实验性）使用不触发重排的方式进行 Header 动画" 1
 @var	checkbox Better-Time-show "在动态使用确切时间显示" 0
 @var	checkbox Better-discuss-Time-show "在讨论区使用确切时间显示" 0
+@var	checkbox Better-ide-container "更好的在线 IDE 布局" 1
+@var	checkbox Better-topbar "（实验性）新式新前端顶栏" 0
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Use-card-background "使用卡片背景防止文字在背景图下不清晰" ["auto","on","off"]
@@ -749,7 +751,7 @@ if Fast-Font-load
 		Button = ".lfe-form-sz-middle,.am-btn,.lform-size-middle,.lform-sz-middle,a[href*='http']>#go" // 中型按钮
 		Small-Button = ".lfe-form-sz-small,.lform-sz-small,.lform-size-small,.copy-btn,.copy-btn.lfe-form-sz-middle" // 小型按钮
 		Username = "a.color-none[href*='/user/'][target='_blank']>span,.name[style*='font-weight: bold;'],.item span>span[slot='trigger']" // 用户 id
-		Avatar = "img.avatar,img.am-comment-avatar,.luogu-username>img,.message-block>img,.avatar>img" // 用户头像
+		Avatar = "img.avatar,img.am-comment-avatar,.luogu-username>img,.message-block>img,.avatar>img,img[alt='User Avatar']" // 用户头像
 
 // 全局工具函数
 	use_stable_bg() // 设置背景相关参数
@@ -787,7 +789,22 @@ if Fast-Font-load
 			& ul>li:hover
 				border-radius: Article-sidebar-card-radius !important
 				background: Article-sidebar-card-hover !important
-	
+		if Better-topbar
+			body>div>div.top-bar
+				margin: 0 auto !important
+				min-width: 448px - 32px !important
+				max-width: 1200px - 32px !important
+				margin-top: 12px !important
+				border-radius: 8px !important
+			//.main-container
+			//	margin-top: calc(3.5rem + 12px) !important
+			.main-container > header.theme-bg > .theme-fg
+				padding-top: calc(3.5rem + 12px) !important
+			.nav-scrollbar
+				top: 0 !important
+			#app:has(>.main-container.lside-nav) > .top-bar
+				left: 64px !important
+
 	get_depend_list(args) // TODO：此处支持可能不够完备，如有更完善实现可能更改
 		for arg in args
 			if arg!=None
@@ -3504,6 +3521,12 @@ if Winter-Tag
 			background: none !important
 		& div[style*="background-color: rgb(255\, 255\, 255);"]
 			background: Article-text-bg-color !important
+	
+	if Better-ide-container
+		.ide-container
+			height: calc(100vh - 3.5em) !important
+		.ide-textarea
+			border-radius: 0 !important
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/problem/solution.*$")
 	if Better-prob-card // 应用边栏
