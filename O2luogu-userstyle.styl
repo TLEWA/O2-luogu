@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.3.0.2
+@version      2.3.0.3
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA & FlyHappily
 @license      GPL v3
@@ -752,12 +752,6 @@ if Fast-Font-load
 		Avatar = "img.avatar,img.am-comment-avatar,.luogu-username>img,.message-block>img,.avatar>img" // 用户头像
 
 // 全局工具函数
-	use_header_and_footer()
-		.header-layout
-			background: Header-bg-color !important
-		.wrapped[style="background-color: rgb\(51\, 51\, 51\)\;"]
-			background: Footer-bg-color !important
-
 	use_stable_bg() // 设置背景相关参数
 		background-repeat: no-repeat !important
 		background-size: cover !important
@@ -1734,8 +1728,6 @@ if Fast-Font-load
 				0 Codeblock-better-color1, // 这个是 {}
 				4 Codeblock-better-color2, // 这个是 []()
 				8 Codeblock-better-color3; // 这个是 ;
-
-	use_header_and_footer()
 
 if Winter-Tag
 	@-moz-document regexp("(^(http(s)?://www.luogu.com(.cn)?/(.*)))|(^(http(s)?://class.luogu.com(.cn)?/(.*)))")
