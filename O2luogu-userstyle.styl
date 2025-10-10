@@ -1,9 +1,9 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.3.0.3
+@version      2.3.0.4
 @description  高度可自定义的洛谷美化脚本
-@author       TLEWA & FlyHappily
+@author       TLEWA
 @license      GPL v3
 @preprocessor stylus
 
@@ -1674,34 +1674,6 @@ if Fast-Font-load
 		Article-Background = get_depend_list((CustomBackground Article-bg-color))
 
 @-moz-document regexp("(^(http(s)?://www.luogu.com(.cn)?/(.*)))|(^(http(s)?://class.luogu.com(.cn)?/(.*)))") // 二级自定义字体
-	//设置字的颜色
-	.title
-		color: Post-heading-color !important
-	.tip
-		color: Text-color !important
-	span[class="tip"]
-		color: Text-color !important
-	span[class="title"]
-		color: Text-color !important
-	div[data-v-1a4393bd]
-		color: Text-color !important
-	a[data-v-0640126c][data-v-1a4393bd]
-		color: A-color !important
-	.color-title[data-v-0640126c]
-		color: Post-heading-color !important
-	.li
-		color: Text-color !important
-	.lg-article
-		color: Text-color !important
-
-	//设置超链接框背景
-	a[class="link-bottom color-default"]
-		background: A-link-bottom-background !important
-		
-	//去掉背景
-	main
-		background-color: #0000 !important
-
 	if Better-font
 		if DarkMode
 			Codeblock-better-color1 = set_default_value(Codeblock-better-color1,#ffd70a)
@@ -2938,11 +2910,10 @@ if Winter-Tag
 				animation: Card-select-bar-ani Card-select-bar-out-ani !important
 
 	if Better-InputGroup // 更统一的 InputGroup 样式
-		.input-group input:not(:last-child)
-			font-size: 75% !important
+		.input-group>:not(:last-child) input
 			height: 25px !important
-			padding: 1.75px 14px 1.75px 7px !important
-		.input-group button
+			padding: 1.75px 14px 1.75px 14px !important
+		.input-group>button:last-child
 			height: 30px !important
 			padding: 4px 18px !important
 
@@ -3720,7 +3691,7 @@ if Winter-Tag
 // 主站样式
 @-moz-document regexp("^(https?://www.luogu.com(.cn)?/)(?!article/[A-Za-z0-9]{8}$).*")
 	// 整体布局
-	main.lfe-body // main 背景的 background 设成 none
+	main.lfe-body,.main-container>.theme-bg+main // main 背景的 background 设成 none
 		background: none !important
 
 // 洛谷主页专属样式(万年屎山的尊贵待遇www)
