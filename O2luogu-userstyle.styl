@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.3.0.7
+@version      2.3.0.8
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
@@ -796,8 +796,10 @@ if Fast-Font-load
 				max-width: 1200px - 32px !important
 				margin-top: 12px !important
 				border-radius: 8px !important
-			//.main-container
-			//	margin-top: calc(3.5rem + 12px) !important
+			.main-container
+				margin-top: 0 !important
+			.main-container .full-container
+				margin-top: calc(3.5rem + 1.5em + 12px) !important
 			.main-container > header.theme-bg > .theme-fg
 				padding-top: calc(3.5rem + 12px) !important
 			.nav-scrollbar
@@ -3444,7 +3446,7 @@ if Winter-Tag
 		.mp-preview-zone
 			padding-bottom: 0 !important
 
-@-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/(?!list$).|problem|ranking|discuss|judgement|ticket).*$")
+@-moz-document regexp("^https?://www.luogu.com(.cn)?/(article|problem/(?!list$).|problem|ranking|discuss|judgement|ticket|user/setting).*$")
 	use_new_bar()
 	.solution-article .operations .button // 这又写得啥。。
 		opacity: 1 !important
