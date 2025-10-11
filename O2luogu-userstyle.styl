@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.3.0.15
+@version      2.3.0.16
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
@@ -810,6 +810,8 @@ if Fast-Font-load
 					margin-top: calc(3.5rem + 12px) !important
 			#app:has(>.main-container.lside-nav) > .top-bar
 				left: 64px !important
+			#app:has(.ide-container) > .top-bar
+				visibility: hidden !important
 
 	get_depend_list(args) // TODO：此处支持可能不够完备，如有更完善实现可能更改
 		for arg in args
@@ -3539,7 +3541,10 @@ if Winter-Tag
 	
 	if Better-ide-container
 		.ide-container
-			height: calc(100vh - 3.5em) !important
+			if Better-topbar
+				height: 100vh !important
+			else
+				height: calc(100vh - 3.5em) !important
 		.ide-textarea
 			border-radius: 0 !important
 	
