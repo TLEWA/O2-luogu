@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.3.0.12
+@version      2.3.0.14
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
@@ -751,7 +751,7 @@ if Fast-Font-load
 		Badge = ".am-badge,.user-name span.lfe-caption,a[href*='https://help.luogu.com.cn/manual/luogu/account/user-tag'] span" // 用户 Tag
 		Button = ".lfe-form-sz-middle,.am-btn,.lform-size-middle,.lform-sz-middle,a[href*='http']>#go" // 中型按钮
 		Small-Button = ".lfe-form-sz-small,.lform-sz-small,.lform-size-small,.copy-btn,.copy-btn.lfe-form-sz-middle" // 小型按钮
-		Username = "a.color-none[href*='/user/'][target='_blank']>span,.name[style*='font-weight: bold;'],.item span>span[slot='trigger']" // 用户 id
+		Username = "a.color-none[href*='/user/'][target='_blank']>span,.name[style*='font-weight: bold;'],.item span>span[slot='trigger'],.luogu-username a[href*='/user/']" // 用户 id
 		Avatar = "img.avatar,img.am-comment-avatar,.luogu-username>img,.message-block>img,.avatar>img,img[alt='User Avatar']" // 用户头像
 
 // 全局工具函数
@@ -2550,7 +2550,7 @@ if Winter-Tag
 			margin-top: 0.2em
 
 	// 个人主页简介设置
-	.user-info > .lfe-caption:not(.slogan),.user-info .user-name span,.user-info .slogan
+	.user-info > .lfe-caption:not(.slogan),.user-info.no-mobile .user-name span,.user-info.no-mobile .slogan
 		color: Userpage-text-color !important
 
 	// 更好的题库通过条
