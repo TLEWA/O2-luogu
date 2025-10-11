@@ -806,8 +806,8 @@ if Fast-Font-load
 					padding-top: calc(3.5rem + 12px) !important
 				.nav-scrollbar
 					top: 0 !important
-				.main-container > main.lcolor-bg-grey-1:first-child
-					top: calc(1em + 3.5rem + 12px) !important
+				.main-container > main.lcolor-bg-grey-1:has(>.article-banner):first-child
+					margin-top: calc(3.5rem + 12px) !important
 			#app:has(>.main-container.lside-nav) > .top-bar
 				left: 64px !important
 
@@ -3304,7 +3304,10 @@ if Winter-Tag
 		.main > .reply-info+div
 			margin-bottom: 0.75em
 		.toc.with-top
-			top: 68px !important
+			if Better-topbar
+				top: 80px !important
+			else
+				top: 68px !important
 			overflow: visible !important
 			& ul
 				padding: 1em
@@ -3693,6 +3696,12 @@ if Winter-Tag
 		.toc-wrapper
 			right: -205px !important
 		
+		.main-container>.main.lcolor-bg-grey-1:has(.article-content .toc-wrapper:hover):hover
+			contain: style if Content-Visibility
+			border-radius: Card-L1-radius !important if Custom-Card
+			transition: box-shadow Card-L1-hover-transition \, all Card-hover-bg-color-L1-ani !important
+			background: Card-bg-color-L1 !important
+			box-shadow: Card-L1-shadow !important
 	else
 		.main-container:has(>.lcolor-bg-grey-1)
 			use_mainly_background(Article-Background)
