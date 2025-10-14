@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.3.0.17
+@version      2.3.0.18
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
@@ -78,7 +78,7 @@
 @var	checkbox Better-Time-show "在动态使用确切时间显示" 0
 @var	checkbox Better-discuss-Time-show "在讨论区使用确切时间显示" 0
 @var	checkbox Better-ide-container "更好的在线 IDE 布局" 1
-@var	checkbox Better-topbar "（实验性）新式新前端顶栏" 0
+@var	checkbox Better-topbar "（实验性）新式新前端顶栏" 1
 
 @var	select Better-article-card "专栏区卡片化" ["auto","on","off"]
 @var	select Use-card-background "使用卡片背景防止文字在背景图下不清晰" ["auto","on","off"]
@@ -734,7 +734,7 @@ if Fast-Font-load
 		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I,form>.row>span:first-child" // 标题文字
 		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner,.row>.content,.feed-comment,.mp-preview-content,.items:has(.entry)" // 正文文字
 		State = ".detail,.time,.create-time,.caption,.info-content,.result>.count,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name,.collection-info" // 陈述文字
-		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.rmj>li,.result>.count>.number,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption,.colored-link-selector .name,div.row.row-space-between.top > .content-right > a > .name,.l-flex-info-row>span,.reply-editor>div:first-child,label[for*='LCheck'],.row.space-between.info>.left.row,.light-text,.user-stat-data>.stat>.field .stat-text" // 介绍文字
+		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.rmj>li,.result>.count>.number,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption,.colored-link-selector .name,div.row.row-space-between.top > .content-right > a > .name,.l-flex-info-row>span,.reply-editor>div:first-child,label[for*='LCheck'],.row.space-between.info>.left.row,.light-text,.user-stat-data>.stat>.field .stat-text,.container>.tag-select-area .section>.title,.container>.tag-select-area .tags>.toggle-tag:not(.selected)" // 介绍文字
 		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.user-stat-data>.stat>.field,.difficulty-tags,.difficulty-tags>.row,.full-container[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
 		Other_Icon = ".user-nav a.color-none > svg > path,.refined-input svg > path,.combo-wrapper svg>path,.btn-edit-reply svg>path,.nav-group span.icon>svg>path,.user-nav svg>path,.cs-close-container,.container .close path,.dropdown>.float-card>.user-info span>span>span path,.stick-top path,.cs-toolbar-tool path,.side-toggle path,.attachments path,.fa-pen-to-square path" // 杂项图标
 		Operate = ".feed-reply, .feed-report, .action>a,.center>footer>a,.expand-tip>span,.dropdown-operations,.header>.right>a:not(.l-button),.load-more,.button-2line>.text,.header nav li:not(.selected),.operations>.button,ul:has(>li.selected) li:not(.selected),.am-modal-btn,.user-nav>a.login,.cs-footer-right > .cs-footer-button,.message-block>.delete,.user-nav>.text" // 操作文字
@@ -743,7 +743,7 @@ if Fast-Font-load
 		A = ".avatar-right>.row.row-space-between.top>a.row.content-left.title.link.color-default,.problem-card>.action>a,.problem-card>.action>span,.clear-filter,.inner-card a,.title>a.title.color-default,.expand>a,.row>div:has(>time)>a,.reply-card>p>a,span.C.G,.row.title>a,.row div>a,.bar-item,.filter-wrapper a,.form-item.form-check>a,.form-bottom>a,.reply > .info-item,.last-link>a,.l-flex-info-row a,.problem-block-actions>a" // 强制超链接
 		ColorfulLabel = ".difficulty a.color-default[colorscheme='default']>span,.box>span.lfe-caption,span.lfe-caption.tag,a.tag.color-none>span,.difficulty-tags>.row>span.lfe-caption,.difficulty>span.lfe-caption,a.status-link>span.lfe-caption,.lfe-caption.tag>span,.author-margin>.lfe-caption,.team-authority,.inner-card span.lfe-caption[style*='color:'],.status>.lfe-caption,.luogu-tag" // 标签
 		GrayLabel = '.card.info-card.center.padding-default .tags>span.tag[style*="rgb(232"]:not(.selected),.inner-card>.row>div>span.lfe-caption,.card.log.padding-default li span.lfe-caption,.row.info>span' // 灰度标签
-		Topic-type-Label = ".tags-wrap.multiline>a>span,.card.info-card.center.padding-default .tag-select-area .tags>span.tag,.tags>a,.block-item.tag,.luogu-tag" // 题目类型标签
+		Topic-type-Label = ".tags-wrap.multiline>a>span,.card.info-card.center.padding-default .tag-select-area .tags>span.tag,.tags>a,.block-item.tag,.luogu-tag,.toggle-tag" // 题目类型标签
 		Topic-difficulty-Label = ".difficulty a span,.difficulty span,.difficulty-tags span,.block-item.tag" // 题目难度标签
 		InLine-code-block = "[class*='marked'] code,.am-comment-bd p>code" // 行内代码块
 		Code-block = "pre:not([mp-editor-container],.CodeMirror-line)" // 代码块
@@ -2218,6 +2218,8 @@ if Winter-Tag
 			background: Topic-type-Label-area !important
 		&[style*="--tag-color: #f39c11"],&[style*="rgb(243\, 156\, 17)"]
 			background: Topic-type-Label-special !important
+	.container>.tag-select-area .tags>.toggle-tag:not(.selected)
+		background: Topic-type-Label-not-select !important
 	
 	// 题目难度标签修改
 	{Topic-difficulty-Label}
