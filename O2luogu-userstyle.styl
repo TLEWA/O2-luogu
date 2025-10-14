@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.3.0.18
+@version      2.3.0.19
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
@@ -2206,7 +2206,7 @@ if Winter-Tag
 	// 题目类型标签修改
 	{Topic-type-Label}
 		anti_hover_line() if A-hover-line
-		&[style*="rgb(232\, 232\, 232)"]:not(.selected)
+		&[style*="rgb(232\, 232\, 232)"]:not(.selected),&.toggle-tag:not(.selected)
 			background: Topic-type-Label-not-select !important
 		&[style*="--tag-color: #2949b4"],&[style*="rgb(41\, 73\, 180)"]
 			background: Topic-type-Label-algorithm !important
@@ -2218,8 +2218,6 @@ if Winter-Tag
 			background: Topic-type-Label-area !important
 		&[style*="--tag-color: #f39c11"],&[style*="rgb(243\, 156\, 17)"]
 			background: Topic-type-Label-special !important
-	.container>.tag-select-area .tags>.toggle-tag:not(.selected)
-		background: Topic-type-Label-not-select !important
 	
 	// 题目难度标签修改
 	{Topic-difficulty-Label}
@@ -3320,6 +3318,9 @@ if Winter-Tag
 			overflow: visible !important
 			& ul
 				padding: 1em
+	else if Better-topbar
+		.toc.with-top
+			top: calc(3.5rem + 12px) !important
 
 	// 名字颜色系统
 	if User-Name-color!=None
