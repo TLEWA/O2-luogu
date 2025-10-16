@@ -7,6 +7,7 @@
 @license      GPL v3
 @preprocessor stylus
 
+@var	checkbox TouTu-MouHu "主页头图模糊" 1
 @var	checkbox DarkMode "深色模式" 0
 @var	checkbox Anti-Userinput "禁用用户输入框自定义样式" 0
 @var	checkbox Custom-Scrollbar "更好的滚动条" 1
@@ -731,8 +732,8 @@ if Fast-Font-load
 		Card_float = "#app > nav.lfe-body .popup,.dropdown-operations,.dropdown:not(:has(>.setting-dropdown)),.cover-upload,.btn-edit-reply,.operations.float,.bottom-wrap.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog,.l-card.container,.dropdown>.float-card,.filters,.setting-dropdown" // 悬浮卡片
 		Hover_card_float = "#app > nav.lfe-body .popup a,.dropdown-operations li,.dropdown li,.candidates li,.am-modal-footer,.setting-dropdown"
 		Shadow_card_float = ".float-card,#app > nav.lfe-body .popup, .user-nav .center,.dropdown:not(:has(>.dropdown-operations,>.float-card,>.setting-dropdown))"
-		Title = ".lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,main strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I,form>.row>span:first-child" // 标题文字
-		Text = "main p,.l-card,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner,.row>.content,.feed-comment,.mp-preview-content,.items:has(.entry)" // 正文文字
+		Title = "h1,h2,h3,h4,h5,h6,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I,form>.row>span:first-child" // 标题文字
+		Text = "p,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner,.row>.content,.feed-comment,.mp-preview-content,.items:has(.entry)" // 正文文字
 		State = ".detail,.time,.create-time,.caption,.info-content,.result>.count,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name,.collection-info" // 陈述文字
 		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.rmj>li,.result>.count>.number,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption,.colored-link-selector .name,div.row.row-space-between.top > .content-right > a > .name,.l-flex-info-row>span,.reply-editor>div:first-child,label[for*='LCheck'],.row.space-between.info>.left.row,.light-text,.user-stat-data>.stat>.field .stat-text,.container>.tag-select-area .section>.title,.container>.tag-select-area .tags>.toggle-tag:not(.selected)" // 介绍文字
 		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.user-stat-data>.stat>.field,.difficulty-tags,.difficulty-tags>.row,.full-container[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
@@ -3863,13 +3864,13 @@ if Winter-Tag
 		background: Benben-tab-focus-bg-color !important
 
 	if Better-Benben-Tab
-		.lg-index-benben div:has(>#home-center-nav) 
+		.lg-index-benben div:nth-of-type(4) 
 			background: transparent !important
 			box-shadow: none !important
 			padding-left: 0
 			padding-right: 0
 
-		.lg-index-benben div #home-center-nav
+		.lg-index-benben div:nth-of-type(4) #home-center-nav
 			background: transparent !important
 	
 	// 主页题目通过条
@@ -4213,3 +4214,23 @@ if Winter-Tag
 	
 	use_sidebar()
 	use_controller()
+
+@-moz-document regexp("^https?://www.luogu.com(.cn)?/user/.*$")
+	use_toutumouhu()
+		.user-header-top:after
+			if TouTu-MouHu
+				content: "";
+				width:100%;
+				height:100%;
+				position: absolute;
+				left:0;
+				top:0;
+				background: inherit;
+				filter: blur(3px);
+				z-index: 0;
+                
+		.user-header-top *
+			if TouTu-MouHu
+				z-index: 1;
+    
+	use_toutumouhu()
