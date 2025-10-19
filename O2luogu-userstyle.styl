@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.3.0.20
+@version      2.3.0.21
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
@@ -187,6 +187,8 @@
 @var	text IDE-Panel-Divider-Color "IDE 分隔线色" "Default"
 @var	text IDE-Problem-Background "IDE 模式问题背景" "Default"
 @var	text IDE-Code-Background "IDE 代码背景" "Default"
+@var	text IDE-Code-Tips-Background "IDE 代码提示背景" "Default"
+@var	text IDE-Code-Tips-Border "IDE 代码提示边框" "Default"
 @var	text IDE-Code-Toolbar-Background "IDE 代码顶栏背景" "Default"
 @var	text IDE-Code-Gutters-Background "IDE 代码行号背景" "Default"
 @var	text IDE-Data-Background "IDE 数据背景" "Default"
@@ -1652,10 +1654,12 @@ if Fast-Font-load
 		"School-Fix-Background": "Card-bg-color-L1"
 		"IDE-Panel-Divider-Color": "DarkMode_check(#000,#fff)"
 		"IDE-Problem-Background": "DarkMode_check(#222,#fff)"
-		"IDE-Code-Background": "DarkMode_check(#111,#fff)"
-		"IDE-Code-Toolbar-Background": "DarkMode_check(#0A0A0A,#fff)"
-		"IDE-Code-Gutters-Background": "DarkMode_check(#242C38,#f5f5f5)"
-		"IDE-Data-Background": "DarkMode_check(#252525,#fff)"
+		"IDE-Code-Background": "DarkMode_check(#111,#eee)"
+		"IDE-Code-Tips-Background": "DarkMode_check(#050505,#fff)"
+		"IDE-Code-Tips-Border": "DarkMode_check(#0a0a0a,#eaeaea)"
+		"IDE-Code-Toolbar-Background": "DarkMode_check(#242C38,#f5f5f5)"
+		"IDE-Data-Background": "DarkMode_ce_check(#0A0A0A,#fff)"
+		"IDE-Code-Gutters-Background": "DarkModheck(#252525,#fff)"
 		"IDE-Data-Toolbar-Background": "DarkMode_check(#0A0A0A,#fff)"
 	}
 
@@ -1737,6 +1741,16 @@ if Winter-Tag
 		use_mainly_background()
 	html
 		background: unset !important
+	.link-bottom
+		background: A-link-bottom-background !important
+	.tip
+		color: Text-color !important
+	.title
+		color: Text-color !important
+	.text
+		color: Text-color !important
+	[data-v-1a4393bd]
+		color: Text-color !important
 
 	if Smooth-scroll // 平滑滚动自定义项
 		body,html
@@ -2492,12 +2506,12 @@ if Winter-Tag
 			&>p,& a
 				@layer footer
 					&
-						color: Footer-text-color !important
-						transition: color Operate-hover-ani !important
+				color: Footer-text-color !important
+				transition: color Operate-hover-ani !important
 			& a:hover
 				@layer footer
 					&
-						color: Footer-text-hover-color !important
+				color: Footer-text-hover-color !important
 		& .slogan
 			color: Footer-bigtext-color !important
 		& .logo,& .logo-img
@@ -2626,14 +2640,14 @@ if Winter-Tag
 			color: Small-button-text-select-color !important
 
 	// 连续输入框右侧 border
-	.input-group>:not(:last-child)
+	.input-group>:not(:last-child),.l-flex-info-row>:not(:last-child)
 		&,& input
 			border-top-right-radius: 0 !important
 			border-bottom-right-radius: 0 !important
 			&,&.focused
 				box-shadow: none !important
 	
-	.input-group>:not(:first-child)
+	.input-group>:not(:first-child),.l-flex-info-row>:not(:first-child)
 		&,& input
 			border-top-left-radius: 0 !important
 			border-bottom-left-radius: 0 !important
@@ -2949,10 +2963,10 @@ if Winter-Tag
 				animation: Card-select-bar-ani Card-select-bar-out-ani !important
 
 	if Better-InputGroup // 更统一的 InputGroup 样式
-		.input-group>:not(:last-child) input
+		.input-group>:not(:last-child),.l-flex-info-row>:not(:last-child) input
 			height: 25px !important
 			padding: 1.75px 14px 1.75px 14px !important
-		.input-group>button:last-child
+		.input-group>button:last-child,.l-flex-info-row>button:last-child
 			height: 30px !important
 			padding: 4px 18px !important
 
@@ -4110,6 +4124,9 @@ if Winter-Tag
 									background: IDE-Code-Gutters-Background !important
 								>.cm-content>.cm-line
 									use_code_color()
+							>.cm-tooltip
+									background: IDE-Code-Tips-Background !important
+									border: IDE-Code-Tips-Border !important
 					>.panel-b
 						.ide-toolbar
 							background: IDE-Data-Toolbar-Background !important
@@ -4157,8 +4174,10 @@ if Winter-Tag
 		background: School-Item-Course-Container-Background !important
 
 	//洛谷网校悬浮窗
-	.app>.fix
-		background: /*School-Fix-Background*/ !important
+	.fix[data-v-ab639bfc][data-v-ad70ac82]
+		background: School-Fix-Background !important
+		>div>.hidden
+			display: none !important
 	
 	.header-layout.tiny[data-v-ad70ac82]
 		z-index: 4 !important
@@ -4221,3 +4240,4 @@ if Winter-Tag
 	
 	use_sidebar()
 	use_controller()
+
