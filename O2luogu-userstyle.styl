@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.3.0.20
+@version      2.3.0.19
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
@@ -4095,27 +4095,23 @@ if Winter-Tag
 					background: IDE-Problem-Background !important
 			>.panel-b
 				background: none !important
-				>div
+				>div>.panel-a
+					background: IDE-Code-Background !important
+					>.ide-toolbar
+						background: IDE-Code-Toolbar-Background !important
+						border: 0 !important
+					.cm-editor>.cm-scroller
+						>.cm-gutters
+							background: IDE-Code-Gutters-Background !important
+						>.cm-content .cm-line
+							use_code_color()
+				>div>.panel-b
 					background: none !important
-					>.panel-a
-						background: none !important
-						>.ide-toolbar
-							background: IDE-Code-Toolbar-Background !important
-							border: 0 !important
-						& .cm-editor
-							background: IDE-Code-Background !important
-							>.cm-scroller
-								background: none !important
-								>.cm-gutters
-									background: IDE-Code-Gutters-Background !important
-								>.cm-content>.cm-line
-									use_code_color()
-					>.panel-b
-						.ide-toolbar
-							background: IDE-Data-Toolbar-Background !important
-							border: 0 !important
-						textarea
-							background: IDE-Data-Background !important
+					.ide-toolbar
+						background: IDE-Data-Toolbar-Background !important
+						border: 0 !important
+					textarea
+						background: IDE-Data-Background !important
 
 	use_ide()
 
