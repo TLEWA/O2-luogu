@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         氧洛谷
 @namespace    https://userstyles.world/style/18339/default-slug
-@version      2.3.0.20
+@version      2.3.0.21
 @description  高度可自定义的洛谷美化脚本
 @author       TLEWA
 @license      GPL v3
@@ -187,6 +187,8 @@
 @var	text IDE-Panel-Divider-Color "IDE 分隔线色" "Default"
 @var	text IDE-Problem-Background "IDE 模式问题背景" "Default"
 @var	text IDE-Code-Background "IDE 代码背景" "Default"
+@var	text IDE-Code-Tips-Background "IDE 代码提示背景" "Default"
+@var	text IDE-Code-Tips-Border "IDE 代码提示边框" "Default"
 @var	text IDE-Code-Toolbar-Background "IDE 代码顶栏背景" "Default"
 @var	text IDE-Code-Gutters-Background "IDE 代码行号背景" "Default"
 @var	text IDE-Data-Background "IDE 数据背景" "Default"
@@ -731,8 +733,8 @@ if Fast-Font-load
 		Card_float = "#app > nav.lfe-body .popup,.dropdown-operations,.dropdown:not(:has(>.setting-dropdown)),.cover-upload,.btn-edit-reply,.operations.float,.bottom-wrap.float,.mp-dialog-container,.dropdown>.clone-card,.candidates,.am-modal-dialog,.cs-dialog,.l-card.container,.dropdown>.float-card,.filters,.setting-dropdown" // 悬浮卡片
 		Hover_card_float = "#app > nav.lfe-body .popup a,.dropdown-operations li,.dropdown li,.candidates li,.am-modal-footer,.setting-dropdown"
 		Shadow_card_float = ".float-card,#app > nav.lfe-body .popup, .user-nav .center,.dropdown:not(:has(>.dropdown-operations,>.float-card,>.setting-dropdown))"
-		Title = ".swal2-title,.lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,main strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I,form>.row>span:first-child" // 标题文字
-		Text = "#app p,.l-card,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner,.row>.content,.feed-comment,.mp-preview-content,.items:has(.entry),.info" // 正文文字
+		Title = ".lfe-h1,.lfe-h2,.lfe-h3,.lfe-h4,.lfe-h5,.lfe-h6,main strong,.title[data-v-71e80b39],.header-link,#article-title,.lside .nav-group .group-title span.title,.rside .nav-group .group-title,#lg-alert-title,.cs-dialog-header,div#p.O>div.N.I,form>.row>span:first-child" // 标题文字
+		Text = "main p,.l-card,.card,#app > div.main-container > main > div > div.card.padding-default > div.selection.select-header-tiny > ul > li.selected > span,.field > .lfe-caption,div.content,blockquote,.katex-display,.lfe-marked li,.swal2-html-container,#swal2-content,.drop span,#lg-alert-message,table,.cs-editor,.ͼ5,.main-wrapper.theme-light,.core-msg,.footer-inner,.row>.content,.feed-comment,.mp-preview-content,.items:has(.entry)" // 正文文字
 		State = ".detail,.time,.create-time,.caption,.info-content,.result>.count,.result-count,section>.block>.lfe-caption,.total,.lside .title,time,.article-banner .metas span,.user-info .key,.user-info .name,.collection-info" // 陈述文字
 		Introduce = ".table,.lfe-caption,.user-nav .center>.ops>a,.item-title,#app>div.main-container>main>div>div.card.padding-default>div.selection.select-header-tiny>ul,.category ul.rmj>li,.result>.count>.number,.result-count>.number,section .title,span.forum-name,#app > nav.lfe-body .popup a,.dropdown li,.row-space-between.reply-info>div,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,#app > div.main-container > main > div > div > div > div.border.table > div.header-wrap > div > div.difficulty > span,.btn-edit-reply>span,.lside .nav-group span.title,.meta .label,.meta,.article-comment .comment-filter-line>span,body>div>div.rside .nav-group li,.mp-dialog-field label,.user-info .value,.info-rows>div>span:nth-child(1),label[for*='radio'],label[for*='check'],label[for*='LRadio'],.header b,.bar-title,.detail-container .row>span,.radio-group>span,.breadcrumb,,.candidates li,.toc>ul>li>span,.cs-footer,.content-row,.cs-dialog-item-labelm,.login-actions,.swal2-validation-message,.cs-dialog-item-label,.header>.status>.lfe-caption,.colored-link-selector .name,div.row.row-space-between.top > .content-right > a > .name,.l-flex-info-row>span,.reply-editor>div:first-child,label[for*='LCheck'],.row.space-between.info>.left.row,.light-text,.user-stat-data>.stat>.field .stat-text,.container>.tag-select-area .section>.title,.container>.tag-select-area .tags>.toggle-tag:not(.selected)" // 介绍文字
 		Divider = ".border .row[data-v-b5709dda]:not(:last-child) ,.border .header-wrap[data-v-b5709dda],.wrapper > .feed,.sub-header,.marked h1,.marked h2,.card-header,.item-row,.user-stat-data>.stat>.field,.difficulty-tags,.difficulty-tags>.row,.full-container[currenttemplate='UserNotification']>.card div,.mp-editor-container,.mp-editor-container *,.container>.menu-container,.container>.tag-select-area .section,.marked hr,.replies>.feed,nav>.nav-group::after,.panel-content .item,.panel-title,.top-container,.side,.card.wrapper.padding-none .main .editor,.page-area,.lfe-marked *,.user-nav>.nav-group::after,.header,.row-wrap > .row,.header-wrap,.am-modal-bd,.casket.cs-main *,.casket.cs-main,.cs-dialog-header,.item" // 分割线
@@ -797,7 +799,7 @@ if Fast-Font-load
 				max-width: 1200px - 32px !important
 				margin-top: 12px !important
 				border-radius: 8px !important
-			#app:has(>.top-bar)
+			#app:has(.top-bar)
 				.main-container
 					margin-top: 0 !important
 				.main-container .full-container
@@ -1652,10 +1654,12 @@ if Fast-Font-load
 		"School-Fix-Background": "Card-bg-color-L1"
 		"IDE-Panel-Divider-Color": "DarkMode_check(#000,#fff)"
 		"IDE-Problem-Background": "DarkMode_check(#222,#fff)"
-		"IDE-Code-Background": "DarkMode_check(#111,#fff)"
-		"IDE-Code-Toolbar-Background": "DarkMode_check(#0A0A0A,#fff)"
-		"IDE-Code-Gutters-Background": "DarkMode_check(#242C38,#f5f5f5)"
-		"IDE-Data-Background": "DarkMode_check(#252525,#fff)"
+		"IDE-Code-Background": "DarkMode_check(#111,#eee)"
+		"IDE-Code-Tips-Background": "DarkMode_check(#050505,#fff)"
+		"IDE-Code-Tips-Border": "DarkMode_check(#0a0a0a,#eaeaea)"
+		"IDE-Code-Toolbar-Background": "DarkMode_check(#242C38,#f5f5f5)"
+		"IDE-Data-Background": "DarkMode_ce_check(#0A0A0A,#fff)"
+		"IDE-Code-Gutters-Background": "DarkModheck(#252525,#fff)"
 		"IDE-Data-Toolbar-Background": "DarkMode_check(#0A0A0A,#fff)"
 	}
 
@@ -1732,11 +1736,23 @@ if Winter-Tag
 
 // 全局样式
 @-moz-document regexp("(^(http(s)?://www.luogu.com(.cn)?/(.*)))|(^(http(s)?://class.luogu.com(.cn)?/(.*)))")
+	main
+		background: none !important
 	body // 应用全局背景
 		background: none
 		use_mainly_background()
 	html
 		background: unset !important
+	.link-bottom
+		background: A-link-bottom-background !important
+	.tip
+		color: Text-color !important
+	.title
+		color: Text-color !important
+	.text
+		color: Text-color !important
+	[data-v-1a4393bd]
+		color: Text-color !important
 
 	if Smooth-scroll // 平滑滚动自定义项
 		body,html
@@ -2483,21 +2499,17 @@ if Winter-Tag
 		background: Header-bg-color !important if !Anti-HeaderFooter
 	
 	// 页尾修改
-	.main-container > .wrapper.wrapped.lfe-body:has(>.footer),#app .main-container > footer.theme-bg
+	.main-container > .wrapper.wrapped.lfe-body:has(>.footer),.main-container > footer.theme-bg
 		background: Footer-bg-color !important if !Anti-HeaderFooter
 		if !Anti-HeaderFooter
 			& .background
 				background: none !important
 		& .info,& .links
 			&>p,& a
-				@layer footer
-					&
-						color: Footer-text-color !important
-						transition: color Operate-hover-ani !important
+				color: Footer-text-color !important
+				transition: color Operate-hover-ani !important
 			& a:hover
-				@layer footer
-					&
-						color: Footer-text-hover-color !important
+				color: Footer-text-hover-color !important
 		& .slogan
 			color: Footer-bigtext-color !important
 		& .logo,& .logo-img
@@ -2626,14 +2638,14 @@ if Winter-Tag
 			color: Small-button-text-select-color !important
 
 	// 连续输入框右侧 border
-	.input-group>:not(:last-child)
+	.input-group>:not(:last-child),.l-flex-info-row>:not(:last-child)
 		&,& input
 			border-top-right-radius: 0 !important
 			border-bottom-right-radius: 0 !important
 			&,&.focused
 				box-shadow: none !important
 	
-	.input-group>:not(:first-child)
+	.input-group>:not(:first-child),.l-flex-info-row>:not(:first-child)
 		&,& input
 			border-top-left-radius: 0 !important
 			border-bottom-left-radius: 0 !important
@@ -2949,10 +2961,10 @@ if Winter-Tag
 				animation: Card-select-bar-ani Card-select-bar-out-ani !important
 
 	if Better-InputGroup // 更统一的 InputGroup 样式
-		.input-group>:not(:last-child) input
+		.input-group>:not(:last-child),.l-flex-info-row>:not(:last-child) input
 			height: 25px !important
 			padding: 1.75px 14px 1.75px 14px !important
-		.input-group>button:last-child
+		.input-group>button:last-child,.l-flex-info-row>button:last-child
 			height: 30px !important
 			padding: 4px 18px !important
 
@@ -3259,7 +3271,7 @@ if Winter-Tag
 	// 修个神秘 bug
 	//#app // 修法有问题
 	//	overflow-y: hidden
-	#app:has(>.top-bar)
+	#app:has(.top-bar)
 		overflow: visible
 	.full-container .card
 		overflow: visible !important
@@ -4110,6 +4122,9 @@ if Winter-Tag
 									background: IDE-Code-Gutters-Background !important
 								>.cm-content>.cm-line
 									use_code_color()
+							>.cm-tooltip
+									background: IDE-Code-Tips-Background !important
+									border: IDE-Code-Tips-Border !important
 					>.panel-b
 						.ide-toolbar
 							background: IDE-Data-Toolbar-Background !important
@@ -4157,8 +4172,10 @@ if Winter-Tag
 		background: School-Item-Course-Container-Background !important
 
 	//洛谷网校悬浮窗
-	.app>.fix
-		background: /*School-Fix-Background*/ !important
+	.fix[data-v-ab639bfc][data-v-ad70ac82]
+		background: School-Fix-Background !important
+		>div>.hidden
+			display: none !important
 	
 	.header-layout.tiny[data-v-ad70ac82]
 		z-index: 4 !important
@@ -4221,3 +4238,4 @@ if Winter-Tag
 	
 	use_sidebar()
 	use_controller()
+
