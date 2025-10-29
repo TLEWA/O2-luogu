@@ -2952,7 +2952,7 @@ if Winter-Tag
 
 	if Better-InputGroup // 更统一的 InputGroup 样式
 		.input-group>:not(:last-child),.l-flex-info-row>:not(:last-child) input
-			height: 25px !important
+			height: 30px !important
 			padding: 1.75px 14px 1.75px 14px !important
 		.input-group>button:last-child,.l-flex-info-row>button:last-child
 			height: 30px !important
@@ -3562,6 +3562,9 @@ if Winter-Tag
 	if bug-fix22
 		.heat-map .hint
 			justify-content: flex-start
+	
+	.tooltip>.lfe-caption,.tooltip>.lfe-caption>time // TODO： 做成一个完整的选项
+		color: gray !important
 
 @-moz-document regexp("^https?://www.luogu.com(.cn)?/problem/solution.*$")
 	if Better-prob-card // 应用边栏
