@@ -1735,7 +1735,7 @@ if Winter-Tag
 		@import url('https://cdn.jsdelivr.net/gh/TLEWA/O2-luogu@%E5%89%8D%E7%9E%BB%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95/Lib/WinterTag.css');
 
 // 全局样式
-@-moz-document regexp("(^(http(s)?://www.luogu.com(.cn)?/(.*)))|(^(http(s)?://class.luogu.com(.cn)?/(.*)))")
+@-moz-document regexp("(^(http(s)?://(.*).luogu.com(.cn)?/(.*)))")
 	body // 应用全局背景
 		background: none
 		use_mainly_background()
@@ -2481,11 +2481,11 @@ if Winter-Tag
 					background: Test-case-color-MLE
 
 	// 页首修改
-	.main-container > .wrapper.wrapped.lfe-body:not(.tiny):first-child > .background,.main-container > header.theme-bg
+	.main-container > .wrapped.lfe-body:not(.tiny)
 		background: Header-bg-color !important if !Anti-HeaderFooter
 	
 	// 页尾修改
-	.main-container > .wrapper.wrapped.lfe-body:has(>.footer),#app .main-container > footer.theme-bg
+	.main-container > .wrapped.lfe-body:has(>.footer),#app .main-container > footer.theme-bg
 		background: Footer-bg-color !important if !Anti-HeaderFooter
 		if !Anti-HeaderFooter
 			& .background
@@ -4128,6 +4128,10 @@ if Winter-Tag
 	use_ide()
 
 @-moz-document regexp("^(http(s)?://class.luogu.com(.cn)?/(.*))")
+	main
+		background-color: #0000 !important
+	a.link-bottom.color-default
+		background: A-link-bottom-background !important
 // 洛谷网校课程卡片
 	div[class="card"]
 		>.brief
